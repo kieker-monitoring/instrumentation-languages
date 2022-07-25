@@ -68,6 +68,8 @@ public class ExecutionFactoryImpl extends EFactoryImpl implements ExecutionFacto
 			case ExecutionPackage.AGGREGATED_STORAGE_ACCESS: return createAggregatedStorageAccess();
 			case ExecutionPackage.DEPLOYED_OPERATIONS_PAIR_TO_AGGREGATED_STORAGE_ACCESS_MAP_ENTRY: return (EObject)createDeployedOperationsPairToAggregatedStorageAccessMapEntry();
 			case ExecutionPackage.TUPLE: return createTuple();
+			case ExecutionPackage.OPERATION_ACCESS: return createOperationAccess();
+			case ExecutionPackage.DEPLOYED_OPERATIONS_PAIR_TO_DEPLOYED_OPERATIONS_MAP_ENTRY: return (EObject)createDeployedOperationsPairToDeployedOperationsMapEntry();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -165,6 +167,27 @@ public class ExecutionFactoryImpl extends EFactoryImpl implements ExecutionFacto
 	public <F, S> Tuple<F, S> createTuple() {
 		TupleImpl<F, S> tuple = new TupleImpl<F, S>();
 		return tuple;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public OperationAccess createOperationAccess() {
+		OperationAccessImpl operationAccess = new OperationAccessImpl();
+		return operationAccess;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Map.Entry<Tuple<DeployedOperation, DeployedOperation>, OperationAccess> createDeployedOperationsPairToDeployedOperationsMapEntry() {
+		DeployedOperationsPairToDeployedOperationsMapEntryImpl deployedOperationsPairToDeployedOperationsMapEntry = new DeployedOperationsPairToDeployedOperationsMapEntryImpl();
+		return deployedOperationsPairToDeployedOperationsMapEntry;
 	}
 
 	/**

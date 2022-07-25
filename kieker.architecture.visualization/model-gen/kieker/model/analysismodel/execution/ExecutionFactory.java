@@ -58,6 +58,15 @@ public interface ExecutionFactory extends EFactory {
 	<F, S> Tuple<F, S> createTuple();
 
 	/**
+	 * Returns a new object of class '<em>Operation Access</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Operation Access</em>'.
+	 * @generated
+	 */
+	OperationAccess createOperationAccess();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

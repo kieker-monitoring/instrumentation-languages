@@ -75,7 +75,7 @@ abstract class AbstractKiekerArchitectureDiagramSynthesis<T> extends AbstractDia
 	protected static val SynthesisOption SHOW_OPERATIONS = SynthesisOption::createCheckOption("Show operations", false);
 
 	protected static val SynthesisOption SHOW_STORAGE = SynthesisOption::createCheckOption("Show storage", false);
-		
+				
 	
 	/**
 	 * {@inheritDoc}<br>
@@ -85,7 +85,7 @@ abstract class AbstractKiekerArchitectureDiagramSynthesis<T> extends AbstractDia
 	override getDisplayedSynthesisOptions() {
 		return ImmutableList::of(ALGORITHM, SHOW_PORT_LABELS, SHOW_OPERATIONS, SHOW_STORAGE)
 	}
-	
+		
 	protected def createOperation(EObject object, String label) {
 		object.createNode().associateWith(object) => [
 			it.addEllipse => [
@@ -140,6 +140,7 @@ abstract class AbstractKiekerArchitectureDiagramSynthesis<T> extends AbstractDia
 				it.foregroundInvisible = true
 				it.background = backgroundColor.color
 				it.foreground = "#000000".color
+				it.addSingleClickAction("ss")
 			]
 		]
 	}
@@ -189,6 +190,21 @@ abstract class AbstractKiekerArchitectureDiagramSynthesis<T> extends AbstractDia
 			it.addPolyline() => [
 				it.lineWidth = 2
 				it.foreground = "gray25".color
+				if (direction === EDirection.WRITE || direction === EDirection.BOTH) it.addHeadArrowDecorator
+				if (direction === EDirection.READ || direction === EDirection.BOTH) it.addTailArrowDecorator
+			]
+		]
+	}
+	
+	protected def createOperationDataflowAccess(KNode sourceNode, KNode targetNode, EDirection direction) {
+		createEdge() => [
+			it.addLayoutParam(CoreOptions::EDGE_TYPE, EdgeType::DIRECTED)
+			it.source = sourceNode
+			it.target = targetNode
+
+			it.addPolyline() => [
+				it.lineWidth = 2
+				it.foreground = "blue".color
 				if (direction === EDirection.WRITE || direction === EDirection.BOTH) it.addHeadArrowDecorator
 				if (direction === EDirection.READ || direction === EDirection.BOTH) it.addTailArrowDecorator
 			]

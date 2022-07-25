@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link kieker.model.analysismodel.execution.ExecutionModel#getAggregatedInvocations <em>Aggregated Invocations</em>}</li>
  *   <li>{@link kieker.model.analysismodel.execution.ExecutionModel#getAggregatedStorageAccesses <em>Aggregated Storage Accesses</em>}</li>
+ *   <li>{@link kieker.model.analysismodel.execution.ExecutionModel#getOperationAccess <em>Operation Access</em>}</li>
  * </ul>
  *
  * @see kieker.model.analysismodel.execution.ExecutionPackage#getExecutionModel()
@@ -52,5 +53,18 @@ public interface ExecutionModel extends EObject {
 	 * @generated
 	 */
 	EMap<Tuple<DeployedOperation, DeployedStorage>, AggregatedStorageAccess> getAggregatedStorageAccesses();
+
+	/**
+	 * Returns the value of the '<em><b>Operation Access</b></em>' map.
+	 * The key is of type {@link kieker.model.analysismodel.execution.Tuple<kieker.model.analysismodel.deployment.DeployedOperation, kieker.model.analysismodel.deployment.DeployedOperation>},
+	 * and the value is of type {@link kieker.model.analysismodel.execution.OperationAccess},
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Operation Access</em>' map.
+	 * @see kieker.model.analysismodel.execution.ExecutionPackage#getExecutionModel_OperationAccess()
+	 * @model mapType="kieker.model.analysismodel.execution.DeployedOperationsPairToDeployedOperationsMapEntry&lt;kieker.model.analysismodel.execution.Tuple&lt;kieker.model.analysismodel.deployment.DeployedOperation, kieker.model.analysismodel.deployment.DeployedOperation&gt;, kieker.model.analysismodel.execution.OperationAccess&gt;" ordered="false"
+	 * @generated
+	 */
+	EMap<Tuple<DeployedOperation, DeployedOperation>, OperationAccess> getOperationAccess();
 
 } // ExecutionModel

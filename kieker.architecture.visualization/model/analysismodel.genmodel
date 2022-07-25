@@ -270,6 +270,7 @@
       <genClasses ecoreClass="analysismodel.ecore#//execution/ExecutionModel">
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference analysismodel.ecore#//execution/ExecutionModel/aggregatedInvocations"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference analysismodel.ecore#//execution/ExecutionModel/aggregatedStorageAccesses"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference analysismodel.ecore#//execution/ExecutionModel/operationAccess"/>
       </genClasses>
       <genClasses ecoreClass="analysismodel.ecore#//execution/DeployedOperationsPairToAggregatedInvocationMapEntry">
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference analysismodel.ecore#//execution/DeployedOperationsPairToAggregatedInvocationMapEntry/value"/>
@@ -305,6 +306,17 @@
         </genOperations>
         <genOperations ecoreOperation="analysismodel.ecore#//execution/Tuple/hashCode"
             body="return (this.first == null ? 0 : this.first.hashCode()) ^ (this.second == null ? 0 : this.second.hashCode());"/>
+      </genClasses>
+      <genClasses ecoreClass="analysismodel.ecore#//execution/OperationAccess">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference analysismodel.ecore#//execution/OperationAccess/source"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference analysismodel.ecore#//execution/OperationAccess/target"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute analysismodel.ecore#//execution/OperationAccess/RWAccess"/>
+      </genClasses>
+      <genClasses ecoreClass="analysismodel.ecore#//execution/DeployedOperationsPairToDeployedOperationsMapEntry">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference analysismodel.ecore#//execution/DeployedOperationsPairToDeployedOperationsMapEntry/value"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference analysismodel.ecore#//execution/DeployedOperationsPairToDeployedOperationsMapEntry/key"/>
       </genClasses>
     </nestedGenPackages>
     <nestedGenPackages prefix="Trace" basePackage="kieker.model.analysismodel" disposableProviderFactory="true"

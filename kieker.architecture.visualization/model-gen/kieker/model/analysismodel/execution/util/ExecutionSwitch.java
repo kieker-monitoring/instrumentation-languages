@@ -107,6 +107,18 @@ public class ExecutionSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case ExecutionPackage.OPERATION_ACCESS: {
+				OperationAccess operationAccess = (OperationAccess)theEObject;
+				T result = caseOperationAccess(operationAccess);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ExecutionPackage.DEPLOYED_OPERATIONS_PAIR_TO_DEPLOYED_OPERATIONS_MAP_ENTRY: {
+				@SuppressWarnings("unchecked") Map.Entry<Tuple<DeployedOperation, DeployedOperation>, OperationAccess> deployedOperationsPairToDeployedOperationsMapEntry = (Map.Entry<Tuple<DeployedOperation, DeployedOperation>, OperationAccess>)theEObject;
+				T result = caseDeployedOperationsPairToDeployedOperationsMapEntry(deployedOperationsPairToDeployedOperationsMapEntry);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -198,6 +210,36 @@ public class ExecutionSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public <F, S> T caseTuple(Tuple<F, S> object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Operation Access</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Operation Access</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseOperationAccess(OperationAccess object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Deployed Operations Pair To Deployed Operations Map Entry</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Deployed Operations Pair To Deployed Operations Map Entry</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDeployedOperationsPairToDeployedOperationsMapEntry(Map.Entry<Tuple<DeployedOperation, DeployedOperation>, OperationAccess> object) {
 		return null;
 	}
 

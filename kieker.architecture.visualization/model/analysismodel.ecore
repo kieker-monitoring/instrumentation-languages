@@ -333,6 +333,9 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="aggregatedStorageAccesses"
           ordered="false" upperBound="-1" eType="#//execution/DeployedOperationsPairToAggregatedStorageAccessMapEntry"
           containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="operationAccess" ordered="false"
+          upperBound="-1" eType="#//execution/DeployedOperationsPairToDeployedOperationsMapEntry"
+          containment="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="DeployedOperationsPairToAggregatedInvocationMapEntry"
         instanceClassName="java.util.Map$Entry">
@@ -389,6 +392,22 @@
       </eStructuralFeatures>
       <eStructuralFeatures xsi:type="ecore:EReference" name="second">
         <eGenericType eTypeParameter="#//execution/Tuple/S"/>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="OperationAccess">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="#//deployment/DeployedOperation"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//deployment/DeployedOperation"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="RWAccess" eType="#//execution/EDirection"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="DeployedOperationsPairToDeployedOperationsMapEntry"
+        instanceClassName="java.util.Map$Entry">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//execution/OperationAccess"
+          containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="key" containment="true">
+        <eGenericType eClassifier="#//execution/Tuple">
+          <eTypeArguments eClassifier="#//deployment/DeployedOperation"/>
+          <eTypeArguments eClassifier="#//deployment/DeployedOperation"/>
+        </eGenericType>
       </eStructuralFeatures>
     </eClassifiers>
   </eSubpackages>

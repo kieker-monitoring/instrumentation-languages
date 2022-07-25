@@ -87,13 +87,22 @@ public interface ExecutionPackage extends EPackage {
 	int EXECUTION_MODEL__AGGREGATED_STORAGE_ACCESSES = 1;
 
 	/**
+	 * The feature id for the '<em><b>Operation Access</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_MODEL__OPERATION_ACCESS = 2;
+
+	/**
 	 * The number of structural features of the '<em>Model</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXECUTION_MODEL_FEATURE_COUNT = 2;
+	int EXECUTION_MODEL_FEATURE_COUNT = 3;
 
 	/**
 	 * The number of operations of the '<em>Model</em>' class.
@@ -362,6 +371,107 @@ public interface ExecutionPackage extends EPackage {
 	int TUPLE_OPERATION_COUNT = 2;
 
 	/**
+	 * The meta object id for the '{@link kieker.model.analysismodel.execution.impl.OperationAccessImpl <em>Operation Access</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see kieker.model.analysismodel.execution.impl.OperationAccessImpl
+	 * @see kieker.model.analysismodel.execution.impl.ExecutionPackageImpl#getOperationAccess()
+	 * @generated
+	 */
+	int OPERATION_ACCESS = 6;
+
+	/**
+	 * The feature id for the '<em><b>Source</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION_ACCESS__SOURCE = 0;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION_ACCESS__TARGET = 1;
+
+	/**
+	 * The feature id for the '<em><b>RW Access</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION_ACCESS__RW_ACCESS = 2;
+
+	/**
+	 * The number of structural features of the '<em>Operation Access</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION_ACCESS_FEATURE_COUNT = 3;
+
+	/**
+	 * The number of operations of the '<em>Operation Access</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION_ACCESS_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link kieker.model.analysismodel.execution.impl.DeployedOperationsPairToDeployedOperationsMapEntryImpl <em>Deployed Operations Pair To Deployed Operations Map Entry</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see kieker.model.analysismodel.execution.impl.DeployedOperationsPairToDeployedOperationsMapEntryImpl
+	 * @see kieker.model.analysismodel.execution.impl.ExecutionPackageImpl#getDeployedOperationsPairToDeployedOperationsMapEntry()
+	 * @generated
+	 */
+	int DEPLOYED_OPERATIONS_PAIR_TO_DEPLOYED_OPERATIONS_MAP_ENTRY = 7;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOYED_OPERATIONS_PAIR_TO_DEPLOYED_OPERATIONS_MAP_ENTRY__VALUE = 0;
+
+	/**
+	 * The feature id for the '<em><b>Key</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOYED_OPERATIONS_PAIR_TO_DEPLOYED_OPERATIONS_MAP_ENTRY__KEY = 1;
+
+	/**
+	 * The number of structural features of the '<em>Deployed Operations Pair To Deployed Operations Map Entry</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOYED_OPERATIONS_PAIR_TO_DEPLOYED_OPERATIONS_MAP_ENTRY_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Deployed Operations Pair To Deployed Operations Map Entry</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOYED_OPERATIONS_PAIR_TO_DEPLOYED_OPERATIONS_MAP_ENTRY_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link kieker.model.analysismodel.execution.EDirection <em>EDirection</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -369,7 +479,7 @@ public interface ExecutionPackage extends EPackage {
 	 * @see kieker.model.analysismodel.execution.impl.ExecutionPackageImpl#getEDirection()
 	 * @generated
 	 */
-	int EDIRECTION = 6;
+	int EDIRECTION = 8;
 
 
 	/**
@@ -403,6 +513,17 @@ public interface ExecutionPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getExecutionModel_AggregatedStorageAccesses();
+
+	/**
+	 * Returns the meta object for the map '{@link kieker.model.analysismodel.execution.ExecutionModel#getOperationAccess <em>Operation Access</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the map '<em>Operation Access</em>'.
+	 * @see kieker.model.analysismodel.execution.ExecutionModel#getOperationAccess()
+	 * @see #getExecutionModel()
+	 * @generated
+	 */
+	EReference getExecutionModel_OperationAccess();
 
 	/**
 	 * Returns the meta object for class '{@link java.util.Map.Entry <em>Deployed Operations Pair To Aggregated Invocation Map Entry</em>}'.
@@ -602,6 +723,84 @@ public interface ExecutionPackage extends EPackage {
 	EOperation getTuple__HashCode();
 
 	/**
+	 * Returns the meta object for class '{@link kieker.model.analysismodel.execution.OperationAccess <em>Operation Access</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Operation Access</em>'.
+	 * @see kieker.model.analysismodel.execution.OperationAccess
+	 * @generated
+	 */
+	EClass getOperationAccess();
+
+	/**
+	 * Returns the meta object for the reference '{@link kieker.model.analysismodel.execution.OperationAccess#getSource <em>Source</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Source</em>'.
+	 * @see kieker.model.analysismodel.execution.OperationAccess#getSource()
+	 * @see #getOperationAccess()
+	 * @generated
+	 */
+	EReference getOperationAccess_Source();
+
+	/**
+	 * Returns the meta object for the reference '{@link kieker.model.analysismodel.execution.OperationAccess#getTarget <em>Target</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Target</em>'.
+	 * @see kieker.model.analysismodel.execution.OperationAccess#getTarget()
+	 * @see #getOperationAccess()
+	 * @generated
+	 */
+	EReference getOperationAccess_Target();
+
+	/**
+	 * Returns the meta object for the attribute '{@link kieker.model.analysismodel.execution.OperationAccess#getRWAccess <em>RW Access</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>RW Access</em>'.
+	 * @see kieker.model.analysismodel.execution.OperationAccess#getRWAccess()
+	 * @see #getOperationAccess()
+	 * @generated
+	 */
+	EAttribute getOperationAccess_RWAccess();
+
+	/**
+	 * Returns the meta object for class '{@link java.util.Map.Entry <em>Deployed Operations Pair To Deployed Operations Map Entry</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Deployed Operations Pair To Deployed Operations Map Entry</em>'.
+	 * @see java.util.Map.Entry
+	 * @model features="value key" 
+	 *        valueType="kieker.model.analysismodel.execution.OperationAccess" valueContainment="true"
+	 *        keyType="kieker.model.analysismodel.execution.Tuple&lt;kieker.model.analysismodel.deployment.DeployedOperation, kieker.model.analysismodel.deployment.DeployedOperation&gt;" keyContainment="true"
+	 * @generated
+	 */
+	EClass getDeployedOperationsPairToDeployedOperationsMapEntry();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link java.util.Map.Entry <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Value</em>'.
+	 * @see java.util.Map.Entry
+	 * @see #getDeployedOperationsPairToDeployedOperationsMapEntry()
+	 * @generated
+	 */
+	EReference getDeployedOperationsPairToDeployedOperationsMapEntry_Value();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link java.util.Map.Entry <em>Key</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Key</em>'.
+	 * @see java.util.Map.Entry
+	 * @see #getDeployedOperationsPairToDeployedOperationsMapEntry()
+	 * @generated
+	 */
+	EReference getDeployedOperationsPairToDeployedOperationsMapEntry_Key();
+
+	/**
 	 * Returns the meta object for enum '{@link kieker.model.analysismodel.execution.EDirection <em>EDirection</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -659,6 +858,14 @@ public interface ExecutionPackage extends EPackage {
 		 * @generated
 		 */
 		EReference EXECUTION_MODEL__AGGREGATED_STORAGE_ACCESSES = eINSTANCE.getExecutionModel_AggregatedStorageAccesses();
+
+		/**
+		 * The meta object literal for the '<em><b>Operation Access</b></em>' map feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EXECUTION_MODEL__OPERATION_ACCESS = eINSTANCE.getExecutionModel_OperationAccess();
 
 		/**
 		 * The meta object literal for the '{@link kieker.model.analysismodel.execution.impl.DeployedOperationsPairToAggregatedInvocationMapEntryImpl <em>Deployed Operations Pair To Aggregated Invocation Map Entry</em>}' class.
@@ -813,6 +1020,66 @@ public interface ExecutionPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation TUPLE___HASH_CODE = eINSTANCE.getTuple__HashCode();
+
+		/**
+		 * The meta object literal for the '{@link kieker.model.analysismodel.execution.impl.OperationAccessImpl <em>Operation Access</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see kieker.model.analysismodel.execution.impl.OperationAccessImpl
+		 * @see kieker.model.analysismodel.execution.impl.ExecutionPackageImpl#getOperationAccess()
+		 * @generated
+		 */
+		EClass OPERATION_ACCESS = eINSTANCE.getOperationAccess();
+
+		/**
+		 * The meta object literal for the '<em><b>Source</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference OPERATION_ACCESS__SOURCE = eINSTANCE.getOperationAccess_Source();
+
+		/**
+		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference OPERATION_ACCESS__TARGET = eINSTANCE.getOperationAccess_Target();
+
+		/**
+		 * The meta object literal for the '<em><b>RW Access</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute OPERATION_ACCESS__RW_ACCESS = eINSTANCE.getOperationAccess_RWAccess();
+
+		/**
+		 * The meta object literal for the '{@link kieker.model.analysismodel.execution.impl.DeployedOperationsPairToDeployedOperationsMapEntryImpl <em>Deployed Operations Pair To Deployed Operations Map Entry</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see kieker.model.analysismodel.execution.impl.DeployedOperationsPairToDeployedOperationsMapEntryImpl
+		 * @see kieker.model.analysismodel.execution.impl.ExecutionPackageImpl#getDeployedOperationsPairToDeployedOperationsMapEntry()
+		 * @generated
+		 */
+		EClass DEPLOYED_OPERATIONS_PAIR_TO_DEPLOYED_OPERATIONS_MAP_ENTRY = eINSTANCE.getDeployedOperationsPairToDeployedOperationsMapEntry();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DEPLOYED_OPERATIONS_PAIR_TO_DEPLOYED_OPERATIONS_MAP_ENTRY__VALUE = eINSTANCE.getDeployedOperationsPairToDeployedOperationsMapEntry_Value();
+
+		/**
+		 * The meta object literal for the '<em><b>Key</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DEPLOYED_OPERATIONS_PAIR_TO_DEPLOYED_OPERATIONS_MAP_ENTRY__KEY = eINSTANCE.getDeployedOperationsPairToDeployedOperationsMapEntry_Key();
 
 		/**
 		 * The meta object literal for the '{@link kieker.model.analysismodel.execution.EDirection <em>EDirection</em>}' enum.

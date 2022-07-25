@@ -38,6 +38,8 @@ import kieker.model.analysismodel.execution.AggregatedStorageAccess
 import kieker.architecture.visualization.display.model.Component
 import kieker.architecture.visualization.display.model.RequiredPort
 import kieker.architecture.visualization.display.model.ProvidedPort
+import kieker.model.analysismodel.execution.OperationAccess
+import kieker.model.analysismodel.execution.EDirection
 
 /**
  * @author Reiner Jung
@@ -67,33 +69,38 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 		
 		objectPortMap = new HashMap
 		
-		val Set<Component> components = new DisplayModelBuilder().create(assemblyModel.components.values, executionModel.aggregatedInvocations.values)
+		val Set<Component> components = new DisplayModelBuilder().create(assemblyModel.components.values, executionModel)
 				
-		return createDisplay(components, executionModel.aggregatedInvocations.values, executionModel.aggregatedStorageAccesses.values)
+		return createDisplay(components, executionModel)
 	}
 	
-	private def KNode createDisplay(Set<Component> components, Collection<AggregatedInvocation> invocations, Collection<AggregatedStorageAccess> storageAccesses) {
+	private def KNode createDisplay(Set<Component> components, ExecutionModel executionModel) { 
 		return createNode() => [
 			it.addLayoutParam(CoreOptions::ALGORITHM, ALGORITHM.objectValue as String)
 			it.addLayoutParam(CoreOptions::SPACING_NODE_NODE, 75.0)
 			it.addLayoutParam(CoreOptions::DIRECTION, Direction::UP)
 		
-			components.forEach[node |
-				it.children += node.createComponent
+			components.forEach[component |
+				it.children += component.createComponent
 			]
-			components.forEach[it.createLinks(invocations, storageAccesses)]
+			components.forEach[it.createLinks(executionModel)]
 		]
 	}
 	
-	private def void createLinks(Component component, Collection<AggregatedInvocation> invocations, Collection<AggregatedStorageAccess> storageAccesses) {
+	private def void createLinks(Component component, ExecutionModel executionModel) {
+		val invocations = executionModel.aggregatedInvocations.values
+		val storageAccesses = executionModel.aggregatedStorageAccesses.values
+		val dataflows = executionModel.operationAccess.values
+		
 		createRequiredPortLinks(component)
 		createProvidedPortLinks(component)
 		
 		createOperationToRequiredPortLinks(component, invocations)
 		createOperationLinks(component, invocations)
 		createStorageLinks(component, storageAccesses)
+		createDataflowLinks(component, dataflows)
 
-		component.children.forEach[it.createLinks(invocations, storageAccesses)]
+		component.children.forEach[it.createLinks(executionModel)]
 	}
 	
 	private def createOperationToRequiredPortLinks(Component component, Collection<AggregatedInvocation> invocations) {
@@ -158,7 +165,15 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 			]
 		]
 	}
-	
+
+	private def createDataflowLinks(Component component, Collection<OperationAccess> dataflows) {
+		component.derivedFrom.operations.values.forEach[operation |
+			dataflows.filter[it.source.assemblyOperation === operation].forEach[
+				createOperationDataflowAccess(objectPortMap.get(it.source.assemblyOperation).node , objectPortMap.get(it.target.assemblyOperation).node, it.RWAccess)
+			]
+		]
+	}
+		
 	private def createProvidedPortLinks(Component component) {
 		component.providedPorts.forEach[providedPort |
 			val derivedFrom = providedPort.derivedFrom

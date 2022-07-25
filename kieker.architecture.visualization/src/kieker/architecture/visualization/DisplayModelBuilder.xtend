@@ -29,6 +29,9 @@ import java.util.Map
 import kieker.architecture.visualization.display.model.ProvidedPort
 import kieker.architecture.visualization.display.model.Component
 import kieker.architecture.visualization.display.model.RequiredPort
+import kieker.model.analysismodel.execution.AggregatedStorageAccess
+import kieker.model.analysismodel.execution.ExecutionModel
+import kieker.model.analysismodel.execution.OperationAccess
 
 /**
  * Generating a display model from the architecture model.
@@ -46,19 +49,21 @@ class DisplayModelBuilder {
 		
 	}
 		
-	def create(Collection<AssemblyComponent> assemblyComponents, Collection<AggregatedInvocation> invocations) {
+	def create(Collection<AssemblyComponent> assemblyComponents, ExecutionModel executionModel) {
+		val invocations = executionModel.aggregatedInvocations.values
+		val storages = executionModel.aggregatedStorageAccesses.values
+		val dataflows = executionModel.operationAccess.values
+		
 		val Set<Component> components = new HashSet
 
 		val containedComponents = computeContainedComponents(assemblyComponents)
 		
 		assemblyComponents.filter[!containedComponents.contains(it)].forEach[component |
-			components += createComponent(component, invocations, null)
+			components += createComponent(component, invocations, storages, dataflows, null)
 		]
 				
 		components.forEach[it.linkPort]
-		
-		// components.forEach[System.err.println(it.print(""))]
-		
+				
 		components.forEach[it.moveLinksUp]
 		
 		return components
@@ -115,15 +120,15 @@ class DisplayModelBuilder {
 		return containedComponents
 	}
 	
-	private def Component createComponent(AssemblyComponent assemblyComponent, Collection<AggregatedInvocation> invocations, Component parent) {
+	private def Component createComponent(AssemblyComponent assemblyComponent, Collection<AggregatedInvocation> invocations, Collection<AggregatedStorageAccess> storages, Collection<OperationAccess> dataflows, Component parent) {
 		val component = new Component(assemblyComponent.componentType.signature, assemblyComponent, parent)
 		
-		assemblyComponent.containedComponents.forEach[component.children += it.createComponent(invocations, component)]
-		val Set<AssemblyOperation> processedProvidedOperations = component.createProvidedInterface(assemblyComponent)
-		val Set<AssemblyOperation> processedRequiredCallees = component.createRequiredInterface(assemblyComponent)
+		assemblyComponent.containedComponents.forEach[component.children += it.createComponent(invocations, storages, dataflows, component)]
+		val Set<AssemblyOperation> processedProvidedOperations = component.createProvidedPort4Interface(assemblyComponent)
+		val Set<AssemblyOperation> processedRequiredCallees = component.createRequiredPort4Interface(assemblyComponent)
 		
-		component.createProvidedOperations(assemblyComponent, invocations, processedProvidedOperations)
-		component.createRequiredOperations(assemblyComponent, invocations, processedRequiredCallees)
+		component.createProvidedPorts4Operations(assemblyComponent, invocations, processedProvidedOperations)
+		component.createRequiredPorts4Operations(assemblyComponent, invocations, processedRequiredCallees)
 						
 		return component
 	}
@@ -131,7 +136,7 @@ class DisplayModelBuilder {
 	/**
 	 * Create provided ports based on externally access operations.
 	 */
-	private def void createProvidedOperations(Component component, AssemblyComponent assemblyComponent, 
+	private def void createProvidedPorts4Operations(Component component, AssemblyComponent assemblyComponent, 
 		Collection<AggregatedInvocation> invocations, Set<AssemblyOperation> processedProvidedOperations
 	) {
 		assemblyComponent.operations.values.
@@ -149,7 +154,7 @@ class DisplayModelBuilder {
 	/**
 	 * Create provided ports based on provided interfaces present in a assembly component.
 	 */
-	private def createProvidedInterface(Component component, AssemblyComponent assemblyComponent) {
+	private def createProvidedPort4Interface(Component component, AssemblyComponent assemblyComponent) {
 		val Set<AssemblyOperation> processedProvidedOperations = new HashSet
 		assemblyComponent.providedInterfaces.values.forEach[
 			val port = it.createProvidedPort(component)
@@ -172,7 +177,7 @@ class DisplayModelBuilder {
 	/**
 	 * Create required operation interfaces based on remaining external calls.
 	 */	
-	private def createRequiredOperations(Component component, AssemblyComponent assemblyComponent, 
+	private def createRequiredPorts4Operations(Component component, AssemblyComponent assemblyComponent, 
 		Collection<AggregatedInvocation> invocations, Set<AssemblyOperation> processedRequiredCallees
 	) {
 		invocations.filter[it.source.assemblyOperation.component === assemblyComponent &&
@@ -187,7 +192,7 @@ class DisplayModelBuilder {
 	 * Create required interface based on existing required interfaces in the model.
 	 * Collect all operations already covered by the required interface
 	 */
-	private def createRequiredInterface(Component component, AssemblyComponent assemblyComponent) {
+	private def createRequiredPort4Interface(Component component, AssemblyComponent assemblyComponent) {
 		val Set<AssemblyOperation> processedRequiredCallees = new HashSet
 		assemblyComponent.requiredInterfaces.forEach[
 			val port = it.createRequiredPort(component)

@@ -1,8 +1,8 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
-Bundle-SymbolicName: kieker.architecture.visualization;singleton:=true
-Automatic-Module-Name: kieker.architecture.visualization
+Bundle-SymbolicName: kieker;singleton:=true
+Automatic-Module-Name: kieker
 Bundle-Version: 1.3.0.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName

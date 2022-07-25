@@ -97,6 +97,14 @@ public class ExecutionAdapterFactory extends AdapterFactoryImpl {
 				return createTupleAdapter();
 			}
 			@Override
+			public Adapter caseOperationAccess(OperationAccess object) {
+				return createOperationAccessAdapter();
+			}
+			@Override
+			public Adapter caseDeployedOperationsPairToDeployedOperationsMapEntry(Map.Entry<Tuple<DeployedOperation, DeployedOperation>, OperationAccess> object) {
+				return createDeployedOperationsPairToDeployedOperationsMapEntryAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -197,6 +205,34 @@ public class ExecutionAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createTupleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link kieker.model.analysismodel.execution.OperationAccess <em>Operation Access</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see kieker.model.analysismodel.execution.OperationAccess
+	 * @generated
+	 */
+	public Adapter createOperationAccessAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link java.util.Map.Entry <em>Deployed Operations Pair To Deployed Operations Map Entry</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see java.util.Map.Entry
+	 * @generated
+	 */
+	public Adapter createDeployedOperationsPairToDeployedOperationsMapEntryAdapter() {
 		return null;
 	}
 
