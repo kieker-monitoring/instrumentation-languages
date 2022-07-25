@@ -39,7 +39,6 @@ import kieker.architecture.visualization.display.model.Component
 import kieker.architecture.visualization.display.model.RequiredPort
 import kieker.architecture.visualization.display.model.ProvidedPort
 import kieker.model.analysismodel.execution.OperationAccess
-import kieker.model.analysismodel.execution.EDirection
 
 /**
  * @author Reiner Jung
@@ -62,16 +61,26 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 	Map<Object, NodePort> objectPortMap
 	
 	override transform(ExecutionModel executionModel) {
-		val deployedOperation = executionModel.aggregatedInvocations.get(0).value.source
-		val assemblyOperation = deployedOperation.assemblyOperation
-		val assemblyComponent = assemblyOperation.component
-		val assemblyModel = assemblyComponent.eContainer.eContainer as AssemblyModel
-		
-		objectPortMap = new HashMap
-		
-		val Set<Component> components = new DisplayModelBuilder().create(assemblyModel.components.values, executionModel)
-				
-		return createDisplay(components, executionModel)
+		val deployedOperation =
+			if (!executionModel.aggregatedInvocations.empty) {
+				executionModel.aggregatedInvocations.get(0).value.source
+			} else if (!executionModel.operationAccess.empty) {
+				executionModel.operationAccess.get(0).value.source
+			} else
+				null
+		if (deployedOperation !== null) {
+			val assemblyOperation = deployedOperation.assemblyOperation
+			val assemblyComponent = assemblyOperation.component
+			val assemblyModel = assemblyComponent.eContainer.eContainer as AssemblyModel
+			
+			objectPortMap = new HashMap
+			
+			val Set<Component> components = new DisplayModelBuilder().create(assemblyModel.components.values, executionModel)
+					
+			return createDisplay(components, executionModel)
+		} else {
+			return null
+		}
 	}
 	
 	private def KNode createDisplay(Set<Component> components, ExecutionModel executionModel) { 
