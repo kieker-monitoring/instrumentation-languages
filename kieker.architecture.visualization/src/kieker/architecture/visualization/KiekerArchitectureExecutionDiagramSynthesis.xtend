@@ -39,6 +39,7 @@ import kieker.architecture.visualization.display.model.Component
 import kieker.architecture.visualization.display.model.RequiredPort
 import kieker.architecture.visualization.display.model.ProvidedPort
 import kieker.model.analysismodel.execution.OperationAccess
+import kieker.architecture.visualization.display.model.EPortType
 
 /**
  * @author Reiner Jung
@@ -162,7 +163,7 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 	private def createOperationLinks(Component component, Collection<AggregatedInvocation> invocations) {
 		component.derivedFrom.operations.values.forEach[caller |
 			invocations.filter[it.source.assemblyOperation === caller && it.target.assemblyOperation.component === component.derivedFrom].forEach[
-				createConnectionEdge(objectPortMap.get(it.source.assemblyOperation), objectPortMap.get(it.target.assemblyOperation), "black")
+				createConnectionEdge(objectPortMap.get(it.source.assemblyOperation), objectPortMap.get(it.target.assemblyOperation), CALL_FG_COLOR)
 			]
 		]
 	}
@@ -186,13 +187,14 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 	private def createProvidedPortLinks(Component component) {
 		component.providedPorts.forEach[providedPort |
 			val derivedFrom = providedPort.derivedFrom
+			val foregroundColor = if (#[EPortType.INTERFACE_CALL, EPortType.OPERATION_CALL].contains(providedPort.portType)) CALL_FG_COLOR else DATAFLOW_FG_COLOR
 			switch(derivedFrom) {
 				AssemblyProvidedInterface: derivedFrom.providedInterfaceType.providedOperationTypes.values.forEach[
 						val operation = component.derivedFrom.operations.get(it.signature)
-						createConnectionEdge(objectPortMap.get(providedPort), objectPortMap.get(operation), "gray25")
+						createConnectionEdge(objectPortMap.get(providedPort), objectPortMap.get(operation), foregroundColor)
 					]
-				ProvidedPort: createConnectionEdge(objectPortMap.get(providedPort), objectPortMap.get(derivedFrom), "black")
-				AssemblyOperation: createConnectionEdge(objectPortMap.get(providedPort), objectPortMap.get(derivedFrom), "black")
+				ProvidedPort: createConnectionEdge(objectPortMap.get(providedPort), objectPortMap.get(derivedFrom), foregroundColor)
+				AssemblyOperation: createConnectionEdge(objectPortMap.get(providedPort), objectPortMap.get(derivedFrom), foregroundColor)
 				default: System.err.println("MISSING provided link type " + derivedFrom?.class)
 			}
 		]
@@ -201,20 +203,21 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 	private def createRequiredPortLinks(Component component) {
 		component.requiredPorts.forEach[requiredPort |
 			val linkedPort = requiredPort.providedPort
+			val foregroundColor = if (#[EPortType.INTERFACE_CALL, EPortType.OPERATION_CALL].contains(requiredPort.portType)) CALL_FG_COLOR else DATAFLOW_FG_COLOR
 			switch(linkedPort) {
-				RequiredPort: createConnectionEdge(objectPortMap.get(requiredPort), objectPortMap.get(linkedPort), "black")
-				ProvidedPort: createConnectionEdge(objectPortMap.get(requiredPort), objectPortMap.get(linkedPort), "gray25")
-				AggregatedInvocation: createConnectionEdge(objectPortMap.get(requiredPort), objectPortMap.get(linkedPort.target.assemblyOperation), "black")
+				RequiredPort: createConnectionEdge(objectPortMap.get(requiredPort), objectPortMap.get(linkedPort), foregroundColor)
+				ProvidedPort: createConnectionEdge(objectPortMap.get(requiredPort), objectPortMap.get(linkedPort), foregroundColor)
+				AggregatedInvocation: createConnectionEdge(objectPortMap.get(requiredPort), objectPortMap.get(linkedPort.target.assemblyOperation), foregroundColor)
 				default: System.err.println("MISSING required link type " + linkedPort + " " + requiredPort.label + " " + requiredPort.derivedFrom)
 			}
 			if (requiredPort.derivedFrom instanceof AggregatedInvocation) {
 				val invocation = requiredPort.derivedFrom as AggregatedInvocation
-				createConnectionEdge(objectPortMap.get(invocation.source.assemblyOperation), objectPortMap.get(requiredPort), "gray25")
+				createConnectionEdge(objectPortMap.get(invocation.source.assemblyOperation), objectPortMap.get(requiredPort), foregroundColor)
 			} else if (requiredPort.derivedFrom instanceof OperationAccess) {
 				val dataflow = requiredPort.derivedFrom as OperationAccess
-				createConnectionEdge(objectPortMap.get(dataflow.source.assemblyOperation), objectPortMap.get(requiredPort), "#9090ff")				
+				createConnectionEdge(objectPortMap.get(dataflow.source.assemblyOperation), objectPortMap.get(requiredPort), foregroundColor)				
 			} else {
-				System.err.println("HUHU " + requiredPort.derivedFrom.class)
+				System.err.println("ERROR unknown derived class " + requiredPort.derivedFrom.class)
 			}
 		]
 	}
@@ -275,9 +278,9 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 	private def void createProvidedPorts(KNode node, Component component) {
 		component.providedPorts.forEach[providedPort |
 			val port = addLabel(switch(providedPort.derivedFrom) {
-				AssemblyProvidedInterface: createPort(PortSide.SOUTH, providedPort.derivedFrom as AssemblyProvidedInterface, node.ports.size, "#000000", "#ffffff")
-				AssemblyOperation: createOperationPort(PortSide.EAST, providedPort.derivedFrom as AssemblyOperation, node.ports.size, "#000000", "#ffffff")
-				OperationAccess: createOperationPort(PortSide.EAST, providedPort.derivedFrom as OperationAccess, node.ports.size, "#0000ff", "#ffffff")
+				AssemblyProvidedInterface: createProvidedPort(PortSide.SOUTH, providedPort.derivedFrom as AssemblyProvidedInterface, node.ports.size, providedPort.portType)
+				AssemblyOperation: createOperationProvidedPort(PortSide.EAST, providedPort.derivedFrom as AssemblyOperation, node.ports.size, providedPort.portType)
+				OperationAccess: createOperationProvidedPort(PortSide.EAST, providedPort.derivedFrom as OperationAccess, node.ports.size, providedPort.portType)
 				default: createPort(PortSide.SOUTH, null, node.ports.size, "#00ff00", "#a0ffa0")
 			}, providedPort.label)
 			
@@ -289,10 +292,10 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 	private def void createRequiredPorts(KNode node, Component component) {
 		component.requiredPorts.forEach[requiredPort |
 			val port = addLabel(switch(requiredPort.derivedFrom) {
-				AssemblyRequiredInterface: createPort(PortSide.NORTH, requiredPort.derivedFrom as AssemblyRequiredInterface, node.ports.size, "#000000", "#a0a0a0")
-				AggregatedInvocation: createOperationPort(PortSide.WEST, (requiredPort.derivedFrom as AggregatedInvocation).source.assemblyOperation, node.ports.size, "#000000", "#a0a0a0")
-				OperationAccess: createOperationPort(PortSide.WEST, (requiredPort.derivedFrom as OperationAccess).source.assemblyOperation, node.ports.size, "#0000f0", "#9090ff")
-				default: createPort(PortSide.NORTH, null, node.ports.size, "#000000", "#50a050")
+				AssemblyRequiredInterface: createRequiredPort(PortSide.NORTH, requiredPort.derivedFrom as AssemblyRequiredInterface, node.ports.size, requiredPort.portType)
+				AggregatedInvocation: createOperationRequiredPort(PortSide.WEST, (requiredPort.derivedFrom as AggregatedInvocation).source.assemblyOperation, node.ports.size, requiredPort.portType)
+				OperationAccess: createOperationRequiredPort(PortSide.WEST, (requiredPort.derivedFrom as OperationAccess).source.assemblyOperation, node.ports.size, requiredPort.portType)
+				default: createPort(PortSide.NORTH, null, node.ports.size, "#00ff00", "#ffffff")
 			}, requiredPort.label)
 
 			objectPortMap.put(requiredPort, new NodePort(node, port))

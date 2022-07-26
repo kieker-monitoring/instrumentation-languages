@@ -36,6 +36,7 @@ import org.eclipse.elk.core.options.EdgeType
 import kieker.model.analysismodel.execution.EDirection
 import org.eclipse.elk.core.options.PortLabelPlacement
 import java.util.EnumSet
+import kieker.architecture.visualization.display.model.EPortType
 
 /**
  * @author Reiner Jung
@@ -60,6 +61,15 @@ abstract class AbstractKiekerArchitectureDiagramSynthesis<T> extends AbstractDia
 
 	@Inject
 	extension KColorExtensions
+	
+	protected static val DATAFLOW_BG_PROVIDE_COLOR = "#ffffff"
+	protected static val DATAFLOW_BG_REQUIRE_COLOR = "#9090ff"
+	protected static val DATAFLOW_FG_COLOR = "#0000f0"
+	
+	protected static val CALL_BG_PROVIDE_COLOR = "#ffffff"
+	protected static val CALL_BG_REQUIRE_COLOR = "gray25"
+	protected static val CALL_FG_COLOR = "#000000"
+
 	
 	protected static val SynthesisOption ALGORITHM = SynthesisOption::createChoiceOption("Used Layout Algorithm", ImmutableList::of(
 		DiagramLayoutOptions.ELK_LAYERED,
@@ -129,6 +139,18 @@ abstract class AbstractKiekerArchitectureDiagramSynthesis<T> extends AbstractDia
 		]
 	}
 	
+	protected def KPort createProvidedPort(PortSide portSide, EObject object, int index, EPortType portType) {
+		val foregroundColor = if (#[EPortType.INTERFACE_CALL, EPortType.OPERATION_CALL].contains(portType)) CALL_FG_COLOR else DATAFLOW_FG_COLOR
+		val backgroundColor = if (#[EPortType.INTERFACE_CALL, EPortType.OPERATION_CALL].contains(portType)) CALL_BG_PROVIDE_COLOR else DATAFLOW_BG_PROVIDE_COLOR
+		createPort(portSide, object, index, foregroundColor, backgroundColor)
+	}
+
+	protected def KPort createRequiredPort(PortSide portSide, EObject object, int index, EPortType portType) {
+		val foregroundColor = if (#[EPortType.INTERFACE_CALL, EPortType.OPERATION_CALL].contains(portType)) CALL_FG_COLOR else DATAFLOW_FG_COLOR
+		val backgroundColor = if (#[EPortType.INTERFACE_CALL, EPortType.OPERATION_CALL].contains(portType)) CALL_BG_REQUIRE_COLOR else DATAFLOW_BG_REQUIRE_COLOR
+		createPort(portSide, object, index, foregroundColor, backgroundColor)
+	}
+	
 	protected def KPort createPort(PortSide portSide, EObject object, int index, String foregroundColor, String backgroundColor) {
 		return KGraphUtil.createInitializedPort().associateWith(object) => [
 			it.setSize(16, 16)
@@ -142,6 +164,18 @@ abstract class AbstractKiekerArchitectureDiagramSynthesis<T> extends AbstractDia
 				it.foreground = foregroundColor.color
 			]
 		]
+	}
+
+	protected def KPort createOperationProvidedPort(PortSide portSide, EObject object, int index, EPortType portType) {
+		val foregroundColor = if (#[EPortType.INTERFACE_CALL, EPortType.OPERATION_CALL].contains(portType)) CALL_FG_COLOR else DATAFLOW_FG_COLOR
+		val backgroundColor = if (#[EPortType.INTERFACE_CALL, EPortType.OPERATION_CALL].contains(portType)) CALL_BG_PROVIDE_COLOR else DATAFLOW_BG_PROVIDE_COLOR
+		createOperationPort(portSide, object, index, foregroundColor, backgroundColor)
+	}
+
+	protected def KPort createOperationRequiredPort(PortSide portSide, EObject object, int index, EPortType portType) {
+		val foregroundColor = if (#[EPortType.INTERFACE_CALL, EPortType.OPERATION_CALL].contains(portType)) CALL_FG_COLOR else DATAFLOW_FG_COLOR
+		val backgroundColor = if (#[EPortType.INTERFACE_CALL, EPortType.OPERATION_CALL].contains(portType)) CALL_BG_REQUIRE_COLOR else DATAFLOW_BG_REQUIRE_COLOR
+		createOperationPort(portSide, object, index, foregroundColor, backgroundColor)
 	}
 	
 	protected def KPort createOperationPort(PortSide portSide, EObject object, int index, String foregroundColor, String backgroundColor) {
@@ -188,7 +222,7 @@ abstract class AbstractKiekerArchitectureDiagramSynthesis<T> extends AbstractDia
 
 			it.addPolyline() => [
 				it.lineWidth = 2
-				it.foreground = "gray25".color
+				it.foreground = DATAFLOW_FG_COLOR.color
 				if (direction === EDirection.WRITE || direction === EDirection.BOTH) it.addHeadArrowDecorator
 				if (direction === EDirection.READ || direction === EDirection.BOTH) it.addTailArrowDecorator
 			]
@@ -203,7 +237,7 @@ abstract class AbstractKiekerArchitectureDiagramSynthesis<T> extends AbstractDia
 
 			it.addPolyline() => [
 				it.lineWidth = 2
-				it.foreground = "blue".color
+				it.foreground = DATAFLOW_FG_COLOR.color
 				if (direction === EDirection.WRITE || direction === EDirection.BOTH) it.addHeadArrowDecorator
 				if (direction === EDirection.READ || direction === EDirection.BOTH) it.addTailArrowDecorator
 			]
