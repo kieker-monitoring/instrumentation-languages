@@ -263,7 +263,7 @@ class KiekerArchitectureAssemblyDiagramSynthesis extends AbstractKiekerArchitect
 	}
 
 	private def KPort createProvidedPort(PortSide portSide, AssemblyProvidedInterface providedInterface, int index) {
-		val port = createPort(portSide, providedInterface, index, "#ffffff")
+		val port = createPort(portSide, providedInterface, index, "#000000", "#ffffff")
 
 		if (SHOW_PORT_LABELS.booleanValue) {
 			val label = KGraphUtil.createInitializedLabel(port)
@@ -275,7 +275,7 @@ class KiekerArchitectureAssemblyDiagramSynthesis extends AbstractKiekerArchitect
 	}
 
 	private def KPort createRequiredPort(PortSide portSide, AssemblyRequiredInterface requiredInterface, int index) {
-		val port = createPort(portSide, requiredInterface, index, "#a0a0a0")
+		val port = createPort(portSide, requiredInterface, index, "#000000", "#a0a0a0")
 
 		return port
 	}

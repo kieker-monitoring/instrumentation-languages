@@ -18,8 +18,8 @@ public class RequiredPort extends Port {
 
 	private Port providedPort;
 	
-	public RequiredPort(String label, Object derivedFrom, Component component) {
-		super(label, derivedFrom, component);
+	public RequiredPort(String label, Object derivedFrom, Component component, EPortType portType) {
+		super(label, derivedFrom, component, portType);
 	}
 		
 	public Port getProvidedPort() {

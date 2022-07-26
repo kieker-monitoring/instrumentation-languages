@@ -129,7 +129,7 @@ abstract class AbstractKiekerArchitectureDiagramSynthesis<T> extends AbstractDia
 		]
 	}
 	
-	protected def KPort createPort(PortSide portSide, EObject object, int index, String backgroundColor) {
+	protected def KPort createPort(PortSide portSide, EObject object, int index, String foregroundColor, String backgroundColor) {
 		return KGraphUtil.createInitializedPort().associateWith(object) => [
 			it.setSize(16, 16)
 			it.setProperty(CoreOptions.PORT_SIDE, portSide)
@@ -139,13 +139,12 @@ abstract class AbstractKiekerArchitectureDiagramSynthesis<T> extends AbstractDia
 			it.addRectangle => [
 				it.foregroundInvisible = true
 				it.background = backgroundColor.color
-				it.foreground = "#000000".color
-				it.addSingleClickAction("ss")
+				it.foreground = foregroundColor.color
 			]
 		]
 	}
 	
-	protected def KPort createOperationPort(PortSide portSide, EObject object, int index, String backgroundColor) {
+	protected def KPort createOperationPort(PortSide portSide, EObject object, int index, String foregroundColor, String backgroundColor) {
 		return KGraphUtil.createInitializedPort().associateWith(object) => [
 			it.setSize(16, 16)
 			it.setProperty(CoreOptions.PORT_SIDE, portSide)
@@ -155,7 +154,7 @@ abstract class AbstractKiekerArchitectureDiagramSynthesis<T> extends AbstractDia
 			it.addEllipse => [
 				it.foregroundInvisible = true
 				it.background = backgroundColor.color
-				it.foreground = "#000000".color
+				it.foreground = foregroundColor.color
 			]
 		]
 	}

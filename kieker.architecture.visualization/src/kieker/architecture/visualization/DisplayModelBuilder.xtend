@@ -32,6 +32,7 @@ import kieker.architecture.visualization.display.model.RequiredPort
 import kieker.model.analysismodel.execution.AggregatedStorageAccess
 import kieker.model.analysismodel.execution.ExecutionModel
 import kieker.model.analysismodel.execution.OperationAccess
+import kieker.architecture.visualization.display.model.EPortType
 
 /**
  * Generating a display model from the architecture model.
@@ -75,7 +76,7 @@ class DisplayModelBuilder {
 			child.providedPorts.filter[it.requiringPorts.exists[it.component.parent !== parent]].
 				forEach[providedPort |
 					// move level up
-					val derivedProvidedPort = new ProvidedPort(providedPort.label, providedPort, parent)
+					val derivedProvidedPort = new ProvidedPort(providedPort.label, providedPort, parent, providedPort.portType)
 					parent.providedPorts += derivedProvidedPort
 										
 					val removingRequiredPorts = new HashSet<RequiredPort>
@@ -92,7 +93,7 @@ class DisplayModelBuilder {
 				val existingParentRequiredPort = parent.requiredPorts.findFirst[it.label.equals(requiredPort.label)]
 				val providedPort = requiredPort.providedPort
 				if (existingParentRequiredPort === null) {
-					val derivedRequiredPort = new RequiredPort(requiredPort.label, requiredPort, parent)
+					val derivedRequiredPort = new RequiredPort(requiredPort.label, requiredPort, parent, requiredPort.portType)
 					parent.requiredPorts += derivedRequiredPort
 					derivedRequiredPort.providedPort = providedPort
 					if (providedPort instanceof ProvidedPort) {
@@ -127,8 +128,8 @@ class DisplayModelBuilder {
 		val Set<AssemblyOperation> processedProvidedOperations = component.createProvidedPort4Interface(assemblyComponent)
 		val Set<AssemblyOperation> processedRequiredCallees = component.createRequiredPort4Interface(assemblyComponent)
 		
-		component.createProvidedPorts4Operations(assemblyComponent, invocations, processedProvidedOperations)
-		component.createRequiredPorts4Operations(assemblyComponent, invocations, processedRequiredCallees)
+		component.createProvidedPorts4Operations(assemblyComponent, invocations, dataflows, processedProvidedOperations)
+		component.createRequiredPorts4Operations(assemblyComponent, invocations, dataflows, processedRequiredCallees)
 						
 		return component
 	}
@@ -137,15 +138,28 @@ class DisplayModelBuilder {
 	 * Create provided ports based on externally access operations.
 	 */
 	private def void createProvidedPorts4Operations(Component component, AssemblyComponent assemblyComponent, 
-		Collection<AggregatedInvocation> invocations, Set<AssemblyOperation> processedProvidedOperations
+		Collection<AggregatedInvocation> invocations, Collection<OperationAccess> dataflows, Set<AssemblyOperation> processedProvidedOperations
 	) {
+		/** Operation Call. */
 		assemblyComponent.operations.values.
 			filter[operation | !processedProvidedOperations.exists[it === operation]].
 			filter[operation | invocations.exists[it.target.assemblyOperation === operation && 
 				it.source.assemblyOperation.component !== assemblyComponent
 			]].
 			forEach[
-				val port = new ProvidedPort(it.operationType.signature, it, component)
+				val port = new ProvidedPort(it.operationType.signature, it, component, EPortType.OPERATION_CALL)
+				component.providedPorts += port
+				operationProvidedPort.put(it, port)
+		]
+		
+		/** Operation Dataflow. */
+		assemblyComponent.operations.values.
+			filter[operation | !processedProvidedOperations.exists[it === operation]].
+			filter[operation | dataflows.exists[it.target.assemblyOperation === operation && 
+				it.source.assemblyOperation.component !== assemblyComponent
+			]].
+			forEach[
+				val port = new ProvidedPort(it.operationType.signature, it, component, EPortType.OPERATION_DATAFLOW)
 				component.providedPorts += port
 				operationProvidedPort.put(it, port)
 		]
@@ -178,13 +192,21 @@ class DisplayModelBuilder {
 	 * Create required operation interfaces based on remaining external calls.
 	 */	
 	private def createRequiredPorts4Operations(Component component, AssemblyComponent assemblyComponent, 
-		Collection<AggregatedInvocation> invocations, Set<AssemblyOperation> processedRequiredCallees
+		Collection<AggregatedInvocation> invocations, Collection<OperationAccess> dataflows, Set<AssemblyOperation> processedRequiredCallees
 	) {
+		/** Operation Call. */
 		invocations.filter[it.source.assemblyOperation.component === assemblyComponent &&
 			assemblyComponent !== it.target.assemblyOperation.component &&
 			!processedRequiredCallees.exists[callee | callee === it.target.assemblyOperation]
 		].forEach[invocation |
-			component.requiredPorts += new RequiredPort(invocation.target.assemblyOperation.operationType.signature, invocation, component)
+			component.requiredPorts += new RequiredPort(invocation.target.assemblyOperation.operationType.signature, invocation, component, EPortType.OPERATION_CALL)
+		]
+		/** Operation Dataflow. */
+		dataflows.filter[it.source.assemblyOperation.component === assemblyComponent &&
+			assemblyComponent !== it.target.assemblyOperation.component &&
+			!processedRequiredCallees.exists[callee | callee === it.target.assemblyOperation]
+		].forEach[dataflow |
+			component.requiredPorts += new RequiredPort(dataflow.target.assemblyOperation.operationType.signature, dataflow, component, EPortType.OPERATION_DATAFLOW)
 		]
 	}
 	
@@ -211,13 +233,13 @@ class DisplayModelBuilder {
 
 	
 	private def ProvidedPort createProvidedPort(AssemblyProvidedInterface providedInterface, Component component) {
-		val providedPort = new ProvidedPort(providedInterface.providedInterfaceType.signature, providedInterface, component)
+		val providedPort = new ProvidedPort(providedInterface.providedInterfaceType.signature, providedInterface, component, EPortType.INTERFACE_CALL)
 		
 		return providedPort
 	}
 	
 	private def RequiredPort createRequiredPort(AssemblyRequiredInterface requiredInterface, Component component) {
-		val requiredPort = new RequiredPort(requiredInterface.requiredInterfaceType.requires.signature, requiredInterface, component)
+		val requiredPort = new RequiredPort(requiredInterface.requiredInterfaceType.requires.signature, requiredInterface, component, EPortType.INTERFACE_CALL)
 		return requiredPort
 	}
 	
@@ -235,8 +257,19 @@ class DisplayModelBuilder {
 					providedPort.requiringPorts += requiredPort
 					requiredPort.providedPort = providedPort
 				} else {
-					System.err.println("ERROR at " + requiredPort.label)
+					System.err.println("(AggregatedInvocation) ERROR at " + requiredPort.label)
 				}
+			} else if (requiredPort.derivedFrom instanceof OperationAccess) {
+				val operationAccess = requiredPort.derivedFrom as OperationAccess
+				val providedPort = operationProvidedPort.get(operationAccess.target.assemblyOperation)
+				if (providedPort !== null) {
+					providedPort.requiringPorts += requiredPort
+					requiredPort.providedPort = providedPort
+				} else {
+					System.err.println("(OperationAccess) ERROR at " + requiredPort.label)					
+				}
+			} else {
+				System.err.println("ERROR: class not supported " + requiredPort.derivedFrom.class)
 			}
 		]
 		component.children?.forEach[it.linkPort]

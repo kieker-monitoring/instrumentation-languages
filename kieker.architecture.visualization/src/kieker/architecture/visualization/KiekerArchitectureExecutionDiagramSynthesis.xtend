@@ -177,7 +177,7 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 
 	private def createDataflowLinks(Component component, Collection<OperationAccess> dataflows) {
 		component.derivedFrom.operations.values.forEach[operation |
-			dataflows.filter[it.source.assemblyOperation === operation].forEach[
+			dataflows.filter[it.source.assemblyOperation === operation && it.target.assemblyOperation.component === component.derivedFrom].forEach[
 				createOperationDataflowAccess(objectPortMap.get(it.source.assemblyOperation).node , objectPortMap.get(it.target.assemblyOperation).node, it.RWAccess)
 			]
 		]
@@ -204,12 +204,17 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 			switch(linkedPort) {
 				RequiredPort: createConnectionEdge(objectPortMap.get(requiredPort), objectPortMap.get(linkedPort), "black")
 				ProvidedPort: createConnectionEdge(objectPortMap.get(requiredPort), objectPortMap.get(linkedPort), "gray25")
-				AggregatedInvocation: createConnectionEdge(objectPortMap.get(requiredPort), objectPortMap.get(linkedPort.target.assemblyOperation), "#9090ff")
+				AggregatedInvocation: createConnectionEdge(objectPortMap.get(requiredPort), objectPortMap.get(linkedPort.target.assemblyOperation), "black")
 				default: System.err.println("MISSING required link type " + linkedPort + " " + requiredPort.label + " " + requiredPort.derivedFrom)
 			}
 			if (requiredPort.derivedFrom instanceof AggregatedInvocation) {
 				val invocation = requiredPort.derivedFrom as AggregatedInvocation
 				createConnectionEdge(objectPortMap.get(invocation.source.assemblyOperation), objectPortMap.get(requiredPort), "gray25")
+			} else if (requiredPort.derivedFrom instanceof OperationAccess) {
+				val dataflow = requiredPort.derivedFrom as OperationAccess
+				createConnectionEdge(objectPortMap.get(dataflow.source.assemblyOperation), objectPortMap.get(requiredPort), "#9090ff")				
+			} else {
+				System.err.println("HUHU " + requiredPort.derivedFrom.class)
 			}
 		]
 	}
@@ -270,9 +275,10 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 	private def void createProvidedPorts(KNode node, Component component) {
 		component.providedPorts.forEach[providedPort |
 			val port = addLabel(switch(providedPort.derivedFrom) {
-				AssemblyProvidedInterface: createPort(PortSide.SOUTH, providedPort.derivedFrom as AssemblyProvidedInterface, node.ports.size, "#ffffff")
-				AssemblyOperation: createOperationPort(PortSide.EAST, providedPort.derivedFrom as AssemblyOperation, node.ports.size, "#ffffff")
-				default: createPort(PortSide.SOUTH, null, node.ports.size, "#a0a0ff")
+				AssemblyProvidedInterface: createPort(PortSide.SOUTH, providedPort.derivedFrom as AssemblyProvidedInterface, node.ports.size, "#000000", "#ffffff")
+				AssemblyOperation: createOperationPort(PortSide.EAST, providedPort.derivedFrom as AssemblyOperation, node.ports.size, "#000000", "#ffffff")
+				OperationAccess: createOperationPort(PortSide.EAST, providedPort.derivedFrom as OperationAccess, node.ports.size, "#0000ff", "#ffffff")
+				default: createPort(PortSide.SOUTH, null, node.ports.size, "#00ff00", "#a0ffa0")
 			}, providedPort.label)
 			
 			objectPortMap.put(providedPort, new NodePort(node, port))
@@ -283,9 +289,10 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 	private def void createRequiredPorts(KNode node, Component component) {
 		component.requiredPorts.forEach[requiredPort |
 			val port = addLabel(switch(requiredPort.derivedFrom) {
-				AssemblyRequiredInterface: createPort(PortSide.NORTH, requiredPort.derivedFrom as AssemblyRequiredInterface, node.ports.size, "#a0a0a0")
-				AggregatedInvocation: createOperationPort(PortSide.WEST, (requiredPort.derivedFrom as AggregatedInvocation).source.assemblyOperation, node.ports.size, "#a0a0a0")
-				default: createPort(PortSide.NORTH, null, node.ports.size, "#5050a0")
+				AssemblyRequiredInterface: createPort(PortSide.NORTH, requiredPort.derivedFrom as AssemblyRequiredInterface, node.ports.size, "#000000", "#a0a0a0")
+				AggregatedInvocation: createOperationPort(PortSide.WEST, (requiredPort.derivedFrom as AggregatedInvocation).source.assemblyOperation, node.ports.size, "#000000", "#a0a0a0")
+				OperationAccess: createOperationPort(PortSide.WEST, (requiredPort.derivedFrom as OperationAccess).source.assemblyOperation, node.ports.size, "#0000f0", "#9090ff")
+				default: createPort(PortSide.NORTH, null, node.ports.size, "#000000", "#50a050")
 			}, requiredPort.label)
 
 			objectPortMap.put(requiredPort, new NodePort(node, port))
