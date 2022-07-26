@@ -33,6 +33,8 @@ import kieker.model.analysismodel.execution.AggregatedStorageAccess
 import kieker.model.analysismodel.execution.ExecutionModel
 import kieker.model.analysismodel.execution.OperationAccess
 import kieker.architecture.visualization.display.model.EPortType
+import kieker.model.analysismodel.execution.EDirection
+import kieker.model.analysismodel.assembly.AssemblyStorage
 
 /**
  * Generating a display model from the architecture model.
@@ -43,6 +45,7 @@ import kieker.architecture.visualization.display.model.EPortType
 class DisplayModelBuilder {
 	
 	val Map<AssemblyOperation, ProvidedPort> operationProvidedPort = new HashMap
+	val Map<AssemblyStorage, ProvidedPort> storageProvidedPort = new HashMap
 	
 	val Map<AssemblyProvidedInterface, ProvidedPort> providedPortInterfaceMap = new HashMap
 	
@@ -130,8 +133,29 @@ class DisplayModelBuilder {
 		
 		component.createProvidedPorts4Operations(assemblyComponent, invocations, dataflows, processedProvidedOperations)
 		component.createRequiredPorts4Operations(assemblyComponent, invocations, dataflows, processedRequiredCallees)
+		
+		component.createPorts4Storages(assemblyComponent, storages)
 						
 		return component
+	}
+	
+	private def void createPorts4Storages(Component component, AssemblyComponent assemblyComponent, Collection<AggregatedStorageAccess> storages) {
+		assemblyComponent.storages.values.
+			filter[storage | storages.exists[it.storage.assemblyStorage === storage && it.code.assemblyOperation.component !== assemblyComponent]].forEach[
+				val providedPort = new ProvidedPort(it.storageType.name,  it, component, EPortType.OPERATION_DATAFLOW)
+				component.providedPorts += providedPort
+				
+				storageProvidedPort.put(it, providedPort)
+
+				val storageAccess = storages.findFirst[access | access.storage.assemblyStorage === it]
+				
+				if (storageAccess !== null) {
+					val requiredPort = new RequiredPort(it.storageType.name,  storageAccess, component, EPortType.OPERATION_DATAFLOW)
+					component.requiredPorts += requiredPort		
+				} else {
+					System.err.println("what?")
+				}
+			]
 	}
 	
 	/**
@@ -268,8 +292,34 @@ class DisplayModelBuilder {
 				} else {
 					System.err.println("(OperationAccess) ERROR at " + requiredPort.label)					
 				}
+			} else if (requiredPort.derivedFrom instanceof AggregatedStorageAccess) {
+				val storageAccess = requiredPort.derivedFrom as AggregatedStorageAccess
+				// this does not work as intended
+				if (#[EDirection.READ, EDirection.BOTH].contains(storageAccess.direction)) {
+					// read: operation is target, storage is source
+					val providedPort = operationProvidedPort.get(storageAccess.code.assemblyOperation)
+					if (providedPort !== null) {
+						providedPort.requiringPorts += requiredPort
+						requiredPort.providedPort = providedPort
+					} else {
+						System.err.println("(AggregatedStorageAccess, read) ERROR at " + requiredPort.label)								
+					}
+				} else {
+					// write: storage is target, operation is source
+					val providedPort = operationProvidedPort.get(storageAccess.code.assemblyOperation)
+					if (providedPort !== null) {
+						providedPort.requiringPorts += requiredPort
+						requiredPort.providedPort = providedPort
+					} else {
+						System.err.println("(AggregatedStorageAccess, write) ERROR at " + requiredPort.label)								
+					}
+				}
 			} else {
-				System.err.println("ERROR: class not supported " + requiredPort.derivedFrom.class)
+				if (requiredPort.derivedFrom === null) {
+					System.err.println("ERROR: required is not derived " + requiredPort.label)
+				} else {
+					System.err.println("ERROR: class not supported " + requiredPort.derivedFrom.class)
+				}
 			}
 		]
 		component.children?.forEach[it.linkPort]
