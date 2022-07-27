@@ -35,6 +35,8 @@ import kieker.model.analysismodel.execution.OperationAccess
 import kieker.architecture.visualization.display.model.EPortType
 import kieker.model.analysismodel.execution.EDirection
 import kieker.model.analysismodel.assembly.AssemblyStorage
+import kieker.model.analysismodel.deployment.DeployedOperation
+import kieker.model.analysismodel.deployment.DeployedStorage
 
 /**
  * Generating a display model from the architecture model.
@@ -131,7 +133,7 @@ class DisplayModelBuilder {
 		val Set<AssemblyOperation> processedProvidedOperations = component.createProvidedPort4Interface(assemblyComponent)
 		val Set<AssemblyOperation> processedRequiredCallees = component.createRequiredPort4Interface(assemblyComponent)
 		
-		component.createProvidedPorts4Operations(assemblyComponent, invocations, dataflows, processedProvidedOperations)
+		component.createProvidedPorts4Operations(assemblyComponent, invocations, dataflows, storages, processedProvidedOperations)
 		component.createRequiredPorts4Operations(assemblyComponent, invocations, dataflows, processedRequiredCallees)
 		
 		component.createPorts4Storages(assemblyComponent, storages)
@@ -162,7 +164,7 @@ class DisplayModelBuilder {
 	 * Create provided ports based on externally access operations.
 	 */
 	private def void createProvidedPorts4Operations(Component component, AssemblyComponent assemblyComponent, 
-		Collection<AggregatedInvocation> invocations, Collection<OperationAccess> dataflows, Set<AssemblyOperation> processedProvidedOperations
+		Collection<AggregatedInvocation> invocations, Collection<OperationAccess> dataflows, Collection<AggregatedStorageAccess> storageAccesses, Set<AssemblyOperation> processedProvidedOperations
 	) {
 		/** Operation Call. */
 		assemblyComponent.operations.values.
@@ -172,6 +174,19 @@ class DisplayModelBuilder {
 			]].
 			forEach[
 				val port = new ProvidedPort(it.operationType.signature, it, component, EPortType.OPERATION_CALL)
+				component.providedPorts += port
+				operationProvidedPort.put(it, port)
+		]
+
+		/** Storage accesses. */
+		assemblyComponent.operations.values.
+			filter[operation | !processedProvidedOperations.exists[it === operation]].
+			filter[operation | storageAccesses.exists[
+				it.code.assemblyOperation === operation
+				it.code.assemblyOperation.component !== it.storage.assemblyStorage.component
+			]].
+			forEach[
+				val port = new ProvidedPort(it.operationType.signature, it, component, EPortType.OPERATION_DATAFLOW)
 				component.providedPorts += port
 				operationProvidedPort.put(it, port)
 		]
@@ -294,7 +309,6 @@ class DisplayModelBuilder {
 				}
 			} else if (requiredPort.derivedFrom instanceof AggregatedStorageAccess) {
 				val storageAccess = requiredPort.derivedFrom as AggregatedStorageAccess
-				// this does not work as intended
 				if (#[EDirection.READ, EDirection.BOTH].contains(storageAccess.direction)) {
 					// read: operation is target, storage is source
 					val providedPort = operationProvidedPort.get(storageAccess.code.assemblyOperation)
@@ -306,7 +320,7 @@ class DisplayModelBuilder {
 					}
 				} else {
 					// write: storage is target, operation is source
-					val providedPort = operationProvidedPort.get(storageAccess.code.assemblyOperation)
+					val providedPort = storageProvidedPort.get(storageAccess.storage.assemblyStorage)
 					if (providedPort !== null) {
 						providedPort.requiringPorts += requiredPort
 						requiredPort.providedPort = providedPort
@@ -323,5 +337,17 @@ class DisplayModelBuilder {
 			}
 		]
 		component.children?.forEach[it.linkPort]
+	}
+
+	private def fqn(AssemblyOperation op) {
+		op.component.signature + "::" + op.operationType.signature
+	}
+	
+	private def fqn(DeployedOperation op) {
+		op.assemblyOperation.fqn
+	}
+	
+	private def fqn(DeployedStorage storage) {
+		storage.assemblyStorage.component.signature + "::" + storage.assemblyStorage.storageType.name
 	}
 }
