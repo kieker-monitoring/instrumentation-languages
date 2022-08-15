@@ -41,6 +41,8 @@ import kieker.architecture.visualization.display.model.ProvidedPort
 import kieker.model.analysismodel.execution.OperationAccess
 import kieker.architecture.visualization.display.model.EPortType
 import kieker.model.analysismodel.assembly.AssemblyStorage
+import kieker.model.analysismodel.deployment.DeployedOperation
+import kieker.model.analysismodel.deployment.DeployedStorage
 
 /**
  * @author Reiner Jung
@@ -122,7 +124,7 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 			if (requiredPort !== null)
 				createConnectionEdge(objectPortMap.get(invocation.source.assemblyOperation), objectPortMap.get(requiredPort), "black")
 			else
-				System.err.println("ERROR: should have found a required port")
+				System.err.println("ERROR: KAED create operation to required port links, should have found a required port for " + invocation.source.fqn + " -> " + invocation.target.fqn)
 		]
 	}
 	
@@ -136,7 +138,7 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 				return false
 			}		
 		} else {
-			System.err.println("MISSING provided port for " + requiredPort.label + " " + requiredPort.providedPort)
+			System.err.println("ERROR: KAED correspondsTo, missing provided port for " + requiredPort.label + " " + requiredPort.providedPort)
 			return false
 		}
  	}
@@ -149,7 +151,7 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 		} else if (linkedPort !== null)
 			return (linkedPort as RequiredPort).findOriginalProvidedPort.findOriginalProvidedPort
 		else {
-			System.err.println("ERROR: required port does not has a providing one " + port.label)
+			System.err.println("ERROR: KAED findOriginalProvidedPort, required port does not has a providing one " + port.label)
 			return null	
 		}
 	}
@@ -164,7 +166,10 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 	private def createLocalOperationLinks(Component component, Collection<AggregatedInvocation> invocations) {
 		component.derivedFrom.operations.values.forEach[caller |
 			invocations.filter[it.source.assemblyOperation === caller && it.target.assemblyOperation.component === component.derivedFrom].forEach[
-				createConnectionEdge(objectPortMap.get(it.source.assemblyOperation), objectPortMap.get(it.target.assemblyOperation), CALL_FG_COLOR)
+				val source = objectPortMap.get(it.source.assemblyOperation)
+				val target = objectPortMap.get(it.target.assemblyOperation)
+				if (source !== null && target !== null)
+					createConnectionEdge(source, target, CALL_FG_COLOR)
 			]
 		]
 	}
@@ -172,7 +177,10 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 	private def createLocalStorageLinks(Component component, Collection<AggregatedStorageAccess> storageAccesses) {
 		component.derivedFrom.operations.values.forEach[caller |
 			storageAccesses.filter[it.code.assemblyOperation === caller && it.storage.assemblyStorage.component === component.derivedFrom].forEach[
-				createOperationStorageAccess(objectPortMap.get(it.code.assemblyOperation).node , objectPortMap.get(it.storage.assemblyStorage).node, it.direction)
+				val source = objectPortMap.get(it.code.assemblyOperation)
+				val target = objectPortMap.get(it.storage.assemblyStorage)
+				if (source !== null && target !== null)
+					createOperationStorageAccess(source.node , target.node, it.direction)
 			]
 		]
 	}
@@ -194,10 +202,25 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 						val operation = component.derivedFrom.operations.get(it.signature)
 						createConnectionEdge(objectPortMap.get(providedPort), objectPortMap.get(operation), foregroundColor)
 					]
-				ProvidedPort: createConnectionEdge(objectPortMap.get(providedPort), objectPortMap.get(derivedFrom), foregroundColor)
-				AssemblyOperation: createConnectionEdge(objectPortMap.get(providedPort), objectPortMap.get(derivedFrom), foregroundColor)
-				AssemblyStorage: createConnectionEdge(objectPortMap.get(providedPort), objectPortMap.get(derivedFrom), foregroundColor) 
-				default: System.err.println("MISSING provided link type " + derivedFrom?.class)
+				ProvidedPort: {
+					val source = objectPortMap.get(providedPort)
+					val target = objectPortMap.get(derivedFrom)
+					if (source !== null && target !== null)
+						createConnectionEdge(source, target, foregroundColor)
+				}
+				AssemblyOperation: {
+					val source = objectPortMap.get(providedPort)
+					val target = objectPortMap.get(derivedFrom)
+					if (source !== null && target !== null)
+						createConnectionEdge(source, target, foregroundColor)
+				}
+				AssemblyStorage: {
+					val source = objectPortMap.get(providedPort)
+					val target = objectPortMap.get(derivedFrom)
+					if (source !== null && target !== null)
+						createConnectionEdge(source, target, foregroundColor)
+				}
+				default: System.err.println("ERROR: KEAD createProvidedPortLinks, missing provided link type " + derivedFrom?.class)
 			}
 		]
 	}
@@ -211,19 +234,28 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 				ProvidedPort: createConnectionEdge(objectPortMap.get(requiredPort), objectPortMap.get(linkedPort), foregroundColor)
 				AggregatedInvocation: createConnectionEdge(objectPortMap.get(requiredPort), objectPortMap.get(linkedPort.target.assemblyOperation), foregroundColor)
 				AggregatedStorageAccess: createConnectionEdge(objectPortMap.get(requiredPort), objectPortMap.get(linkedPort.storage.assemblyStorage), foregroundColor)
-				default: System.err.println("MISSING required link type " + linkedPort + " " + requiredPort.label + " " + requiredPort.derivedFrom)
+				default: System.err.println("ERROR: KEAD create required port links, missing required link type " + linkedPort + " " + requiredPort.label + " " + requiredPort.derivedFrom)
 			}
 			if (requiredPort.derivedFrom instanceof AggregatedInvocation) {
 				val invocation = requiredPort.derivedFrom as AggregatedInvocation
-				createConnectionEdge(objectPortMap.get(invocation.source.assemblyOperation), objectPortMap.get(requiredPort), foregroundColor)
+				val source = objectPortMap.get(invocation.source.assemblyOperation)
+				val target = objectPortMap.get(requiredPort)
+				if (source !== null && target !== null)
+					createConnectionEdge(source, target, foregroundColor)
 			} else if (requiredPort.derivedFrom instanceof OperationAccess) {
 				val dataflow = requiredPort.derivedFrom as OperationAccess
-				createConnectionEdge(objectPortMap.get(dataflow.source.assemblyOperation), objectPortMap.get(requiredPort), foregroundColor)				
+				val source = objectPortMap.get(dataflow.source.assemblyOperation)
+				val target = objectPortMap.get(requiredPort)				
+				if (source !== null && target !== null)
+					createConnectionEdge(source, target, foregroundColor)
 			} else if (requiredPort.derivedFrom instanceof AggregatedStorageAccess) {
 				val dataflow = requiredPort.derivedFrom as AggregatedStorageAccess
-				createConnectionEdge(objectPortMap.get(dataflow.storage.assemblyStorage), objectPortMap.get(requiredPort), foregroundColor)				
+				val source = objectPortMap.get(dataflow.storage.assemblyStorage)
+				val target = objectPortMap.get(requiredPort)
+				if (source !== null && target !== null)
+	 				createConnectionEdge(source, target, foregroundColor)
 			} else {
-				System.err.println("ERROR unknown derived class " + requiredPort.derivedFrom.class)
+				System.err.println("ERROR: KAED create required port links, unknown derived class " + requiredPort.derivedFrom.class)
 			}
 		]
 	}
@@ -330,5 +362,19 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 	}
 	
 	
+	private def fqn(AssemblyStorage storage) {
+		storage.component.signature + "::" + storage.storageType.name
+	}
+
+	private def fqn(AssemblyOperation op) {
+		op.component.signature + "::" + op.operationType.signature
+	}
 	
+	private def fqn(DeployedOperation op) {
+		op.assemblyOperation.fqn
+	}
+	
+	private def fqn(DeployedStorage storage) {
+		storage.assemblyStorage.component.signature + "::" + storage.assemblyStorage.storageType.name
+	}
 }

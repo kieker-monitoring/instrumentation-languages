@@ -195,6 +195,15 @@ abstract class AbstractKiekerArchitectureDiagramSynthesis<T> extends AbstractDia
 	
 		
 	protected def createConnectionEdge(NodePort source, NodePort target, String color) {
+		System.err.println("SOURCE " + source + "  TARGET " + target + "  COLOR " + color)
+		if (source !== null)
+			System.err.println("source node " + source.node)
+		else
+			System.err.println("Source node broken")
+		if (target !== null)
+			System.err.println("target node " + target.node)
+		else
+			System.err.println("Target node broken")
 		createConnectionEdge(source.node, source.port, target.node, target.port, color)
 	}
 	

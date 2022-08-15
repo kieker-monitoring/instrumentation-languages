@@ -219,7 +219,7 @@ class DisplayModelBuilder {
 				if (operation !== null) {
 					operationProvidedPort.put(operation, port)
 				} else {
-					System.err.println("ERROR " + it.signature + " not found")
+					System.err.println("ERROR: create provided port 4 interface: " + it.signature + " not found")
 				}
 			]
 		]
@@ -296,7 +296,7 @@ class DisplayModelBuilder {
 					providedPort.requiringPorts += requiredPort
 					requiredPort.providedPort = providedPort
 				} else {
-					System.err.println("(AggregatedInvocation) ERROR at " + requiredPort.label)
+					System.err.println("ERROR: DisplayModelBuilder link port (AggregatedInvocation) no provided port for " + invocation.target.assemblyOperation.fqn + "  required port: " + requiredPort.label)
 				}
 			} else if (requiredPort.derivedFrom instanceof OperationAccess) {
 				val operationAccess = requiredPort.derivedFrom as OperationAccess
@@ -305,7 +305,7 @@ class DisplayModelBuilder {
 					providedPort.requiringPorts += requiredPort
 					requiredPort.providedPort = providedPort
 				} else {
-					System.err.println("(OperationAccess) ERROR at " + requiredPort.label)					
+					System.err.println("ERROR: DisplayModelBuilder link port (OperationAccess) no provided port for " + operationAccess.target.assemblyOperation.fqn + "  required port: " + requiredPort.label)					
 				}
 			} else if (requiredPort.derivedFrom instanceof AggregatedStorageAccess) {
 				val storageAccess = requiredPort.derivedFrom as AggregatedStorageAccess
@@ -316,7 +316,7 @@ class DisplayModelBuilder {
 						providedPort.requiringPorts += requiredPort
 						requiredPort.providedPort = providedPort
 					} else {
-						System.err.println("(AggregatedStorageAccess, read) ERROR at " + requiredPort.label)								
+						System.err.println("ERROR: DisplayModelBuilder link port (AggregatedStorageAccess, read) no provided port for " + storageAccess.code.assemblyOperation.fqn + "  required port: " + requiredPort.label)								
 					}
 				} else {
 					// write: storage is target, operation is source
@@ -325,18 +325,22 @@ class DisplayModelBuilder {
 						providedPort.requiringPorts += requiredPort
 						requiredPort.providedPort = providedPort
 					} else {
-						System.err.println("(AggregatedStorageAccess, write) ERROR at " + requiredPort.label)								
+						System.err.println("ERROR: DisplayModelBuilder link port (AggregatedStorageAccess, write) no provided port for " + storageAccess.storage.assemblyStorage.fqn + "  required port: " + requiredPort.label)								
 					}
 				}
 			} else {
 				if (requiredPort.derivedFrom === null) {
-					System.err.println("ERROR: required is not derived " + requiredPort.label)
+					System.err.println("ERROR: DisplayModelBuilder link port, required port is not derived " + requiredPort.label)
 				} else {
-					System.err.println("ERROR: class not supported " + requiredPort.derivedFrom.class)
+					System.err.println("ERROR: DisplayModelBuilder link port, class not supported " + requiredPort.derivedFrom.class)
 				}
 			}
 		]
 		component.children?.forEach[it.linkPort]
+	}
+
+	private def fqn(AssemblyStorage storage) {
+		storage.component.signature + "::" + storage.storageType.name
 	}
 
 	private def fqn(AssemblyOperation op) {
