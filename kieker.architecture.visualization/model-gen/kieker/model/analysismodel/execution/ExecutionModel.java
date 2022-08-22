@@ -19,8 +19,8 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link kieker.model.analysismodel.execution.ExecutionModel#getAggregatedInvocations <em>Aggregated Invocations</em>}</li>
- *   <li>{@link kieker.model.analysismodel.execution.ExecutionModel#getAggregatedStorageAccesses <em>Aggregated Storage Accesses</em>}</li>
- *   <li>{@link kieker.model.analysismodel.execution.ExecutionModel#getOperationAccess <em>Operation Access</em>}</li>
+ *   <li>{@link kieker.model.analysismodel.execution.ExecutionModel#getStorageDataflow <em>Storage Dataflow</em>}</li>
+ *   <li>{@link kieker.model.analysismodel.execution.ExecutionModel#getOperationDataflow <em>Operation Dataflow</em>}</li>
  * </ul>
  *
  * @see kieker.model.analysismodel.execution.ExecutionPackage#getExecutionModel()
@@ -42,29 +42,29 @@ public interface ExecutionModel extends EObject {
 	EMap<Tuple<DeployedOperation, DeployedOperation>, AggregatedInvocation> getAggregatedInvocations();
 
 	/**
-	 * Returns the value of the '<em><b>Aggregated Storage Accesses</b></em>' map.
+	 * Returns the value of the '<em><b>Storage Dataflow</b></em>' map.
 	 * The key is of type {@link kieker.model.analysismodel.execution.Tuple<kieker.model.analysismodel.deployment.DeployedOperation, kieker.model.analysismodel.deployment.DeployedStorage>},
-	 * and the value is of type {@link kieker.model.analysismodel.execution.AggregatedStorageAccess},
+	 * and the value is of type {@link kieker.model.analysismodel.execution.StorageDataflow},
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Aggregated Storage Accesses</em>' map.
-	 * @see kieker.model.analysismodel.execution.ExecutionPackage#getExecutionModel_AggregatedStorageAccesses()
-	 * @model mapType="kieker.model.analysismodel.execution.DeployedOperationsPairToAggregatedStorageAccessMapEntry&lt;kieker.model.analysismodel.execution.Tuple&lt;kieker.model.analysismodel.deployment.DeployedOperation, kieker.model.analysismodel.deployment.DeployedStorage&gt;, kieker.model.analysismodel.execution.AggregatedStorageAccess&gt;" ordered="false"
+	 * @return the value of the '<em>Storage Dataflow</em>' map.
+	 * @see kieker.model.analysismodel.execution.ExecutionPackage#getExecutionModel_StorageDataflow()
+	 * @model mapType="kieker.model.analysismodel.execution.DeployedOperationsPairToDeployedStorageMapEntry&lt;kieker.model.analysismodel.execution.Tuple&lt;kieker.model.analysismodel.deployment.DeployedOperation, kieker.model.analysismodel.deployment.DeployedStorage&gt;, kieker.model.analysismodel.execution.StorageDataflow&gt;" ordered="false"
 	 * @generated
 	 */
-	EMap<Tuple<DeployedOperation, DeployedStorage>, AggregatedStorageAccess> getAggregatedStorageAccesses();
+	EMap<Tuple<DeployedOperation, DeployedStorage>, StorageDataflow> getStorageDataflow();
 
 	/**
-	 * Returns the value of the '<em><b>Operation Access</b></em>' map.
+	 * Returns the value of the '<em><b>Operation Dataflow</b></em>' map.
 	 * The key is of type {@link kieker.model.analysismodel.execution.Tuple<kieker.model.analysismodel.deployment.DeployedOperation, kieker.model.analysismodel.deployment.DeployedOperation>},
-	 * and the value is of type {@link kieker.model.analysismodel.execution.OperationAccess},
+	 * and the value is of type {@link kieker.model.analysismodel.execution.OperationDataflow},
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Operation Access</em>' map.
-	 * @see kieker.model.analysismodel.execution.ExecutionPackage#getExecutionModel_OperationAccess()
-	 * @model mapType="kieker.model.analysismodel.execution.DeployedOperationsPairToDeployedOperationsMapEntry&lt;kieker.model.analysismodel.execution.Tuple&lt;kieker.model.analysismodel.deployment.DeployedOperation, kieker.model.analysismodel.deployment.DeployedOperation&gt;, kieker.model.analysismodel.execution.OperationAccess&gt;" ordered="false"
+	 * @return the value of the '<em>Operation Dataflow</em>' map.
+	 * @see kieker.model.analysismodel.execution.ExecutionPackage#getExecutionModel_OperationDataflow()
+	 * @model mapType="kieker.model.analysismodel.execution.DeployedOperationsPairToDeployedOperationsMapEntry&lt;kieker.model.analysismodel.execution.Tuple&lt;kieker.model.analysismodel.deployment.DeployedOperation, kieker.model.analysismodel.deployment.DeployedOperation&gt;, kieker.model.analysismodel.execution.OperationDataflow&gt;" ordered="false"
 	 * @generated
 	 */
-	EMap<Tuple<DeployedOperation, DeployedOperation>, OperationAccess> getOperationAccess();
+	EMap<Tuple<DeployedOperation, DeployedOperation>, OperationDataflow> getOperationDataflow();
 
 } // ExecutionModel

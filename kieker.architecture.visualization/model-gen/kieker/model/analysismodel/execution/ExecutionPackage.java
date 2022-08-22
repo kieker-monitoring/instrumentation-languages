@@ -78,22 +78,22 @@ public interface ExecutionPackage extends EPackage {
 	int EXECUTION_MODEL__AGGREGATED_INVOCATIONS = 0;
 
 	/**
-	 * The feature id for the '<em><b>Aggregated Storage Accesses</b></em>' map.
+	 * The feature id for the '<em><b>Storage Dataflow</b></em>' map.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXECUTION_MODEL__AGGREGATED_STORAGE_ACCESSES = 1;
+	int EXECUTION_MODEL__STORAGE_DATAFLOW = 1;
 
 	/**
-	 * The feature id for the '<em><b>Operation Access</b></em>' map.
+	 * The feature id for the '<em><b>Operation Dataflow</b></em>' map.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXECUTION_MODEL__OPERATION_ACCESS = 2;
+	int EXECUTION_MODEL__OPERATION_DATAFLOW = 2;
 
 	/**
 	 * The number of structural features of the '<em>Model</em>' class.
@@ -206,14 +206,14 @@ public interface ExecutionPackage extends EPackage {
 	int AGGREGATED_INVOCATION_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link kieker.model.analysismodel.execution.impl.AggregatedStorageAccessImpl <em>Aggregated Storage Access</em>}' class.
+	 * The meta object id for the '{@link kieker.model.analysismodel.execution.impl.StorageDataflowImpl <em>Storage Dataflow</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see kieker.model.analysismodel.execution.impl.AggregatedStorageAccessImpl
-	 * @see kieker.model.analysismodel.execution.impl.ExecutionPackageImpl#getAggregatedStorageAccess()
+	 * @see kieker.model.analysismodel.execution.impl.StorageDataflowImpl
+	 * @see kieker.model.analysismodel.execution.impl.ExecutionPackageImpl#getStorageDataflow()
 	 * @generated
 	 */
-	int AGGREGATED_STORAGE_ACCESS = 3;
+	int STORAGE_DATAFLOW = 3;
 
 	/**
 	 * The feature id for the '<em><b>Storage</b></em>' reference.
@@ -222,7 +222,7 @@ public interface ExecutionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int AGGREGATED_STORAGE_ACCESS__STORAGE = 0;
+	int STORAGE_DATAFLOW__STORAGE = 0;
 
 	/**
 	 * The feature id for the '<em><b>Code</b></em>' reference.
@@ -231,7 +231,7 @@ public interface ExecutionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int AGGREGATED_STORAGE_ACCESS__CODE = 1;
+	int STORAGE_DATAFLOW__CODE = 1;
 
 	/**
 	 * The feature id for the '<em><b>Direction</b></em>' attribute.
@@ -240,35 +240,35 @@ public interface ExecutionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int AGGREGATED_STORAGE_ACCESS__DIRECTION = 2;
+	int STORAGE_DATAFLOW__DIRECTION = 2;
 
 	/**
-	 * The number of structural features of the '<em>Aggregated Storage Access</em>' class.
+	 * The number of structural features of the '<em>Storage Dataflow</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int AGGREGATED_STORAGE_ACCESS_FEATURE_COUNT = 3;
+	int STORAGE_DATAFLOW_FEATURE_COUNT = 3;
 
 	/**
-	 * The number of operations of the '<em>Aggregated Storage Access</em>' class.
+	 * The number of operations of the '<em>Storage Dataflow</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int AGGREGATED_STORAGE_ACCESS_OPERATION_COUNT = 0;
+	int STORAGE_DATAFLOW_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link kieker.model.analysismodel.execution.impl.DeployedOperationsPairToAggregatedStorageAccessMapEntryImpl <em>Deployed Operations Pair To Aggregated Storage Access Map Entry</em>}' class.
+	 * The meta object id for the '{@link kieker.model.analysismodel.execution.impl.DeployedOperationsPairToDeployedStorageMapEntryImpl <em>Deployed Operations Pair To Deployed Storage Map Entry</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see kieker.model.analysismodel.execution.impl.DeployedOperationsPairToAggregatedStorageAccessMapEntryImpl
-	 * @see kieker.model.analysismodel.execution.impl.ExecutionPackageImpl#getDeployedOperationsPairToAggregatedStorageAccessMapEntry()
+	 * @see kieker.model.analysismodel.execution.impl.DeployedOperationsPairToDeployedStorageMapEntryImpl
+	 * @see kieker.model.analysismodel.execution.impl.ExecutionPackageImpl#getDeployedOperationsPairToDeployedStorageMapEntry()
 	 * @generated
 	 */
-	int DEPLOYED_OPERATIONS_PAIR_TO_AGGREGATED_STORAGE_ACCESS_MAP_ENTRY = 4;
+	int DEPLOYED_OPERATIONS_PAIR_TO_DEPLOYED_STORAGE_MAP_ENTRY = 4;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -277,7 +277,7 @@ public interface ExecutionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DEPLOYED_OPERATIONS_PAIR_TO_AGGREGATED_STORAGE_ACCESS_MAP_ENTRY__VALUE = 0;
+	int DEPLOYED_OPERATIONS_PAIR_TO_DEPLOYED_STORAGE_MAP_ENTRY__VALUE = 0;
 
 	/**
 	 * The feature id for the '<em><b>Key</b></em>' containment reference.
@@ -286,25 +286,25 @@ public interface ExecutionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DEPLOYED_OPERATIONS_PAIR_TO_AGGREGATED_STORAGE_ACCESS_MAP_ENTRY__KEY = 1;
+	int DEPLOYED_OPERATIONS_PAIR_TO_DEPLOYED_STORAGE_MAP_ENTRY__KEY = 1;
 
 	/**
-	 * The number of structural features of the '<em>Deployed Operations Pair To Aggregated Storage Access Map Entry</em>' class.
+	 * The number of structural features of the '<em>Deployed Operations Pair To Deployed Storage Map Entry</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DEPLOYED_OPERATIONS_PAIR_TO_AGGREGATED_STORAGE_ACCESS_MAP_ENTRY_FEATURE_COUNT = 2;
+	int DEPLOYED_OPERATIONS_PAIR_TO_DEPLOYED_STORAGE_MAP_ENTRY_FEATURE_COUNT = 2;
 
 	/**
-	 * The number of operations of the '<em>Deployed Operations Pair To Aggregated Storage Access Map Entry</em>' class.
+	 * The number of operations of the '<em>Deployed Operations Pair To Deployed Storage Map Entry</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DEPLOYED_OPERATIONS_PAIR_TO_AGGREGATED_STORAGE_ACCESS_MAP_ENTRY_OPERATION_COUNT = 0;
+	int DEPLOYED_OPERATIONS_PAIR_TO_DEPLOYED_STORAGE_MAP_ENTRY_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link kieker.model.analysismodel.execution.impl.TupleImpl <em>Tuple</em>}' class.
@@ -371,14 +371,14 @@ public interface ExecutionPackage extends EPackage {
 	int TUPLE_OPERATION_COUNT = 2;
 
 	/**
-	 * The meta object id for the '{@link kieker.model.analysismodel.execution.impl.OperationAccessImpl <em>Operation Access</em>}' class.
+	 * The meta object id for the '{@link kieker.model.analysismodel.execution.impl.OperationDataflowImpl <em>Operation Dataflow</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see kieker.model.analysismodel.execution.impl.OperationAccessImpl
-	 * @see kieker.model.analysismodel.execution.impl.ExecutionPackageImpl#getOperationAccess()
+	 * @see kieker.model.analysismodel.execution.impl.OperationDataflowImpl
+	 * @see kieker.model.analysismodel.execution.impl.ExecutionPackageImpl#getOperationDataflow()
 	 * @generated
 	 */
-	int OPERATION_ACCESS = 6;
+	int OPERATION_DATAFLOW = 6;
 
 	/**
 	 * The feature id for the '<em><b>Source</b></em>' reference.
@@ -387,7 +387,7 @@ public interface ExecutionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATION_ACCESS__SOURCE = 0;
+	int OPERATION_DATAFLOW__SOURCE = 0;
 
 	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
@@ -396,34 +396,34 @@ public interface ExecutionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATION_ACCESS__TARGET = 1;
+	int OPERATION_DATAFLOW__TARGET = 1;
 
 	/**
-	 * The feature id for the '<em><b>RW Access</b></em>' attribute.
+	 * The feature id for the '<em><b>Direction</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATION_ACCESS__RW_ACCESS = 2;
+	int OPERATION_DATAFLOW__DIRECTION = 2;
 
 	/**
-	 * The number of structural features of the '<em>Operation Access</em>' class.
+	 * The number of structural features of the '<em>Operation Dataflow</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATION_ACCESS_FEATURE_COUNT = 3;
+	int OPERATION_DATAFLOW_FEATURE_COUNT = 3;
 
 	/**
-	 * The number of operations of the '<em>Operation Access</em>' class.
+	 * The number of operations of the '<em>Operation Dataflow</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATION_ACCESS_OPERATION_COUNT = 0;
+	int OPERATION_DATAFLOW_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link kieker.model.analysismodel.execution.impl.DeployedOperationsPairToDeployedOperationsMapEntryImpl <em>Deployed Operations Pair To Deployed Operations Map Entry</em>}' class.
@@ -504,26 +504,26 @@ public interface ExecutionPackage extends EPackage {
 	EReference getExecutionModel_AggregatedInvocations();
 
 	/**
-	 * Returns the meta object for the map '{@link kieker.model.analysismodel.execution.ExecutionModel#getAggregatedStorageAccesses <em>Aggregated Storage Accesses</em>}'.
+	 * Returns the meta object for the map '{@link kieker.model.analysismodel.execution.ExecutionModel#getStorageDataflow <em>Storage Dataflow</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the map '<em>Aggregated Storage Accesses</em>'.
-	 * @see kieker.model.analysismodel.execution.ExecutionModel#getAggregatedStorageAccesses()
+	 * @return the meta object for the map '<em>Storage Dataflow</em>'.
+	 * @see kieker.model.analysismodel.execution.ExecutionModel#getStorageDataflow()
 	 * @see #getExecutionModel()
 	 * @generated
 	 */
-	EReference getExecutionModel_AggregatedStorageAccesses();
+	EReference getExecutionModel_StorageDataflow();
 
 	/**
-	 * Returns the meta object for the map '{@link kieker.model.analysismodel.execution.ExecutionModel#getOperationAccess <em>Operation Access</em>}'.
+	 * Returns the meta object for the map '{@link kieker.model.analysismodel.execution.ExecutionModel#getOperationDataflow <em>Operation Dataflow</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the map '<em>Operation Access</em>'.
-	 * @see kieker.model.analysismodel.execution.ExecutionModel#getOperationAccess()
+	 * @return the meta object for the map '<em>Operation Dataflow</em>'.
+	 * @see kieker.model.analysismodel.execution.ExecutionModel#getOperationDataflow()
 	 * @see #getExecutionModel()
 	 * @generated
 	 */
-	EReference getExecutionModel_OperationAccess();
+	EReference getExecutionModel_OperationDataflow();
 
 	/**
 	 * Returns the meta object for class '{@link java.util.Map.Entry <em>Deployed Operations Pair To Aggregated Invocation Map Entry</em>}'.
@@ -593,60 +593,60 @@ public interface ExecutionPackage extends EPackage {
 	EReference getAggregatedInvocation_Target();
 
 	/**
-	 * Returns the meta object for class '{@link kieker.model.analysismodel.execution.AggregatedStorageAccess <em>Aggregated Storage Access</em>}'.
+	 * Returns the meta object for class '{@link kieker.model.analysismodel.execution.StorageDataflow <em>Storage Dataflow</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Aggregated Storage Access</em>'.
-	 * @see kieker.model.analysismodel.execution.AggregatedStorageAccess
+	 * @return the meta object for class '<em>Storage Dataflow</em>'.
+	 * @see kieker.model.analysismodel.execution.StorageDataflow
 	 * @generated
 	 */
-	EClass getAggregatedStorageAccess();
+	EClass getStorageDataflow();
 
 	/**
-	 * Returns the meta object for the reference '{@link kieker.model.analysismodel.execution.AggregatedStorageAccess#getStorage <em>Storage</em>}'.
+	 * Returns the meta object for the reference '{@link kieker.model.analysismodel.execution.StorageDataflow#getStorage <em>Storage</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Storage</em>'.
-	 * @see kieker.model.analysismodel.execution.AggregatedStorageAccess#getStorage()
-	 * @see #getAggregatedStorageAccess()
+	 * @see kieker.model.analysismodel.execution.StorageDataflow#getStorage()
+	 * @see #getStorageDataflow()
 	 * @generated
 	 */
-	EReference getAggregatedStorageAccess_Storage();
+	EReference getStorageDataflow_Storage();
 
 	/**
-	 * Returns the meta object for the reference '{@link kieker.model.analysismodel.execution.AggregatedStorageAccess#getCode <em>Code</em>}'.
+	 * Returns the meta object for the reference '{@link kieker.model.analysismodel.execution.StorageDataflow#getCode <em>Code</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Code</em>'.
-	 * @see kieker.model.analysismodel.execution.AggregatedStorageAccess#getCode()
-	 * @see #getAggregatedStorageAccess()
+	 * @see kieker.model.analysismodel.execution.StorageDataflow#getCode()
+	 * @see #getStorageDataflow()
 	 * @generated
 	 */
-	EReference getAggregatedStorageAccess_Code();
+	EReference getStorageDataflow_Code();
 
 	/**
-	 * Returns the meta object for the attribute '{@link kieker.model.analysismodel.execution.AggregatedStorageAccess#getDirection <em>Direction</em>}'.
+	 * Returns the meta object for the attribute '{@link kieker.model.analysismodel.execution.StorageDataflow#getDirection <em>Direction</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Direction</em>'.
-	 * @see kieker.model.analysismodel.execution.AggregatedStorageAccess#getDirection()
-	 * @see #getAggregatedStorageAccess()
+	 * @see kieker.model.analysismodel.execution.StorageDataflow#getDirection()
+	 * @see #getStorageDataflow()
 	 * @generated
 	 */
-	EAttribute getAggregatedStorageAccess_Direction();
+	EAttribute getStorageDataflow_Direction();
 
 	/**
-	 * Returns the meta object for class '{@link java.util.Map.Entry <em>Deployed Operations Pair To Aggregated Storage Access Map Entry</em>}'.
+	 * Returns the meta object for class '{@link java.util.Map.Entry <em>Deployed Operations Pair To Deployed Storage Map Entry</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Deployed Operations Pair To Aggregated Storage Access Map Entry</em>'.
+	 * @return the meta object for class '<em>Deployed Operations Pair To Deployed Storage Map Entry</em>'.
 	 * @see java.util.Map.Entry
 	 * @model features="value key" 
-	 *        valueType="kieker.model.analysismodel.execution.AggregatedStorageAccess" valueContainment="true"
+	 *        valueType="kieker.model.analysismodel.execution.StorageDataflow" valueContainment="true"
 	 *        keyType="kieker.model.analysismodel.execution.Tuple&lt;kieker.model.analysismodel.deployment.DeployedOperation, kieker.model.analysismodel.deployment.DeployedStorage&gt;" keyContainment="true"
 	 * @generated
 	 */
-	EClass getDeployedOperationsPairToAggregatedStorageAccessMapEntry();
+	EClass getDeployedOperationsPairToDeployedStorageMapEntry();
 
 	/**
 	 * Returns the meta object for the containment reference '{@link java.util.Map.Entry <em>Value</em>}'.
@@ -654,10 +654,10 @@ public interface ExecutionPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Value</em>'.
 	 * @see java.util.Map.Entry
-	 * @see #getDeployedOperationsPairToAggregatedStorageAccessMapEntry()
+	 * @see #getDeployedOperationsPairToDeployedStorageMapEntry()
 	 * @generated
 	 */
-	EReference getDeployedOperationsPairToAggregatedStorageAccessMapEntry_Value();
+	EReference getDeployedOperationsPairToDeployedStorageMapEntry_Value();
 
 	/**
 	 * Returns the meta object for the containment reference '{@link java.util.Map.Entry <em>Key</em>}'.
@@ -665,10 +665,10 @@ public interface ExecutionPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Key</em>'.
 	 * @see java.util.Map.Entry
-	 * @see #getDeployedOperationsPairToAggregatedStorageAccessMapEntry()
+	 * @see #getDeployedOperationsPairToDeployedStorageMapEntry()
 	 * @generated
 	 */
-	EReference getDeployedOperationsPairToAggregatedStorageAccessMapEntry_Key();
+	EReference getDeployedOperationsPairToDeployedStorageMapEntry_Key();
 
 	/**
 	 * Returns the meta object for class '{@link kieker.model.analysismodel.execution.Tuple <em>Tuple</em>}'.
@@ -723,47 +723,47 @@ public interface ExecutionPackage extends EPackage {
 	EOperation getTuple__HashCode();
 
 	/**
-	 * Returns the meta object for class '{@link kieker.model.analysismodel.execution.OperationAccess <em>Operation Access</em>}'.
+	 * Returns the meta object for class '{@link kieker.model.analysismodel.execution.OperationDataflow <em>Operation Dataflow</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Operation Access</em>'.
-	 * @see kieker.model.analysismodel.execution.OperationAccess
+	 * @return the meta object for class '<em>Operation Dataflow</em>'.
+	 * @see kieker.model.analysismodel.execution.OperationDataflow
 	 * @generated
 	 */
-	EClass getOperationAccess();
+	EClass getOperationDataflow();
 
 	/**
-	 * Returns the meta object for the reference '{@link kieker.model.analysismodel.execution.OperationAccess#getSource <em>Source</em>}'.
+	 * Returns the meta object for the reference '{@link kieker.model.analysismodel.execution.OperationDataflow#getSource <em>Source</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Source</em>'.
-	 * @see kieker.model.analysismodel.execution.OperationAccess#getSource()
-	 * @see #getOperationAccess()
+	 * @see kieker.model.analysismodel.execution.OperationDataflow#getSource()
+	 * @see #getOperationDataflow()
 	 * @generated
 	 */
-	EReference getOperationAccess_Source();
+	EReference getOperationDataflow_Source();
 
 	/**
-	 * Returns the meta object for the reference '{@link kieker.model.analysismodel.execution.OperationAccess#getTarget <em>Target</em>}'.
+	 * Returns the meta object for the reference '{@link kieker.model.analysismodel.execution.OperationDataflow#getTarget <em>Target</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Target</em>'.
-	 * @see kieker.model.analysismodel.execution.OperationAccess#getTarget()
-	 * @see #getOperationAccess()
+	 * @see kieker.model.analysismodel.execution.OperationDataflow#getTarget()
+	 * @see #getOperationDataflow()
 	 * @generated
 	 */
-	EReference getOperationAccess_Target();
+	EReference getOperationDataflow_Target();
 
 	/**
-	 * Returns the meta object for the attribute '{@link kieker.model.analysismodel.execution.OperationAccess#getRWAccess <em>RW Access</em>}'.
+	 * Returns the meta object for the attribute '{@link kieker.model.analysismodel.execution.OperationDataflow#getDirection <em>Direction</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>RW Access</em>'.
-	 * @see kieker.model.analysismodel.execution.OperationAccess#getRWAccess()
-	 * @see #getOperationAccess()
+	 * @return the meta object for the attribute '<em>Direction</em>'.
+	 * @see kieker.model.analysismodel.execution.OperationDataflow#getDirection()
+	 * @see #getOperationDataflow()
 	 * @generated
 	 */
-	EAttribute getOperationAccess_RWAccess();
+	EAttribute getOperationDataflow_Direction();
 
 	/**
 	 * Returns the meta object for class '{@link java.util.Map.Entry <em>Deployed Operations Pair To Deployed Operations Map Entry</em>}'.
@@ -772,7 +772,7 @@ public interface ExecutionPackage extends EPackage {
 	 * @return the meta object for class '<em>Deployed Operations Pair To Deployed Operations Map Entry</em>'.
 	 * @see java.util.Map.Entry
 	 * @model features="value key" 
-	 *        valueType="kieker.model.analysismodel.execution.OperationAccess" valueContainment="true"
+	 *        valueType="kieker.model.analysismodel.execution.OperationDataflow" valueContainment="true"
 	 *        keyType="kieker.model.analysismodel.execution.Tuple&lt;kieker.model.analysismodel.deployment.DeployedOperation, kieker.model.analysismodel.deployment.DeployedOperation&gt;" keyContainment="true"
 	 * @generated
 	 */
@@ -852,20 +852,20 @@ public interface ExecutionPackage extends EPackage {
 		EReference EXECUTION_MODEL__AGGREGATED_INVOCATIONS = eINSTANCE.getExecutionModel_AggregatedInvocations();
 
 		/**
-		 * The meta object literal for the '<em><b>Aggregated Storage Accesses</b></em>' map feature.
+		 * The meta object literal for the '<em><b>Storage Dataflow</b></em>' map feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference EXECUTION_MODEL__AGGREGATED_STORAGE_ACCESSES = eINSTANCE.getExecutionModel_AggregatedStorageAccesses();
+		EReference EXECUTION_MODEL__STORAGE_DATAFLOW = eINSTANCE.getExecutionModel_StorageDataflow();
 
 		/**
-		 * The meta object literal for the '<em><b>Operation Access</b></em>' map feature.
+		 * The meta object literal for the '<em><b>Operation Dataflow</b></em>' map feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference EXECUTION_MODEL__OPERATION_ACCESS = eINSTANCE.getExecutionModel_OperationAccess();
+		EReference EXECUTION_MODEL__OPERATION_DATAFLOW = eINSTANCE.getExecutionModel_OperationDataflow();
 
 		/**
 		 * The meta object literal for the '{@link kieker.model.analysismodel.execution.impl.DeployedOperationsPairToAggregatedInvocationMapEntryImpl <em>Deployed Operations Pair To Aggregated Invocation Map Entry</em>}' class.
@@ -920,14 +920,14 @@ public interface ExecutionPackage extends EPackage {
 		EReference AGGREGATED_INVOCATION__TARGET = eINSTANCE.getAggregatedInvocation_Target();
 
 		/**
-		 * The meta object literal for the '{@link kieker.model.analysismodel.execution.impl.AggregatedStorageAccessImpl <em>Aggregated Storage Access</em>}' class.
+		 * The meta object literal for the '{@link kieker.model.analysismodel.execution.impl.StorageDataflowImpl <em>Storage Dataflow</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see kieker.model.analysismodel.execution.impl.AggregatedStorageAccessImpl
-		 * @see kieker.model.analysismodel.execution.impl.ExecutionPackageImpl#getAggregatedStorageAccess()
+		 * @see kieker.model.analysismodel.execution.impl.StorageDataflowImpl
+		 * @see kieker.model.analysismodel.execution.impl.ExecutionPackageImpl#getStorageDataflow()
 		 * @generated
 		 */
-		EClass AGGREGATED_STORAGE_ACCESS = eINSTANCE.getAggregatedStorageAccess();
+		EClass STORAGE_DATAFLOW = eINSTANCE.getStorageDataflow();
 
 		/**
 		 * The meta object literal for the '<em><b>Storage</b></em>' reference feature.
@@ -935,7 +935,7 @@ public interface ExecutionPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference AGGREGATED_STORAGE_ACCESS__STORAGE = eINSTANCE.getAggregatedStorageAccess_Storage();
+		EReference STORAGE_DATAFLOW__STORAGE = eINSTANCE.getStorageDataflow_Storage();
 
 		/**
 		 * The meta object literal for the '<em><b>Code</b></em>' reference feature.
@@ -943,7 +943,7 @@ public interface ExecutionPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference AGGREGATED_STORAGE_ACCESS__CODE = eINSTANCE.getAggregatedStorageAccess_Code();
+		EReference STORAGE_DATAFLOW__CODE = eINSTANCE.getStorageDataflow_Code();
 
 		/**
 		 * The meta object literal for the '<em><b>Direction</b></em>' attribute feature.
@@ -951,17 +951,17 @@ public interface ExecutionPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute AGGREGATED_STORAGE_ACCESS__DIRECTION = eINSTANCE.getAggregatedStorageAccess_Direction();
+		EAttribute STORAGE_DATAFLOW__DIRECTION = eINSTANCE.getStorageDataflow_Direction();
 
 		/**
-		 * The meta object literal for the '{@link kieker.model.analysismodel.execution.impl.DeployedOperationsPairToAggregatedStorageAccessMapEntryImpl <em>Deployed Operations Pair To Aggregated Storage Access Map Entry</em>}' class.
+		 * The meta object literal for the '{@link kieker.model.analysismodel.execution.impl.DeployedOperationsPairToDeployedStorageMapEntryImpl <em>Deployed Operations Pair To Deployed Storage Map Entry</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see kieker.model.analysismodel.execution.impl.DeployedOperationsPairToAggregatedStorageAccessMapEntryImpl
-		 * @see kieker.model.analysismodel.execution.impl.ExecutionPackageImpl#getDeployedOperationsPairToAggregatedStorageAccessMapEntry()
+		 * @see kieker.model.analysismodel.execution.impl.DeployedOperationsPairToDeployedStorageMapEntryImpl
+		 * @see kieker.model.analysismodel.execution.impl.ExecutionPackageImpl#getDeployedOperationsPairToDeployedStorageMapEntry()
 		 * @generated
 		 */
-		EClass DEPLOYED_OPERATIONS_PAIR_TO_AGGREGATED_STORAGE_ACCESS_MAP_ENTRY = eINSTANCE.getDeployedOperationsPairToAggregatedStorageAccessMapEntry();
+		EClass DEPLOYED_OPERATIONS_PAIR_TO_DEPLOYED_STORAGE_MAP_ENTRY = eINSTANCE.getDeployedOperationsPairToDeployedStorageMapEntry();
 
 		/**
 		 * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
@@ -969,7 +969,7 @@ public interface ExecutionPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference DEPLOYED_OPERATIONS_PAIR_TO_AGGREGATED_STORAGE_ACCESS_MAP_ENTRY__VALUE = eINSTANCE.getDeployedOperationsPairToAggregatedStorageAccessMapEntry_Value();
+		EReference DEPLOYED_OPERATIONS_PAIR_TO_DEPLOYED_STORAGE_MAP_ENTRY__VALUE = eINSTANCE.getDeployedOperationsPairToDeployedStorageMapEntry_Value();
 
 		/**
 		 * The meta object literal for the '<em><b>Key</b></em>' containment reference feature.
@@ -977,7 +977,7 @@ public interface ExecutionPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference DEPLOYED_OPERATIONS_PAIR_TO_AGGREGATED_STORAGE_ACCESS_MAP_ENTRY__KEY = eINSTANCE.getDeployedOperationsPairToAggregatedStorageAccessMapEntry_Key();
+		EReference DEPLOYED_OPERATIONS_PAIR_TO_DEPLOYED_STORAGE_MAP_ENTRY__KEY = eINSTANCE.getDeployedOperationsPairToDeployedStorageMapEntry_Key();
 
 		/**
 		 * The meta object literal for the '{@link kieker.model.analysismodel.execution.impl.TupleImpl <em>Tuple</em>}' class.
@@ -1022,14 +1022,14 @@ public interface ExecutionPackage extends EPackage {
 		EOperation TUPLE___HASH_CODE = eINSTANCE.getTuple__HashCode();
 
 		/**
-		 * The meta object literal for the '{@link kieker.model.analysismodel.execution.impl.OperationAccessImpl <em>Operation Access</em>}' class.
+		 * The meta object literal for the '{@link kieker.model.analysismodel.execution.impl.OperationDataflowImpl <em>Operation Dataflow</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see kieker.model.analysismodel.execution.impl.OperationAccessImpl
-		 * @see kieker.model.analysismodel.execution.impl.ExecutionPackageImpl#getOperationAccess()
+		 * @see kieker.model.analysismodel.execution.impl.OperationDataflowImpl
+		 * @see kieker.model.analysismodel.execution.impl.ExecutionPackageImpl#getOperationDataflow()
 		 * @generated
 		 */
-		EClass OPERATION_ACCESS = eINSTANCE.getOperationAccess();
+		EClass OPERATION_DATAFLOW = eINSTANCE.getOperationDataflow();
 
 		/**
 		 * The meta object literal for the '<em><b>Source</b></em>' reference feature.
@@ -1037,7 +1037,7 @@ public interface ExecutionPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference OPERATION_ACCESS__SOURCE = eINSTANCE.getOperationAccess_Source();
+		EReference OPERATION_DATAFLOW__SOURCE = eINSTANCE.getOperationDataflow_Source();
 
 		/**
 		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
@@ -1045,15 +1045,15 @@ public interface ExecutionPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference OPERATION_ACCESS__TARGET = eINSTANCE.getOperationAccess_Target();
+		EReference OPERATION_DATAFLOW__TARGET = eINSTANCE.getOperationDataflow_Target();
 
 		/**
-		 * The meta object literal for the '<em><b>RW Access</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Direction</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute OPERATION_ACCESS__RW_ACCESS = eINSTANCE.getOperationAccess_RWAccess();
+		EAttribute OPERATION_DATAFLOW__DIRECTION = eINSTANCE.getOperationDataflow_Direction();
 
 		/**
 		 * The meta object literal for the '{@link kieker.model.analysismodel.execution.impl.DeployedOperationsPairToDeployedOperationsMapEntryImpl <em>Deployed Operations Pair To Deployed Operations Map Entry</em>}' class.

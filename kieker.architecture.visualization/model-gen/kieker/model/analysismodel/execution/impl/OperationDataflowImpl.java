@@ -6,7 +6,7 @@ import kieker.model.analysismodel.deployment.DeployedOperation;
 
 import kieker.model.analysismodel.execution.EDirection;
 import kieker.model.analysismodel.execution.ExecutionPackage;
-import kieker.model.analysismodel.execution.OperationAccess;
+import kieker.model.analysismodel.execution.OperationDataflow;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -18,20 +18,20 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Operation Access</b></em>'.
+ * An implementation of the model object '<em><b>Operation Dataflow</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link kieker.model.analysismodel.execution.impl.OperationAccessImpl#getSource <em>Source</em>}</li>
- *   <li>{@link kieker.model.analysismodel.execution.impl.OperationAccessImpl#getTarget <em>Target</em>}</li>
- *   <li>{@link kieker.model.analysismodel.execution.impl.OperationAccessImpl#getRWAccess <em>RW Access</em>}</li>
+ *   <li>{@link kieker.model.analysismodel.execution.impl.OperationDataflowImpl#getSource <em>Source</em>}</li>
+ *   <li>{@link kieker.model.analysismodel.execution.impl.OperationDataflowImpl#getTarget <em>Target</em>}</li>
+ *   <li>{@link kieker.model.analysismodel.execution.impl.OperationDataflowImpl#getDirection <em>Direction</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class OperationAccessImpl extends MinimalEObjectImpl.Container implements OperationAccess {
+public class OperationDataflowImpl extends MinimalEObjectImpl.Container implements OperationDataflow {
 	/**
 	 * The cached value of the '{@link #getSource() <em>Source</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -53,31 +53,31 @@ public class OperationAccessImpl extends MinimalEObjectImpl.Container implements
 	protected DeployedOperation target;
 
 	/**
-	 * The default value of the '{@link #getRWAccess() <em>RW Access</em>}' attribute.
+	 * The default value of the '{@link #getDirection() <em>Direction</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getRWAccess()
+	 * @see #getDirection()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final EDirection RW_ACCESS_EDEFAULT = EDirection.READ;
+	protected static final EDirection DIRECTION_EDEFAULT = EDirection.READ;
 
 	/**
-	 * The cached value of the '{@link #getRWAccess() <em>RW Access</em>}' attribute.
+	 * The cached value of the '{@link #getDirection() <em>Direction</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getRWAccess()
+	 * @see #getDirection()
 	 * @generated
 	 * @ordered
 	 */
-	protected EDirection rwAccess = RW_ACCESS_EDEFAULT;
+	protected EDirection direction = DIRECTION_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected OperationAccessImpl() {
+	protected OperationDataflowImpl() {
 		super();
 	}
 
@@ -88,7 +88,7 @@ public class OperationAccessImpl extends MinimalEObjectImpl.Container implements
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return ExecutionPackage.Literals.OPERATION_ACCESS;
+		return ExecutionPackage.Literals.OPERATION_DATAFLOW;
 	}
 
 	/**
@@ -103,7 +103,7 @@ public class OperationAccessImpl extends MinimalEObjectImpl.Container implements
 			source = (DeployedOperation)eResolveProxy(oldSource);
 			if (source != oldSource) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ExecutionPackage.OPERATION_ACCESS__SOURCE, oldSource, source));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ExecutionPackage.OPERATION_DATAFLOW__SOURCE, oldSource, source));
 			}
 		}
 		return source;
@@ -128,7 +128,7 @@ public class OperationAccessImpl extends MinimalEObjectImpl.Container implements
 		DeployedOperation oldSource = source;
 		source = newSource;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ExecutionPackage.OPERATION_ACCESS__SOURCE, oldSource, source));
+			eNotify(new ENotificationImpl(this, Notification.SET, ExecutionPackage.OPERATION_DATAFLOW__SOURCE, oldSource, source));
 	}
 
 	/**
@@ -143,7 +143,7 @@ public class OperationAccessImpl extends MinimalEObjectImpl.Container implements
 			target = (DeployedOperation)eResolveProxy(oldTarget);
 			if (target != oldTarget) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ExecutionPackage.OPERATION_ACCESS__TARGET, oldTarget, target));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ExecutionPackage.OPERATION_DATAFLOW__TARGET, oldTarget, target));
 			}
 		}
 		return target;
@@ -168,7 +168,7 @@ public class OperationAccessImpl extends MinimalEObjectImpl.Container implements
 		DeployedOperation oldTarget = target;
 		target = newTarget;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ExecutionPackage.OPERATION_ACCESS__TARGET, oldTarget, target));
+			eNotify(new ENotificationImpl(this, Notification.SET, ExecutionPackage.OPERATION_DATAFLOW__TARGET, oldTarget, target));
 	}
 
 	/**
@@ -177,8 +177,8 @@ public class OperationAccessImpl extends MinimalEObjectImpl.Container implements
 	 * @generated
 	 */
 	@Override
-	public EDirection getRWAccess() {
-		return rwAccess;
+	public EDirection getDirection() {
+		return direction;
 	}
 
 	/**
@@ -187,11 +187,11 @@ public class OperationAccessImpl extends MinimalEObjectImpl.Container implements
 	 * @generated
 	 */
 	@Override
-	public void setRWAccess(EDirection newRWAccess) {
-		EDirection oldRWAccess = rwAccess;
-		rwAccess = newRWAccess == null ? RW_ACCESS_EDEFAULT : newRWAccess;
+	public void setDirection(EDirection newDirection) {
+		EDirection oldDirection = direction;
+		direction = newDirection == null ? DIRECTION_EDEFAULT : newDirection;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ExecutionPackage.OPERATION_ACCESS__RW_ACCESS, oldRWAccess, rwAccess));
+			eNotify(new ENotificationImpl(this, Notification.SET, ExecutionPackage.OPERATION_DATAFLOW__DIRECTION, oldDirection, direction));
 	}
 
 	/**
@@ -202,14 +202,14 @@ public class OperationAccessImpl extends MinimalEObjectImpl.Container implements
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ExecutionPackage.OPERATION_ACCESS__SOURCE:
+			case ExecutionPackage.OPERATION_DATAFLOW__SOURCE:
 				if (resolve) return getSource();
 				return basicGetSource();
-			case ExecutionPackage.OPERATION_ACCESS__TARGET:
+			case ExecutionPackage.OPERATION_DATAFLOW__TARGET:
 				if (resolve) return getTarget();
 				return basicGetTarget();
-			case ExecutionPackage.OPERATION_ACCESS__RW_ACCESS:
-				return getRWAccess();
+			case ExecutionPackage.OPERATION_DATAFLOW__DIRECTION:
+				return getDirection();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -222,14 +222,14 @@ public class OperationAccessImpl extends MinimalEObjectImpl.Container implements
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ExecutionPackage.OPERATION_ACCESS__SOURCE:
+			case ExecutionPackage.OPERATION_DATAFLOW__SOURCE:
 				setSource((DeployedOperation)newValue);
 				return;
-			case ExecutionPackage.OPERATION_ACCESS__TARGET:
+			case ExecutionPackage.OPERATION_DATAFLOW__TARGET:
 				setTarget((DeployedOperation)newValue);
 				return;
-			case ExecutionPackage.OPERATION_ACCESS__RW_ACCESS:
-				setRWAccess((EDirection)newValue);
+			case ExecutionPackage.OPERATION_DATAFLOW__DIRECTION:
+				setDirection((EDirection)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -243,14 +243,14 @@ public class OperationAccessImpl extends MinimalEObjectImpl.Container implements
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ExecutionPackage.OPERATION_ACCESS__SOURCE:
+			case ExecutionPackage.OPERATION_DATAFLOW__SOURCE:
 				setSource((DeployedOperation)null);
 				return;
-			case ExecutionPackage.OPERATION_ACCESS__TARGET:
+			case ExecutionPackage.OPERATION_DATAFLOW__TARGET:
 				setTarget((DeployedOperation)null);
 				return;
-			case ExecutionPackage.OPERATION_ACCESS__RW_ACCESS:
-				setRWAccess(RW_ACCESS_EDEFAULT);
+			case ExecutionPackage.OPERATION_DATAFLOW__DIRECTION:
+				setDirection(DIRECTION_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -264,12 +264,12 @@ public class OperationAccessImpl extends MinimalEObjectImpl.Container implements
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ExecutionPackage.OPERATION_ACCESS__SOURCE:
+			case ExecutionPackage.OPERATION_DATAFLOW__SOURCE:
 				return source != null;
-			case ExecutionPackage.OPERATION_ACCESS__TARGET:
+			case ExecutionPackage.OPERATION_DATAFLOW__TARGET:
 				return target != null;
-			case ExecutionPackage.OPERATION_ACCESS__RW_ACCESS:
-				return rwAccess != RW_ACCESS_EDEFAULT;
+			case ExecutionPackage.OPERATION_DATAFLOW__DIRECTION:
+				return direction != DIRECTION_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -284,10 +284,10 @@ public class OperationAccessImpl extends MinimalEObjectImpl.Container implements
 		if (eIsProxy()) return super.toString();
 
 		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (RWAccess: ");
-		result.append(rwAccess);
+		result.append(" (direction: ");
+		result.append(direction);
 		result.append(')');
 		return result.toString();
 	}
 
-} //OperationAccessImpl
+} //OperationDataflowImpl

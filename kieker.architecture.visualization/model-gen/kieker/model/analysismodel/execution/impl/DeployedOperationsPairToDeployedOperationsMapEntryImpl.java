@@ -5,7 +5,7 @@ package kieker.model.analysismodel.execution.impl;
 import kieker.model.analysismodel.deployment.DeployedOperation;
 
 import kieker.model.analysismodel.execution.ExecutionPackage;
-import kieker.model.analysismodel.execution.OperationAccess;
+import kieker.model.analysismodel.execution.OperationDataflow;
 import kieker.model.analysismodel.execution.Tuple;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -35,7 +35,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *
  * @generated
  */
-public class DeployedOperationsPairToDeployedOperationsMapEntryImpl extends MinimalEObjectImpl.Container implements BasicEMap.Entry<Tuple<DeployedOperation, DeployedOperation>,OperationAccess> {
+public class DeployedOperationsPairToDeployedOperationsMapEntryImpl extends MinimalEObjectImpl.Container implements BasicEMap.Entry<Tuple<DeployedOperation, DeployedOperation>,OperationDataflow> {
 	/**
 	 * The cached value of the '{@link #getTypedValue() <em>Value</em>}' containment reference.
 	 * <!-- begin-user-doc -->
@@ -44,7 +44,7 @@ public class DeployedOperationsPairToDeployedOperationsMapEntryImpl extends Mini
 	 * @generated
 	 * @ordered
 	 */
-	protected OperationAccess value;
+	protected OperationDataflow value;
 
 	/**
 	 * The cached value of the '{@link #getTypedKey() <em>Key</em>}' containment reference.
@@ -80,7 +80,7 @@ public class DeployedOperationsPairToDeployedOperationsMapEntryImpl extends Mini
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OperationAccess getTypedValue() {
+	public OperationDataflow getTypedValue() {
 		return value;
 	}
 
@@ -89,8 +89,8 @@ public class DeployedOperationsPairToDeployedOperationsMapEntryImpl extends Mini
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetTypedValue(OperationAccess newValue, NotificationChain msgs) {
-		OperationAccess oldValue = value;
+	public NotificationChain basicSetTypedValue(OperationDataflow newValue, NotificationChain msgs) {
+		OperationDataflow oldValue = value;
 		value = newValue;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ExecutionPackage.DEPLOYED_OPERATIONS_PAIR_TO_DEPLOYED_OPERATIONS_MAP_ENTRY__VALUE, oldValue, newValue);
@@ -104,7 +104,7 @@ public class DeployedOperationsPairToDeployedOperationsMapEntryImpl extends Mini
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setTypedValue(OperationAccess newValue) {
+	public void setTypedValue(OperationDataflow newValue) {
 		if (newValue != value) {
 			NotificationChain msgs = null;
 			if (value != null)
@@ -203,7 +203,7 @@ public class DeployedOperationsPairToDeployedOperationsMapEntryImpl extends Mini
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case ExecutionPackage.DEPLOYED_OPERATIONS_PAIR_TO_DEPLOYED_OPERATIONS_MAP_ENTRY__VALUE:
-				setTypedValue((OperationAccess)newValue);
+				setTypedValue((OperationDataflow)newValue);
 				return;
 			case ExecutionPackage.DEPLOYED_OPERATIONS_PAIR_TO_DEPLOYED_OPERATIONS_MAP_ENTRY__KEY:
 				setTypedKey((Tuple<DeployedOperation, DeployedOperation>)newValue);
@@ -221,7 +221,7 @@ public class DeployedOperationsPairToDeployedOperationsMapEntryImpl extends Mini
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case ExecutionPackage.DEPLOYED_OPERATIONS_PAIR_TO_DEPLOYED_OPERATIONS_MAP_ENTRY__VALUE:
-				setTypedValue((OperationAccess)null);
+				setTypedValue((OperationDataflow)null);
 				return;
 			case ExecutionPackage.DEPLOYED_OPERATIONS_PAIR_TO_DEPLOYED_OPERATIONS_MAP_ENTRY__KEY:
 				setTypedKey((Tuple<DeployedOperation, DeployedOperation>)null);
@@ -303,7 +303,7 @@ public class DeployedOperationsPairToDeployedOperationsMapEntryImpl extends Mini
 	 * @generated
 	 */
 	@Override
-	public OperationAccess getValue() {
+	public OperationDataflow getValue() {
 		return getTypedValue();
 	}
 
@@ -313,8 +313,8 @@ public class DeployedOperationsPairToDeployedOperationsMapEntryImpl extends Mini
 	 * @generated
 	 */
 	@Override
-	public OperationAccess setValue(OperationAccess value) {
-		OperationAccess oldValue = getValue();
+	public OperationDataflow setValue(OperationDataflow value) {
+		OperationDataflow oldValue = getValue();
 		setTypedValue(value);
 		return oldValue;
 	}
@@ -325,9 +325,9 @@ public class DeployedOperationsPairToDeployedOperationsMapEntryImpl extends Mini
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
-	public EMap<Tuple<DeployedOperation, DeployedOperation>, OperationAccess> getEMap() {
+	public EMap<Tuple<DeployedOperation, DeployedOperation>, OperationDataflow> getEMap() {
 		EObject container = eContainer();
-		return container == null ? null : (EMap<Tuple<DeployedOperation, DeployedOperation>, OperationAccess>)container.eGet(eContainmentFeature());
+		return container == null ? null : (EMap<Tuple<DeployedOperation, DeployedOperation>, OperationDataflow>)container.eGet(eContainmentFeature());
 	}
 
 } //DeployedOperationsPairToDeployedOperationsMapEntryImpl

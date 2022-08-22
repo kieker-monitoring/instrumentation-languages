@@ -139,19 +139,19 @@ abstract class AbstractKiekerArchitectureDiagramSynthesis<T> extends AbstractDia
 		]
 	}
 	
-	protected def KPort createProvidedPort(PortSide portSide, EObject object, int index, EPortType portType) {
+	protected def KPort createInterfaceProvidedPort(PortSide portSide, EObject object, int index, EPortType portType) {
 		val foregroundColor = if (#[EPortType.INTERFACE_CALL, EPortType.OPERATION_CALL].contains(portType)) CALL_FG_COLOR else DATAFLOW_FG_COLOR
 		val backgroundColor = if (#[EPortType.INTERFACE_CALL, EPortType.OPERATION_CALL].contains(portType)) CALL_BG_PROVIDE_COLOR else DATAFLOW_BG_PROVIDE_COLOR
-		createPort(portSide, object, index, foregroundColor, backgroundColor)
+		createInterfacePort(portSide, object, index, foregroundColor, backgroundColor)
 	}
 
-	protected def KPort createRequiredPort(PortSide portSide, EObject object, int index, EPortType portType) {
+	protected def KPort createInterfaceRequiredPort(PortSide portSide, EObject object, int index, EPortType portType) {
 		val foregroundColor = if (#[EPortType.INTERFACE_CALL, EPortType.OPERATION_CALL].contains(portType)) CALL_FG_COLOR else DATAFLOW_FG_COLOR
 		val backgroundColor = if (#[EPortType.INTERFACE_CALL, EPortType.OPERATION_CALL].contains(portType)) CALL_BG_REQUIRE_COLOR else DATAFLOW_BG_REQUIRE_COLOR
-		createPort(portSide, object, index, foregroundColor, backgroundColor)
+		createInterfacePort(portSide, object, index, foregroundColor, backgroundColor)
 	}
 	
-	protected def KPort createPort(PortSide portSide, EObject object, int index, String foregroundColor, String backgroundColor) {
+	protected def KPort createInterfacePort(PortSide portSide, EObject object, int index, String foregroundColor, String backgroundColor) {
 		return KGraphUtil.createInitializedPort().associateWith(object) => [
 			it.setSize(16, 16)
 			it.setProperty(CoreOptions.PORT_SIDE, portSide)

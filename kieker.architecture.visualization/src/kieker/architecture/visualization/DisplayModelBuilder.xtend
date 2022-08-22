@@ -37,6 +37,8 @@ import kieker.model.analysismodel.execution.EDirection
 import kieker.model.analysismodel.assembly.AssemblyStorage
 import kieker.model.analysismodel.deployment.DeployedOperation
 import kieker.model.analysismodel.deployment.DeployedStorage
+import kieker.model.analysismodel.execution.StorageDataflow
+import kieker.model.analysismodel.execution.OperationDataflow
 
 /**
  * Generating a display model from the architecture model.
@@ -57,8 +59,8 @@ class DisplayModelBuilder {
 		
 	def create(Collection<AssemblyComponent> assemblyComponents, ExecutionModel executionModel) {
 		val invocations = executionModel.aggregatedInvocations.values
-		val storages = executionModel.aggregatedStorageAccesses.values
-		val dataflows = executionModel.operationAccess.values
+		val storages = executionModel.storageDataflow.values
+		val dataflows = executionModel.operationDataflow.values
 		
 		val Set<Component> components = new HashSet
 
@@ -126,7 +128,7 @@ class DisplayModelBuilder {
 		return containedComponents
 	}
 	
-	private def Component createComponent(AssemblyComponent assemblyComponent, Collection<AggregatedInvocation> invocations, Collection<AggregatedStorageAccess> storages, Collection<OperationAccess> dataflows, Component parent) {
+	private def Component createComponent(AssemblyComponent assemblyComponent, Collection<AggregatedInvocation> invocations, Collection<StorageDataflow> storages, Collection<OperationDataflow> dataflows, Component parent) {
 		val component = new Component(assemblyComponent.componentType.signature, assemblyComponent, parent)
 		
 		assemblyComponent.containedComponents.forEach[component.children += it.createComponent(invocations, storages, dataflows, component)]
@@ -141,7 +143,7 @@ class DisplayModelBuilder {
 		return component
 	}
 	
-	private def void createPorts4Storages(Component component, AssemblyComponent assemblyComponent, Collection<AggregatedStorageAccess> storages) {
+	private def void createPorts4Storages(Component component, AssemblyComponent assemblyComponent, Collection<StorageDataflow> storages) {
 		assemblyComponent.storages.values.
 			filter[storage | storages.exists[it.storage.assemblyStorage === storage && it.code.assemblyOperation.component !== assemblyComponent]].forEach[
 				val providedPort = new ProvidedPort(it.storageType.name,  it, component, EPortType.OPERATION_DATAFLOW)
@@ -164,7 +166,7 @@ class DisplayModelBuilder {
 	 * Create provided ports based on externally access operations.
 	 */
 	private def void createProvidedPorts4Operations(Component component, AssemblyComponent assemblyComponent, 
-		Collection<AggregatedInvocation> invocations, Collection<OperationAccess> dataflows, Collection<AggregatedStorageAccess> storageAccesses, Set<AssemblyOperation> processedProvidedOperations
+		Collection<AggregatedInvocation> invocations, Collection<OperationDataflow> dataflows, Collection<StorageDataflow> storageAccesses, Set<AssemblyOperation> processedProvidedOperations
 	) {
 		/** Operation Call. */
 		assemblyComponent.operations.values.
@@ -231,7 +233,7 @@ class DisplayModelBuilder {
 	 * Create required operation interfaces based on remaining external calls.
 	 */	
 	private def createRequiredPorts4Operations(Component component, AssemblyComponent assemblyComponent, 
-		Collection<AggregatedInvocation> invocations, Collection<OperationAccess> dataflows, Set<AssemblyOperation> processedRequiredCallees
+		Collection<AggregatedInvocation> invocations, Collection<OperationDataflow> dataflows, Set<AssemblyOperation> processedRequiredCallees
 	) {
 		/** Operation Call. */
 		invocations.filter[it.source.assemblyOperation.component === assemblyComponent &&

@@ -65,10 +65,10 @@ public class ExecutionFactoryImpl extends EFactoryImpl implements ExecutionFacto
 			case ExecutionPackage.EXECUTION_MODEL: return createExecutionModel();
 			case ExecutionPackage.DEPLOYED_OPERATIONS_PAIR_TO_AGGREGATED_INVOCATION_MAP_ENTRY: return (EObject)createDeployedOperationsPairToAggregatedInvocationMapEntry();
 			case ExecutionPackage.AGGREGATED_INVOCATION: return createAggregatedInvocation();
-			case ExecutionPackage.AGGREGATED_STORAGE_ACCESS: return createAggregatedStorageAccess();
-			case ExecutionPackage.DEPLOYED_OPERATIONS_PAIR_TO_AGGREGATED_STORAGE_ACCESS_MAP_ENTRY: return (EObject)createDeployedOperationsPairToAggregatedStorageAccessMapEntry();
+			case ExecutionPackage.STORAGE_DATAFLOW: return createStorageDataflow();
+			case ExecutionPackage.DEPLOYED_OPERATIONS_PAIR_TO_DEPLOYED_STORAGE_MAP_ENTRY: return (EObject)createDeployedOperationsPairToDeployedStorageMapEntry();
 			case ExecutionPackage.TUPLE: return createTuple();
-			case ExecutionPackage.OPERATION_ACCESS: return createOperationAccess();
+			case ExecutionPackage.OPERATION_DATAFLOW: return createOperationDataflow();
 			case ExecutionPackage.DEPLOYED_OPERATIONS_PAIR_TO_DEPLOYED_OPERATIONS_MAP_ENTRY: return (EObject)createDeployedOperationsPairToDeployedOperationsMapEntry();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -143,9 +143,9 @@ public class ExecutionFactoryImpl extends EFactoryImpl implements ExecutionFacto
 	 * @generated
 	 */
 	@Override
-	public AggregatedStorageAccess createAggregatedStorageAccess() {
-		AggregatedStorageAccessImpl aggregatedStorageAccess = new AggregatedStorageAccessImpl();
-		return aggregatedStorageAccess;
+	public StorageDataflow createStorageDataflow() {
+		StorageDataflowImpl storageDataflow = new StorageDataflowImpl();
+		return storageDataflow;
 	}
 
 	/**
@@ -153,9 +153,9 @@ public class ExecutionFactoryImpl extends EFactoryImpl implements ExecutionFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Map.Entry<Tuple<DeployedOperation, DeployedStorage>, AggregatedStorageAccess> createDeployedOperationsPairToAggregatedStorageAccessMapEntry() {
-		DeployedOperationsPairToAggregatedStorageAccessMapEntryImpl deployedOperationsPairToAggregatedStorageAccessMapEntry = new DeployedOperationsPairToAggregatedStorageAccessMapEntryImpl();
-		return deployedOperationsPairToAggregatedStorageAccessMapEntry;
+	public Map.Entry<Tuple<DeployedOperation, DeployedStorage>, StorageDataflow> createDeployedOperationsPairToDeployedStorageMapEntry() {
+		DeployedOperationsPairToDeployedStorageMapEntryImpl deployedOperationsPairToDeployedStorageMapEntry = new DeployedOperationsPairToDeployedStorageMapEntryImpl();
+		return deployedOperationsPairToDeployedStorageMapEntry;
 	}
 
 	/**
@@ -175,9 +175,9 @@ public class ExecutionFactoryImpl extends EFactoryImpl implements ExecutionFacto
 	 * @generated
 	 */
 	@Override
-	public OperationAccess createOperationAccess() {
-		OperationAccessImpl operationAccess = new OperationAccessImpl();
-		return operationAccess;
+	public OperationDataflow createOperationDataflow() {
+		OperationDataflowImpl operationDataflow = new OperationDataflowImpl();
+		return operationDataflow;
 	}
 
 	/**
@@ -185,7 +185,7 @@ public class ExecutionFactoryImpl extends EFactoryImpl implements ExecutionFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Map.Entry<Tuple<DeployedOperation, DeployedOperation>, OperationAccess> createDeployedOperationsPairToDeployedOperationsMapEntry() {
+	public Map.Entry<Tuple<DeployedOperation, DeployedOperation>, OperationDataflow> createDeployedOperationsPairToDeployedOperationsMapEntry() {
 		DeployedOperationsPairToDeployedOperationsMapEntryImpl deployedOperationsPairToDeployedOperationsMapEntry = new DeployedOperationsPairToDeployedOperationsMapEntryImpl();
 		return deployedOperationsPairToDeployedOperationsMapEntry;
 	}

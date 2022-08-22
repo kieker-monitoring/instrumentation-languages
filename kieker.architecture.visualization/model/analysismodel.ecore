@@ -330,10 +330,10 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="aggregatedInvocations"
           ordered="false" upperBound="-1" eType="#//execution/DeployedOperationsPairToAggregatedInvocationMapEntry"
           containment="true"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="aggregatedStorageAccesses"
-          ordered="false" upperBound="-1" eType="#//execution/DeployedOperationsPairToAggregatedStorageAccessMapEntry"
+      <eStructuralFeatures xsi:type="ecore:EReference" name="storageDataflow" ordered="false"
+          upperBound="-1" eType="#//execution/DeployedOperationsPairToDeployedStorageMapEntry"
           containment="true"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="operationAccess" ordered="false"
+      <eStructuralFeatures xsi:type="ecore:EReference" name="operationDataflow" ordered="false"
           upperBound="-1" eType="#//execution/DeployedOperationsPairToDeployedOperationsMapEntry"
           containment="true"/>
     </eClassifiers>
@@ -352,14 +352,14 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="#//deployment/DeployedOperation"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//deployment/DeployedOperation"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="AggregatedStorageAccess">
+    <eClassifiers xsi:type="ecore:EClass" name="StorageDataflow">
       <eStructuralFeatures xsi:type="ecore:EReference" name="storage" eType="#//deployment/DeployedStorage"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="code" eType="#//deployment/DeployedOperation"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="direction" eType="#//execution/EDirection"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="DeployedOperationsPairToAggregatedStorageAccessMapEntry"
+    <eClassifiers xsi:type="ecore:EClass" name="DeployedOperationsPairToDeployedStorageMapEntry"
         instanceClassName="java.util.Map$Entry">
-      <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//execution/AggregatedStorageAccess"
+      <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//execution/StorageDataflow"
           containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="key" containment="true">
         <eGenericType eClassifier="#//execution/Tuple">
@@ -394,14 +394,14 @@
         <eGenericType eTypeParameter="#//execution/Tuple/S"/>
       </eStructuralFeatures>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="OperationAccess">
+    <eClassifiers xsi:type="ecore:EClass" name="OperationDataflow">
       <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="#//deployment/DeployedOperation"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//deployment/DeployedOperation"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="RWAccess" eType="#//execution/EDirection"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="direction" eType="#//execution/EDirection"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="DeployedOperationsPairToDeployedOperationsMapEntry"
         instanceClassName="java.util.Map$Entry">
-      <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//execution/OperationAccess"
+      <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//execution/OperationDataflow"
           containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="key" containment="true">
         <eGenericType eClassifier="#//execution/Tuple">

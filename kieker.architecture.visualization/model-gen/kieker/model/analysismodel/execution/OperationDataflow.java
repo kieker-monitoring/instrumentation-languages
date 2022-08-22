@@ -8,37 +8,37 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Operation Access</b></em>'.
+ * A representation of the model object '<em><b>Operation Dataflow</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link kieker.model.analysismodel.execution.OperationAccess#getSource <em>Source</em>}</li>
- *   <li>{@link kieker.model.analysismodel.execution.OperationAccess#getTarget <em>Target</em>}</li>
- *   <li>{@link kieker.model.analysismodel.execution.OperationAccess#getRWAccess <em>RW Access</em>}</li>
+ *   <li>{@link kieker.model.analysismodel.execution.OperationDataflow#getSource <em>Source</em>}</li>
+ *   <li>{@link kieker.model.analysismodel.execution.OperationDataflow#getTarget <em>Target</em>}</li>
+ *   <li>{@link kieker.model.analysismodel.execution.OperationDataflow#getDirection <em>Direction</em>}</li>
  * </ul>
  *
- * @see kieker.model.analysismodel.execution.ExecutionPackage#getOperationAccess()
+ * @see kieker.model.analysismodel.execution.ExecutionPackage#getOperationDataflow()
  * @model
  * @generated
  */
-public interface OperationAccess extends EObject {
+public interface OperationDataflow extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Source</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Source</em>' reference.
 	 * @see #setSource(DeployedOperation)
-	 * @see kieker.model.analysismodel.execution.ExecutionPackage#getOperationAccess_Source()
+	 * @see kieker.model.analysismodel.execution.ExecutionPackage#getOperationDataflow_Source()
 	 * @model
 	 * @generated
 	 */
 	DeployedOperation getSource();
 
 	/**
-	 * Sets the value of the '{@link kieker.model.analysismodel.execution.OperationAccess#getSource <em>Source</em>}' reference.
+	 * Sets the value of the '{@link kieker.model.analysismodel.execution.OperationDataflow#getSource <em>Source</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Source</em>' reference.
@@ -53,14 +53,14 @@ public interface OperationAccess extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Target</em>' reference.
 	 * @see #setTarget(DeployedOperation)
-	 * @see kieker.model.analysismodel.execution.ExecutionPackage#getOperationAccess_Target()
+	 * @see kieker.model.analysismodel.execution.ExecutionPackage#getOperationDataflow_Target()
 	 * @model
 	 * @generated
 	 */
 	DeployedOperation getTarget();
 
 	/**
-	 * Sets the value of the '{@link kieker.model.analysismodel.execution.OperationAccess#getTarget <em>Target</em>}' reference.
+	 * Sets the value of the '{@link kieker.model.analysismodel.execution.OperationDataflow#getTarget <em>Target</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Target</em>' reference.
@@ -70,28 +70,28 @@ public interface OperationAccess extends EObject {
 	void setTarget(DeployedOperation value);
 
 	/**
-	 * Returns the value of the '<em><b>RW Access</b></em>' attribute.
+	 * Returns the value of the '<em><b>Direction</b></em>' attribute.
 	 * The literals are from the enumeration {@link kieker.model.analysismodel.execution.EDirection}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>RW Access</em>' attribute.
+	 * @return the value of the '<em>Direction</em>' attribute.
 	 * @see kieker.model.analysismodel.execution.EDirection
-	 * @see #setRWAccess(EDirection)
-	 * @see kieker.model.analysismodel.execution.ExecutionPackage#getOperationAccess_RWAccess()
+	 * @see #setDirection(EDirection)
+	 * @see kieker.model.analysismodel.execution.ExecutionPackage#getOperationDataflow_Direction()
 	 * @model
 	 * @generated
 	 */
-	EDirection getRWAccess();
+	EDirection getDirection();
 
 	/**
-	 * Sets the value of the '{@link kieker.model.analysismodel.execution.OperationAccess#getRWAccess <em>RW Access</em>}' attribute.
+	 * Sets the value of the '{@link kieker.model.analysismodel.execution.OperationDataflow#getDirection <em>Direction</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>RW Access</em>' attribute.
+	 * @param value the new value of the '<em>Direction</em>' attribute.
 	 * @see kieker.model.analysismodel.execution.EDirection
-	 * @see #getRWAccess()
+	 * @see #getDirection()
 	 * @generated
 	 */
-	void setRWAccess(EDirection value);
+	void setDirection(EDirection value);
 
-} // OperationAccess
+} // OperationDataflow

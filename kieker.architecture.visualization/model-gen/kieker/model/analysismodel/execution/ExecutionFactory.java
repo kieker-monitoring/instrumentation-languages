@@ -40,13 +40,13 @@ public interface ExecutionFactory extends EFactory {
 	AggregatedInvocation createAggregatedInvocation();
 
 	/**
-	 * Returns a new object of class '<em>Aggregated Storage Access</em>'.
+	 * Returns a new object of class '<em>Storage Dataflow</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Aggregated Storage Access</em>'.
+	 * @return a new object of class '<em>Storage Dataflow</em>'.
 	 * @generated
 	 */
-	AggregatedStorageAccess createAggregatedStorageAccess();
+	StorageDataflow createStorageDataflow();
 
 	/**
 	 * Returns a new object of class '<em>Tuple</em>'.
@@ -58,13 +58,13 @@ public interface ExecutionFactory extends EFactory {
 	<F, S> Tuple<F, S> createTuple();
 
 	/**
-	 * Returns a new object of class '<em>Operation Access</em>'.
+	 * Returns a new object of class '<em>Operation Dataflow</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Operation Access</em>'.
+	 * @return a new object of class '<em>Operation Dataflow</em>'.
 	 * @generated
 	 */
-	OperationAccess createOperationAccess();
+	OperationDataflow createOperationDataflow();
 
 	/**
 	 * Returns the package supported by this factory.
