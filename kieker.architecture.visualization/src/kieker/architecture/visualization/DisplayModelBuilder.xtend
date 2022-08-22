@@ -29,16 +29,14 @@ import java.util.Map
 import kieker.architecture.visualization.display.model.ProvidedPort
 import kieker.architecture.visualization.display.model.Component
 import kieker.architecture.visualization.display.model.RequiredPort
-import kieker.model.analysismodel.execution.AggregatedStorageAccess
+import kieker.model.analysismodel.execution.StorageDataflow
 import kieker.model.analysismodel.execution.ExecutionModel
-import kieker.model.analysismodel.execution.OperationAccess
+import kieker.model.analysismodel.execution.OperationDataflow
 import kieker.architecture.visualization.display.model.EPortType
 import kieker.model.analysismodel.execution.EDirection
 import kieker.model.analysismodel.assembly.AssemblyStorage
 import kieker.model.analysismodel.deployment.DeployedOperation
 import kieker.model.analysismodel.deployment.DeployedStorage
-import kieker.model.analysismodel.execution.StorageDataflow
-import kieker.model.analysismodel.execution.OperationDataflow
 
 /**
  * Generating a display model from the architecture model.
@@ -300,17 +298,17 @@ class DisplayModelBuilder {
 				} else {
 					System.err.println("ERROR: DisplayModelBuilder link port (AggregatedInvocation) no provided port for " + invocation.target.assemblyOperation.fqn + "  required port: " + requiredPort.label)
 				}
-			} else if (requiredPort.derivedFrom instanceof OperationAccess) {
-				val operationAccess = requiredPort.derivedFrom as OperationAccess
+			} else if (requiredPort.derivedFrom instanceof OperationDataflow) {
+				val operationAccess = requiredPort.derivedFrom as OperationDataflow
 				val providedPort = operationProvidedPort.get(operationAccess.target.assemblyOperation)
 				if (providedPort !== null) {
 					providedPort.requiringPorts += requiredPort
 					requiredPort.providedPort = providedPort
 				} else {
-					System.err.println("ERROR: DisplayModelBuilder link port (OperationAccess) no provided port for " + operationAccess.target.assemblyOperation.fqn + "  required port: " + requiredPort.label)					
+					System.err.println("ERROR: DisplayModelBuilder link port (OperationDataflow) no provided port for " + operationAccess.target.assemblyOperation.fqn + "  required port: " + requiredPort.label)					
 				}
-			} else if (requiredPort.derivedFrom instanceof AggregatedStorageAccess) {
-				val storageAccess = requiredPort.derivedFrom as AggregatedStorageAccess
+			} else if (requiredPort.derivedFrom instanceof StorageDataflow) {
+				val storageAccess = requiredPort.derivedFrom as StorageDataflow
 				if (#[EDirection.READ, EDirection.BOTH].contains(storageAccess.direction)) {
 					// read: operation is target, storage is source
 					val providedPort = operationProvidedPort.get(storageAccess.code.assemblyOperation)
@@ -318,7 +316,7 @@ class DisplayModelBuilder {
 						providedPort.requiringPorts += requiredPort
 						requiredPort.providedPort = providedPort
 					} else {
-						System.err.println("ERROR: DisplayModelBuilder link port (AggregatedStorageAccess, read) no provided port for " + storageAccess.code.assemblyOperation.fqn + "  required port: " + requiredPort.label)								
+						System.err.println("ERROR: DisplayModelBuilder link port (StorageDataflow, read) no provided port for " + storageAccess.code.assemblyOperation.fqn + "  required port: " + requiredPort.label)								
 					}
 				} else {
 					// write: storage is target, operation is source
@@ -327,7 +325,7 @@ class DisplayModelBuilder {
 						providedPort.requiringPorts += requiredPort
 						requiredPort.providedPort = providedPort
 					} else {
-						System.err.println("ERROR: DisplayModelBuilder link port (AggregatedStorageAccess, write) no provided port for " + storageAccess.storage.assemblyStorage.fqn + "  required port: " + requiredPort.label)								
+						System.err.println("ERROR: DisplayModelBuilder link port (StorageDataflow, write) no provided port for " + storageAccess.storage.assemblyStorage.fqn + "  required port: " + requiredPort.label)								
 					}
 				}
 			} else {
