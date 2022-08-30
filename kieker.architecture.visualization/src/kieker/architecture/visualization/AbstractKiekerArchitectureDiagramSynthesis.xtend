@@ -166,16 +166,28 @@ abstract class AbstractKiekerArchitectureDiagramSynthesis<T> extends AbstractDia
 		]
 	}
 
-	protected def KPort createOperationProvidedPort(PortSide portSide, EObject object, int index, EPortType portType) {
-		val foregroundColor = if (#[EPortType.INTERFACE_CALL, EPortType.OPERATION_CALL].contains(portType)) CALL_FG_COLOR else DATAFLOW_FG_COLOR
-		val backgroundColor = if (#[EPortType.INTERFACE_CALL, EPortType.OPERATION_CALL].contains(portType)) CALL_BG_PROVIDE_COLOR else DATAFLOW_BG_PROVIDE_COLOR
+	protected def KPort createOperationProvidedPort(PortSide portSide, EObject object, int index, EPortType portType, String color) {
+		val foregroundColor = portType.foregroundColorForPortType
+		val backgroundColor = color // portType.backgroundProvidedColorForPortType
 		createOperationPort(portSide, object, index, foregroundColor, backgroundColor)
 	}
 
 	protected def KPort createOperationRequiredPort(PortSide portSide, EObject object, int index, EPortType portType) {
-		val foregroundColor = if (#[EPortType.INTERFACE_CALL, EPortType.OPERATION_CALL].contains(portType)) CALL_FG_COLOR else DATAFLOW_FG_COLOR
-		val backgroundColor = if (#[EPortType.INTERFACE_CALL, EPortType.OPERATION_CALL].contains(portType)) CALL_BG_REQUIRE_COLOR else DATAFLOW_BG_REQUIRE_COLOR
+		val foregroundColor = portType.foregroundColorForPortType
+		val backgroundColor = portType.backgroundRequiredColorForPortType
 		createOperationPort(portSide, object, index, foregroundColor, backgroundColor)
+	}
+	
+	protected def getForegroundColorForPortType(EPortType portType) {
+		if (#[EPortType.INTERFACE_CALL, EPortType.OPERATION_CALL].contains(portType)) CALL_FG_COLOR else DATAFLOW_FG_COLOR
+	}
+
+	protected def getBackgroundRequiredColorForPortType(EPortType portType) {
+		if (#[EPortType.INTERFACE_CALL, EPortType.OPERATION_CALL].contains(portType)) CALL_BG_REQUIRE_COLOR else DATAFLOW_BG_REQUIRE_COLOR
+	}
+
+	protected def getBackgroundProvidedColorForPortType(EPortType portType) {
+		if (#[EPortType.INTERFACE_CALL, EPortType.OPERATION_CALL].contains(portType)) CALL_BG_PROVIDE_COLOR else DATAFLOW_BG_PROVIDE_COLOR
 	}
 	
 	protected def KPort createOperationPort(PortSide portSide, EObject object, int index, String foregroundColor, String backgroundColor) {
@@ -193,17 +205,16 @@ abstract class AbstractKiekerArchitectureDiagramSynthesis<T> extends AbstractDia
 		]
 	}
 	
-		
 	protected def createConnectionEdge(NodePort source, NodePort target, String color) {
-		System.err.println("SOURCE " + source + "  TARGET " + target + "  COLOR " + color)
-		if (source !== null)
-			System.err.println("source node " + source.node)
-		else
-			System.err.println("Source node broken")
-		if (target !== null)
-			System.err.println("target node " + target.node)
-		else
-			System.err.println("Target node broken")
+//		System.err.println("SOURCE " + source + "  TARGET " + target + "  COLOR " + color)
+//		if (source !== null)
+//			System.err.println("source node " + source.node)
+//		else
+//			System.err.println("Source node broken")
+//		if (target !== null)
+//			System.err.println("target node " + target.node)
+//		else
+//			System.err.println("Target node broken")
 		createConnectionEdge(source.node, source.port, target.node, target.port, color)
 	}
 	

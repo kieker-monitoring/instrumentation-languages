@@ -3,7 +3,9 @@
  */
 package kieker.architecture.visualization.display.model;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 import kieker.model.analysismodel.assembly.AssemblyComponent;
@@ -15,8 +17,8 @@ import kieker.model.analysismodel.assembly.AssemblyComponent;
 public class Component extends DerivedElement<AssemblyComponent> {
 
 	private final Set<Component> children = new HashSet<>();
-	private final Set<ProvidedPort> providedPorts = new HashSet<>();
-	private final Set<RequiredPort> requiredPorts = new HashSet<>();
+	private final Map<String,ProvidedPort> providedPorts = new HashMap<>();
+	private final Map<String,RequiredPort> requiredPorts = new HashMap<>();
 
 	private final Component parent;
 
@@ -29,11 +31,11 @@ public class Component extends DerivedElement<AssemblyComponent> {
 		return children;
 	}
 	
-	public Set<ProvidedPort> getProvidedPorts() {
+	public Map<String,ProvidedPort> getProvidedPorts() {
 		return providedPorts;
 	}
 	
-	public Set<RequiredPort> getRequiredPorts() {
+	public Map<String,RequiredPort> getRequiredPorts() {
 		return requiredPorts;
 	}
 	
@@ -44,8 +46,8 @@ public class Component extends DerivedElement<AssemblyComponent> {
 	public String print(String offset) {
 		final StringBuilder result = new StringBuilder();
 		result.append(super.print(offset) + "{\n");
-		providedPorts.forEach(port -> result.append(port.print(offset + "  ")));
-		requiredPorts.forEach(port -> result.append(port.print(offset + "  ")));
+		providedPorts.values().forEach(port -> result.append(port.print(offset + "  ")));
+		requiredPorts.values().forEach(port -> result.append(port.print(offset + "  ")));
 		result.append("\n");
 		children.forEach(child -> result.append(child.print(offset + "  ")));
 		result.append(String.format("%s}\n", offset));

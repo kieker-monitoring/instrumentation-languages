@@ -26,4 +26,8 @@ public class Port extends DerivedElement<Object> {
 	public EPortType getPortType() {
 		return portType;
 	}
+	
+	public void setPortType(EPortType portType) {
+		this.portType = portType;
+	}
 }
