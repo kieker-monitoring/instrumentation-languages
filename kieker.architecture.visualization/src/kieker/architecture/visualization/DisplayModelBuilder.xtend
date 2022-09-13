@@ -16,27 +16,27 @@
 package kieker.architecture.visualization
 
 import java.util.Collection
-import kieker.model.analysismodel.assembly.AssemblyComponent
-import kieker.model.analysismodel.execution.AggregatedInvocation
+import java.util.HashMap
 import java.util.HashSet
+import java.util.Map
 import java.util.Set
+import kieker.architecture.visualization.display.model.Component
+import kieker.architecture.visualization.display.model.EPortType
+import kieker.architecture.visualization.display.model.ProvidedPort
+import kieker.architecture.visualization.display.model.RequiredPort
+import kieker.model.analysismodel.assembly.AssemblyComponent
+import kieker.model.analysismodel.assembly.AssemblyOperation
 import kieker.model.analysismodel.assembly.AssemblyProvidedInterface
 import kieker.model.analysismodel.assembly.AssemblyRequiredInterface
-import kieker.model.analysismodel.assembly.AssemblyOperation
-import kieker.model.analysismodel.type.OperationType
-import java.util.HashMap
-import java.util.Map
-import kieker.architecture.visualization.display.model.ProvidedPort
-import kieker.architecture.visualization.display.model.Component
-import kieker.architecture.visualization.display.model.RequiredPort
-import kieker.model.analysismodel.execution.StorageDataflow
+import kieker.model.analysismodel.assembly.AssemblyStorage
+import kieker.model.analysismodel.execution.AggregatedInvocation
+import kieker.model.analysismodel.execution.EDirection
 import kieker.model.analysismodel.execution.ExecutionModel
 import kieker.model.analysismodel.execution.OperationDataflow
-import kieker.architecture.visualization.display.model.EPortType
-import kieker.model.analysismodel.execution.EDirection
-import kieker.model.analysismodel.assembly.AssemblyStorage
-import kieker.model.analysismodel.deployment.DeployedOperation
-import kieker.model.analysismodel.deployment.DeployedStorage
+import kieker.model.analysismodel.execution.StorageDataflow
+import kieker.model.analysismodel.type.OperationType
+
+import static extension kieker.architecture.visualization.utils.DebugUtils.*
 
 /**
  * Generating a display model from the architecture model.
@@ -67,54 +67,78 @@ class DisplayModelBuilder {
 		assemblyComponents.filter[!containedComponents.contains(it)].forEach[component |
 			components += createComponent(component, invocations, storages, dataflows, null)
 		]
+
+//		components.print("Initial")
 				
 		components.forEach[it.linkPort]
 				
+//		components.print("Linked Ports")
+				
 		components.forEach[it.moveLinksUp]
-		
+					
+		components.print("Moved Up Ports")
+					
 		return components
 	}
 	
-	private def void moveLinksUp(Component parent) {
-		parent.children.forEach[child |
-			child.children?.forEach[it.moveLinksUp]			
-			child.providedPorts.values().filter[it.requiringPorts.exists[it.component.parent !== parent]].
-				forEach[providedPort |
-					// move level up
-					val derivedProvidedPort = new ProvidedPort(providedPort.label, providedPort, parent, providedPort.portType)
-					parent.providedPorts.put(derivedProvidedPort.label, derivedProvidedPort)
-										
-					val removingRequiredPorts = new HashSet<RequiredPort>
-					providedPort.requiringPorts.filter[it.component.parent !== parent].forEach[
-						it.providedPort = derivedProvidedPort
-						removingRequiredPorts +=  it
-					]
-					removingRequiredPorts.forEach[providedPort.requiringPorts.remove(it)]
-			]
+	
+	private def void moveLinksUp(Component component) {
+		component.children.forEach[child |
+			child.moveLinksUp
+			child.moveProvidedLinksUp()	
+			child.moveRequiredLinksUp(component)
+		]
+	}
+	
+	private def moveProvidedLinksUp(Component component) {
+		component.providedPorts.values().filter[
+			it.requiringPorts.exists[it.component.parent !== component.parent]
+		].forEach[providedPort |
 			
-			child.requiredPorts.values().filter[it.providedPort instanceof ProvidedPort && it.providedPort.component.parent !== parent].
-			forEach[requiredPort |
+			val outerProvidedPort = if (component.parent.providedPorts.get(providedPort.label) === null) {
 				// move level up
-				val existingParentRequiredPort = parent.requiredPorts.get(requiredPort.label)
-				val providedPort = requiredPort.providedPort
-				if (existingParentRequiredPort === null) {
-					val derivedRequiredPort = new RequiredPort(requiredPort.label, requiredPort, parent, requiredPort.portType)
-					parent.requiredPorts.put(derivedRequiredPort.label, derivedRequiredPort)
-					derivedRequiredPort.providedPort = providedPort
-					if (providedPort instanceof ProvidedPort) {
-						providedPort.requiringPorts.remove(requiredPort)
-						providedPort.requiringPorts.add(derivedRequiredPort)
-					}
-					requiredPort.providedPort = derivedRequiredPort
-				} else {
-					if (providedPort instanceof ProvidedPort) {
-						providedPort.requiringPorts.remove(requiredPort)
-						providedPort.requiringPorts.add(existingParentRequiredPort)
-					}
-					requiredPort.providedPort = existingParentRequiredPort
-					
-				}				
+				val derivedProvidedPort = new ProvidedPort(providedPort.label, providedPort, component.parent, providedPort.portType)
+				component.parent.providedPorts.put(derivedProvidedPort.label, derivedProvidedPort)
+				derivedProvidedPort
+			} else {
+				component.parent.providedPorts.get(providedPort.label)
+			}
+			
+			val removingRequiredPorts = new HashSet<RequiredPort>
+			providedPort.requiringPorts.filter[
+				it.component.parent !== component.parent
+			].forEach[
+				it.providedPort = outerProvidedPort
+				removingRequiredPorts +=  it
 			]
+			removingRequiredPorts.forEach[providedPort.requiringPorts.remove(it)]
+		]
+	}
+	
+	private def moveRequiredLinksUp(Component component, Component parent) {
+		component.requiredPorts.values().filter[
+			it.providedPort instanceof ProvidedPort && it.providedPort.component.parent !== parent
+		].forEach[requiredPort |
+			// move level up
+			val existingParentRequiredPort = parent.requiredPorts.get(requiredPort.label)
+			val providedPort = requiredPort.providedPort
+			if (existingParentRequiredPort === null) {
+				val derivedRequiredPort = new RequiredPort(requiredPort.label, requiredPort, parent, requiredPort.portType)
+				parent.requiredPorts.put(derivedRequiredPort.label, derivedRequiredPort)
+				derivedRequiredPort.providedPort = providedPort
+				if (providedPort instanceof ProvidedPort) {
+					providedPort.requiringPorts.remove(requiredPort)
+					providedPort.requiringPorts.add(derivedRequiredPort)
+				}
+				requiredPort.providedPort = derivedRequiredPort
+			} else {
+				if (providedPort instanceof ProvidedPort) {
+					providedPort.requiringPorts.remove(requiredPort)
+					providedPort.requiringPorts.add(existingParentRequiredPort)
+					existingParentRequiredPort.derivedFrom.add(requiredPort)
+				}
+				requiredPort.providedPort = existingParentRequiredPort
+			}				
 		]
 	}
 		
@@ -175,8 +199,13 @@ class DisplayModelBuilder {
 		/** Operation Dataflow. */
 		assemblyComponent.operations.values.
 			filter[operation | !processedProvidedOperations.exists[it === operation]].
-			filter[operation | dataflows.exists[it.target.assemblyOperation === operation && 
-				it.source.assemblyOperation.component !== assemblyComponent
+			filter[operation | dataflows.exists[
+				(it.direction.isWrite &&
+				it.target.assemblyOperation === operation && 
+				it.source.assemblyOperation.component !== assemblyComponent) ||
+				(it.direction.isRead &&
+				it.source.assemblyOperation === operation && 
+				it.target.assemblyOperation.component !== assemblyComponent)
 			]].
 			forEach[
 				val signature = it.operationType.signature
@@ -440,38 +469,7 @@ class DisplayModelBuilder {
 		]
 		component.children?.forEach[it.linkPort]
 	}
-	
-	private def String requiredSourceLabel(RequiredPort port) {
-		val derivedFrom = port.derivedFrom
-		derivedFrom.map[derived |
-		val label = port.label
-		switch(derived) {
-			OperationDataflow: {
-				val value = derived.source.assemblyOperation.operationType.signature
-				if (value.equals(label))
-					return derived.target.assemblyOperation.operationType.signature
-				else
-					return value
-			}
-			StorageDataflow:  {
-				val value = derived.storage.assemblyStorage.storageType.name
-				if (value.equals(label))
-					return derived.code.assemblyOperation.operationType.signature
-				else
-					return value
-			}
-			AggregatedInvocation:  {
-				val value = derived.source.assemblyOperation.operationType.signature
-				if (value.equals(label))
-					return derived.target.assemblyOperation.operationType.signature
-				else
-					return value
-			}
-			AssemblyRequiredInterface: "requires " + derived.requiredInterfaceType.requires.signature
-		}
-		].join(", ")
-	}
-	
+		
 	private def linkAssemblyRequiredInterface(RequiredPort requiredPort, AssemblyRequiredInterface assemblyRequiredInterface) {
 //		System.err.printf("require %s\n", assemblyRequiredInterface.requiredInterfaceType.requires.signature)
 		val providedPort = providedPortInterfaceMap.get(assemblyRequiredInterface.requires)
@@ -498,7 +496,10 @@ class DisplayModelBuilder {
 				providedPort.requiringPorts += requiredPort
 				requiredPort.providedPort = providedPort
 			} else {
-				System.err.println("ERROR: DisplayModelBuilder link port (OperationDataflow) no provided port for " + operationDataflow.target.assemblyOperation.fqn + "  required port: " + requiredPort.label)					
+				operationProvidedPort.keySet.forEach[
+					System.err.println(">> " + it.fqn)
+				]
+				System.err.println("ERROR: DisplayModelBuilder link port (read, OperationDataflow) no provided port for " + operationDataflow.target.assemblyOperation.fqn + "  required port: " + requiredPort.label)					
 			}
 		}
 		if (operationDataflow.direction.isWrite) {
@@ -508,7 +509,7 @@ class DisplayModelBuilder {
 				providedPort.requiringPorts += requiredPort
 				requiredPort.providedPort = providedPort
 			} else {
-				System.err.println("ERROR: DisplayModelBuilder link port (OperationDataflow) no provided port for " + operationDataflow.target.assemblyOperation.fqn + "  required port: " + requiredPort.label)					
+				System.err.println("ERROR: DisplayModelBuilder link port (write, OperationDataflow) no provided port for " + operationDataflow.target.assemblyOperation.fqn + "  required port: " + requiredPort.label)					
 			}
 		}
 	}
@@ -545,21 +546,5 @@ class DisplayModelBuilder {
 		}
 		if (requiredPort.providedPort === null)
 			System.err.println("ERROR: DisplayModelBuilder requiredPort " + requiredPort.label + " has no providedPort")
-	}
-
-	private def fqn(AssemblyStorage storage) {
-		storage.component.signature + "::" + storage.storageType.name
-	}
-
-	private def fqn(AssemblyOperation op) {
-		op.component.signature + "::" + op.operationType.signature
-	}
-	
-	private def fqn(DeployedOperation op) {
-		op.assemblyOperation.fqn
-	}
-	
-	private def fqn(DeployedStorage storage) {
-		storage.assemblyStorage.component.signature + "::" + storage.assemblyStorage.storageType.name
 	}
 }

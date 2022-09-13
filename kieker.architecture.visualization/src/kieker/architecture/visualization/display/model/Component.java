@@ -9,8 +9,6 @@ import java.util.Map;
 import java.util.Set;
 
 import kieker.model.analysismodel.assembly.AssemblyComponent;
-import java.util.Collection;
-import kieker.model.analysismodel.execution.AggregatedInvocation;
 
 /**
  * @author Reiner Jung
