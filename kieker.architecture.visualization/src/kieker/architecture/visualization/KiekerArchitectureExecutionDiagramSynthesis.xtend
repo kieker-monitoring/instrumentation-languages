@@ -150,14 +150,26 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 	 
 	def createLinkCallOperation2RequiredPort(Component component, Collection<AggregatedInvocation> invocations) {
 		val assemblyComponent = component.derivedFrom.get(0)
-		invocations.filter[
+		val controlFlows = invocations.filter[
 			it.source.component.assemblyComponent === assemblyComponent && // source must belong to this component
 			it.target.component.assemblyComponent !== assemblyComponent // target must be outside, otherwise there is no required port
-		].forEach[invocation |
-			val requiredPort = component.requiredPorts.values.findFirst[it.derivedFrom === invocation]
-			val source = object2NodePortMap.get(invocation.source.assemblyOperation)
-			val target = object2NodePortMap.get(requiredPort)
-			createConnectionEdge(source, target, CALL_FG_COLOR)
+		]
+		component.requiredPorts.values().forEach[requiredPort |
+			val controlFlow = controlFlows.findFirst[requiredPort.derivedFrom.contains(it)]
+			if (controlFlow !== null) {
+				val source = object2NodePortMap.get(controlFlow.source.assemblyOperation)
+				val target = object2NodePortMap.get(requiredPort)
+				if (source === null) {
+					System.err.printf("ERROR: source not found for %s\n", 
+						controlFlow.source.assemblyOperation.operationType.signature
+					)				
+				}
+				if (target === null) {
+					System.err.printf("ERROR: target not found for %s\n", requiredPort.label)
+				}
+				if (source !== null && target !== null)
+					createConnectionEdge(source, target, CALL_FG_COLOR)
+			}
 		]
 	}
 	

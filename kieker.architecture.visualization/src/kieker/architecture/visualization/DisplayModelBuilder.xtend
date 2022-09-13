@@ -67,17 +67,11 @@ class DisplayModelBuilder {
 		assemblyComponents.filter[!containedComponents.contains(it)].forEach[component |
 			components += createComponent(component, invocations, storages, dataflows, null)
 		]
-
-//		components.print("Initial")
 				
 		components.forEach[it.linkPort]
-				
-//		components.print("Linked Ports")
-				
+								
 		components.forEach[it.moveLinksUp]
-					
-		components.print("Moved Up Ports")
-					
+										
 		return components
 	}
 	
