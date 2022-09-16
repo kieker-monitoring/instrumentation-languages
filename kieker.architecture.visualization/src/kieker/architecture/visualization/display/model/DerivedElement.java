@@ -3,8 +3,8 @@
  */
 package kieker.architecture.visualization.display.model;
 
-import java.util.ArrayList;
-import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * @author Reiner Jung
@@ -13,15 +13,16 @@ import java.util.Collection;
  */
 public class DerivedElement<T extends Object> {
 
-	private final Collection<T> derivedFrom = new ArrayList<>();
+	private final Set<T> derivedFrom = new HashSet<>();
 	private final String label;
 	
 	public DerivedElement(String label, T derivedFrom) {
 		this.label = label;
-		this.derivedFrom.add(derivedFrom);
+		if (derivedFrom != null)
+			this.derivedFrom.add(derivedFrom);
 	}
 	
-	public Collection<T> getDerivedFrom() {
+	public Set<T> getDerivedFrom() {
 		return this.derivedFrom;
 	}
 	

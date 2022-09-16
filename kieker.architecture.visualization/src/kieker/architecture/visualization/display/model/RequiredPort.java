@@ -3,6 +3,9 @@
  */
 package kieker.architecture.visualization.display.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import kieker.model.analysismodel.assembly.AssemblyRequiredInterface;
 
 /**
@@ -17,9 +20,15 @@ import kieker.model.analysismodel.assembly.AssemblyRequiredInterface;
 public class RequiredPort extends Port {
 
 	private Port providedPort;
+	private Set<RequiredPort> derivedFromPorts = new HashSet<>();
 	
 	public RequiredPort(String label, Object derivedFrom, Component component, EPortType portType) {
 		super(label, derivedFrom, component, portType);
+	}
+	
+	public RequiredPort(RequiredPort derivedFromPort, Component component, EPortType portType) {
+		super(derivedFromPort.getLabel(), null, component, portType);
+		this.derivedFromPorts.add(derivedFromPort);
 	}
 		
 	public Port getProvidedPort() {
@@ -29,11 +38,16 @@ public class RequiredPort extends Port {
 	public void setProvidedPort(Port providedPort) {
 		this.providedPort = providedPort;
 	}
+		
+	public Set<RequiredPort> getDerivedFromPorts() {
+		return derivedFromPorts;
+	}
 	
 	public String print(String offset) {
 		if (providedPort != null) {
 			StringBuilder build = new StringBuilder();
 			build.append(String.format("%sR %s -> %s:%s {\n", offset, this.getLabel(), this.providedPort.getComponent().getLabel(), this.providedPort.getLabel()));
+			// TODO this is broken
 			if (this.getDerivedFrom() instanceof AssemblyRequiredInterface) {
 				AssemblyRequiredInterface iface = (AssemblyRequiredInterface)this.getDerivedFrom();
 				iface.getRequires().getProvidedInterfaceType().getProvidedOperationTypes().values().forEach(op -> build.append(String.format("%s  %s\n", offset, op.getSignature())));
@@ -43,4 +57,5 @@ public class RequiredPort extends Port {
 		} else
 			return String.format("%sR %s -> %s:%s\n", offset, this.getLabel(),"---", "---");
 	}
+
 }

@@ -11,34 +11,68 @@ import kieker.model.analysismodel.execution.OperationDataflow
 import kieker.model.analysismodel.execution.StorageDataflow
 import kieker.model.analysismodel.execution.AggregatedInvocation
 import kieker.model.analysismodel.assembly.AssemblyRequiredInterface
+import java.io.PrintStream
+import java.nio.file.Files
+import java.nio.file.Paths
 
 class DebugUtils {
 	
+	static PrintStream printStream
+	
 	static def void print(Set<Component> components, String label) {
-		System.err.printf("-- %s ----------------\n",label)
+		printStream = new PrintStream(Files.newOutputStream(Paths.get(label + ".txt")))
+		printStream.printf("-- %s ----------------\n",label)
 		components.forEach[it.printComponent("")]
-		System.err.printf("-- %s ----------------\n",label)
+		printStream.printf("-- %s ----------------\n",label)
+		printStream.close
 	}
 		
 	static def void printComponent(Component component, String prefix) {
-		System.err.printf("%sComponent %s {\n", prefix, component.label)
+		printStream.printf("%sComponent %s {\n", prefix, component.label)
 		component.providedPorts.values.forEach[providedPort |
-			System.err.printf("%s  provided %s <- %s\n", prefix, providedPort.label, 
-				providedPort.requiringPorts.map["required by " + it.label + " of " + it.requiredSourceLabel].join(", ")
-			)
+			printStream.printf("%s  provided %s <-\n", prefix, providedPort.label)
+			providedPort.requiringPorts.forEach[
+				printStream.printf("%s    required by %s::%s\n", prefix, it.component.fqn, it.label)
+			]
 		]
 		component.requiredPorts.values.forEach[
-			System.err.printf("%s  required %s -> %s\n", prefix, it.label, it.requiredSourceLabel)
+			if (it.providedPort !== null)
+				printStream.printf("%s  required label=%s -> %s::%s\n", prefix, it.label, it.providedPort.component.fqn, it.providedPort.label)
+			else
+				printStream.printf("%s  required label=%s -> not linked\n", prefix, it.label)				
 		]
 		component.children.forEach[it.printComponent(prefix + "    ")]
-		System.err.printf("%s}\n",prefix)
+		printStream.printf("%s}\n",prefix)
 	}
 	
-		def static String requiredSourceLabel(RequiredPort port) {
+	private static def String fqn(Component component) {
+		if (component.parent !== null)
+			return String.format("%s.%s", component.parent.fqn, component.label)
+		else
+			component.label
+	}
+	
+	def static String requiredSourceLabel(RequiredPort port) {
 		val componentLabel = port.component.label
 		val derivedFrom = port.derivedFrom
+		if (port.derivedFromPorts.size() > 0) {
+			port.derivedFromPorts.map[derivedFromPort |
+				"RQP " + derivedFromPort.component.label + "#" + 
+				derivedFromPort.requiredSourceLabel + " ** " +
+				if (derivedFrom.size() > 0)
+					derivedFrom.createLabels(componentLabel, port.label)
+				else
+					""
+			].join(", ")
+		} else
+			if (derivedFrom.size() > 0)
+				derivedFrom.createLabels(componentLabel, port.label)
+			else
+				"<nothing>"
+	}
+	
+	def private static String createLabels(Set<Object> derivedFrom, String componentLabel, String label) {
 		derivedFrom.map[derived |
-			val label = port.label
 			componentLabel + ":" + switch(derived) {
 				OperationDataflow: {
 					val value = derived.source.assemblyOperation.operationType.signature
@@ -62,7 +96,7 @@ class DebugUtils {
 						value
 				}
 				AssemblyRequiredInterface: "requires " + derived.requiredInterfaceType.requires.signature
-				RequiredPort: "RQP " + derived.component.label + "#" + derived.requiredSourceLabel
+				case derived === null: "ERROR null element"
 				default: "ERROR type " + derived.class
 			}
 		].join(", ")

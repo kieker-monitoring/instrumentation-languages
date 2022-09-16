@@ -15,9 +15,20 @@ import java.util.Set;
 public class ProvidedPort extends Port {
 	
 	Set<RequiredPort> requiringPorts = new HashSet<>();
-
+	ProvidedPort derivedFromPort;
+	
 	public ProvidedPort(String label, Object derivedFrom, Component component, EPortType portType) {
 		super(label, derivedFrom, component, portType);
+		this.derivedFromPort = null;
+	}
+	
+	public ProvidedPort(ProvidedPort derivedFromPort, Component component, EPortType portType) {
+		super(derivedFromPort.getLabel(), null, component, portType);
+		this.derivedFromPort = derivedFromPort;
+	}
+	
+	public ProvidedPort getDerivedFromPort() {
+		return derivedFromPort;
 	}
 	
 	public Set<RequiredPort> getRequiringPorts() {
