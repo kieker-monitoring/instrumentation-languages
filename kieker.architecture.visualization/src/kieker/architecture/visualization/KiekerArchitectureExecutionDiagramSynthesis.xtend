@@ -44,9 +44,10 @@ import org.eclipse.elk.core.options.Direction
 import org.eclipse.elk.core.options.PortConstraints
 import org.eclipse.elk.core.options.PortSide
 import org.eclipse.emf.ecore.EObject
+import java.util.ArrayList
+import kieker.architecture.visualization.display.DisplayModelBuilder
 
 import static extension kieker.architecture.visualization.utils.ModelUtils.*
-import java.util.ArrayList
 
 /**
  * @author Reiner Jung

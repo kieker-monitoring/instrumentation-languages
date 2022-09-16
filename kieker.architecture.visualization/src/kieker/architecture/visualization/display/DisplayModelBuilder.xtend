@@ -13,13 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package kieker.architecture.visualization
+package kieker.architecture.visualization.display
 
 import java.util.Collection
 import kieker.model.analysismodel.assembly.AssemblyComponent
 import kieker.model.analysismodel.execution.ExecutionModel
-
-import static extension kieker.architecture.visualization.utils.DebugUtils.*
 
 /**
  * Generating a display model from the architecture model.
@@ -36,19 +34,13 @@ class DisplayModelBuilder {
 		
 		val componentCreator = new DisplayModelComponentCreator(assemblyComponents, operationCalls, storageDataflows, operationDataflows)		
 		val components = componentCreator.create()
-		
-//		components.print("created")
-		
+				
 		val componentLinker = new DisplayModelLinker(componentCreator, components)
 		componentLinker.link
-
-//		components.print("linked")
 		
 		val componentLinkMover = new DisplayModelLinkMover(components)
 		componentLinkMover.moveUp()
-		
-//		components.print("moved")
-			
+					
 		return components
 	}
 }
