@@ -31,13 +31,13 @@ public interface ExecutionFactory extends EFactory {
 	ExecutionModel createExecutionModel();
 
 	/**
-	 * Returns a new object of class '<em>Aggregated Invocation</em>'.
+	 * Returns a new object of class '<em>Invocation</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Aggregated Invocation</em>'.
+	 * @return a new object of class '<em>Invocation</em>'.
 	 * @generated
 	 */
-	AggregatedInvocation createAggregatedInvocation();
+	Invocation createInvocation();
 
 	/**
 	 * Returns a new object of class '<em>Storage Dataflow</em>'.

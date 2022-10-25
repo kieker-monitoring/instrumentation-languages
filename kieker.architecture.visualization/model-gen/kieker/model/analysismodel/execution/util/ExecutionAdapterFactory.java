@@ -77,12 +77,12 @@ public class ExecutionAdapterFactory extends AdapterFactoryImpl {
 				return createExecutionModelAdapter();
 			}
 			@Override
-			public Adapter caseDeployedOperationsPairToAggregatedInvocationMapEntry(Map.Entry<Tuple<DeployedOperation, DeployedOperation>, AggregatedInvocation> object) {
-				return createDeployedOperationsPairToAggregatedInvocationMapEntryAdapter();
+			public Adapter caseDeployedOperationsPairToInvocationMapEntry(Map.Entry<Tuple<DeployedOperation, DeployedOperation>, Invocation> object) {
+				return createDeployedOperationsPairToInvocationMapEntryAdapter();
 			}
 			@Override
-			public Adapter caseAggregatedInvocation(AggregatedInvocation object) {
-				return createAggregatedInvocationAdapter();
+			public Adapter caseInvocation(Invocation object) {
+				return createInvocationAdapter();
 			}
 			@Override
 			public Adapter caseStorageDataflow(StorageDataflow object) {
@@ -139,7 +139,7 @@ public class ExecutionAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link java.util.Map.Entry <em>Deployed Operations Pair To Aggregated Invocation Map Entry</em>}'.
+	 * Creates a new adapter for an object of class '{@link java.util.Map.Entry <em>Deployed Operations Pair To Invocation Map Entry</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
@@ -148,21 +148,21 @@ public class ExecutionAdapterFactory extends AdapterFactoryImpl {
 	 * @see java.util.Map.Entry
 	 * @generated
 	 */
-	public Adapter createDeployedOperationsPairToAggregatedInvocationMapEntryAdapter() {
+	public Adapter createDeployedOperationsPairToInvocationMapEntryAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link kieker.model.analysismodel.execution.AggregatedInvocation <em>Aggregated Invocation</em>}'.
+	 * Creates a new adapter for an object of class '{@link kieker.model.analysismodel.execution.Invocation <em>Invocation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see kieker.model.analysismodel.execution.AggregatedInvocation
+	 * @see kieker.model.analysismodel.execution.Invocation
 	 * @generated
 	 */
-	public Adapter createAggregatedInvocationAdapter() {
+	public Adapter createInvocationAdapter() {
 		return null;
 	}
 

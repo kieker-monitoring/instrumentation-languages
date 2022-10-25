@@ -19,7 +19,7 @@ import java.util.Set
 import kieker.architecture.visualization.display.model.Component
 import java.util.HashSet
 import java.util.Collection
-import kieker.model.analysismodel.execution.AggregatedInvocation
+import kieker.model.analysismodel.execution.Invocation
 import kieker.model.analysismodel.execution.StorageDataflow
 import kieker.model.analysismodel.execution.OperationDataflow
 import kieker.model.analysismodel.assembly.AssemblyComponent
@@ -51,7 +51,7 @@ class DisplayModelComponentCreator {
 	
 	val Collection<AssemblyComponent> assemblyComponents
 	
-	val Collection<AggregatedInvocation> operationCalls
+	val Collection<Invocation> operationCalls
 	
 	val Collection<StorageDataflow> storageDataflows
 	
@@ -59,7 +59,7 @@ class DisplayModelComponentCreator {
 
 	
 	new(Collection<AssemblyComponent> assemblyComponents,
-		Collection<AggregatedInvocation> operationCalls, 
+		Collection<Invocation> operationCalls, 
 		Collection<StorageDataflow> storageDataflows, Collection<OperationDataflow> operationDataflows) { 
 		this.assemblyComponents = assemblyComponents;
 		this.operationCalls = operationCalls;
@@ -114,13 +114,13 @@ class DisplayModelComponentCreator {
 	 * Create provided ports for calls.
 	 */
 	private def void createProvidedPorts4OperationCalls(Component component, AssemblyComponent assemblyComponent, 
-		Collection<AggregatedInvocation> operationCalls, Set<AssemblyOperation> processedProvidedOperations
+		Collection<Invocation> operationCalls, Set<AssemblyOperation> processedProvidedOperations
 	) {
 		/** Operation Call. */
 		assemblyComponent.operations.values.
 			filter[operation | !processedProvidedOperations.exists[it === operation]].
-			filter[operation | operationCalls.exists[it.target.assemblyOperation === operation && 
-				it.source.assemblyOperation.component !== assemblyComponent
+			filter[operation | operationCalls.exists[it.callee.assemblyOperation === operation && 
+				it.caller.assemblyOperation.component !== assemblyComponent
 			]].
 			forEach[
 				val port = new ProvidedPort(it.operationType.signature, it, component, EPortType.OPERATION_CALL)
@@ -141,11 +141,11 @@ class DisplayModelComponentCreator {
 			filter[operation | !processedProvidedOperations.exists[it === operation]].
 			filter[operation | operationDataflows.exists[
 				(it.direction.isWrite &&
-				it.target.assemblyOperation === operation && 
-				it.source.assemblyOperation.component !== assemblyComponent) ||
+				it.callee.assemblyOperation === operation && 
+				it.caller.assemblyOperation.component !== assemblyComponent) ||
 				(it.direction.isRead &&
-				it.source.assemblyOperation === operation && 
-				it.target.assemblyOperation.component !== assemblyComponent)
+				it.caller.assemblyOperation === operation && 
+				it.callee.assemblyOperation.component !== assemblyComponent)
 			]].
 			forEach[
 				val signature = it.operationType.signature
@@ -245,14 +245,14 @@ class DisplayModelComponentCreator {
 	 * Create required operation interfaces based on remaining external calls.
 	 */	
 	private def createRequiredPorts4OperationCalls(Component component, AssemblyComponent assemblyComponent, 
-		Collection<AggregatedInvocation> operationCalls, Set<AssemblyOperation> processedRequiredCallers
+		Collection<Invocation> operationCalls, Set<AssemblyOperation> processedRequiredCallers
 	) {
 		operationCalls.filter[
-			it.source.assemblyOperation.component === assemblyComponent && // only check calls originating from this component
-			it.target.assemblyOperation.component !== assemblyComponent // only check calls that end in another component
+			it.caller.assemblyOperation.component === assemblyComponent && // only check calls originating from this component
+			it.callee.assemblyOperation.component !== assemblyComponent // only check calls that end in another component
 			// TODO maybe check whether the caller is not part of an interface
 		].forEach[call |
-			component.createOrModifyRequiredPort4Operations(call, call.source.assemblyOperation.operationType.signature, EPortType.OPERATION_CALL)
+			component.createOrModifyRequiredPort4Operations(call, call.caller.assemblyOperation.operationType.signature, EPortType.OPERATION_CALL)
 		]
 	}
 
@@ -267,30 +267,30 @@ class DisplayModelComponentCreator {
 	private def createRequiredPorts4Operation2OperationDataflows(Component component, AssemblyComponent assemblyComponent, 
 		Collection<OperationDataflow> operationDataflows, Set<AssemblyOperation> processedRequiredCallers
 	) {	
-		/** normalize dataflow write: source -> target, read: target -> source */
+		/** normalize dataflow write: caller -> callee, read: callee -> caller */
 		
 		/** Operation to operation dataflow (write). */
 		operationDataflows.filter[
 			it.direction.isWrite &&
-			it.source.assemblyOperation.component === assemblyComponent && // check only dataflows originating in this component
-			it.target.assemblyOperation.component !== assemblyComponent // check only dataflows that end in another component
+			it.caller.assemblyOperation.component === assemblyComponent && // check only dataflows originating in this component
+			it.callee.assemblyOperation.component !== assemblyComponent // check only dataflows that end in another component
 		].forEach[dataflow |
 //			System.err.printf("create required port for %s op->op dataflow from %s to %s\n", component.label, 
-//				dataflow.source.assemblyOperation.operationType.signature, dataflow.target.assemblyOperation.operationType.signature
+//				dataflow.caller.assemblyOperation.operationType.signature, dataflow.callee.assemblyOperation.operationType.signature
 //			)
-			component.createOrModifyRequiredPort4Operations(dataflow, dataflow.target.assemblyOperation.operationType.signature, EPortType.OPERATION_DATAFLOW)
+			component.createOrModifyRequiredPort4Operations(dataflow, dataflow.callee.assemblyOperation.operationType.signature, EPortType.OPERATION_DATAFLOW)
 		]
 		
 		/** Operation to operation dataflow (read). */
 		operationDataflows.filter[
 			it.direction.isRead &&
-			it.target.assemblyOperation.component === assemblyComponent && // check only dataflows originating in this component
-			it.source.assemblyOperation.component !== assemblyComponent // check only dataflows originating in this component
+			it.callee.assemblyOperation.component === assemblyComponent && // check only dataflows originating in this component
+			it.caller.assemblyOperation.component !== assemblyComponent // check only dataflows originating in this component
 		].forEach[dataflow |
 //			System.err.printf("create required port for %s op->op dataflow from %s to %s\n", component.label, 
-//				dataflow.target.assemblyOperation.operationType.signature, dataflow.source.assemblyOperation.operationType.signature
+//				dataflow.callee.assemblyOperation.operationType.signature, dataflow.caller.assemblyOperation.operationType.signature
 //			)
-			component.createOrModifyRequiredPort4Operations(dataflow, dataflow.source.assemblyOperation.operationType.signature, EPortType.OPERATION_DATAFLOW)
+			component.createOrModifyRequiredPort4Operations(dataflow, dataflow.caller.assemblyOperation.operationType.signature, EPortType.OPERATION_DATAFLOW)
 		]
 	}
 		

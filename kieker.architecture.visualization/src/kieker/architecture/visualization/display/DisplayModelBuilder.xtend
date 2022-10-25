@@ -28,9 +28,9 @@ import kieker.model.analysismodel.execution.ExecutionModel
 class DisplayModelBuilder {
 		
 	def create(Collection<AssemblyComponent> assemblyComponents, ExecutionModel executionModel) {
-		val operationCalls = executionModel.aggregatedInvocations.values
-		val storageDataflows = executionModel.storageDataflow.values
-		val operationDataflows = executionModel.operationDataflow.values
+		val operationCalls = executionModel.invocations.values
+		val storageDataflows = executionModel.storageDataflows.values
+		val operationDataflows = executionModel.operationDataflows.values
 		
 		val componentCreator = new DisplayModelComponentCreator(assemblyComponents, operationCalls, storageDataflows, operationDataflows)		
 		val components = componentCreator.create()

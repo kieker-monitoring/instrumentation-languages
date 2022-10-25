@@ -69,31 +69,31 @@ public interface ExecutionPackage extends EPackage {
 	int EXECUTION_MODEL = 0;
 
 	/**
-	 * The feature id for the '<em><b>Aggregated Invocations</b></em>' map.
+	 * The feature id for the '<em><b>Invocations</b></em>' map.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXECUTION_MODEL__AGGREGATED_INVOCATIONS = 0;
+	int EXECUTION_MODEL__INVOCATIONS = 0;
 
 	/**
-	 * The feature id for the '<em><b>Storage Dataflow</b></em>' map.
+	 * The feature id for the '<em><b>Storage Dataflows</b></em>' map.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXECUTION_MODEL__STORAGE_DATAFLOW = 1;
+	int EXECUTION_MODEL__STORAGE_DATAFLOWS = 1;
 
 	/**
-	 * The feature id for the '<em><b>Operation Dataflow</b></em>' map.
+	 * The feature id for the '<em><b>Operation Dataflows</b></em>' map.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXECUTION_MODEL__OPERATION_DATAFLOW = 2;
+	int EXECUTION_MODEL__OPERATION_DATAFLOWS = 2;
 
 	/**
 	 * The number of structural features of the '<em>Model</em>' class.
@@ -114,14 +114,14 @@ public interface ExecutionPackage extends EPackage {
 	int EXECUTION_MODEL_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link kieker.model.analysismodel.execution.impl.DeployedOperationsPairToAggregatedInvocationMapEntryImpl <em>Deployed Operations Pair To Aggregated Invocation Map Entry</em>}' class.
+	 * The meta object id for the '{@link kieker.model.analysismodel.execution.impl.DeployedOperationsPairToInvocationMapEntryImpl <em>Deployed Operations Pair To Invocation Map Entry</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see kieker.model.analysismodel.execution.impl.DeployedOperationsPairToAggregatedInvocationMapEntryImpl
-	 * @see kieker.model.analysismodel.execution.impl.ExecutionPackageImpl#getDeployedOperationsPairToAggregatedInvocationMapEntry()
+	 * @see kieker.model.analysismodel.execution.impl.DeployedOperationsPairToInvocationMapEntryImpl
+	 * @see kieker.model.analysismodel.execution.impl.ExecutionPackageImpl#getDeployedOperationsPairToInvocationMapEntry()
 	 * @generated
 	 */
-	int DEPLOYED_OPERATIONS_PAIR_TO_AGGREGATED_INVOCATION_MAP_ENTRY = 1;
+	int DEPLOYED_OPERATIONS_PAIR_TO_INVOCATION_MAP_ENTRY = 1;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -130,7 +130,7 @@ public interface ExecutionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DEPLOYED_OPERATIONS_PAIR_TO_AGGREGATED_INVOCATION_MAP_ENTRY__VALUE = 0;
+	int DEPLOYED_OPERATIONS_PAIR_TO_INVOCATION_MAP_ENTRY__VALUE = 0;
 
 	/**
 	 * The feature id for the '<em><b>Key</b></em>' containment reference.
@@ -139,71 +139,71 @@ public interface ExecutionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DEPLOYED_OPERATIONS_PAIR_TO_AGGREGATED_INVOCATION_MAP_ENTRY__KEY = 1;
+	int DEPLOYED_OPERATIONS_PAIR_TO_INVOCATION_MAP_ENTRY__KEY = 1;
 
 	/**
-	 * The number of structural features of the '<em>Deployed Operations Pair To Aggregated Invocation Map Entry</em>' class.
+	 * The number of structural features of the '<em>Deployed Operations Pair To Invocation Map Entry</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DEPLOYED_OPERATIONS_PAIR_TO_AGGREGATED_INVOCATION_MAP_ENTRY_FEATURE_COUNT = 2;
+	int DEPLOYED_OPERATIONS_PAIR_TO_INVOCATION_MAP_ENTRY_FEATURE_COUNT = 2;
 
 	/**
-	 * The number of operations of the '<em>Deployed Operations Pair To Aggregated Invocation Map Entry</em>' class.
+	 * The number of operations of the '<em>Deployed Operations Pair To Invocation Map Entry</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DEPLOYED_OPERATIONS_PAIR_TO_AGGREGATED_INVOCATION_MAP_ENTRY_OPERATION_COUNT = 0;
+	int DEPLOYED_OPERATIONS_PAIR_TO_INVOCATION_MAP_ENTRY_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link kieker.model.analysismodel.execution.impl.AggregatedInvocationImpl <em>Aggregated Invocation</em>}' class.
+	 * The meta object id for the '{@link kieker.model.analysismodel.execution.impl.InvocationImpl <em>Invocation</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see kieker.model.analysismodel.execution.impl.AggregatedInvocationImpl
-	 * @see kieker.model.analysismodel.execution.impl.ExecutionPackageImpl#getAggregatedInvocation()
+	 * @see kieker.model.analysismodel.execution.impl.InvocationImpl
+	 * @see kieker.model.analysismodel.execution.impl.ExecutionPackageImpl#getInvocation()
 	 * @generated
 	 */
-	int AGGREGATED_INVOCATION = 2;
+	int INVOCATION = 2;
 
 	/**
-	 * The feature id for the '<em><b>Source</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AGGREGATED_INVOCATION__SOURCE = 0;
-
-	/**
-	 * The feature id for the '<em><b>Target</b></em>' reference.
+	 * The feature id for the '<em><b>Caller</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int AGGREGATED_INVOCATION__TARGET = 1;
+	int INVOCATION__CALLER = 0;
 
 	/**
-	 * The number of structural features of the '<em>Aggregated Invocation</em>' class.
+	 * The feature id for the '<em><b>Callee</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int AGGREGATED_INVOCATION_FEATURE_COUNT = 2;
+	int INVOCATION__CALLEE = 1;
 
 	/**
-	 * The number of operations of the '<em>Aggregated Invocation</em>' class.
+	 * The number of structural features of the '<em>Invocation</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int AGGREGATED_INVOCATION_OPERATION_COUNT = 0;
+	int INVOCATION_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Invocation</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INVOCATION_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link kieker.model.analysismodel.execution.impl.StorageDataflowImpl <em>Storage Dataflow</em>}' class.
@@ -381,22 +381,22 @@ public interface ExecutionPackage extends EPackage {
 	int OPERATION_DATAFLOW = 6;
 
 	/**
-	 * The feature id for the '<em><b>Source</b></em>' reference.
+	 * The feature id for the '<em><b>Caller</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATION_DATAFLOW__SOURCE = 0;
+	int OPERATION_DATAFLOW__CALLER = 0;
 
 	/**
-	 * The feature id for the '<em><b>Target</b></em>' reference.
+	 * The feature id for the '<em><b>Callee</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATION_DATAFLOW__TARGET = 1;
+	int OPERATION_DATAFLOW__CALLEE = 1;
 
 	/**
 	 * The feature id for the '<em><b>Direction</b></em>' attribute.
@@ -493,50 +493,50 @@ public interface ExecutionPackage extends EPackage {
 	EClass getExecutionModel();
 
 	/**
-	 * Returns the meta object for the map '{@link kieker.model.analysismodel.execution.ExecutionModel#getAggregatedInvocations <em>Aggregated Invocations</em>}'.
+	 * Returns the meta object for the map '{@link kieker.model.analysismodel.execution.ExecutionModel#getInvocations <em>Invocations</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the map '<em>Aggregated Invocations</em>'.
-	 * @see kieker.model.analysismodel.execution.ExecutionModel#getAggregatedInvocations()
+	 * @return the meta object for the map '<em>Invocations</em>'.
+	 * @see kieker.model.analysismodel.execution.ExecutionModel#getInvocations()
 	 * @see #getExecutionModel()
 	 * @generated
 	 */
-	EReference getExecutionModel_AggregatedInvocations();
+	EReference getExecutionModel_Invocations();
 
 	/**
-	 * Returns the meta object for the map '{@link kieker.model.analysismodel.execution.ExecutionModel#getStorageDataflow <em>Storage Dataflow</em>}'.
+	 * Returns the meta object for the map '{@link kieker.model.analysismodel.execution.ExecutionModel#getStorageDataflows <em>Storage Dataflows</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the map '<em>Storage Dataflow</em>'.
-	 * @see kieker.model.analysismodel.execution.ExecutionModel#getStorageDataflow()
+	 * @return the meta object for the map '<em>Storage Dataflows</em>'.
+	 * @see kieker.model.analysismodel.execution.ExecutionModel#getStorageDataflows()
 	 * @see #getExecutionModel()
 	 * @generated
 	 */
-	EReference getExecutionModel_StorageDataflow();
+	EReference getExecutionModel_StorageDataflows();
 
 	/**
-	 * Returns the meta object for the map '{@link kieker.model.analysismodel.execution.ExecutionModel#getOperationDataflow <em>Operation Dataflow</em>}'.
+	 * Returns the meta object for the map '{@link kieker.model.analysismodel.execution.ExecutionModel#getOperationDataflows <em>Operation Dataflows</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the map '<em>Operation Dataflow</em>'.
-	 * @see kieker.model.analysismodel.execution.ExecutionModel#getOperationDataflow()
+	 * @return the meta object for the map '<em>Operation Dataflows</em>'.
+	 * @see kieker.model.analysismodel.execution.ExecutionModel#getOperationDataflows()
 	 * @see #getExecutionModel()
 	 * @generated
 	 */
-	EReference getExecutionModel_OperationDataflow();
+	EReference getExecutionModel_OperationDataflows();
 
 	/**
-	 * Returns the meta object for class '{@link java.util.Map.Entry <em>Deployed Operations Pair To Aggregated Invocation Map Entry</em>}'.
+	 * Returns the meta object for class '{@link java.util.Map.Entry <em>Deployed Operations Pair To Invocation Map Entry</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Deployed Operations Pair To Aggregated Invocation Map Entry</em>'.
+	 * @return the meta object for class '<em>Deployed Operations Pair To Invocation Map Entry</em>'.
 	 * @see java.util.Map.Entry
 	 * @model features="value key" 
-	 *        valueType="kieker.model.analysismodel.execution.AggregatedInvocation" valueContainment="true"
+	 *        valueType="kieker.model.analysismodel.execution.Invocation" valueContainment="true"
 	 *        keyType="kieker.model.analysismodel.execution.Tuple&lt;kieker.model.analysismodel.deployment.DeployedOperation, kieker.model.analysismodel.deployment.DeployedOperation&gt;" keyContainment="true"
 	 * @generated
 	 */
-	EClass getDeployedOperationsPairToAggregatedInvocationMapEntry();
+	EClass getDeployedOperationsPairToInvocationMapEntry();
 
 	/**
 	 * Returns the meta object for the containment reference '{@link java.util.Map.Entry <em>Value</em>}'.
@@ -544,10 +544,10 @@ public interface ExecutionPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Value</em>'.
 	 * @see java.util.Map.Entry
-	 * @see #getDeployedOperationsPairToAggregatedInvocationMapEntry()
+	 * @see #getDeployedOperationsPairToInvocationMapEntry()
 	 * @generated
 	 */
-	EReference getDeployedOperationsPairToAggregatedInvocationMapEntry_Value();
+	EReference getDeployedOperationsPairToInvocationMapEntry_Value();
 
 	/**
 	 * Returns the meta object for the containment reference '{@link java.util.Map.Entry <em>Key</em>}'.
@@ -555,42 +555,42 @@ public interface ExecutionPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Key</em>'.
 	 * @see java.util.Map.Entry
-	 * @see #getDeployedOperationsPairToAggregatedInvocationMapEntry()
+	 * @see #getDeployedOperationsPairToInvocationMapEntry()
 	 * @generated
 	 */
-	EReference getDeployedOperationsPairToAggregatedInvocationMapEntry_Key();
+	EReference getDeployedOperationsPairToInvocationMapEntry_Key();
 
 	/**
-	 * Returns the meta object for class '{@link kieker.model.analysismodel.execution.AggregatedInvocation <em>Aggregated Invocation</em>}'.
+	 * Returns the meta object for class '{@link kieker.model.analysismodel.execution.Invocation <em>Invocation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Aggregated Invocation</em>'.
-	 * @see kieker.model.analysismodel.execution.AggregatedInvocation
+	 * @return the meta object for class '<em>Invocation</em>'.
+	 * @see kieker.model.analysismodel.execution.Invocation
 	 * @generated
 	 */
-	EClass getAggregatedInvocation();
+	EClass getInvocation();
 
 	/**
-	 * Returns the meta object for the reference '{@link kieker.model.analysismodel.execution.AggregatedInvocation#getSource <em>Source</em>}'.
+	 * Returns the meta object for the reference '{@link kieker.model.analysismodel.execution.Invocation#getCaller <em>Caller</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Source</em>'.
-	 * @see kieker.model.analysismodel.execution.AggregatedInvocation#getSource()
-	 * @see #getAggregatedInvocation()
+	 * @return the meta object for the reference '<em>Caller</em>'.
+	 * @see kieker.model.analysismodel.execution.Invocation#getCaller()
+	 * @see #getInvocation()
 	 * @generated
 	 */
-	EReference getAggregatedInvocation_Source();
+	EReference getInvocation_Caller();
 
 	/**
-	 * Returns the meta object for the reference '{@link kieker.model.analysismodel.execution.AggregatedInvocation#getTarget <em>Target</em>}'.
+	 * Returns the meta object for the reference '{@link kieker.model.analysismodel.execution.Invocation#getCallee <em>Callee</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Target</em>'.
-	 * @see kieker.model.analysismodel.execution.AggregatedInvocation#getTarget()
-	 * @see #getAggregatedInvocation()
+	 * @return the meta object for the reference '<em>Callee</em>'.
+	 * @see kieker.model.analysismodel.execution.Invocation#getCallee()
+	 * @see #getInvocation()
 	 * @generated
 	 */
-	EReference getAggregatedInvocation_Target();
+	EReference getInvocation_Callee();
 
 	/**
 	 * Returns the meta object for class '{@link kieker.model.analysismodel.execution.StorageDataflow <em>Storage Dataflow</em>}'.
@@ -733,26 +733,26 @@ public interface ExecutionPackage extends EPackage {
 	EClass getOperationDataflow();
 
 	/**
-	 * Returns the meta object for the reference '{@link kieker.model.analysismodel.execution.OperationDataflow#getSource <em>Source</em>}'.
+	 * Returns the meta object for the reference '{@link kieker.model.analysismodel.execution.OperationDataflow#getCaller <em>Caller</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Source</em>'.
-	 * @see kieker.model.analysismodel.execution.OperationDataflow#getSource()
+	 * @return the meta object for the reference '<em>Caller</em>'.
+	 * @see kieker.model.analysismodel.execution.OperationDataflow#getCaller()
 	 * @see #getOperationDataflow()
 	 * @generated
 	 */
-	EReference getOperationDataflow_Source();
+	EReference getOperationDataflow_Caller();
 
 	/**
-	 * Returns the meta object for the reference '{@link kieker.model.analysismodel.execution.OperationDataflow#getTarget <em>Target</em>}'.
+	 * Returns the meta object for the reference '{@link kieker.model.analysismodel.execution.OperationDataflow#getCallee <em>Callee</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Target</em>'.
-	 * @see kieker.model.analysismodel.execution.OperationDataflow#getTarget()
+	 * @return the meta object for the reference '<em>Callee</em>'.
+	 * @see kieker.model.analysismodel.execution.OperationDataflow#getCallee()
 	 * @see #getOperationDataflow()
 	 * @generated
 	 */
-	EReference getOperationDataflow_Target();
+	EReference getOperationDataflow_Callee();
 
 	/**
 	 * Returns the meta object for the attribute '{@link kieker.model.analysismodel.execution.OperationDataflow#getDirection <em>Direction</em>}'.
@@ -844,38 +844,38 @@ public interface ExecutionPackage extends EPackage {
 		EClass EXECUTION_MODEL = eINSTANCE.getExecutionModel();
 
 		/**
-		 * The meta object literal for the '<em><b>Aggregated Invocations</b></em>' map feature.
+		 * The meta object literal for the '<em><b>Invocations</b></em>' map feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference EXECUTION_MODEL__AGGREGATED_INVOCATIONS = eINSTANCE.getExecutionModel_AggregatedInvocations();
+		EReference EXECUTION_MODEL__INVOCATIONS = eINSTANCE.getExecutionModel_Invocations();
 
 		/**
-		 * The meta object literal for the '<em><b>Storage Dataflow</b></em>' map feature.
+		 * The meta object literal for the '<em><b>Storage Dataflows</b></em>' map feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference EXECUTION_MODEL__STORAGE_DATAFLOW = eINSTANCE.getExecutionModel_StorageDataflow();
+		EReference EXECUTION_MODEL__STORAGE_DATAFLOWS = eINSTANCE.getExecutionModel_StorageDataflows();
 
 		/**
-		 * The meta object literal for the '<em><b>Operation Dataflow</b></em>' map feature.
+		 * The meta object literal for the '<em><b>Operation Dataflows</b></em>' map feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference EXECUTION_MODEL__OPERATION_DATAFLOW = eINSTANCE.getExecutionModel_OperationDataflow();
+		EReference EXECUTION_MODEL__OPERATION_DATAFLOWS = eINSTANCE.getExecutionModel_OperationDataflows();
 
 		/**
-		 * The meta object literal for the '{@link kieker.model.analysismodel.execution.impl.DeployedOperationsPairToAggregatedInvocationMapEntryImpl <em>Deployed Operations Pair To Aggregated Invocation Map Entry</em>}' class.
+		 * The meta object literal for the '{@link kieker.model.analysismodel.execution.impl.DeployedOperationsPairToInvocationMapEntryImpl <em>Deployed Operations Pair To Invocation Map Entry</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see kieker.model.analysismodel.execution.impl.DeployedOperationsPairToAggregatedInvocationMapEntryImpl
-		 * @see kieker.model.analysismodel.execution.impl.ExecutionPackageImpl#getDeployedOperationsPairToAggregatedInvocationMapEntry()
+		 * @see kieker.model.analysismodel.execution.impl.DeployedOperationsPairToInvocationMapEntryImpl
+		 * @see kieker.model.analysismodel.execution.impl.ExecutionPackageImpl#getDeployedOperationsPairToInvocationMapEntry()
 		 * @generated
 		 */
-		EClass DEPLOYED_OPERATIONS_PAIR_TO_AGGREGATED_INVOCATION_MAP_ENTRY = eINSTANCE.getDeployedOperationsPairToAggregatedInvocationMapEntry();
+		EClass DEPLOYED_OPERATIONS_PAIR_TO_INVOCATION_MAP_ENTRY = eINSTANCE.getDeployedOperationsPairToInvocationMapEntry();
 
 		/**
 		 * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
@@ -883,7 +883,7 @@ public interface ExecutionPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference DEPLOYED_OPERATIONS_PAIR_TO_AGGREGATED_INVOCATION_MAP_ENTRY__VALUE = eINSTANCE.getDeployedOperationsPairToAggregatedInvocationMapEntry_Value();
+		EReference DEPLOYED_OPERATIONS_PAIR_TO_INVOCATION_MAP_ENTRY__VALUE = eINSTANCE.getDeployedOperationsPairToInvocationMapEntry_Value();
 
 		/**
 		 * The meta object literal for the '<em><b>Key</b></em>' containment reference feature.
@@ -891,33 +891,33 @@ public interface ExecutionPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference DEPLOYED_OPERATIONS_PAIR_TO_AGGREGATED_INVOCATION_MAP_ENTRY__KEY = eINSTANCE.getDeployedOperationsPairToAggregatedInvocationMapEntry_Key();
+		EReference DEPLOYED_OPERATIONS_PAIR_TO_INVOCATION_MAP_ENTRY__KEY = eINSTANCE.getDeployedOperationsPairToInvocationMapEntry_Key();
 
 		/**
-		 * The meta object literal for the '{@link kieker.model.analysismodel.execution.impl.AggregatedInvocationImpl <em>Aggregated Invocation</em>}' class.
+		 * The meta object literal for the '{@link kieker.model.analysismodel.execution.impl.InvocationImpl <em>Invocation</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see kieker.model.analysismodel.execution.impl.AggregatedInvocationImpl
-		 * @see kieker.model.analysismodel.execution.impl.ExecutionPackageImpl#getAggregatedInvocation()
+		 * @see kieker.model.analysismodel.execution.impl.InvocationImpl
+		 * @see kieker.model.analysismodel.execution.impl.ExecutionPackageImpl#getInvocation()
 		 * @generated
 		 */
-		EClass AGGREGATED_INVOCATION = eINSTANCE.getAggregatedInvocation();
+		EClass INVOCATION = eINSTANCE.getInvocation();
 
 		/**
-		 * The meta object literal for the '<em><b>Source</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference AGGREGATED_INVOCATION__SOURCE = eINSTANCE.getAggregatedInvocation_Source();
-
-		/**
-		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Caller</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference AGGREGATED_INVOCATION__TARGET = eINSTANCE.getAggregatedInvocation_Target();
+		EReference INVOCATION__CALLER = eINSTANCE.getInvocation_Caller();
+
+		/**
+		 * The meta object literal for the '<em><b>Callee</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INVOCATION__CALLEE = eINSTANCE.getInvocation_Callee();
 
 		/**
 		 * The meta object literal for the '{@link kieker.model.analysismodel.execution.impl.StorageDataflowImpl <em>Storage Dataflow</em>}' class.
@@ -1032,20 +1032,20 @@ public interface ExecutionPackage extends EPackage {
 		EClass OPERATION_DATAFLOW = eINSTANCE.getOperationDataflow();
 
 		/**
-		 * The meta object literal for the '<em><b>Source</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Caller</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference OPERATION_DATAFLOW__SOURCE = eINSTANCE.getOperationDataflow_Source();
+		EReference OPERATION_DATAFLOW__CALLER = eINSTANCE.getOperationDataflow_Caller();
 
 		/**
-		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Callee</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference OPERATION_DATAFLOW__TARGET = eINSTANCE.getOperationDataflow_Target();
+		EReference OPERATION_DATAFLOW__CALLEE = eINSTANCE.getOperationDataflow_Callee();
 
 		/**
 		 * The meta object literal for the '<em><b>Direction</b></em>' attribute feature.

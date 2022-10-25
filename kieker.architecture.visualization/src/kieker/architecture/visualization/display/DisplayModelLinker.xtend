@@ -18,7 +18,7 @@ package kieker.architecture.visualization.display
 import java.util.Set
 import kieker.architecture.visualization.display.model.Component
 import kieker.model.analysismodel.assembly.AssemblyRequiredInterface
-import kieker.model.analysismodel.execution.AggregatedInvocation
+import kieker.model.analysismodel.execution.Invocation
 import kieker.model.analysismodel.execution.OperationDataflow
 import kieker.model.analysismodel.execution.StorageDataflow
 import kieker.architecture.visualization.display.model.RequiredPort
@@ -63,7 +63,7 @@ class DisplayModelLinker {
 //				System.err.printf("    derived %s\n", derived.class.simpleName)
 				switch(derived) {
 					AssemblyRequiredInterface: requiredPort.linkAssemblyRequiredInterface(derived)
-					AggregatedInvocation: requiredPort.linkAggregatedInvocation(derived)
+					Invocation: requiredPort.linkInvocation(derived)
 					OperationDataflow: requiredPort.linkOperationDataflow(derived)
 					StorageDataflow: requiredPort.linkStorageDataflow(derived)
 				    default: System.err.println("ERROR: DisplayModelLinker.linkPort, class not supported " + derived.class)
@@ -80,23 +80,23 @@ class DisplayModelLinker {
 		requiredPort.providedPort = providedPort
 	}
 	
-	private def linkAggregatedInvocation(RequiredPort requiredPort,  AggregatedInvocation call) {
-//		System.err.printf("call from %s -> %s\n", invocation.source.assemblyOperation.operationType.signature, invocation.target.assemblyOperation.operationType.signature)
-		val providedPort = this.creator.operationProvidedPort.get(call.target.assemblyOperation)
+	private def linkInvocation(RequiredPort requiredPort,  Invocation call) {
+//		System.err.printf("call from %s -> %s\n", invocation.caller.assemblyOperation.operationType.signature, invocation.callee.assemblyOperation.operationType.signature)
+		val providedPort = this.creator.operationProvidedPort.get(call.callee.assemblyOperation)
 		if (providedPort !== null) {
 			providedPort.requiringPorts += requiredPort
 			requiredPort.providedPort = providedPort
 		} else {
-			System.err.println("ERROR: DisplayModelLinker.linkAggregatedInvocation No provided port for " + call.target.assemblyOperation.fqn + "  required port: " + requiredPort.label)
+			System.err.println("ERROR: DisplayModelLinker.linkInvocation No provided port for " + call.callee.assemblyOperation.fqn + "  required port: " + requiredPort.label)
 		}
 	}
 	
 	private def linkOperationDataflow(RequiredPort requiredPort, OperationDataflow operationDataflow) {
 		if (operationDataflow.direction.isRead() && // for read direction
-			operationDataflow.target.assemblyOperation.component === requiredPort.component.derivedFrom.get(0) // check whether the port component matches the target component (the requirerer)
+			operationDataflow.callee.assemblyOperation.component === requiredPort.component.derivedFrom.get(0) // check whether the port component matches the callee component (the requirerer)
 		) {
-//			System.err.printf("DisplayModelLinker.linkOperationDataflow (read) from %s -> %s\n", operationDataflow.target.assemblyOperation.operationType.signature, operationDataflow.source.assemblyOperation.operationType.signature)
-			val providedPort = this.creator.operationProvidedPort.get(operationDataflow.source.assemblyOperation)
+//			System.err.printf("DisplayModelLinker.linkOperationDataflow (read) from %s -> %s\n", operationDataflow.callee.assemblyOperation.operationType.signature, operationDataflow.caller.assemblyOperation.operationType.signature)
+			val providedPort = this.creator.operationProvidedPort.get(operationDataflow.caller.assemblyOperation)
 			if (providedPort !== null) {
 				providedPort.requiringPorts += requiredPort
 				requiredPort.providedPort = providedPort
@@ -104,19 +104,19 @@ class DisplayModelLinker {
 				this.creator.operationProvidedPort.keySet.forEach[
 					System.err.println(">> " + it.fqn)
 				]
-				System.err.println("ERROR: DisplayModelLinker.linkOperationDataflow (read) no provided port for " + operationDataflow.target.assemblyOperation.fqn + "  required port: " + requiredPort.label)					
+				System.err.println("ERROR: DisplayModelLinker.linkOperationDataflow (read) no provided port for " + operationDataflow.callee.assemblyOperation.fqn + "  required port: " + requiredPort.label)					
 			}
 		}
 		if (operationDataflow.direction.isWrite &&
-			operationDataflow.source.assemblyOperation.component === requiredPort.component.derivedFrom.get(0)
+			operationDataflow.caller.assemblyOperation.component === requiredPort.component.derivedFrom.get(0)
 		) {
-//			System.err.printf("DisplayModelLinker.linkOperationDataflow (write) from %s -> %s\n", operationDataflow.source.assemblyOperation.operationType.signature, operationDataflow.target.assemblyOperation.operationType.signature)
-			val providedPort = this.creator.operationProvidedPort.get(operationDataflow.target.assemblyOperation)
+//			System.err.printf("DisplayModelLinker.linkOperationDataflow (write) from %s -> %s\n", operationDataflow.caller.assemblyOperation.operationType.signature, operationDataflow.callee.assemblyOperation.operationType.signature)
+			val providedPort = this.creator.operationProvidedPort.get(operationDataflow.callee.assemblyOperation)
 			if (providedPort !== null) {
 				providedPort.requiringPorts += requiredPort
 				requiredPort.providedPort = providedPort
 			} else {
-				System.err.println("ERROR: DisplayModelLinker.linkOperationDataflow (write) no provided port for " + operationDataflow.target.assemblyOperation.fqn + "  required port: " + requiredPort.label)					
+				System.err.println("ERROR: DisplayModelLinker.linkOperationDataflow (write) no provided port for " + operationDataflow.callee.assemblyOperation.fqn + "  required port: " + requiredPort.label)					
 			}
 		}
 	}
@@ -128,7 +128,7 @@ class DisplayModelLinker {
 			if (requiredPort.label.equals(storageDataflow.storage.assemblyStorage.storageType.name)) {
 				// refers to the storage, i.e., has the same name.
 //				System.err.printf("DisplayModelLinker.linkStorageDataflow (write) form %s -> %s\n", storageDataflow.code.assemblyOperation.operationType.signature, storageDataflow.storage.assemblyStorage.storageType.name)
-				// write: operation is source, storage is target
+				// write: operation is caller, storage is callee
 				val providedPort = this.creator.storageProvidedPort.get(storageDataflow.storage.assemblyStorage)
 				if (providedPort !== null) {
 					providedPort.requiringPorts += requiredPort
@@ -141,7 +141,7 @@ class DisplayModelLinker {
 		if (storageDataflow.direction.isRead) {
 			if (requiredPort.label.equals(storageDataflow.code.assemblyOperation.operationType.signature)) {			
 //				System.err.printf("DisplayModelLinker.linkStorageDataflow (read) form %s -> %s\n", storageDataflow.storage.assemblyStorage.storageType.name, storageDataflow.code.assemblyOperation.operationType.signature)
-				// write: operation is source, storage is target
+				// write: operation is caller, storage is callee
 				val providedPort = this.creator.operationProvidedPort.get(storageDataflow.code.assemblyOperation)
 				if (providedPort !== null) {
 					providedPort.requiringPorts += requiredPort

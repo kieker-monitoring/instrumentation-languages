@@ -9,7 +9,7 @@ import java.util.Set
 import kieker.architecture.visualization.display.model.RequiredPort
 import kieker.model.analysismodel.execution.OperationDataflow
 import kieker.model.analysismodel.execution.StorageDataflow
-import kieker.model.analysismodel.execution.AggregatedInvocation
+import kieker.model.analysismodel.execution.Invocation
 import kieker.model.analysismodel.assembly.AssemblyRequiredInterface
 import java.io.PrintStream
 import java.nio.file.Files
@@ -75,9 +75,9 @@ class DebugUtils {
 		derivedFrom.map[derived |
 			componentLabel + ":" + switch(derived) {
 				OperationDataflow: {
-					val value = derived.source.assemblyOperation.operationType.signature
+					val value = derived.caller.assemblyOperation.operationType.signature
 					if (value.equals(label))
-						derived.target.assemblyOperation.operationType.signature
+						derived.callee.assemblyOperation.operationType.signature
 					else
 						value
 				}
@@ -88,10 +88,10 @@ class DebugUtils {
 					else
 						value
 				}
-				AggregatedInvocation:  {
-					val value = derived.source.assemblyOperation.operationType.signature
+				Invocation:  {
+					val value = derived.caller.assemblyOperation.operationType.signature
 					if (value.equals(label))
-						derived.target.assemblyOperation.operationType.signature
+						derived.callee.assemblyOperation.operationType.signature
 					else
 						value
 				}

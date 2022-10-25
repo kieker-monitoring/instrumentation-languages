@@ -14,20 +14,20 @@ import kieker.model.analysismodel.deployment.DeploymentPackage;
 
 import kieker.model.analysismodel.deployment.impl.DeploymentPackageImpl;
 
-import kieker.model.analysismodel.execution.AggregatedInvocation;
 import kieker.model.analysismodel.execution.EDirection;
 import kieker.model.analysismodel.execution.ExecutionFactory;
 import kieker.model.analysismodel.execution.ExecutionModel;
 import kieker.model.analysismodel.execution.ExecutionPackage;
+import kieker.model.analysismodel.execution.Invocation;
 import kieker.model.analysismodel.execution.OperationDataflow;
 import kieker.model.analysismodel.execution.StorageDataflow;
 import kieker.model.analysismodel.execution.Tuple;
 
 import kieker.model.analysismodel.impl.AnalysismodelPackageImpl;
 
-import kieker.model.analysismodel.sources.SourcesPackage;
+import kieker.model.analysismodel.source.SourcePackage;
 
-import kieker.model.analysismodel.sources.impl.SourcesPackageImpl;
+import kieker.model.analysismodel.source.impl.SourcePackageImpl;
 
 import kieker.model.analysismodel.statistics.StatisticsPackage;
 
@@ -71,14 +71,14 @@ public class ExecutionPackageImpl extends EPackageImpl implements ExecutionPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass deployedOperationsPairToAggregatedInvocationMapEntryEClass = null;
+	private EClass deployedOperationsPairToInvocationMapEntryEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass aggregatedInvocationEClass = null;
+	private EClass invocationEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -182,8 +182,8 @@ public class ExecutionPackageImpl extends EPackageImpl implements ExecutionPacka
 		DeploymentPackageImpl theDeploymentPackage = (DeploymentPackageImpl)(registeredPackage instanceof DeploymentPackageImpl ? registeredPackage : DeploymentPackage.eINSTANCE);
 		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(TracePackage.eNS_URI);
 		TracePackageImpl theTracePackage = (TracePackageImpl)(registeredPackage instanceof TracePackageImpl ? registeredPackage : TracePackage.eINSTANCE);
-		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(SourcesPackage.eNS_URI);
-		SourcesPackageImpl theSourcesPackage = (SourcesPackageImpl)(registeredPackage instanceof SourcesPackageImpl ? registeredPackage : SourcesPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(SourcePackage.eNS_URI);
+		SourcePackageImpl theSourcePackage = (SourcePackageImpl)(registeredPackage instanceof SourcePackageImpl ? registeredPackage : SourcePackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theExecutionPackage.createPackageContents();
@@ -193,7 +193,7 @@ public class ExecutionPackageImpl extends EPackageImpl implements ExecutionPacka
 		theAssemblyPackage.createPackageContents();
 		theDeploymentPackage.createPackageContents();
 		theTracePackage.createPackageContents();
-		theSourcesPackage.createPackageContents();
+		theSourcePackage.createPackageContents();
 
 		// Initialize created meta-data
 		theExecutionPackage.initializePackageContents();
@@ -203,7 +203,7 @@ public class ExecutionPackageImpl extends EPackageImpl implements ExecutionPacka
 		theAssemblyPackage.initializePackageContents();
 		theDeploymentPackage.initializePackageContents();
 		theTracePackage.initializePackageContents();
-		theSourcesPackage.initializePackageContents();
+		theSourcePackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theExecutionPackage.freeze();
@@ -229,7 +229,7 @@ public class ExecutionPackageImpl extends EPackageImpl implements ExecutionPacka
 	 * @generated
 	 */
 	@Override
-	public EReference getExecutionModel_AggregatedInvocations() {
+	public EReference getExecutionModel_Invocations() {
 		return (EReference)executionModelEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -239,7 +239,7 @@ public class ExecutionPackageImpl extends EPackageImpl implements ExecutionPacka
 	 * @generated
 	 */
 	@Override
-	public EReference getExecutionModel_StorageDataflow() {
+	public EReference getExecutionModel_StorageDataflows() {
 		return (EReference)executionModelEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -249,7 +249,7 @@ public class ExecutionPackageImpl extends EPackageImpl implements ExecutionPacka
 	 * @generated
 	 */
 	@Override
-	public EReference getExecutionModel_OperationDataflow() {
+	public EReference getExecutionModel_OperationDataflows() {
 		return (EReference)executionModelEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -259,8 +259,8 @@ public class ExecutionPackageImpl extends EPackageImpl implements ExecutionPacka
 	 * @generated
 	 */
 	@Override
-	public EClass getDeployedOperationsPairToAggregatedInvocationMapEntry() {
-		return deployedOperationsPairToAggregatedInvocationMapEntryEClass;
+	public EClass getDeployedOperationsPairToInvocationMapEntry() {
+		return deployedOperationsPairToInvocationMapEntryEClass;
 	}
 
 	/**
@@ -269,8 +269,8 @@ public class ExecutionPackageImpl extends EPackageImpl implements ExecutionPacka
 	 * @generated
 	 */
 	@Override
-	public EReference getDeployedOperationsPairToAggregatedInvocationMapEntry_Value() {
-		return (EReference)deployedOperationsPairToAggregatedInvocationMapEntryEClass.getEStructuralFeatures().get(0);
+	public EReference getDeployedOperationsPairToInvocationMapEntry_Value() {
+		return (EReference)deployedOperationsPairToInvocationMapEntryEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -279,8 +279,8 @@ public class ExecutionPackageImpl extends EPackageImpl implements ExecutionPacka
 	 * @generated
 	 */
 	@Override
-	public EReference getDeployedOperationsPairToAggregatedInvocationMapEntry_Key() {
-		return (EReference)deployedOperationsPairToAggregatedInvocationMapEntryEClass.getEStructuralFeatures().get(1);
+	public EReference getDeployedOperationsPairToInvocationMapEntry_Key() {
+		return (EReference)deployedOperationsPairToInvocationMapEntryEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -289,8 +289,8 @@ public class ExecutionPackageImpl extends EPackageImpl implements ExecutionPacka
 	 * @generated
 	 */
 	@Override
-	public EClass getAggregatedInvocation() {
-		return aggregatedInvocationEClass;
+	public EClass getInvocation() {
+		return invocationEClass;
 	}
 
 	/**
@@ -299,8 +299,8 @@ public class ExecutionPackageImpl extends EPackageImpl implements ExecutionPacka
 	 * @generated
 	 */
 	@Override
-	public EReference getAggregatedInvocation_Source() {
-		return (EReference)aggregatedInvocationEClass.getEStructuralFeatures().get(0);
+	public EReference getInvocation_Caller() {
+		return (EReference)invocationEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -309,8 +309,8 @@ public class ExecutionPackageImpl extends EPackageImpl implements ExecutionPacka
 	 * @generated
 	 */
 	@Override
-	public EReference getAggregatedInvocation_Target() {
-		return (EReference)aggregatedInvocationEClass.getEStructuralFeatures().get(1);
+	public EReference getInvocation_Callee() {
+		return (EReference)invocationEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -449,7 +449,7 @@ public class ExecutionPackageImpl extends EPackageImpl implements ExecutionPacka
 	 * @generated
 	 */
 	@Override
-	public EReference getOperationDataflow_Source() {
+	public EReference getOperationDataflow_Caller() {
 		return (EReference)operationDataflowEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -459,7 +459,7 @@ public class ExecutionPackageImpl extends EPackageImpl implements ExecutionPacka
 	 * @generated
 	 */
 	@Override
-	public EReference getOperationDataflow_Target() {
+	public EReference getOperationDataflow_Callee() {
 		return (EReference)operationDataflowEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -543,17 +543,17 @@ public class ExecutionPackageImpl extends EPackageImpl implements ExecutionPacka
 
 		// Create classes and their features
 		executionModelEClass = createEClass(EXECUTION_MODEL);
-		createEReference(executionModelEClass, EXECUTION_MODEL__AGGREGATED_INVOCATIONS);
-		createEReference(executionModelEClass, EXECUTION_MODEL__STORAGE_DATAFLOW);
-		createEReference(executionModelEClass, EXECUTION_MODEL__OPERATION_DATAFLOW);
+		createEReference(executionModelEClass, EXECUTION_MODEL__INVOCATIONS);
+		createEReference(executionModelEClass, EXECUTION_MODEL__STORAGE_DATAFLOWS);
+		createEReference(executionModelEClass, EXECUTION_MODEL__OPERATION_DATAFLOWS);
 
-		deployedOperationsPairToAggregatedInvocationMapEntryEClass = createEClass(DEPLOYED_OPERATIONS_PAIR_TO_AGGREGATED_INVOCATION_MAP_ENTRY);
-		createEReference(deployedOperationsPairToAggregatedInvocationMapEntryEClass, DEPLOYED_OPERATIONS_PAIR_TO_AGGREGATED_INVOCATION_MAP_ENTRY__VALUE);
-		createEReference(deployedOperationsPairToAggregatedInvocationMapEntryEClass, DEPLOYED_OPERATIONS_PAIR_TO_AGGREGATED_INVOCATION_MAP_ENTRY__KEY);
+		deployedOperationsPairToInvocationMapEntryEClass = createEClass(DEPLOYED_OPERATIONS_PAIR_TO_INVOCATION_MAP_ENTRY);
+		createEReference(deployedOperationsPairToInvocationMapEntryEClass, DEPLOYED_OPERATIONS_PAIR_TO_INVOCATION_MAP_ENTRY__VALUE);
+		createEReference(deployedOperationsPairToInvocationMapEntryEClass, DEPLOYED_OPERATIONS_PAIR_TO_INVOCATION_MAP_ENTRY__KEY);
 
-		aggregatedInvocationEClass = createEClass(AGGREGATED_INVOCATION);
-		createEReference(aggregatedInvocationEClass, AGGREGATED_INVOCATION__SOURCE);
-		createEReference(aggregatedInvocationEClass, AGGREGATED_INVOCATION__TARGET);
+		invocationEClass = createEClass(INVOCATION);
+		createEReference(invocationEClass, INVOCATION__CALLER);
+		createEReference(invocationEClass, INVOCATION__CALLEE);
 
 		storageDataflowEClass = createEClass(STORAGE_DATAFLOW);
 		createEReference(storageDataflowEClass, STORAGE_DATAFLOW__STORAGE);
@@ -571,8 +571,8 @@ public class ExecutionPackageImpl extends EPackageImpl implements ExecutionPacka
 		createEOperation(tupleEClass, TUPLE___HASH_CODE);
 
 		operationDataflowEClass = createEClass(OPERATION_DATAFLOW);
-		createEReference(operationDataflowEClass, OPERATION_DATAFLOW__SOURCE);
-		createEReference(operationDataflowEClass, OPERATION_DATAFLOW__TARGET);
+		createEReference(operationDataflowEClass, OPERATION_DATAFLOW__CALLER);
+		createEReference(operationDataflowEClass, OPERATION_DATAFLOW__CALLEE);
 		createEAttribute(operationDataflowEClass, OPERATION_DATAFLOW__DIRECTION);
 
 		deployedOperationsPairToDeployedOperationsMapEntryEClass = createEClass(DEPLOYED_OPERATIONS_PAIR_TO_DEPLOYED_OPERATIONS_MAP_ENTRY);
@@ -619,22 +619,22 @@ public class ExecutionPackageImpl extends EPackageImpl implements ExecutionPacka
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(executionModelEClass, ExecutionModel.class, "ExecutionModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getExecutionModel_AggregatedInvocations(), this.getDeployedOperationsPairToAggregatedInvocationMapEntry(), null, "aggregatedInvocations", null, 0, -1, ExecutionModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEReference(getExecutionModel_StorageDataflow(), this.getDeployedOperationsPairToDeployedStorageMapEntry(), null, "storageDataflow", null, 0, -1, ExecutionModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEReference(getExecutionModel_OperationDataflow(), this.getDeployedOperationsPairToDeployedOperationsMapEntry(), null, "operationDataflow", null, 0, -1, ExecutionModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEReference(getExecutionModel_Invocations(), this.getDeployedOperationsPairToInvocationMapEntry(), null, "invocations", null, 0, -1, ExecutionModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEReference(getExecutionModel_StorageDataflows(), this.getDeployedOperationsPairToDeployedStorageMapEntry(), null, "storageDataflows", null, 0, -1, ExecutionModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEReference(getExecutionModel_OperationDataflows(), this.getDeployedOperationsPairToDeployedOperationsMapEntry(), null, "operationDataflows", null, 0, -1, ExecutionModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
-		initEClass(deployedOperationsPairToAggregatedInvocationMapEntryEClass, Map.Entry.class, "DeployedOperationsPairToAggregatedInvocationMapEntry", !IS_ABSTRACT, !IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getDeployedOperationsPairToAggregatedInvocationMapEntry_Value(), this.getAggregatedInvocation(), null, "value", null, 0, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(deployedOperationsPairToInvocationMapEntryEClass, Map.Entry.class, "DeployedOperationsPairToInvocationMapEntry", !IS_ABSTRACT, !IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getDeployedOperationsPairToInvocationMapEntry_Value(), this.getInvocation(), null, "value", null, 0, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		EGenericType g1 = createEGenericType(this.getTuple());
 		EGenericType g2 = createEGenericType(theDeploymentPackage.getDeployedOperation());
 		g1.getETypeArguments().add(g2);
 		g2 = createEGenericType(theDeploymentPackage.getDeployedOperation());
 		g1.getETypeArguments().add(g2);
-		initEReference(getDeployedOperationsPairToAggregatedInvocationMapEntry_Key(), g1, null, "key", null, 0, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDeployedOperationsPairToInvocationMapEntry_Key(), g1, null, "key", null, 0, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(aggregatedInvocationEClass, AggregatedInvocation.class, "AggregatedInvocation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getAggregatedInvocation_Source(), theDeploymentPackage.getDeployedOperation(), null, "source", null, 0, 1, AggregatedInvocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAggregatedInvocation_Target(), theDeploymentPackage.getDeployedOperation(), null, "target", null, 0, 1, AggregatedInvocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(invocationEClass, Invocation.class, "Invocation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getInvocation_Caller(), theDeploymentPackage.getDeployedOperation(), null, "caller", null, 0, 1, Invocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getInvocation_Callee(), theDeploymentPackage.getDeployedOperation(), null, "callee", null, 0, 1, Invocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(storageDataflowEClass, StorageDataflow.class, "StorageDataflow", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getStorageDataflow_Storage(), theDeploymentPackage.getDeployedStorage(), null, "storage", null, 0, 1, StorageDataflow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -662,8 +662,8 @@ public class ExecutionPackageImpl extends EPackageImpl implements ExecutionPacka
 		initEOperation(getTuple__HashCode(), ecorePackage.getEInt(), "hashCode", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(operationDataflowEClass, OperationDataflow.class, "OperationDataflow", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getOperationDataflow_Source(), theDeploymentPackage.getDeployedOperation(), null, "source", null, 0, 1, OperationDataflow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOperationDataflow_Target(), theDeploymentPackage.getDeployedOperation(), null, "target", null, 0, 1, OperationDataflow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOperationDataflow_Caller(), theDeploymentPackage.getDeployedOperation(), null, "caller", null, 0, 1, OperationDataflow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOperationDataflow_Callee(), theDeploymentPackage.getDeployedOperation(), null, "callee", null, 0, 1, OperationDataflow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getOperationDataflow_Direction(), this.getEDirection(), "direction", null, 0, 1, OperationDataflow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(deployedOperationsPairToDeployedOperationsMapEntryEClass, Map.Entry.class, "DeployedOperationsPairToDeployedOperationsMapEntry", !IS_ABSTRACT, !IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);

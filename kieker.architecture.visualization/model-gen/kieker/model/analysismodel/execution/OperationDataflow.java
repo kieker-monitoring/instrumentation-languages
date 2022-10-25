@@ -15,8 +15,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link kieker.model.analysismodel.execution.OperationDataflow#getSource <em>Source</em>}</li>
- *   <li>{@link kieker.model.analysismodel.execution.OperationDataflow#getTarget <em>Target</em>}</li>
+ *   <li>{@link kieker.model.analysismodel.execution.OperationDataflow#getCaller <em>Caller</em>}</li>
+ *   <li>{@link kieker.model.analysismodel.execution.OperationDataflow#getCallee <em>Callee</em>}</li>
  *   <li>{@link kieker.model.analysismodel.execution.OperationDataflow#getDirection <em>Direction</em>}</li>
  * </ul>
  *
@@ -26,48 +26,48 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface OperationDataflow extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Source</b></em>' reference.
+	 * Returns the value of the '<em><b>Caller</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Source</em>' reference.
-	 * @see #setSource(DeployedOperation)
-	 * @see kieker.model.analysismodel.execution.ExecutionPackage#getOperationDataflow_Source()
+	 * @return the value of the '<em>Caller</em>' reference.
+	 * @see #setCaller(DeployedOperation)
+	 * @see kieker.model.analysismodel.execution.ExecutionPackage#getOperationDataflow_Caller()
 	 * @model
 	 * @generated
 	 */
-	DeployedOperation getSource();
+	DeployedOperation getCaller();
 
 	/**
-	 * Sets the value of the '{@link kieker.model.analysismodel.execution.OperationDataflow#getSource <em>Source</em>}' reference.
+	 * Sets the value of the '{@link kieker.model.analysismodel.execution.OperationDataflow#getCaller <em>Caller</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Source</em>' reference.
-	 * @see #getSource()
+	 * @param value the new value of the '<em>Caller</em>' reference.
+	 * @see #getCaller()
 	 * @generated
 	 */
-	void setSource(DeployedOperation value);
+	void setCaller(DeployedOperation value);
 
 	/**
-	 * Returns the value of the '<em><b>Target</b></em>' reference.
+	 * Returns the value of the '<em><b>Callee</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Target</em>' reference.
-	 * @see #setTarget(DeployedOperation)
-	 * @see kieker.model.analysismodel.execution.ExecutionPackage#getOperationDataflow_Target()
+	 * @return the value of the '<em>Callee</em>' reference.
+	 * @see #setCallee(DeployedOperation)
+	 * @see kieker.model.analysismodel.execution.ExecutionPackage#getOperationDataflow_Callee()
 	 * @model
 	 * @generated
 	 */
-	DeployedOperation getTarget();
+	DeployedOperation getCallee();
 
 	/**
-	 * Sets the value of the '{@link kieker.model.analysismodel.execution.OperationDataflow#getTarget <em>Target</em>}' reference.
+	 * Sets the value of the '{@link kieker.model.analysismodel.execution.OperationDataflow#getCallee <em>Callee</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Target</em>' reference.
-	 * @see #getTarget()
+	 * @param value the new value of the '<em>Callee</em>' reference.
+	 * @see #getCallee()
 	 * @generated
 	 */
-	void setTarget(DeployedOperation value);
+	void setCallee(DeployedOperation value);
 
 	/**
 	 * Returns the value of the '<em><b>Direction</b></em>' attribute.

@@ -63,8 +63,8 @@ public class ExecutionFactoryImpl extends EFactoryImpl implements ExecutionFacto
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case ExecutionPackage.EXECUTION_MODEL: return createExecutionModel();
-			case ExecutionPackage.DEPLOYED_OPERATIONS_PAIR_TO_AGGREGATED_INVOCATION_MAP_ENTRY: return (EObject)createDeployedOperationsPairToAggregatedInvocationMapEntry();
-			case ExecutionPackage.AGGREGATED_INVOCATION: return createAggregatedInvocation();
+			case ExecutionPackage.DEPLOYED_OPERATIONS_PAIR_TO_INVOCATION_MAP_ENTRY: return (EObject)createDeployedOperationsPairToInvocationMapEntry();
+			case ExecutionPackage.INVOCATION: return createInvocation();
 			case ExecutionPackage.STORAGE_DATAFLOW: return createStorageDataflow();
 			case ExecutionPackage.DEPLOYED_OPERATIONS_PAIR_TO_DEPLOYED_STORAGE_MAP_ENTRY: return (EObject)createDeployedOperationsPairToDeployedStorageMapEntry();
 			case ExecutionPackage.TUPLE: return createTuple();
@@ -121,9 +121,9 @@ public class ExecutionFactoryImpl extends EFactoryImpl implements ExecutionFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Map.Entry<Tuple<DeployedOperation, DeployedOperation>, AggregatedInvocation> createDeployedOperationsPairToAggregatedInvocationMapEntry() {
-		DeployedOperationsPairToAggregatedInvocationMapEntryImpl deployedOperationsPairToAggregatedInvocationMapEntry = new DeployedOperationsPairToAggregatedInvocationMapEntryImpl();
-		return deployedOperationsPairToAggregatedInvocationMapEntry;
+	public Map.Entry<Tuple<DeployedOperation, DeployedOperation>, Invocation> createDeployedOperationsPairToInvocationMapEntry() {
+		DeployedOperationsPairToInvocationMapEntryImpl deployedOperationsPairToInvocationMapEntry = new DeployedOperationsPairToInvocationMapEntryImpl();
+		return deployedOperationsPairToInvocationMapEntry;
 	}
 
 	/**
@@ -132,9 +132,9 @@ public class ExecutionFactoryImpl extends EFactoryImpl implements ExecutionFacto
 	 * @generated
 	 */
 	@Override
-	public AggregatedInvocation createAggregatedInvocation() {
-		AggregatedInvocationImpl aggregatedInvocation = new AggregatedInvocationImpl();
-		return aggregatedInvocation;
+	public Invocation createInvocation() {
+		InvocationImpl invocation = new InvocationImpl();
+		return invocation;
 	}
 
 	/**

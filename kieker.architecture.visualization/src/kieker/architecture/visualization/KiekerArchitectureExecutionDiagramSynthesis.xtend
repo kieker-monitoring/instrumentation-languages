@@ -34,7 +34,7 @@ import kieker.model.analysismodel.assembly.AssemblyOperation
 import kieker.model.analysismodel.assembly.AssemblyProvidedInterface
 import kieker.model.analysismodel.assembly.AssemblyRequiredInterface
 import kieker.model.analysismodel.assembly.AssemblyStorage
-import kieker.model.analysismodel.execution.AggregatedInvocation
+import kieker.model.analysismodel.execution.Invocation
 import kieker.model.analysismodel.execution.EDirection
 import kieker.model.analysismodel.execution.ExecutionModel
 import kieker.model.analysismodel.execution.OperationDataflow
@@ -77,10 +77,10 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 	
 	override transform(ExecutionModel executionModel) {
 		val deployedOperation =
-			if (!executionModel.aggregatedInvocations.empty) {
-				executionModel.aggregatedInvocations.get(0).value.source
-			} else if (!executionModel.operationDataflow.empty) {
-				executionModel.operationDataflow.get(0).value.source
+			if (!executionModel.invocations.empty) {
+				executionModel.invocations.get(0).value.caller
+			} else if (!executionModel.operationDataflows.empty) {
+				executionModel.operationDataflows.get(0).value.caller
 			} else
 				null
 		if (deployedOperation !== null) {
@@ -121,9 +121,9 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 	}
 	
 	private def void createLinks(Component component, ExecutionModel executionModel) {
-		val invocations = executionModel.aggregatedInvocations.values
-		val operationDataflows = executionModel.operationDataflow.values
-		val storageDataflows = executionModel.storageDataflow.values
+		val invocations = executionModel.invocations.values
+		val operationDataflows = executionModel.operationDataflows.values
+		val storageDataflows = executionModel.storageDataflows.values
 			
 		component.createLinkCallOperation2RequiredPort(invocations)
 		component.createLinkDataflowOperation2RequiredPort(operationDataflows)
@@ -151,58 +151,58 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 	 * Links of elements to ports.
 	 * -------------------------------- */
 	 
-	def createLinkCallOperation2RequiredPort(Component component, Collection<AggregatedInvocation> invocations) {
+	def createLinkCallOperation2RequiredPort(Component component, Collection<Invocation> invocations) {
 		val assemblyComponent = component.derivedFrom.get(0)
 		val controlFlows = invocations.filter[
-			it.source.component.assemblyComponent === assemblyComponent && // source must belong to this component
-			it.target.component.assemblyComponent !== assemblyComponent // target must be outside, otherwise there is no required port
+			it.caller.component.assemblyComponent === assemblyComponent && // caller must belong to this component
+			it.callee.component.assemblyComponent !== assemblyComponent // callee must be outside, otherwise there is no required port
 		]
 		component.requiredPorts.values().forEach[requiredPort |
 			val controlFlow = controlFlows.findFirst[requiredPort.derivedFrom.contains(it)]
 			if (controlFlow !== null) {
-				val source = object2NodePortMap.get(controlFlow.source.assemblyOperation)
-				val target = object2NodePortMap.get(requiredPort)
-				if (source === null) {
-					System.err.printf("ERROR: source not found for %s\n", 
-						controlFlow.source.assemblyOperation.operationType.signature
+				val caller = object2NodePortMap.get(controlFlow.caller.assemblyOperation)
+				val callee = object2NodePortMap.get(requiredPort)
+				if (caller === null) {
+					System.err.printf("ERROR: caller not found for %s\n", 
+						controlFlow.caller.assemblyOperation.operationType.signature
 					)				
 				}
-				if (target === null) {
-					System.err.printf("ERROR: target not found for %s\n", requiredPort.label)
+				if (callee === null) {
+					System.err.printf("ERROR: callee not found for %s\n", requiredPort.label)
 				}
-				if (source !== null && target !== null)
-					createConnectionEdge(source, target, CALL_FG_COLOR)
+				if (caller !== null && callee !== null)
+					createConnectionEdge(caller, callee, CALL_FG_COLOR)
 			}
 		]
 	}
 	
 	def createLinkDataflowOperation2RequiredPort(Component component, Collection<OperationDataflow> dataflows) {
 		val assemblyComponent = component.derivedFrom.get(0)
-		/** Dataflow from source to target. */
+		/** Dataflow from caller to callee. */
 		dataflows.filter[it.direction.isWrite].
 		filter[
-			it.source.component.assemblyComponent === assemblyComponent && // source must belong to this component
-			it.target.component.assemblyComponent !== assemblyComponent // target must be outside, otherwise there is no required port
+			it.caller.component.assemblyComponent === assemblyComponent && // caller must belong to this component
+			it.callee.component.assemblyComponent !== assemblyComponent // callee must be outside, otherwise there is no required port
 		].forEach[dataflow |
 			val requiredPort = component.requiredPorts.values.findFirst[it.derivedFrom.contains(dataflow)]
 			if (requiredPort !== null) {
-				val source = object2NodePortMap.get(dataflow.source.assemblyOperation)
-				val target = object2NodePortMap.get(requiredPort)
-				createConnectionEdge(source, target, DATAFLOW_FG_COLOR)
+				val caller = object2NodePortMap.get(dataflow.caller.assemblyOperation)
+				val callee = object2NodePortMap.get(requiredPort)
+				createConnectionEdge(caller, callee, DATAFLOW_FG_COLOR)
 			}
 		]
 		
-		/** Dataflow from target to source. */
+		/** Dataflow from callee to caller. */
 		dataflows.filter[it.direction.isRead].
 		filter[
-			it.target.component.assemblyComponent === assemblyComponent && // target must belong to this component
-			it.source.component.assemblyComponent !== assemblyComponent // source must be outside, otherwise there is no required port
+			it.caller.component.assemblyComponent === assemblyComponent && // callee must belong to this component
+			it.callee.component.assemblyComponent !== assemblyComponent // caller must be outside, otherwise there is no required port
 		].forEach[dataflow |
 			val requiredPort = component.requiredPorts.values.findFirst[it.derivedFrom.contains(dataflow)]
 			if (requiredPort !== null) {
-				val source = object2NodePortMap.get(dataflow.target.assemblyOperation)
-				val target = object2NodePortMap.get(requiredPort)
-				createConnectionEdge(source, target, DATAFLOW_FG_COLOR)
+				val caller = object2NodePortMap.get(dataflow.callee.assemblyOperation)
+				val callee = object2NodePortMap.get(requiredPort)
+				createConnectionEdge(caller, callee, DATAFLOW_FG_COLOR)
 			}
 		]
 	}
@@ -212,30 +212,30 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 		/** Dataflow from operation to storage. */
 		dataflows.filter[it.direction.isWrite].
 		filter[
-			it.code.component.assemblyComponent === assemblyComponent && // source must belong to this component
-			it.storage.component.assemblyComponent !== assemblyComponent // target must be outside, otherwise there is no required port
+			it.code.component.assemblyComponent === assemblyComponent && // caller must belong to this component
+			it.storage.component.assemblyComponent !== assemblyComponent // callee must be outside, otherwise there is no required port
 		].forEach[dataflow |
 			val requiredPort = component.requiredPorts.values.findFirst[it.derivedFrom.contains(dataflow)]
 			if (requiredPort !== null) {
-				val source = object2NodePortMap.get(dataflow.code.assemblyOperation)
-				val target = object2NodePortMap.get(requiredPort)
+				val caller = object2NodePortMap.get(dataflow.code.assemblyOperation)
+				val callee = object2NodePortMap.get(requiredPort)
 								
-				createConnectionEdge(source, target, DATAFLOW_FG_COLOR)
+				createConnectionEdge(caller, callee, DATAFLOW_FG_COLOR)
 			}
 		]
 		
 		/** Dataflow from storage to operation. */
 		dataflows.filter[it.direction.isRead].
 		filter[
-			it.storage.component.assemblyComponent === assemblyComponent && // target must belong to this component
-			it.code.component.assemblyComponent !== assemblyComponent // source must be outside, otherwise there is no required port
+			it.storage.component.assemblyComponent === assemblyComponent && // callee must belong to this component
+			it.code.component.assemblyComponent !== assemblyComponent // caller must be outside, otherwise there is no required port
 		].forEach[dataflow |
 			val requiredPort = component.requiredPorts.values.findFirst[it.derivedFrom.contains(dataflow)]
 			if (requiredPort !== null) {
-				val source = object2NodePortMap.get(dataflow.storage.assemblyStorage)
-				val target = object2NodePortMap.get(requiredPort)
+				val caller = object2NodePortMap.get(dataflow.storage.assemblyStorage)
+				val callee = object2NodePortMap.get(requiredPort)
 								
-				createConnectionEdge(source, target, DATAFLOW_FG_COLOR)
+				createConnectionEdge(caller, callee, DATAFLOW_FG_COLOR)
 			}
 		]
 	}
@@ -245,23 +245,23 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 			it.derivedFromPorts.size() > 0
 		].forEach[
 			it.derivedFromPorts.forEach[derivedPort |
-				val source = object2NodePortMap.get(derivedPort)
-				val target = object2NodePortMap.get(it)
+				val caller = object2NodePortMap.get(derivedPort)
+				val callee = object2NodePortMap.get(it)
 								
-				createConnectionEdge(source, target, it.portType.getForegroundColorForPortType())
+				createConnectionEdge(caller, callee, it.portType.getForegroundColorForPortType())
 			]
 		]
 	}
 
-	def createLinkCallProvidedPort2Operation(Component component, Collection<AggregatedInvocation> invocations) {
+	def createLinkCallProvidedPort2Operation(Component component, Collection<Invocation> invocations) {
 		val assemblyComponent = component.derivedFrom.get(0)
 		invocations.filter[
-			it.source.component.assemblyComponent !== assemblyComponent && // source must belong to another component
-			it.target.component.assemblyComponent === assemblyComponent // target must be inside, otherwise there is no required port
+			it.caller.component.assemblyComponent !== assemblyComponent && // caller must belong to another component
+			it.callee.component.assemblyComponent === assemblyComponent // callee must be inside, otherwise there is no provided port
 		].forEach[invocation |
 			val providedPort = component.providedPorts.values.findFirst[it.derivedFrom.contains(invocation)]
 			if (providedPort !== null) {
-				val source = object2NodePortMap.get(invocation.source.assemblyOperation)
+				val source = object2NodePortMap.get(invocation.caller.assemblyOperation)
 				val target = object2NodePortMap.get(providedPort)
 				createConnectionEdge(source, target, CALL_FG_COLOR)
 			}
@@ -274,19 +274,19 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 		dataflows.
 		filter[it.direction.isWrite].
 		filter[
-			it.source.component.assemblyComponent !== assemblyComponent && // source must belong to another component
-			it.target.component.assemblyComponent === assemblyComponent // target must be inside, otherwise there is no required port			
+			it.caller.component.assemblyComponent !== assemblyComponent && // caller must belong to another component
+			it.callee.component.assemblyComponent === assemblyComponent // callee must be inside, otherwise there is no required port			
 		].
 		forEach[dataflow |
 			val providedPort = component.providedPorts.values.findFirst[
-				it.derivedFrom.contains(dataflow.target.assemblyOperation)
+				it.derivedFrom.contains(dataflow.callee.assemblyOperation)
 			]
 			if (providedPort !== null) {
-				val source = object2NodePortMap.get(providedPort)
-				val target = object2NodePortMap.get(dataflow.target.assemblyOperation)
-				if (!rememberWrite.existLink(source, target))
-					createConnectionEdge(source, target, DATAFLOW_FG_COLOR)
-				rememberWrite.put(source, target)
+				val caller = object2NodePortMap.get(providedPort)
+				val callee = object2NodePortMap.get(dataflow.callee.assemblyOperation)
+				if (!rememberWrite.existLink(caller, callee))
+					createConnectionEdge(caller, callee, DATAFLOW_FG_COLOR)
+				rememberWrite.put(caller, callee)
 			}
 		]
 		
@@ -294,19 +294,19 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 		dataflows.
 		filter[it.direction.isRead].
 		filter[
-			it.target.component.assemblyComponent !== assemblyComponent && // source must belong to another component
-			it.source.component.assemblyComponent === assemblyComponent // target must be inside, otherwise there is no required port			
+			it.callee.component.assemblyComponent !== assemblyComponent && // caller must belong to another component
+			it.caller.component.assemblyComponent === assemblyComponent // callee must be inside, otherwise there is no required port			
 		].
 		forEach[dataflow |
 			val providedPort = component.providedPorts.values.findFirst[
-				it.derivedFrom.contains(dataflow.source.assemblyOperation)
+				it.derivedFrom.contains(dataflow.caller.assemblyOperation)
 			]
 			if (providedPort !== null) {
-				val source = object2NodePortMap.get(providedPort)
-				val target = object2NodePortMap.get(dataflow.source.assemblyOperation)
-				if (!rememberRead.existLink(source, target))
-					createConnectionEdge(source, target, DATAFLOW_FG_COLOR)
-				rememberRead.put(source, target)
+				val caller = object2NodePortMap.get(providedPort)
+				val callee = object2NodePortMap.get(dataflow.caller.assemblyOperation)
+				if (!rememberRead.existLink(caller, callee))
+					createConnectionEdge(caller, callee, DATAFLOW_FG_COLOR)
+				rememberRead.put(caller, callee)
 			}
 		]
 	}
@@ -317,19 +317,19 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 		dataflows.
 		filter[it.direction.isWrite].
 		filter[
-			it.code.component.assemblyComponent !== assemblyComponent && // source must belong to another component
-			it.storage.component.assemblyComponent === assemblyComponent // target must be inside, otherwise there is no required port			
+			it.code.component.assemblyComponent !== assemblyComponent && // caller must belong to another component
+			it.storage.component.assemblyComponent === assemblyComponent // callee must be inside, otherwise there is no required port			
 		].
 		forEach[dataflow |
 			val providedPort = component.providedPorts.values.findFirst[
 				it.derivedFrom.contains(dataflow.storage.assemblyStorage)
 			]
 			if (providedPort !== null) {
-				val source = object2NodePortMap.get(providedPort)
-				val target = object2NodePortMap.get(dataflow.storage.assemblyStorage)
-				if (!rememberWrite.existLink(source, target))
-					createConnectionEdge(source, target, DATAFLOW_FG_COLOR)
-				rememberWrite.put(source, target)
+				val caller = object2NodePortMap.get(providedPort)
+				val callee = object2NodePortMap.get(dataflow.storage.assemblyStorage)
+				if (!rememberWrite.existLink(caller, callee))
+					createConnectionEdge(caller, callee, DATAFLOW_FG_COLOR)
+				rememberWrite.put(caller, callee)
 			}
 		]
 		
@@ -337,19 +337,19 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 		dataflows.
 		filter[it.direction.isRead].
 		filter[
-			it.storage.component.assemblyComponent !== assemblyComponent && // source must belong to another component
-			it.code.component.assemblyComponent === assemblyComponent // target must be inside, otherwise there is no required port			
+			it.storage.component.assemblyComponent !== assemblyComponent && // caller must belong to another component
+			it.code.component.assemblyComponent === assemblyComponent // callee must be inside, otherwise there is no required port			
 		].
 		forEach[dataflow |			
 			val providedPort = component.providedPorts.values.findFirst[
 				it.derivedFrom.contains(dataflow.code.assemblyOperation)
 			]
 			if (providedPort !== null) {
-				val source = object2NodePortMap.get(providedPort)
-				val target = object2NodePortMap.get(dataflow.code.assemblyOperation)
-				if (!rememberRead.existLink(source, target))
-					createConnectionEdge(source, target, DATAFLOW_FG_COLOR)
-				rememberRead.put(source, target)
+				val caller = object2NodePortMap.get(providedPort)
+				val callee = object2NodePortMap.get(dataflow.code.assemblyOperation)
+				if (!rememberRead.existLink(caller, callee))
+					createConnectionEdge(caller, callee, DATAFLOW_FG_COLOR)
+				rememberRead.put(caller, callee)
 			}
 		]
 	}
@@ -358,19 +358,19 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 		component.providedPorts.values.filter[
 			it.derivedFromPort !== null
 		].forEach[
-		 	val source = object2NodePortMap.get(it)
-			val target = object2NodePortMap.get(it.derivedFromPort)
+		 	val caller = object2NodePortMap.get(it)
+			val callee = object2NodePortMap.get(it.derivedFromPort)
 								
-			createConnectionEdge(source, target, it.portType.getForegroundColorForPortType())
+			createConnectionEdge(caller, callee, it.portType.getForegroundColorForPortType())
 		]
 	}
 	
-	private def existLink(Map<NodePort,NodePort> remember, NodePort source, NodePort target) {
-		val value = remember.get(source)
+	private def existLink(Map<NodePort,NodePort> remember, NodePort caller, NodePort callee) {
+		val value = remember.get(caller)
 		if (value === null)
 			return false
 		else 
-			return value === target
+			return value === callee
 	}
 
 	
@@ -378,15 +378,15 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 	 * Links between elements.
 	 * -------------------------------- */
 	 
-	def createLinkCallOperation2Operation(Component component, Collection<AggregatedInvocation> invocations) {
+	def createLinkCallOperation2Operation(Component component, Collection<Invocation> invocations) {
 		val assemblyComponent = component.derivedFrom.get(0)
 		invocations.filter[
-			it.source.assemblyOperation.component === assemblyComponent &&
-			it.target.assemblyOperation.component === assemblyComponent
+			it.caller.assemblyOperation.component === assemblyComponent &&
+			it.callee.assemblyOperation.component === assemblyComponent
 		].
 		forEach[
-			val source = object2NodePortMap.get(it.target.assemblyOperation)
-			val target = object2NodePortMap.get(it.source.assemblyOperation)
+			val source = object2NodePortMap.get(it.callee.assemblyOperation)
+			val target = object2NodePortMap.get(it.caller.assemblyOperation)
 			createConnectionEdge(source, target, CALL_FG_COLOR)
 		]
 	}
@@ -394,18 +394,18 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 	def createLinkDataflowOperation2Operation(Component component, Collection<OperationDataflow> dataflows) {
 		val assemblyComponent = component.derivedFrom.get(0)
 		dataflows.filter[
-			it.source.assemblyOperation.component === assemblyComponent &&
-			it.target.assemblyOperation.component === assemblyComponent
+			it.caller.assemblyOperation.component === assemblyComponent &&
+			it.callee.assemblyOperation.component === assemblyComponent
 		].
 		forEach[
 			if (it.direction.isRead) {
-				val source = object2NodePortMap.get(it.target.assemblyOperation)
-				val target = object2NodePortMap.get(it.source.assemblyOperation)
+				val source = object2NodePortMap.get(it.callee.assemblyOperation)
+				val target = object2NodePortMap.get(it.caller.assemblyOperation)
 				createConnectionEdge(source, target, DATAFLOW_FG_COLOR)
 			}
 			if (it.direction.isWrite) {
-				val source = object2NodePortMap.get(it.source.assemblyOperation)
-				val target = object2NodePortMap.get(it.target.assemblyOperation)
+				val source = object2NodePortMap.get(it.caller.assemblyOperation)
+				val target = object2NodePortMap.get(it.callee.assemblyOperation)
 				createConnectionEdge(source, target, DATAFLOW_FG_COLOR)
 			}
 		]
@@ -418,9 +418,9 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 			it.storage.assemblyStorage.component === assemblyComponent &&
 			it.storage.assemblyStorage.component === it.code.assemblyOperation.component
 		].forEach[
-			val source = object2NodePortMap.get(it.code.assemblyOperation)
-			val target = object2NodePortMap.get(it.storage.assemblyStorage)
-			createConnectionEdge(source, target, DATAFLOW_FG_COLOR)
+			val code = object2NodePortMap.get(it.code.assemblyOperation)
+			val storage = object2NodePortMap.get(it.storage.assemblyStorage)
+			createConnectionEdge(code, storage, DATAFLOW_FG_COLOR)
 		]
 	}
 		
@@ -431,9 +431,9 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 			it.storage.assemblyStorage.component === assemblyComponent &&
 			it.storage.assemblyStorage.component === it.code.assemblyOperation.component
 		].forEach[
-			val source = object2NodePortMap.get(it.storage.assemblyStorage)
-			val target = object2NodePortMap.get(it.code.assemblyOperation)
-			createConnectionEdge(source, target, DATAFLOW_FG_COLOR)
+			val storage = object2NodePortMap.get(it.storage.assemblyStorage)
+			val code = object2NodePortMap.get(it.code.assemblyOperation)
+			createConnectionEdge(storage, code, DATAFLOW_FG_COLOR)
 		]
 	}
 	
@@ -441,13 +441,13 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 	 * create links between ports on components on the same level
 	 * ------------------------------------------ */
 		
-	def createLinkInterComponentCallOperation(Component component, Collection<AggregatedInvocation> incovations) {
+	def createLinkInterComponentCallOperation(Component component, Collection<Invocation> incovations) {
 		component.providedPorts.values().forEach[providedPort |
 			providedPort.requiringPorts.forEach[requiredPort |
 				if (requiredPort.portType.isCall && providedPort.portType.isCall) {
-					val source = object2NodePortMap.get(requiredPort)
-					val target = object2NodePortMap.get(providedPort)
-					createConnectionEdge(source, target, CALL_FG_COLOR)
+					val caller = object2NodePortMap.get(requiredPort)
+					val callee = object2NodePortMap.get(providedPort)
+					createConnectionEdge(caller, callee, CALL_FG_COLOR)
 				}
 			]
 		]	
@@ -457,9 +457,9 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 		component.providedPorts.values().forEach[providedPort |
 			providedPort.requiringPorts.forEach[requiredPort |
 				if (requiredPort.portType.isDataflow && providedPort.portType.isDataflow) {
-					val source = object2NodePortMap.get(requiredPort)
-					val target = object2NodePortMap.get(providedPort)
-					createConnectionEdge(source, target, DATAFLOW_FG_COLOR)
+					val caller = object2NodePortMap.get(requiredPort)
+					val callee = object2NodePortMap.get(providedPort)
+					createConnectionEdge(caller, callee, DATAFLOW_FG_COLOR)
 				}
 			]
 		]		
@@ -481,9 +481,9 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 			if (dataflow !== null) {
 				val requiredPort = providedPort.requiringPorts.findFirst[it.origin.exists[it === dataflow]]
 				if (requiredPort !== null) {
-					val source = object2NodePortMap.get(requiredPort)
-					val target = object2NodePortMap.get(providedPort)
-					createConnectionEdge(source, target, DATAFLOW_FG_COLOR)
+					val caller = object2NodePortMap.get(requiredPort)
+					val callee = object2NodePortMap.get(providedPort)
+					createConnectionEdge(caller, callee, DATAFLOW_FG_COLOR)
 				}
 			}
 		]
@@ -502,9 +502,9 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 			if (dataflow !== null) {
 				val requiredPort = providedPort.requiringPorts.findFirst[it.origin.exists[it === dataflow]]
 				if (requiredPort !== null) {
-					val source = object2NodePortMap.get(requiredPort)
-					val target = object2NodePortMap.get(providedPort)
-					createConnectionEdge(source, target, DATAFLOW_FG_COLOR)
+					val caller = object2NodePortMap.get(requiredPort)
+					val callee = object2NodePortMap.get(providedPort)
+					createConnectionEdge(caller, callee, DATAFLOW_FG_COLOR)
 				}
 			}
 		]		
@@ -516,9 +516,9 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 			it.providedPort.component.parent === component.parent &&
 			it.providedPort instanceof ProvidedPort
 		].forEach[
-			val source = object2NodePortMap.get(it)
-			val target = object2NodePortMap.get(it.providedPort)
-			createConnectionEdge(source, target, it.portType.getForegroundColorForPortType())
+			val caller = object2NodePortMap.get(it)
+			val callee = object2NodePortMap.get(it.providedPort)
+			createConnectionEdge(caller, callee, it.portType.getForegroundColorForPortType())
 		]
 	}
 	
@@ -660,10 +660,10 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 				val derivedFrom = requiredPort.derivedFrom.get(0)
 				val createdPort = switch(derivedFrom) {
 					AssemblyRequiredInterface: createInterfaceRequiredPort(PortSide.NORTH, derivedFrom, node.ports.size, requiredPort.portType)
-					AggregatedInvocation: createOperationRequiredPort(PortSide.NORTH, derivedFrom.source.assemblyOperation, node.ports.size, requiredPort.portType)
+					Invocation: createOperationRequiredPort(PortSide.NORTH, derivedFrom.caller.assemblyOperation, node.ports.size, requiredPort.portType)
 					StorageDataflow: createOperationRequiredPort(PortSide.NORTH, derivedFrom, node.ports.size, requiredPort.portType)
-					// TODO derivedFrom.source is insufficient, it should depend on the direction of flow that is actually used here
-					OperationDataflow: createOperationRequiredPort(PortSide.NORTH, derivedFrom.source.assemblyOperation, node.ports.size, requiredPort.portType)
+					// TODO derivedFrom.caller is insufficient, it should depend on the direction of flow that is actually used here
+					OperationDataflow: createOperationRequiredPort(PortSide.NORTH, derivedFrom.caller.assemblyOperation, node.ports.size, requiredPort.portType)
 					default: {
 						System.err.println("default required port " + derivedFrom.class)
 						createInterfacePort(PortSide.NORTH, null, node.ports.size, "#00ff00", "#ffffff")

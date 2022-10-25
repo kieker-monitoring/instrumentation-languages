@@ -76,8 +76,9 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated analysismodel -->
       <package
-            uri="platform:/resource/Kieker/model/analysismodel.ecore/sources"
-            class="kieker.model.analysismodel.sources.SourcesPackage"
+            uri="platform:/resource/Kieker/model/analysismodel.ecore/source"
+            class="kieker.model.analysismodel.source.SourcePackage"
             genModel="model/analysismodel.genmodel"/>
    </extension>
+
 </plugin>
