@@ -48,6 +48,7 @@ import java.util.ArrayList
 import kieker.architecture.visualization.display.DisplayModelBuilder
 
 import static extension kieker.architecture.visualization.utils.ModelUtils.*
+import kieker.architecture.visualization.utils.DebugUtils
 
 /**
  * @author Reiner Jung
@@ -91,6 +92,8 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 			object2NodePortMap = new HashMap
 			
 			components = new DisplayModelBuilder().create(assemblyModel.components.values, executionModel)
+
+			DebugUtils.print(components, "model")
 
 			return createDisplay(components, executionModel)
 		} else {
