@@ -128,7 +128,7 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 		val operationDataflows = executionModel.operationDataflows.values
 		val storageDataflows = executionModel.storageDataflows.values
 			
-		component.createLinkCallOperation2RequiredPort(invocations)
+		// component.createLinkCallOperation2RequiredPort(invocations)
 		component.createLinkDataflowOperation2RequiredPort(operationDataflows)
 		component.createLinkDataflowStorage2RequiredPort(storageDataflows)
 		component.createLinkRequiredPort2RequiredPort()
@@ -258,17 +258,37 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 
 	def createLinkCallProvidedPort2Operation(Component component, Collection<Invocation> invocations) {
 		val assemblyComponent = component.derivedFrom.get(0)
-		invocations.filter[
-			it.caller.component.assemblyComponent !== assemblyComponent && // caller must belong to another component
-			it.callee.component.assemblyComponent === assemblyComponent // callee must be inside, otherwise there is no provided port
-		].forEach[invocation |
-			val providedPort = component.providedPorts.values.findFirst[it.derivedFrom.contains(invocation)]
-			if (providedPort !== null) {
-				val source = object2NodePortMap.get(invocation.caller.assemblyOperation)
-				val target = object2NodePortMap.get(providedPort)
-				createConnectionEdge(source, target, CALL_FG_COLOR)
-			}
+		component.providedPorts.values().forEach[port|
+			System.err.printf("  port: %s\n", port.label)
+			port.derivedFrom.forEach[derivedFrom |
+				switch(derivedFrom) {
+					AssemblyOperation: {
+						val source = object2NodePortMap.get(port)
+						val target = object2NodePortMap.get(derivedFrom)
+						createConnectionEdge(source, target, CALL_FG_COLOR)
+					}
+					AssemblyProvidedInterface: {
+						val source = object2NodePortMap.get(port)
+						derivedFrom.providedInterfaceType.providedOperationTypes.values.forEach[operationType|
+							val assemblyOperation = assemblyComponent.operations.values.findFirst[it.operationType == operationType]
+							val target = object2NodePortMap.get(assemblyOperation)
+							if (target !== null) 
+								createConnectionEdge(source, target, CALL_FG_COLOR)
+						]
+					}
+					default:
+						System.err.printf("  MISSING: %s\n", derivedFrom.class.simpleName)
+				}
+			]
 		]
+	}
+	
+	private def String fqn(Object object) {
+		switch(object) {
+			Invocation: DebugUtils.fqn(object.caller) + " -> " + DebugUtils.fqn(object.callee)
+			AssemblyOperation: DebugUtils.fqn(object)
+			default: object.class.simpleName + "::" + object.toString
+		}
 	}
 	
 	def createLinkDataflowProvidedPort2Operation(Component component, Collection<OperationDataflow> dataflows) {
