@@ -35,6 +35,7 @@ import kieker.model.analysismodel.type.OperationType
 import kieker.model.analysismodel.assembly.AssemblyRequiredInterface
 
 import static extension kieker.architecture.visualization.utils.ModelUtils.*
+import kieker.architecture.visualization.utils.DebugUtils
 
 /**
  * Create operations, storages and components for the display model including ports.
@@ -249,9 +250,10 @@ class DisplayModelComponentCreator {
 	) {
 		operationCalls.filter[
 			it.caller.assemblyOperation.component === assemblyComponent && // only check calls originating from this component
-			it.callee.assemblyOperation.component !== assemblyComponent // only check calls that end in another component
-			// TODO maybe check whether the caller is not part of an interface
+			it.callee.assemblyOperation.component !== assemblyComponent && // only check calls that end in another component
+			!processedRequiredCallers.contains(it.caller.assemblyOperation)
 		].forEach[call |
+			System.err.printf("  #> %s\n", call.caller.assemblyOperation.operationType.signature)
 			component.createOrModifyRequiredPort4Operations(call, call.caller.assemblyOperation.operationType.signature, EPortType.OPERATION_CALL)
 		]
 	}
@@ -341,15 +343,22 @@ class DisplayModelComponentCreator {
 	 * Create required interface based on existing required interfaces in the model.
 	 * Collect all operations already covered by the required interface
 	 */
-	// TODO check whether this is broken
 	private def createRequiredPort4Interface(Component component, AssemblyComponent assemblyComponent) {
+		val relevantCalls = operationCalls.filter[
+			it.caller.component.assemblyComponent === assemblyComponent &&
+			it.callee.component.assemblyComponent !== assemblyComponent
+		]
 		val Set<AssemblyOperation> processedRequiredCallers = new HashSet
 		assemblyComponent.requiredInterfaces.forEach[
 			val port = it.createRequiredPort4Interface(component)
-			val callerComponent = it.requires.eContainer.eContainer as AssemblyComponent
 			component.requiredPorts.put(port.label, port)
-			it.requiredInterfaceType.requires.providedOperationTypes.values.forEach[
-				processedRequiredCallers.add(callerComponent.findAssemblyOperation(it))
+			val providedAssemblyComponent = it.requires.eContainer.eContainer as AssemblyComponent
+			it.requires.providedInterfaceType.providedOperationTypes.values.forEach[operationType |
+				val providedOperation = providedAssemblyComponent.findAssemblyOperation(operationType)
+				val matchingCalls = relevantCalls.filter[call | call.callee.assemblyOperation === providedOperation]
+				matchingCalls.forEach[
+					processedRequiredCallers.add(it.caller.assemblyOperation)
+				]	
 			]
 		]
 		return processedRequiredCallers

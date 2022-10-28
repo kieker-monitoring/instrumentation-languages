@@ -128,7 +128,7 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 		val operationDataflows = executionModel.operationDataflows.values
 		val storageDataflows = executionModel.storageDataflows.values
 			
-		// component.createLinkCallOperation2RequiredPort(invocations)
+		component.createLinkCallOperation2RequiredPort(invocations)
 		component.createLinkDataflowOperation2RequiredPort(operationDataflows)
 		component.createLinkDataflowStorage2RequiredPort(storageDataflows)
 		component.createLinkRequiredPort2RequiredPort()
@@ -160,7 +160,9 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 			it.caller.component.assemblyComponent === assemblyComponent && // caller must belong to this component
 			it.callee.component.assemblyComponent !== assemblyComponent // callee must be outside, otherwise there is no required port
 		]
+		System.err.printf("> %s\n", component.label)
 		component.requiredPorts.values().forEach[requiredPort |
+			System.err.printf(" %s\n", requiredPort.derivedFrom.map[it.class.simpleName].join(", "))
 			val controlFlow = controlFlows.findFirst[requiredPort.derivedFrom.contains(it)]
 			if (controlFlow !== null) {
 				val caller = object2NodePortMap.get(controlFlow.caller.assemblyOperation)
@@ -175,6 +177,26 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 				}
 				if (caller !== null && callee !== null)
 					createConnectionEdge(caller, callee, CALL_FG_COLOR)
+			} else if (requiredPort.derivedFrom.exists[it instanceof AssemblyRequiredInterface]) {
+				// TODO implementation only addresses operation callers to required interface, nested components are
+				// ignored as well as their requiring interfaces
+				controlFlows.filter[call |
+					call.callee.component.assemblyComponent.providedInterfaces.values().exists[requiredPort.providedPort.derivedFrom.get(0) === it]
+				].forEach[
+					System.err.printf("----> %s -> %s\n", DebugUtils.fqn(it.caller), DebugUtils.fqn(it.callee))
+					val caller = object2NodePortMap.get(it.caller.assemblyOperation)
+					val callee = object2NodePortMap.get(requiredPort)
+					if (caller === null) {
+						System.err.printf("ERROR: caller not found for %s\n", 
+							controlFlow.caller.assemblyOperation.operationType.signature
+						)				
+					}
+					if (callee === null) {
+						System.err.printf("ERROR: callee not found for %s\n", requiredPort.label)
+					}
+					if (caller !== null && callee !== null)
+						createConnectionEdge(caller, callee, CALL_FG_COLOR)
+				]
 			}
 		]
 	}
@@ -670,7 +692,7 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 	private def void createRequiredPorts(KNode node, Component component) {
 		component.requiredPorts.values().forEach[requiredPort |
 			// Note: ports might be derived from different elements, but they are created only once.
-			// Thus we need only to get the first element to deciede which routine should be used.
+			// Thus we need only to get the first element to decide which routine should be used.
 			if (requiredPort.derivedFromPorts.size() > 0) {
 				val port = addLabel(createInterfaceRequiredPort(PortSide.NORTH, 
 					requiredPort.origin.get(0) as EObject, node.ports.size, requiredPort.portType
