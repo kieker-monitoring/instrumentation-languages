@@ -37,6 +37,13 @@ import kieker.model.analysismodel.execution.EDirection
 import org.eclipse.elk.core.options.PortLabelPlacement
 import java.util.EnumSet
 import kieker.architecture.visualization.display.model.EPortType
+import de.cau.cs.kieler.klighd.kgraph.KEdge
+import org.eclipse.elk.core.options.EdgeLabelPlacement
+import java.util.Map
+import kieker.model.analysismodel.execution.Invocation
+import kieker.model.analysismodel.statistics.StatisticsModel
+import kieker.model.analysismodel.execution.OperationDataflow
+import kieker.model.analysismodel.execution.StorageDataflow
 
 /**
  * @author Reiner Jung
@@ -80,20 +87,23 @@ abstract class AbstractKiekerArchitectureDiagramSynthesis<T> extends AbstractDia
 		"org.eclipse.elk.graphviz.twopi"
 	), DiagramLayoutOptions.ELK_LAYERED)
 
+	protected static val SynthesisOption SHOW_EDGE_LABELS = SynthesisOption::createCheckOption("Show edge labels", false);
+	
 	protected static val SynthesisOption SHOW_PORT_LABELS = SynthesisOption::createCheckOption("Show port labels", false);
 
 	protected static val SynthesisOption SHOW_OPERATIONS = SynthesisOption::createCheckOption("Show operations", false);
 
 	protected static val SynthesisOption SHOW_STORAGE = SynthesisOption::createCheckOption("Show storage", false);
-				
 	
+	protected Map<Object, NodePort> object2NodePortMap
+					
 	/**
 	 * {@inheritDoc}<br>
 	 * <br>
 	 * Registers the diagram filter option declared above, which allow users to tailor the constructed diagrams.
 	 */
 	override getDisplayedSynthesisOptions() {
-		return ImmutableList::of(ALGORITHM, SHOW_PORT_LABELS, SHOW_OPERATIONS, SHOW_STORAGE)
+		return ImmutableList::of(ALGORITHM, SHOW_EDGE_LABELS, SHOW_PORT_LABELS, SHOW_OPERATIONS, SHOW_STORAGE)
 	}
 		
 	protected def createOperation(EObject object, String label) {
@@ -205,6 +215,43 @@ abstract class AbstractKiekerArchitectureDiagramSynthesis<T> extends AbstractDia
 		]
 	}
 	
+	protected def createConnection(Object source, Object target, String color) {
+		if (source !== null && target !== null) {
+			val caller = object2NodePortMap.get(source)
+			val callee = object2NodePortMap.get(target)
+			createConnectionEdge(caller, callee, color)
+		}
+	}
+	
+	protected def createControlFlowLabel(StatisticsModel statisticsModel, Invocation invocation) {
+		val statisticRecord = statisticsModel.statistics.get(invocation)
+		statisticRecord.properties.entrySet.map[entry |
+			'''«entry.key» : «entry.value»'''	
+		].join("\n")
+	}
+	
+	protected def createOperationDataFlowLabel(StatisticsModel statisticsModel, OperationDataflow dataflow) {
+		val statisticRecord = statisticsModel.statistics.get(dataflow)
+		statisticRecord.properties.entrySet.map[entry |
+			'''«entry.key» : «entry.value»'''	
+		].join("\n")
+	}
+
+	protected def createStorageDataFlowLabel(StatisticsModel statisticsModel, StorageDataflow dataflow) {
+		val statisticRecord = statisticsModel.statistics.get(dataflow)
+		statisticRecord.properties.entrySet.map[entry |
+			'''«entry.key» : «entry.value»'''	
+		].join("\n")
+	}
+		
+	protected def createConnection(Object source, Object target, String color, String label) {
+		if (source !== null && target !== null) {
+			val caller = object2NodePortMap.get(source)
+			val callee = object2NodePortMap.get(target)
+			createConnectionEdge(caller, callee, color).addLabel(label)
+		}
+	}
+	
 	protected def createConnectionEdge(NodePort source, NodePort target, String color) {
 //		System.err.println("SOURCE " + source + "  TARGET " + target + "  COLOR " + color)
 //		if (source !== null)
@@ -262,6 +309,15 @@ abstract class AbstractKiekerArchitectureDiagramSynthesis<T> extends AbstractDia
 				if (direction === EDirection.READ || direction === EDirection.BOTH) it.addTailArrowDecorator
 			]
 		]
+	}
+
+	protected def KEdge addLabel(KEdge edge, String text) {
+		if (SHOW_EDGE_LABELS.booleanValue) {
+			val label = KGraphUtil.createInitializedLabel(edge)
+			label.text = text
+			label.setProperty(CoreOptions.EDGE_LABELS_PLACEMENT, EdgeLabelPlacement.CENTER)
+		}
+		return edge
 	}
 	
 	protected def KPort addLabel(KPort port, String text) {
