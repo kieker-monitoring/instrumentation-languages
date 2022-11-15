@@ -224,6 +224,9 @@ abstract class AbstractKiekerArchitectureDiagramSynthesis<T> extends AbstractDia
 	}
 	
 	protected def createControlFlowLabel(StatisticsModel statisticsModel, Invocation invocation) {
+		if (statisticsModel === null)
+			return ""
+
 		val statisticRecord = statisticsModel.statistics.get(invocation)
 		statisticRecord.properties.entrySet.map[entry |
 			'''«entry.key» : «entry.value»'''	
@@ -231,6 +234,9 @@ abstract class AbstractKiekerArchitectureDiagramSynthesis<T> extends AbstractDia
 	}
 	
 	protected def createOperationDataFlowLabel(StatisticsModel statisticsModel, OperationDataflow dataflow) {
+		if (statisticsModel === null)
+			return ""
+			
 		val statisticRecord = statisticsModel.statistics.get(dataflow)
 		statisticRecord.properties.entrySet.map[entry |
 			'''«entry.key» : «entry.value»'''	
@@ -238,6 +244,9 @@ abstract class AbstractKiekerArchitectureDiagramSynthesis<T> extends AbstractDia
 	}
 
 	protected def createStorageDataFlowLabel(StatisticsModel statisticsModel, StorageDataflow dataflow) {
+		if (statisticsModel === null)
+			return ""
+			
 		val statisticRecord = statisticsModel.statistics.get(dataflow)
 		statisticRecord.properties.entrySet.map[entry |
 			'''«entry.key» : «entry.value»'''	

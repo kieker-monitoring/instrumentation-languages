@@ -91,9 +91,16 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 			val assemblyModel = assemblyComponent.eContainer.eContainer as AssemblyModel
 			
 			val statisticsUri = executionModel.eResource.URI.trimSegments(1).appendSegment("statistics-model.xmi")
-			val statisticsResource = executionModel.eResource.resourceSet.getResource(statisticsUri, true)
-			this.statisticsModel = statisticsResource.contents.get(0) as StatisticsModel
-			
+			try {
+				val statisticsResource = executionModel.eResource.resourceSet.getResource(statisticsUri, true)
+				statisticsResource.load(new HashMap)
+				if (statisticsResource.errors.size() === 0)
+					this.statisticsModel = statisticsResource.contents.get(0) as StatisticsModel
+				else
+					this.statisticsModel = null
+			} catch(Exception e) {
+				this.statisticsModel = null
+			}
 			object2NodePortMap = new HashMap
 			
 			components = new DisplayModelBuilder().create(assemblyModel.components.values, executionModel)
@@ -173,7 +180,13 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 				// TODO implementation only addresses operation callers to required interface, nested components are
 				// ignored as well as their requiring interfaces
 				controlFlows.filter[call |
-					call.callee.component.assemblyComponent.providedInterfaces.values().exists[requiredPort.providedPort.derivedFrom.get(0) === it]
+					val providedPort = requiredPort.providedPort
+					val derivedList = providedPort.derivedFrom
+					if (derivedList !== null) {
+						val derivedElement = derivedList.get(0)
+						call.callee.component.assemblyComponent.providedInterfaces.values().exists[derivedElement === it]
+					} else
+						false
 				].forEach[
 					createConnection(it.caller.assemblyOperation, requiredPort, CALL_FG_COLOR, createControlFlowLabel(statisticsModel, it))
 				]
