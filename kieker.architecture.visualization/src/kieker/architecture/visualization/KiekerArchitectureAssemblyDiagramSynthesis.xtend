@@ -92,13 +92,13 @@ class KiekerArchitectureAssemblyDiagramSynthesis extends AbstractKiekerArchitect
 			it.addLayoutParam(CoreOptions::SPACING_NODE_NODE, 75.0)
 			it.addLayoutParam(CoreOptions::DIRECTION, Direction::UP)
 
-			createAssemblyComponents(it, components)
+			createAssemblyComponents(it, components, true)
 		]
 	}
 
-	def createAssemblyComponents(KNode node, Collection<AssemblyComponent> components) {
+	def createAssemblyComponents(KNode node, Collection<AssemblyComponent> components, boolean odd) {
 		components.filter[!containedComponents.contains(it)].forEach [ component |
-			val componentNode = component.createAssemblyComponent()
+			val componentNode = component.createAssemblyComponent(odd)
 			node.children += componentNode
 		]
 
@@ -140,7 +140,7 @@ class KiekerArchitectureAssemblyDiagramSynthesis extends AbstractKiekerArchitect
 		return providedToRequiredInterfaceMap
 	}
 
-	def KNode createAssemblyComponent(AssemblyComponent component) {
+	def KNode createAssemblyComponent(AssemblyComponent component, boolean odd) {
 		return component.createNode().associateWith(component) => [
 			componentNodeMap.put(component, it)
 
@@ -150,7 +150,7 @@ class KiekerArchitectureAssemblyDiagramSynthesis extends AbstractKiekerArchitect
 
 			it.addRectangle => [
 				it.lineWidth = 2
-				it.setBackgroundGradient("white".color, "LemonChiffon".color, 0)
+				it.setBackgroundGradient("white".color, lookupComponentColor(component, odd).color, 0)
 				it.shadow = "black".color
 				it.setGridPlacement(1).from(LEFT, 15, 0, TOP, 15, 0).to(RIGHT, 15, 0, BOTTOM, 15, 0)
 
@@ -175,7 +175,7 @@ class KiekerArchitectureAssemblyDiagramSynthesis extends AbstractKiekerArchitect
 				}
 			]
 			
-			it.createSubComponents(component)
+			it.createSubComponents(component, !odd)
 
 			if(SHOW_STORAGE.booleanValue) it.createComponentStorages(component)
 			if(SHOW_OPERATIONS.booleanValue) it.createComponentOperations(component)
@@ -189,14 +189,14 @@ class KiekerArchitectureAssemblyDiagramSynthesis extends AbstractKiekerArchitect
 
 	private def void createComponentOperations(KNode node, AssemblyComponent component) {
 		component.operations.forEach [ entry |
-			node.children += entry.value.createOperation(entry.key)
+			node.children += entry.value.createOperation(entry.key, lookupOperationColor(entry.value))
 		]
 	}
 
 	private def void createComponentStorages(KNode node, AssemblyComponent component) {
 		component.storages.forEach [ entry |
 			val storage = entry.value
-			node.children += storage.createStorage(entry.key)
+			node.children += storage.createStorage(entry.key, lookupStorageColor(storage))
 		]
 	}
 
@@ -254,9 +254,9 @@ class KiekerArchitectureAssemblyDiagramSynthesis extends AbstractKiekerArchitect
 		createConnectionEdge(originNode, originPort, portConnection.transitNode, portConnection.transitPort, "gray25")
 	}
 
-	private def createSubComponents(KNode node, AssemblyComponent component) {
+	private def createSubComponents(KNode node, AssemblyComponent component, boolean odd) {
 		component.containedComponents.forEach [
-			val componentNode = it.createAssemblyComponent()
+			val componentNode = it.createAssemblyComponent(odd)
 			node.children += componentNode
 			componentNodeMap.put(it, componentNode)
 		]

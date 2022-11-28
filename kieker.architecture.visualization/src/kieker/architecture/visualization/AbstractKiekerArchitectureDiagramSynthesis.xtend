@@ -44,6 +44,11 @@ import kieker.model.analysismodel.execution.Invocation
 import kieker.model.analysismodel.statistics.StatisticsModel
 import kieker.model.analysismodel.execution.OperationDataflow
 import kieker.model.analysismodel.execution.StorageDataflow
+import kieker.model.analysismodel.assembly.AssemblyComponent
+import kieker.model.analysismodel.assembly.AssemblyOperation
+import kieker.model.analysismodel.assembly.AssemblyStorage
+import kieker.model.analysismodel.source.SourceModel
+import java.util.List
 
 /**
  * @author Reiner Jung
@@ -76,7 +81,17 @@ abstract class AbstractKiekerArchitectureDiagramSynthesis<T> extends AbstractDia
 	protected static val CALL_BG_PROVIDE_COLOR = "#ffffff"
 	protected static val CALL_BG_REQUIRE_COLOR = "gray25"
 	protected static val CALL_FG_COLOR = "#000000"
-
+	
+				
+	protected static val ODD_BACKGROUND_COLOR = "#ffffff"
+	protected static val EVEN_BACKGROUND_COLOR = "#f0f0f0"
+	
+		
+	protected var StatisticsModel statisticsModel
+		
+	protected var SourceModel sourceModel
+	
+	protected var List<String> sources
 	
 	protected static val SynthesisOption ALGORITHM = SynthesisOption::createChoiceOption("Used Layout Algorithm", ImmutableList::of(
 		DiagramLayoutOptions.ELK_LAYERED,
@@ -106,11 +121,11 @@ abstract class AbstractKiekerArchitectureDiagramSynthesis<T> extends AbstractDia
 		return ImmutableList::of(ALGORITHM, SHOW_EDGE_LABELS, SHOW_PORT_LABELS, SHOW_OPERATIONS, SHOW_STORAGE)
 	}
 		
-	protected def createOperation(EObject object, String label) {
+	protected def createOperation(EObject object, String label, String backgroundColor) {
 		object.createNode().associateWith(object) => [
 			it.addEllipse => [
 				it.lineWidth = 2
-				it.background = "white".color
+				it.background = backgroundColor.color
 				it.foreground = "black".color
 				it.setGridPlacement(1).from(LEFT, 15, 0, TOP, 15, 0).to(RIGHT, 15, 0, BOTTOM, 15, 0)
 
@@ -124,11 +139,11 @@ abstract class AbstractKiekerArchitectureDiagramSynthesis<T> extends AbstractDia
 		]
 	}
 	
-	protected def createStorage(EObject storage, String label) {
+	protected def createStorage(EObject storage, String label, String backgroundColor) {
 		createNode().associateWith(storage) => [
 			it.addRoundedRectangle(5, 5) => [
 				it.lineWidth = 2
-				it.background = "white".color
+				it.background = backgroundColor.color
 				it.foreground = "black".color
 				it.setGridPlacement(1).from(LEFT, 15, 0, TOP, 15, 0).to(RIGHT, 15, 0, BOTTOM, 15, 0)
 
@@ -228,9 +243,12 @@ abstract class AbstractKiekerArchitectureDiagramSynthesis<T> extends AbstractDia
 			return ""
 
 		val statisticRecord = statisticsModel.statistics.get(invocation)
-		statisticRecord.properties.entrySet.map[entry |
-			'''«entry.key» : «entry.value»'''	
-		].join("\n")
+		if (statisticRecord !== null) {
+			statisticRecord.properties.entrySet.map[entry |
+				'''«entry.key» : «entry.value»'''	
+			].join("\n")
+		} else
+			return ""
 	}
 	
 	protected def createOperationDataFlowLabel(StatisticsModel statisticsModel, OperationDataflow dataflow) {
@@ -336,5 +354,66 @@ abstract class AbstractKiekerArchitectureDiagramSynthesis<T> extends AbstractDia
 			label.setProperty(CoreOptions.PORT_LABELS_PLACEMENT, EnumSet.of(PortLabelPlacement.OUTSIDE, PortLabelPlacement.NEXT_TO_PORT_IF_POSSIBLE))
 		}
 		return port
+	}
+	
+		
+	protected def String lookupComponentColor(AssemblyComponent component, boolean odd) {
+		if (this.sourceModel === null || this.sources.size() < 2)
+			if (odd) ODD_BACKGROUND_COLOR else EVEN_BACKGROUND_COLOR
+		else {
+			val sources = this.sourceModel.sources.get(component)
+			if (sources.size() == 2)
+				if (odd) ODD_BACKGROUND_COLOR else EVEN_BACKGROUND_COLOR
+			else {
+				val index = this.sources.indexOf(sources.get(0))
+				switch(index) {
+					case 0: if (odd) "#a0ffa0" else "#90f090"
+					case 1: if (odd) "#a0a0ff" else "#9090f0"
+					case 2: if (odd) "#ffa0a0" else "#f09090"
+					case 3: if (odd) "#ffffa0" else "#f0f090"
+					default: if (odd) "#a0a0a0" else "#808080"
+				}
+			}
+		}
+	}
+	
+	protected def String lookupOperationColor(AssemblyOperation operation) {
+		if (this.sourceModel === null || this.sources.size() < 2)
+			"white"
+		else {
+			val sources = this.sourceModel.sources.get(operation)
+			if (sources.size() == 2)
+				"white"
+			else {
+				val index = this.sources.indexOf(sources.get(0))
+				switch(index) {
+					case 0: "#b0ffb0"
+					case 1: "#b0b0ff"
+					case 2: "#ffb0b0"
+					case 3: "#ffffb0"
+					default: "#c0c0c0"
+				}
+			}		
+		}
+	}
+	
+	protected def String lookupStorageColor(AssemblyStorage storage) {
+		if (this.sourceModel === null || this.sources.size() < 2)
+			"white"
+		else {
+			val sources = this.sourceModel.sources.get(storage)
+			if (sources.size() == 2)
+				"white"
+			else {
+				val index = this.sources.indexOf(sources.get(0))
+				switch(index) {
+					case 0: "#b0ffb0"
+					case 1: "#b0b0ff"
+					case 2: "#ffb0b0"
+					case 3: "#ffffb0"
+					default: "#c0c0c0"
+				}
+			}
+		}
 	}
 }

@@ -50,6 +50,8 @@ import kieker.architecture.visualization.display.DisplayModelBuilder
 import static extension kieker.architecture.visualization.utils.ModelUtils.*
 import kieker.architecture.visualization.utils.DebugUtils
 import kieker.model.analysismodel.statistics.StatisticsModel
+import kieker.model.analysismodel.source.SourceModel
+import java.util.HashSet
 
 /**
  * @author Reiner Jung
@@ -68,14 +70,8 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 
 	@Inject
 	extension KColorExtensions
-			
-	val String ODD_BACKGROUND_COLOR = "LemonChiffon"
-		
-	val String EVEN_BACKGROUND_COLOR = "#fffff0"
 	
 	var Set<Component> components
-	
-	var StatisticsModel statisticsModel
 	
 	override transform(ExecutionModel executionModel) {
 		val deployedOperation =
@@ -90,17 +86,12 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 			val assemblyComponent = assemblyOperation.component
 			val assemblyModel = assemblyComponent.eContainer.eContainer as AssemblyModel
 			
-			val statisticsUri = executionModel.eResource.URI.trimSegments(1).appendSegment("statistics-model.xmi")
-			try {
-				val statisticsResource = executionModel.eResource.resourceSet.getResource(statisticsUri, true)
-				statisticsResource.load(new HashMap)
-				if (statisticsResource.errors.size() === 0)
-					this.statisticsModel = statisticsResource.contents.get(0) as StatisticsModel
-				else
-					this.statisticsModel = null
-			} catch(Exception e) {
-				this.statisticsModel = null
-			}
+			this.statisticsModel = loadModel("statistics-model.xmi", executionModel) as StatisticsModel
+			this.sourceModel = loadModel("source-model.xmi", executionModel) as SourceModel
+			val sourcesSet = new HashSet<String>()
+			sourceModel.sources.values.forEach[sourcesSet.addAll(it)]
+			sources = new ArrayList<String>(sourcesSet)
+					
 			object2NodePortMap = new HashMap
 			
 			components = new DisplayModelBuilder().create(assemblyModel.components.values, executionModel)
@@ -113,6 +104,19 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 		}
 	}
 	
+	private def loadModel(String modelName, ExecutionModel executionModel) {
+		val uri = executionModel.eResource.URI.trimSegments(1).appendSegment(modelName)
+		try {
+			val resource = executionModel.eResource.resourceSet.getResource(uri, true)
+			resource.load(new HashMap)
+			if (resource.errors.size() === 0)
+				return resource.contents.get(0)
+			else
+				return null
+		} catch(Exception e) {
+			return null
+		}
+	}
 		
 	private def isWrite(EDirection direction) {
 		#[EDirection.WRITE, EDirection.BOTH].contains(direction)
@@ -129,7 +133,7 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 			it.addLayoutParam(CoreOptions::DIRECTION, Direction::UP)
 		
 			components.forEach[component |
-				it.children += component.createComponent(ODD_BACKGROUND_COLOR)
+				it.children += component.createComponent(true)
 			]
 			components.forEach[it.createLinks(executionModel)]
 		]
@@ -534,7 +538,7 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 	
 	/** ---------------------------------------- */
 		
-	private def createComponent(Component component, String background) {
+	private def createComponent(Component component, boolean odd) {
 		return component.createNode().associateWith(component) => [componentNode |
 			componentNode.addLayoutParam(CoreOptions::ALGORITHM, ALGORITHM.objectValue as String)
 			componentNode.addLayoutParam(CoreOptions::SPACING_NODE_NODE, 75.0)
@@ -543,7 +547,7 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 			
 			componentNode.addRectangle => [
 				it.lineWidth = 4
-				it.background = background.color
+				it.background = lookupComponentColor(component.derivedFrom.get(0) as AssemblyComponent, odd).color
 				it.shadow = "black".color
 				it.setGridPlacement(1).from(LEFT, 15, 0, TOP, 15, 0).to(RIGHT, 15, 0, BOTTOM, 15, 0)
 
@@ -571,7 +575,7 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 			componentNode.createRequiredPorts(component)
 			
 			if (component.children.size > 0) {
-				componentNode.createSubComponents(component, if (background.equals(ODD_BACKGROUND_COLOR)) EVEN_BACKGROUND_COLOR else ODD_BACKGROUND_COLOR)
+				componentNode.createSubComponents(component, !odd)
 			}
 						
 			if (SHOW_OPERATIONS.booleanValue && (!component.derivedFrom.get(0).operations.isEmpty || !component.derivedFrom.get(0).storages.isEmpty)) {
@@ -581,9 +585,9 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 		]
 	}
 		
-	private def void createSubComponents(KNode node, Component component, String background) {
+	private def void createSubComponents(KNode node, Component component, boolean odd) {
 		component.children.forEach [
-			val componentNode = it.createComponent(background)
+			val componentNode = it.createComponent(odd)
 			node.children += componentNode
 		]
 	}
@@ -655,7 +659,7 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 		
 	private def void createOperations(KNode node, Component component) {
 		component.derivedFrom.get(0).operations.values.forEach[
-			val operationNode = createOperation(it, it.operationType.signature)
+			val operationNode = createOperation(it, it.operationType.signature, lookupOperationColor(it))
 
 			object2NodePortMap.put(it, new NodePort(operationNode, null))
 			node.children += operationNode
@@ -664,7 +668,7 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 	
 	private def void createStorages(KNode node, Component component) {
 		component.derivedFrom.get(0).storages.values.forEach[
-			val storageNode = createStorage(it.storageType.name)
+			val storageNode = createStorage(it.storageType.name, lookupStorageColor(it))
 
 			object2NodePortMap.put(it, new NodePort(storageNode, null))			
 			node.children += storageNode
