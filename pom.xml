@@ -60,8 +60,8 @@
 		<dryrun></dryrun>
 
 		<!-- repository URL -->
-		<eclipseRepoUrl>https://download.eclipse.org/releases/2021-12/</eclipseRepoUrl>
-		<elkRepoUrl>https://download.eclipse.org/elk/updates/releases/0.7.1/</elkRepoUrl>
+		<eclipseRepoUrl>https://download.eclipse.org/releases/2022-09/</eclipseRepoUrl>
+		<elkRepoUrl>https://download.eclipse.org/elk/updates/releases/0.8.1/</elkRepoUrl>
 
 		<tycho-repo.url>https://mvnrepository.com/artifact/org.eclipse.tycho/tycho-versions-plugin</tycho-repo.url>
 
@@ -168,6 +168,7 @@
 				<configuration>
 					<pomDependencies>consider</pomDependencies>
 					<executionEnvironment>JavaSE-11</executionEnvironment>
+					<resolveWithExecutionEnvironmentConstraints>false</resolveWithExecutionEnvironmentConstraints>
 					<target>
 						<artifact>
 							<groupId>kieker.develop</groupId>

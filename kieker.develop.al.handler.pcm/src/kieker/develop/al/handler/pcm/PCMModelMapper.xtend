@@ -21,10 +21,10 @@ import kieker.develop.al.modelhandling.IModelMapper
 import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.ecore.resource.ResourceSet
-import org.palladiosimulator.pcm.core.entity.NamedElement
 import kieker.develop.al.mapping.MappingModel
 import java.util.HashMap
 import kieker.develop.geco.TraceModelProvider
+import org.palladiosimulator.pcm.core.entity.NamedElement
 
 /**
  * The model mapper provides the horizontal mapping between

@@ -7,9 +7,9 @@ Bundle-Version: 1.3.0.qualifier
 Bundle-SymbolicName: kieker.develop.al.tests; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: kieker.develop.al,
- org.junit.jupiter.api;bundle-version="[5.1.0,6.0.0)",
  org.eclipse.xtext.testing,
  org.eclipse.xtext.xbase.testing,
- org.eclipse.xtext.xbase.lib;bundle-version="2.14.0"
+ org.eclipse.xtext.xbase.lib;bundle-version="2.14.0",
+ junit-jupiter-api;bundle-version="5.9.1"
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: kieker.develop.al.tests;x-internal=true
