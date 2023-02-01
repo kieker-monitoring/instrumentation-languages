@@ -144,7 +144,6 @@ public class AssemblyPackageImpl extends EPackageImpl implements AssemblyPackage
 	private AssemblyPackageImpl() {
 		super(eNS_URI, AssemblyFactory.eINSTANCE);
 	}
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

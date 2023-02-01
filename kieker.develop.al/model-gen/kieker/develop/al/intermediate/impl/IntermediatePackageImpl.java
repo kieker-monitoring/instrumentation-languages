@@ -86,7 +86,6 @@ public class IntermediatePackageImpl extends EPackageImpl implements Intermediat
 	private IntermediatePackageImpl() {
 		super(eNS_URI, IntermediateFactory.eINSTANCE);
 	}
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

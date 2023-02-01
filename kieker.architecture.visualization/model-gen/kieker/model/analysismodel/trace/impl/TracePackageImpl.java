@@ -81,7 +81,6 @@ public class TracePackageImpl extends EPackageImpl implements TracePackage {
 	private TracePackageImpl() {
 		super(eNS_URI, TraceFactory.eINSTANCE);
 	}
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

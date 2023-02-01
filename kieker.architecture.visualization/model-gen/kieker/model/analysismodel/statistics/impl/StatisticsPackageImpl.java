@@ -210,7 +210,6 @@ public class StatisticsPackageImpl extends EPackageImpl implements StatisticsPac
 	private StatisticsPackageImpl() {
 		super(eNS_URI, StatisticsFactory.eINSTANCE);
 	}
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

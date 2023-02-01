@@ -172,7 +172,6 @@ public class MappingPackageImpl extends EPackageImpl implements MappingPackage {
 	private MappingPackageImpl() {
 		super(eNS_URI, MappingFactory.eINSTANCE);
 	}
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

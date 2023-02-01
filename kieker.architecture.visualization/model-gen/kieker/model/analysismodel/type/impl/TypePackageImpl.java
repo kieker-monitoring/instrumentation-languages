@@ -151,7 +151,6 @@ public class TypePackageImpl extends EPackageImpl implements TypePackage {
 	private TypePackageImpl() {
 		super(eNS_URI, TypeFactory.eINSTANCE);
 	}
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

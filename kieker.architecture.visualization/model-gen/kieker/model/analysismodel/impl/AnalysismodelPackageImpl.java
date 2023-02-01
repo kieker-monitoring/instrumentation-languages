@@ -80,7 +80,6 @@ public class AnalysismodelPackageImpl extends EPackageImpl implements Analysismo
 	private AnalysismodelPackageImpl() {
 		super(eNS_URI, AnalysismodelFactory.eINSTANCE);
 	}
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

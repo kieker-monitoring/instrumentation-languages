@@ -82,7 +82,6 @@ public class SourcePackageImpl extends EPackageImpl implements SourcePackage {
 	private SourcePackageImpl() {
 		super(eNS_URI, SourceFactory.eINSTANCE);
 	}
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

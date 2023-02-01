@@ -140,7 +140,6 @@ public class ExecutionPackageImpl extends EPackageImpl implements ExecutionPacka
 	private ExecutionPackageImpl() {
 		super(eNS_URI, ExecutionFactory.eINSTANCE);
 	}
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

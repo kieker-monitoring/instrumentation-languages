@@ -159,7 +159,6 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 	private DeploymentPackageImpl() {
 		super(eNS_URI, DeploymentFactory.eINSTANCE);
 	}
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

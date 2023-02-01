@@ -85,7 +85,6 @@ public class AnnotationsPackageImpl extends EPackageImpl implements AnnotationsP
 	private AnnotationsPackageImpl() {
 		super(eNS_URI, AnnotationsFactory.eINSTANCE);
 	}
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
