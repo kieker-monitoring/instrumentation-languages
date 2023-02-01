@@ -12,7 +12,7 @@
 	<name>Kieker Development Tools</name>
 
 	<properties>
-		<xtextVersion>2.25.0</xtextVersion>
+		<xtextVersion>2.29.0</xtextVersion>
 		<mwe2Version>2.12.1</mwe2Version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven-compiler-source>11</maven-compiler-source>
@@ -28,7 +28,7 @@
 		<maven-antrun-plugin.version>1.7</maven-antrun-plugin.version>
 
 		<memoryArgs>-Xms256M -Xmx1024M -XX:PermSize=256M -XX:MaxPermSize=256M -XX:+HeapDumpOnOutOfMemoryError</memoryArgs>
-		<platformVersion>[3.9,4.21)</platformVersion>
+		<platformVersion>[3.9,4.27)</platformVersion>
 
 		<checkstyle.config.location>cs-conf.xml</checkstyle.config.location>
 		<checkstyle-crawler>[8.29,)</checkstyle-crawler>
@@ -60,7 +60,7 @@
 		<dryrun></dryrun>
 
 		<!-- repository URL -->
-		<eclipseRepoUrl>https://download.eclipse.org/releases/2022-09/</eclipseRepoUrl>
+		<eclipseRepoUrl>https://download.eclipse.org/releases/2022-12/</eclipseRepoUrl>
 		<elkRepoUrl>https://download.eclipse.org/elk/updates/releases/0.8.1/</elkRepoUrl>
 
 		<tycho-repo.url>https://mvnrepository.com/artifact/org.eclipse.tycho/tycho-versions-plugin</tycho-repo.url>
