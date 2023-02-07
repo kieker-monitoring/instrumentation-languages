@@ -35,7 +35,6 @@ import kieker.model.analysismodel.type.OperationType
 import kieker.model.analysismodel.assembly.AssemblyRequiredInterface
 
 import static extension kieker.architecture.visualization.utils.ModelUtils.*
-import kieker.architecture.visualization.utils.DebugUtils
 
 /**
  * Create operations, storages and components for the display model including ports.
@@ -208,7 +207,6 @@ class DisplayModelComponentCreator {
 			]
 		].
 		forEach[
-//			System.err.printf("create provided port for %s op->storage dataflow to %s\n", component.label, it.storageType.name)
 			val newPort = new ProvidedPort(it.storageType.name, it, component, EPortType.OPERATION_DATAFLOW)
 			component.providedPorts.put(it.storageType.name, newPort)
 			storageProvidedPort.put(it, newPort)

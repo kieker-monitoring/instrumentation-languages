@@ -48,7 +48,6 @@ import java.util.ArrayList
 import kieker.architecture.visualization.display.DisplayModelBuilder
 
 import static extension kieker.architecture.visualization.utils.ModelUtils.*
-import kieker.architecture.visualization.utils.DebugUtils
 import kieker.model.analysismodel.statistics.StatisticsModel
 import kieker.model.analysismodel.source.SourceModel
 import java.util.HashSet
@@ -88,36 +87,19 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 			
 			this.statisticsModel = loadModel("statistics-model.xmi", executionModel) as StatisticsModel
 			this.sourceModel = loadModel("source-model.xmi", executionModel) as SourceModel
-			val sourcesSet = new HashSet<String>()
-			sourceModel.sources.values.forEach[sourcesSet.addAll(it)]
-			sources = new ArrayList<String>(sourcesSet)
-					
+				
+			loadColorModel(executionModel)
+				
 			object2NodePortMap = new HashMap
 			
 			components = new DisplayModelBuilder().create(assemblyModel.components.values, executionModel)
-
-			DebugUtils.print(components, "model")
 
 			return createDisplay(components, executionModel)
 		} else {
 			return null
 		}
 	}
-	
-	private def loadModel(String modelName, ExecutionModel executionModel) {
-		val uri = executionModel.eResource.URI.trimSegments(1).appendSegment(modelName)
-		try {
-			val resource = executionModel.eResource.resourceSet.getResource(uri, true)
-			resource.load(new HashMap)
-			if (resource.errors.size() === 0)
-				return resource.contents.get(0)
-			else
-				return null
-		} catch(Exception e) {
-			return null
-		}
-	}
-		
+			
 	private def isWrite(EDirection direction) {
 		#[EDirection.WRITE, EDirection.BOTH].contains(direction)
 	}
@@ -461,9 +443,7 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 			it.storage.assemblyStorage.component === assemblyComponent &&
 			checkJointParent(component, it.storage.assemblyStorage.component)
 		]
-		
-		// System.err.printf("Storage write flows: %s %d of %d\n", assemblyComponent.signature, writeFlows.size(), dataflows.size())
-		
+				
 		component.providedPorts.values().forEach[providedPort | 
 			val dataflow = writeFlows.findFirst[providedPort.origin.contains(it.storage.assemblyStorage)]
 			if (dataflow !== null) {
@@ -564,8 +544,8 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 					it.setAreaPlacementData.from(LEFT, 20, 0, TOP, 1, 0.5f).to(RIGHT, 20, 0, BOTTOM, 10, 0)
 				]
 
-				if ((SHOW_OPERATIONS.booleanValue && (!component.derivedFrom.get(0).operations.isEmpty || !component.derivedFrom.get(0).storages.isEmpty)) ||
-					(component.children.size > 0)) {
+				if (!component.derivedFrom.get(0).operations.isEmpty || !component.derivedFrom.get(0).storages.isEmpty ||
+					component.children.size > 0) {
 					it.addHorizontalSeperatorLine(1, 0)
 					it.addChildArea
 				}
@@ -578,9 +558,9 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 				componentNode.createSubComponents(component, !odd)
 			}
 						
-			if (SHOW_OPERATIONS.booleanValue && (!component.derivedFrom.get(0).operations.isEmpty || !component.derivedFrom.get(0).storages.isEmpty)) {
-				componentNode.createOperations(component)
-				componentNode.createStorages(component)
+			if (!component.derivedFrom.get(0).operations.isEmpty || !component.derivedFrom.get(0).storages.isEmpty) {
+				componentNode.createOperations(component, odd)
+				componentNode.createStorages(component, odd)
 			}
 		]
 	}
@@ -657,18 +637,18 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 		]
 	}
 		
-	private def void createOperations(KNode node, Component component) {
+	private def void createOperations(KNode node, Component component, boolean odd) {
 		component.derivedFrom.get(0).operations.values.forEach[
-			val operationNode = createOperation(it, it.operationType.signature, lookupOperationColor(it))
+			val operationNode = createOperation(it, it.operationType.signature, lookupOperationColor(it, odd))
 
 			object2NodePortMap.put(it, new NodePort(operationNode, null))
 			node.children += operationNode
 		]
 	}
 	
-	private def void createStorages(KNode node, Component component) {
+	private def void createStorages(KNode node, Component component, boolean odd) {
 		component.derivedFrom.get(0).storages.values.forEach[
-			val storageNode = createStorage(it.storageType.name, lookupStorageColor(it))
+			val storageNode = createStorage(it.storageType.name, lookupStorageColor(it, odd))
 
 			object2NodePortMap.put(it, new NodePort(storageNode, null))			
 			node.children += storageNode
