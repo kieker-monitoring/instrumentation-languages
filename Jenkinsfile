@@ -2,7 +2,7 @@ pipeline {
 	agent any
 
 	environment {
-		UPDATE_SITE_URL = "sftp://repo@repo.se.internal/var/www/html/kdt"
+		UPDATE_SITE_URL = "sftp://repo@repo.se.internal/kdt"
 		DESTINATION = 'snapshot'
 	}
 
