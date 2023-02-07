@@ -49,6 +49,14 @@ import kieker.model.analysismodel.assembly.AssemblyOperation
 import kieker.model.analysismodel.assembly.AssemblyStorage
 import kieker.model.analysismodel.source.SourceModel
 import java.util.List
+import java.util.HashMap
+import org.eclipse.core.resources.ResourcesPlugin
+import org.eclipse.core.runtime.Path
+import java.io.InputStreamReader
+import java.io.BufferedReader
+import java.util.ArrayList
+import java.util.Set
+import org.eclipse.emf.common.util.EList
 
 /**
  * @author Reiner Jung
@@ -90,8 +98,8 @@ abstract class AbstractKiekerArchitectureDiagramSynthesis<T> extends AbstractDia
 	protected var StatisticsModel statisticsModel
 		
 	protected var SourceModel sourceModel
-	
-	protected var List<String> sources
+		
+	protected var Map<String, List<MappingRule>> colorModel
 	
 	protected static val SynthesisOption ALGORITHM = SynthesisOption::createChoiceOption("Used Layout Algorithm", ImmutableList::of(
 		DiagramLayoutOptions.ELK_LAYERED,
@@ -119,6 +127,64 @@ abstract class AbstractKiekerArchitectureDiagramSynthesis<T> extends AbstractDia
 	 */
 	override getDisplayedSynthesisOptions() {
 		return ImmutableList::of(ALGORITHM, SHOW_EDGE_LABELS, SHOW_PORT_LABELS, SHOW_OPERATIONS, SHOW_STORAGE)
+	}
+	
+	
+	protected def loadColorModel(EObject object) {
+		this.colorModel = new HashMap
+		
+		val uri = object.eResource.URI.trimSegments(1).appendSegment("color-model.map")
+		val filePath = new Path(uri.toPlatformString(true))
+		val file = ResourcesPlugin.workspace.root.getFile(filePath)
+
+		if (file.isAccessible) {
+			val reader = new BufferedReader(new InputStreamReader(file.contents, file.charset));
+			var String line
+			while ((line = reader.readLine) !== null) {
+				val parts = line.split(":")
+				if (parts.length == 2) {
+					val part = parts.get(0).trim
+					val mapping = parts.get(1).split("=")
+					if (mapping.length == 2) {
+						val labels = mapping.get(0).split(",")
+						val colors = mapping.get(1).split(",")
+						if (colors.length == 2) {
+							val mappingRule = new MappingRule(part)
+							labels.forEach[mappingRule.labels.add(it.trim)]
+							mappingRule.oddColor = colors.get(0).trim
+							mappingRule.evenColor = colors.get(1).trim
+							
+							var rules = this.colorModel.get(part)
+							if (rules === null) {
+								rules = new ArrayList<MappingRule>()
+								this.colorModel.put(part, rules)
+							}
+							
+							rules.add(mappingRule)
+						}
+					}
+				}
+			}
+			
+			reader.close
+		}
+	}
+		
+	
+		
+		
+	protected def loadModel(String modelName, EObject object) {
+		val uri = object.eResource.URI.trimSegments(1).appendSegment(modelName)
+		try {
+			val resource = object.eResource.resourceSet.getResource(uri, true)
+			resource.load(new HashMap)
+			if (resource.errors.size() === 0)
+				return resource.contents.get(0)
+			else
+				return null
+		} catch(Exception e) {
+			return null
+		}
 	}
 		
 	protected def createOperation(EObject object, String label, String backgroundColor) {
@@ -163,7 +229,7 @@ abstract class AbstractKiekerArchitectureDiagramSynthesis<T> extends AbstractDia
 			]
 		]
 	}
-	
+		
 	protected def KPort createInterfaceProvidedPort(PortSide portSide, EObject object, int index, EPortType portType) {
 		val foregroundColor = if (#[EPortType.INTERFACE_CALL, EPortType.OPERATION_CALL].contains(portType)) CALL_FG_COLOR else DATAFLOW_FG_COLOR
 		val backgroundColor = if (#[EPortType.INTERFACE_CALL, EPortType.OPERATION_CALL].contains(portType)) CALL_BG_PROVIDE_COLOR else DATAFLOW_BG_PROVIDE_COLOR
@@ -280,15 +346,6 @@ abstract class AbstractKiekerArchitectureDiagramSynthesis<T> extends AbstractDia
 	}
 	
 	protected def createConnectionEdge(NodePort source, NodePort target, String color) {
-//		System.err.println("SOURCE " + source + "  TARGET " + target + "  COLOR " + color)
-//		if (source !== null)
-//			System.err.println("source node " + source.node)
-//		else
-//			System.err.println("Source node broken")
-//		if (target !== null)
-//			System.err.println("target node " + target.node)
-//		else
-//			System.err.println("Target node broken")
 		createConnectionEdge(source.node, source.port, target.node, target.port, color)
 	}
 	
@@ -358,62 +415,45 @@ abstract class AbstractKiekerArchitectureDiagramSynthesis<T> extends AbstractDia
 	
 		
 	protected def String lookupComponentColor(AssemblyComponent component, boolean odd) {
-		if (this.sourceModel === null || this.sources.size() < 2)
-			if (odd) ODD_BACKGROUND_COLOR else EVEN_BACKGROUND_COLOR
+		lookupColor("component", component, odd, ODD_BACKGROUND_COLOR, EVEN_BACKGROUND_COLOR)
+	}
+	
+	protected def String lookupOperationColor(AssemblyOperation operation, boolean odd) {
+		lookupColor("operation", operation, odd, "white", "lightgray")
+	}
+	
+	protected def String lookupStorageColor(AssemblyStorage storage, boolean odd) {
+		lookupColor("storage", storage, odd, "white", "lightgray")		
+	}
+	
+	private def String lookupColor(String kind, EObject object, boolean odd, String oddDefaultColor, String evenDefaultColor) {
+		if (this.sourceModel === null)
+			if (odd) oddDefaultColor else evenDefaultColor
 		else {
-			val sources = this.sourceModel.sources.get(component)
-			if (sources.size() == 2)
-				if (odd) ODD_BACKGROUND_COLOR else EVEN_BACKGROUND_COLOR
-			else {
-				val index = this.sources.indexOf(sources.get(0))
-				switch(index) {
-					case 0: if (odd) "#a0ffa0" else "#90f090"
-					case 1: if (odd) "#a0a0ff" else "#9090f0"
-					case 2: if (odd) "#ffa0a0" else "#f09090"
-					case 3: if (odd) "#ffffa0" else "#f0f090"
-					default: if (odd) "#a0a0a0" else "#808080"
+			val sources = this.sourceModel.sources.get(object)
+			if (sources === null || sources.size === 0) {
+				if (odd) oddDefaultColor else evenDefaultColor
+			} else {
+				val rules = colorModel.get(kind)
+				if (rules === null) {
+					if (odd) oddDefaultColor else evenDefaultColor		
+				} else {
+					val mapping = rules.findFirst[it.labels.match(sources)]
+					if (mapping !== null) {
+						if (odd) mapping.oddColor else mapping.evenColor
+					} else {
+						if (odd) oddDefaultColor else evenDefaultColor
+					}
 				}
 			}
 		}
 	}
-	
-	protected def String lookupOperationColor(AssemblyOperation operation) {
-		if (this.sourceModel === null || this.sources.size() < 2)
-			"white"
-		else {
-			val sources = this.sourceModel.sources.get(operation)
-			if (sources.size() == 2)
-				"white"
-			else {
-				val index = this.sources.indexOf(sources.get(0))
-				switch(index) {
-					case 0: "#b0ffb0"
-					case 1: "#b0b0ff"
-					case 2: "#ffb0b0"
-					case 3: "#ffffb0"
-					default: "#c0c0c0"
-				}
-			}		
-		}
+		
+	private def Boolean match(Set<String> left, EList<String> right) {
+		if (left.size == right.size) {
+			left.forall[ll | right.exists[it.equals(ll)]]
+		} else
+			false
 	}
 	
-	protected def String lookupStorageColor(AssemblyStorage storage) {
-		if (this.sourceModel === null || this.sources.size() < 2)
-			"white"
-		else {
-			val sources = this.sourceModel.sources.get(storage)
-			if (sources.size() == 2)
-				"white"
-			else {
-				val index = this.sources.indexOf(sources.get(0))
-				switch(index) {
-					case 0: "#b0ffb0"
-					case 1: "#b0b0ff"
-					case 2: "#ffb0b0"
-					case 3: "#ffffb0"
-					default: "#c0c0c0"
-				}
-			}
-		}
-	}
 }
