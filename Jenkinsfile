@@ -16,7 +16,7 @@ pipeline {
 			agent {
 				docker {
 					image "prefec2/jdk11-maven-363-gradle671"
-					alwaysPull false
+					alwaysPull true
 				}
 			}
 			stages {
