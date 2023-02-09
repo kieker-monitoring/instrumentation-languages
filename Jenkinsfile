@@ -85,7 +85,6 @@ pipeline {
 					}
 					steps {
 					//	sh 'mvn -X -Dmaven.repo.local=${WORKSPACE}/ws-repo -DskipTests -P snapshot --settings settings.xml --batch-mode -Dkeystore=${KEYSTORE} -Dupdate-site-url=${UPDATE_SITE_URL} install'
-						sh 'ls /usr/bin'
 						sh '/usr/bin/sftp -i ${KEYSTORE} -o StrictHostKeyChecking=no -b ${WORKSPACE}/upload.sftp ${UPDATE_SITE_URL}/${DESTINATION}'
 					}
 				}
