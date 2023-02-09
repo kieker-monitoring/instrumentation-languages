@@ -129,7 +129,6 @@ abstract class AbstractKiekerArchitectureDiagramSynthesis<T> extends AbstractDia
 		return ImmutableList::of(ALGORITHM, SHOW_EDGE_LABELS, SHOW_PORT_LABELS, SHOW_OPERATIONS, SHOW_STORAGE)
 	}
 	
-	
 	protected def loadColorModel(EObject object) {
 		this.colorModel = new HashMap
 		
