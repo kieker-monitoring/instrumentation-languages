@@ -84,7 +84,8 @@ pipeline {
 						KEYSTORE = credentials('kieker-irl-key')
 					}
 					steps {
-						sh 'mvn -X -Dmaven.repo.local=${WORKSPACE}/ws-repo -DskipTests -P snapshot --settings settings.xml --batch-mode -Dkeystore=${KEYSTORE} -Dupdate-site-url=${UPDATE_SITE_URL} install'
+					//	sh 'mvn -X -Dmaven.repo.local=${WORKSPACE}/ws-repo -DskipTests -P snapshot --settings settings.xml --batch-mode -Dkeystore=${KEYSTORE} -Dupdate-site-url=${UPDATE_SITE_URL} install'
+						sh 'sftp -i ${KEYSTORE} -o StrictHostKeyChecking=no -b upload.sftp ${UPDATE_SITE_URL}/${DESTINATION}'
 					}
 				}
 			}
