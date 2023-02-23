@@ -1,21 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
-   <extension
-         point="de.cau.cs.kieler.klighd.diagramSyntheses">
-	   <diagramSynthesis
-	         class="de.cau.cs.kieler.klighd.syntheses.GuiceBasedSynthesisFactory:kieker.architecture.visualization.KiekerArchitectureAssemblyDiagramSynthesis"
-	         id="kieker.architecture.visualization.KiekerArchitectureAssemblyDiagramSynthesis">
-	   </diagramSynthesis>
-   </extension>
 
-   <extension
-         point="de.cau.cs.kieler.klighd.diagramSyntheses">
-	   <diagramSynthesis
-	         class="de.cau.cs.kieler.klighd.syntheses.GuiceBasedSynthesisFactory:kieker.architecture.visualization.KiekerArchitectureExecutionDiagramSynthesis"
-	         id="kieker.architecture.visualization.KiekerArchitectureExecutionDiagramSynthesis">
-	   </diagramSynthesis>
-   </extension>
+<extension point="de.cau.cs.kieler.klighd.extensions">
+		<startupHook
+			class="kieker.architecture.visualization.KlighdSetup">
+		</startupHook>
+	</extension>
 
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated analysismodel -->

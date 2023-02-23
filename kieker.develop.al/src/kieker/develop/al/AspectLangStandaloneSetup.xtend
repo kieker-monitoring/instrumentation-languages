@@ -15,13 +15,25 @@
  ***************************************************************************/
 package kieker.develop.al;
 
+import com.google.inject.Injector;
+import kieker.develop.al.aspectLang.AspectLangPackage
 
 /**
  * Initialization support for running Xtext languages without Equinox extension registry.
  */
-public class AspectLangStandaloneSetup extends AspectLangStandaloneSetupGenerated {
+class AspectLangStandaloneSetup extends AspectLangStandaloneSetupGenerated {
 
-	public static void doSetup() {
-		new AspectLangStandaloneSetup().createInjectorAndDoEMFRegistration();
+	protected static Injector inj;
+	
+	def static Injector doSetup() {
+		if (inj === null) {
+			inj = new AspectLangStandaloneSetup().createInjectorAndDoEMFRegistration();
+		}
+		return inj;
+	}
+	
+	override register(Injector injector) {
+		super.register(injector)
+		AspectLangPackage.eINSTANCE.eClass()
 	}
 }
