@@ -1,36 +1,13 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
-Bundle-SymbolicName: kieker.architecture.visualization;singleton:=true
+Bundle-SymbolicName: kieker.architecture.languageServer;singleton:=true
 Automatic-Module-Name: kieker
 Bundle-Version: 1.3.0.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-11
-Export-Package: kieker.model.analysismodel,
- kieker.model.analysismodel.assembly,
- kieker.model.analysismodel.assembly.impl,
- kieker.model.analysismodel.assembly.util,
- kieker.model.analysismodel.deployment,
- kieker.model.analysismodel.deployment.impl,
- kieker.model.analysismodel.deployment.util,
- kieker.model.analysismodel.execution,
- kieker.model.analysismodel.execution.impl,
- kieker.model.analysismodel.execution.util,
- kieker.model.analysismodel.impl,
- kieker.model.analysismodel.source,
- kieker.model.analysismodel.source.impl,
- kieker.model.analysismodel.source.util,
- kieker.model.analysismodel.statistics,
- kieker.model.analysismodel.statistics.impl,
- kieker.model.analysismodel.statistics.util,
- kieker.model.analysismodel.trace,
- kieker.model.analysismodel.trace.impl,
- kieker.model.analysismodel.trace.util,
- kieker.model.analysismodel.type,
- kieker.model.analysismodel.type.impl,
- kieker.model.analysismodel.type.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  de.cau.cs.kieler.klighd;bundle-version="[2.1.0,2.3.0)",
@@ -66,5 +43,6 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.xtext.ide,
  org.eclipse.xtext.xbase.lib,
  kieker.develop.al,
+ kieker.develop.al.ide,
  kieker.develop.rl
 Bundle-ActivationPolicy: lazy

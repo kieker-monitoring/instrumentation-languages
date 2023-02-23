@@ -1,473 +1,886 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-
-	<groupId>kieker.develop</groupId>
-	<artifactId>kieker.develop.parent</artifactId>
-	<version>1.3.0-SNAPSHOT</version>
-
-	<packaging>pom</packaging>
-
-	<name>Kieker Development Tools</name>
-
-	<properties>
-		<xtextVersion>2.29.0</xtextVersion>
-		<mwe2Version>2.14.0</mwe2Version>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven-compiler-source>11</maven-compiler-source>
-		<maven-compiler-target>11</maven-compiler-target>
-		<!-- Tycho settings -->
-		<tycho-version>2.1.0</tycho-version>
-		<!-- Define overridable properties for tycho-surefire-plugin -->
-		<platformSystemProperties></platformSystemProperties>
-		<moduleProperties></moduleProperties>
-		<systemProperties></systemProperties>
-		<additionalTestArguments></additionalTestArguments>
-
-		<maven-antrun-plugin.version>1.7</maven-antrun-plugin.version>
-
-		<memoryArgs>-Xms256M -Xmx1024M -XX:PermSize=256M -XX:MaxPermSize=256M -XX:+HeapDumpOnOutOfMemoryError</memoryArgs>
-		<platformVersion>[3.9,4.27)</platformVersion>
-
-		<checkstyle.config.location>cs-conf.xml</checkstyle.config.location>
-		<checkstyle-crawler>[8.29,)</checkstyle-crawler>
-
-		<pmdVersion>6.22.0</pmdVersion>
-
-		<xtendVersion>2.25.0</xtendVersion>
-
-		<!-- properties for deploying the composite update site and zipped products on Sourceforge -->
-		<target-file-name>kieker.develop</target-file-name>
-
-		<!-- since this is used in the pluginManagement section, we need to make sure
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  	
+  <modelVersion>4.0.0</modelVersion>
+  	
+  <groupId>kieker.develop</groupId>
+  	
+  <artifactId>kieker.develop.parent</artifactId>
+  	
+  <version>1.3.0-SNAPSHOT</version>
+  	
+  <packaging>pom</packaging>
+  	
+  <name>Kieker Development Tools</name>
+  	
+  <properties>
+    		
+    <xtextVersion>2.29.0</xtextVersion>
+    		
+    <mwe2Version>2.14.0</mwe2Version>
+    		
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    		
+    <maven-compiler-source>11</maven-compiler-source>
+    		
+    <maven-compiler-target>11</maven-compiler-target>
+    		
+    <!-- Tycho settings -->
+    		
+    <tycho-version>2.1.0</tycho-version>
+    		
+    <!-- Define overridable properties for tycho-surefire-plugin -->
+    		
+    <platformSystemProperties/>
+    		
+    <moduleProperties/>
+    		
+    <systemProperties/>
+    		
+    <additionalTestArguments/>
+    		
+    <maven-antrun-plugin.version>1.7</maven-antrun-plugin.version>
+    		
+    <memoryArgs>-Xms256M -Xmx1024M -XX:PermSize=256M -XX:MaxPermSize=256M -XX:+HeapDumpOnOutOfMemoryError</memoryArgs>
+    		
+    <platformVersion>[3.9,4.27)</platformVersion>
+    		
+    <checkstyle.config.location>cs-conf.xml</checkstyle.config.location>
+    		
+    <checkstyle-crawler>[8.29,)</checkstyle-crawler>
+    		
+    <pmdVersion>6.22.0</pmdVersion>
+    		
+    <xtendVersion>2.25.0</xtendVersion>
+    		
+    <!-- properties for deploying the composite update site and zipped products on Sourceforge -->
+    		
+    <target-file-name>kieker.develop</target-file-name>
+    		
+    <!-- since this is used in the pluginManagement section, we need to make sure
 			the path always points to this pom's directory; project.basedir will always point
 			to the directory of the pom where the pluginManagement's plugins are used -->
-		<ant-files-path>${project.basedir}/ant</ant-files-path>
+    		
+    <ant-files-path>${project.basedir}/ant</ant-files-path>
+    		
+    <!-- the subdirectory for the composite update site -->
+    		
+    <updates.dir>kdt</updates.dir>
+    		
+    <site.label>Kieker Development Tools Site</site.label>
+    		
+    <remote.dir>/home/reiner/dump/cli/</remote.dir>
+    	
+		
+    <!-- local source directory of p2 site for rsync -->
+    		
+    <rsync.remote.dir>${remote.dir}/updates/</rsync.remote.dir>
+    		
+    <!-- remote directory of p2 site for rsync -->
+    		
+    <rsync.local.dir>${user.home}/p2.repositories/${updates.dir}/</rsync.local.dir>
+    		
+    <!-- pass "-n" to perform a trial run with no changes made -->
+    		
+    <dryrun/>
+    		
+    <!-- repository URL -->
+    		
+    <eclipseRepoUrl>https://download.eclipse.org/releases/2022-12/</eclipseRepoUrl>
+    		
+    <elkRepoUrl>https://download.eclipse.org/elk/updates/releases/0.8.1/</elkRepoUrl>
+    		
+    <tycho-repo.url>https://mvnrepository.com/artifact/org.eclipse.tycho/tycho-versions-plugin</tycho-repo.url>
+    		
+    <palladioRepoUrl>https://sdqweb.ipd.kit.edu/eclipse/palladio/releases/latest</palladioRepoUrl>
+    		
+    <palladio-fm-repo.url>https://sdqweb.ipd.kit.edu/eclipse/featuremodel/releases/latest</palladio-fm-repo.url>
+    		
+    <palladio-sf-repo.url>https://sdqweb.ipd.kit.edu/eclipse/sensorframework/releases/latest</palladio-sf-repo.url>
+    		
+    <palladio-wfe-repo.url>https://sdqweb.ipd.kit.edu/eclipse/workflowengine/releases/latest</palladio-wfe-repo.url>
+    		
+    <kit-common-repo.url>https://sdqweb.ipd.kit.edu/eclipse/commons/releases/latest</kit-common-repo.url>
+    	
+  </properties>
+  	
+  <modules>
+    		
+    <module>kieker.develop.semantics</module>
+    		
+    <module>kieker.develop.semantics.java</module>
+    		
+    <module>kieker.develop.al</module>
+    		
+    <module>kieker.develop.al.ide</module>
+    		
+    <module>kieker.develop.al.ui</module>
+    		
+    <module>kieker.develop.al.tests</module>
+    		
+    <module>kieker.develop.al.feature</module>
+    		
+    <module>kieker.develop.al.generator.java</module>
+    		
+    <module>kieker.develop.al.generator.c</module>
+    		
+    <module>kieker.develop.al.generator.perl</module>
+    		
+    <module>kieker.develop.al.handler.pcm</module>
+    		
+    <module>kieker.develop.al.handler.java</module>
+    		
+    <module>kieker.develop.rl</module>
+    		
+    <module>kieker.develop.rl.generator.java</module>
+    		
+    <module>kieker.develop.rl.generator.c</module>
+    		
+    <module>kieker.develop.rl.generator.delphi</module>
+    		
+    <module>kieker.develop.rl.generator.perl</module>
+    		
+    <module>kieker.develop.rl.generator.python</module>
+    		
+    <module>kieker.develop.rl.ide</module>
+    		
+    <module>kieker.develop.rl.ui</module>
+    		
+    <module>kieker.develop.rl.tests</module>
+    		
+    <module>kieker.develop.rl.feature</module>
+    		
+    <module>kieker.architecture.visualization</module>
+    		
+    <module>kieker.architecture.visualization.feature</module>
+    		
+    <module>kieker.develop.repository</module>
+    		
+    <module>kieker.develop.target</module>
+     
 
-		<!-- the subdirectory for the composite update site -->
-		<updates.dir>kdt</updates.dir>
-		<site.label>Kieker Development Tools Site</site.label>
-
-		<remote.dir>/home/reiner/dump/cli/</remote.dir>
-	
-		<!-- local source directory of p2 site for rsync -->
-		<rsync.remote.dir>${remote.dir}/updates/</rsync.remote.dir>
-		<!-- remote directory of p2 site for rsync -->
-		<rsync.local.dir>${user.home}/p2.repositories/${updates.dir}/</rsync.local.dir>
-
-		<!-- pass "-n" to perform a trial run with no changes made -->
-		<dryrun></dryrun>
-
-		<!-- repository URL -->
-		<eclipseRepoUrl>https://download.eclipse.org/releases/2022-12/</eclipseRepoUrl>
-		<elkRepoUrl>https://download.eclipse.org/elk/updates/releases/0.8.1/</elkRepoUrl>
-
-		<tycho-repo.url>https://mvnrepository.com/artifact/org.eclipse.tycho/tycho-versions-plugin</tycho-repo.url>
-
-		<palladioRepoUrl>https://sdqweb.ipd.kit.edu/eclipse/palladio/releases/latest</palladioRepoUrl>
-		<palladio-fm-repo.url>https://sdqweb.ipd.kit.edu/eclipse/featuremodel/releases/latest</palladio-fm-repo.url>
-		<palladio-sf-repo.url>https://sdqweb.ipd.kit.edu/eclipse/sensorframework/releases/latest</palladio-sf-repo.url>
-		<palladio-wfe-repo.url>https://sdqweb.ipd.kit.edu/eclipse/workflowengine/releases/latest</palladio-wfe-repo.url>
-		<kit-common-repo.url>https://sdqweb.ipd.kit.edu/eclipse/commons/releases/latest</kit-common-repo.url>
-	</properties>
-	<modules>
-		<module>kieker.develop.semantics</module>
-		<module>kieker.develop.semantics.java</module>
-		<module>kieker.develop.al</module>
-		<module>kieker.develop.al.ide</module>
-		<module>kieker.develop.al.ui</module>
-		<module>kieker.develop.al.tests</module>
-		<module>kieker.develop.al.feature</module>
-		<module>kieker.develop.al.generator.java</module>
-		<module>kieker.develop.al.generator.c</module>
-		<module>kieker.develop.al.generator.perl</module>
-		<module>kieker.develop.al.handler.pcm</module>
-		<module>kieker.develop.al.handler.java</module>
-		<module>kieker.develop.rl</module>
-		<module>kieker.develop.rl.generator.java</module>
-		<module>kieker.develop.rl.generator.c</module>
-		<module>kieker.develop.rl.generator.delphi</module>
-		<module>kieker.develop.rl.generator.perl</module>
-		<module>kieker.develop.rl.generator.python</module>
-		<module>kieker.develop.rl.ide</module>
-		<module>kieker.develop.rl.ui</module>
-		<module>kieker.develop.rl.tests</module>
-		<module>kieker.develop.rl.feature</module>
-		<module>kieker.architecture.visualization</module>
-		<module>kieker.architecture.visualization.feature</module>
-		<module>kieker.develop.repository</module>
-		<module>kieker.develop.target</module> 
-<!--		<module>kieker.develop.rl.generator.java.tests</module>
+    <!--		<module>kieker.develop.rl.generator.java.tests</module>
 		<module>kieker.develop.rl.cli</module>
 		<module>kieker.develop.rl.cli.feature</module>
 		<module>kieker.develop.rl.cli.site</module>-->
-	</modules>
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.eclipse.tycho</groupId>
-				<artifactId>tycho-maven-plugin</artifactId>
-				<version>${tycho-version}</version>
-				<extensions>true</extensions>
-			</plugin>
-			<plugin>
-				<groupId>org.eclipse.tycho</groupId>
-				<artifactId>tycho-source-plugin</artifactId>
-				<version>${tycho-version}</version>
-				<executions>
-					<execution>
-						<id>plugin-source</id>
-						<goals>
-							<goal>plugin-source</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.eclipse.tycho.extras</groupId>
-				<artifactId>tycho-source-feature-plugin</artifactId>
-				<version>${tycho-version}</version>
-				<executions>
-					<execution>
-						<id>source-feature</id>
-						<phase>package</phase>
-						<goals>
-							<goal>source-feature</goal>
-						</goals>
-						<configuration>
-							<excludes>
-								<!-- These are bundles and feature that do not have a corresponding 
+    	  
+    <module>kieker.architecture.languageServer</module>
+      
+  </modules>
+  	
+  <build>
+    		
+    <plugins>
+      			
+      <plugin>
+        				
+        <groupId>org.eclipse.tycho</groupId>
+        				
+        <artifactId>tycho-maven-plugin</artifactId>
+        				
+        <version>${tycho-version}</version>
+        				
+        <extensions>true</extensions>
+        			
+      </plugin>
+      			
+      <plugin>
+        				
+        <groupId>org.eclipse.tycho</groupId>
+        				
+        <artifactId>tycho-source-plugin</artifactId>
+        				
+        <version>${tycho-version}</version>
+        				
+        <executions>
+          					
+          <execution>
+            						
+            <id>plugin-source</id>
+            						
+            <goals>
+              							
+              <goal>plugin-source</goal>
+              						
+            </goals>
+            					
+          </execution>
+          				
+        </executions>
+        			
+      </plugin>
+      			
+      <plugin>
+        				
+        <groupId>org.eclipse.tycho.extras</groupId>
+        				
+        <artifactId>tycho-source-feature-plugin</artifactId>
+        				
+        <version>${tycho-version}</version>
+        				
+        <executions>
+          					
+          <execution>
+            						
+            <id>source-feature</id>
+            						
+            <phase>package</phase>
+            						
+            <goals>
+              							
+              <goal>source-feature</goal>
+              						
+            </goals>
+            						
+            <configuration>
+              							
+              <excludes>
+                								
+                <!-- These are bundles and feature that do not have a corresponding 
 									source version; NOT the ones that we do not want source versions -->
-								<feature id="org.eclipse.sdk" />
-							</excludes>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.eclipse.tycho</groupId>
-				<artifactId>tycho-p2-plugin</artifactId>
-				<version>${tycho-version}</version>
-				<executions>
-					<execution>
-						<id>attach-p2-metadata</id>
-						<phase>package</phase>
-						<goals>
-							<goal>p2-metadata</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<!-- specify all environments when building the IDE -->
-			<plugin>
-				<groupId>org.eclipse.tycho</groupId>
-				<artifactId>target-platform-configuration</artifactId>
-				<version>${tycho-version}</version>
-				<configuration>
-					<pomDependencies>consider</pomDependencies>
-					<executionEnvironment>JavaSE-11</executionEnvironment>
-					<resolveWithExecutionEnvironmentConstraints>false</resolveWithExecutionEnvironmentConstraints>
-					<target>
-						<artifact>
-							<groupId>kieker.develop</groupId>
-							<artifactId>kieker.develop.target</artifactId>
-							<version>${project.version}</version>
-							<classifier>${target-file-name}</classifier>
-						</artifact>
-					</target>
-					<environments>
-						<environment>
-							<os>win32</os>
-							<ws>win32</ws>
-							<arch>x86_64</arch>
-						</environment>
-						<environment>
-							<os>macosx</os>
-							<ws>cocoa</ws>
-							<arch>x86_64</arch>
-						</environment>
-						<environment>
-							<os>linux</os>
-							<ws>gtk</ws>
-							<arch>x86_64</arch>
-						</environment>
-					</environments>
-					<dependency-resolution>
-						<extraRequirements>
-							<requirement>
-								<type>eclipse-plugin</type>
-								<id>org.eclipse.xtext.logging</id>
-								<versionRange>1.2.15</versionRange>
-							</requirement>
-							<!-- to get the org.eclipse.osgi.compatibility.state plugin if the target 
+                								
+                <feature id="org.eclipse.sdk"/>
+                							
+              </excludes>
+              						
+            </configuration>
+            					
+          </execution>
+          				
+        </executions>
+        			
+      </plugin>
+      			
+      <plugin>
+        				
+        <groupId>org.eclipse.tycho</groupId>
+        				
+        <artifactId>tycho-p2-plugin</artifactId>
+        				
+        <version>${tycho-version}</version>
+        				
+        <executions>
+          					
+          <execution>
+            						
+            <id>attach-p2-metadata</id>
+            						
+            <phase>package</phase>
+            						
+            <goals>
+              							
+              <goal>p2-metadata</goal>
+              						
+            </goals>
+            					
+          </execution>
+          				
+        </executions>
+        			
+      </plugin>
+      			
+      <!-- specify all environments when building the IDE -->
+      			
+      <plugin>
+        				
+        <groupId>org.eclipse.tycho</groupId>
+        				
+        <artifactId>target-platform-configuration</artifactId>
+        				
+        <version>${tycho-version}</version>
+        				
+        <configuration>
+          					
+          <pomDependencies>consider</pomDependencies>
+          					
+          <executionEnvironment>JavaSE-11</executionEnvironment>
+          					
+          <resolveWithExecutionEnvironmentConstraints>false</resolveWithExecutionEnvironmentConstraints>
+          					
+          <target>
+            						
+            <artifact>
+              							
+              <groupId>kieker.develop</groupId>
+              							
+              <artifactId>kieker.develop.target</artifactId>
+              							
+              <version>${project.version}</version>
+              							
+              <classifier>${target-file-name}</classifier>
+              						
+            </artifact>
+            					
+          </target>
+          					
+          <environments>
+            						
+            <environment>
+              							
+              <os>win32</os>
+              							
+              <ws>win32</ws>
+              							
+              <arch>x86_64</arch>
+              						
+            </environment>
+            						
+            <environment>
+              							
+              <os>macosx</os>
+              							
+              <ws>cocoa</ws>
+              							
+              <arch>x86_64</arch>
+              						
+            </environment>
+            						
+            <environment>
+              							
+              <os>linux</os>
+              							
+              <ws>gtk</ws>
+              							
+              <arch>x86_64</arch>
+              						
+            </environment>
+            					
+          </environments>
+          					
+          <dependency-resolution>
+            						
+            <extraRequirements>
+              							
+              <requirement>
+                								
+                <type>eclipse-plugin</type>
+                								
+                <id>org.eclipse.xtext.logging</id>
+                								
+                <versionRange>1.2.15</versionRange>
+                							
+              </requirement>
+              							
+              <!-- to get the org.eclipse.osgi.compatibility.state plugin if the target 
 								platform is Luna or later. (backward compatible with kepler and previous 
 								versions) see https://bugs.eclipse.org/bugs/show_bug.cgi?id=492149 -->
-							<requirement>
-								<type>eclipse-feature</type>
-								<id>org.eclipse.rcp</id>
-								<versionRange>0.0.0</versionRange>
-							</requirement>
-						</extraRequirements>
-					</dependency-resolution>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.eclipse.tycho</groupId>
-				<artifactId>tycho-packaging-plugin</artifactId>
-				<version>${tycho-version}</version>
-				<configuration>
-					<format>'v'yyyyMMdd'-'HHmm</format>
-				</configuration>
-			</plugin>
+              							
+              <requirement>
+                								
+                <type>eclipse-feature</type>
+                								
+                <id>org.eclipse.rcp</id>
+                								
+                <versionRange>0.0.0</versionRange>
+                							
+              </requirement>
+              						
+            </extraRequirements>
+            					
+          </dependency-resolution>
+          				
+        </configuration>
+        			
+      </plugin>
+      			
+      <plugin>
+        				
+        <groupId>org.eclipse.tycho</groupId>
+        				
+        <artifactId>tycho-packaging-plugin</artifactId>
+        				
+        <version>${tycho-version}</version>
+        				
+        <configuration>
+          					
+          <format>'v'yyyyMMdd'-'HHmm</format>
+          				
+        </configuration>
+        			
+      </plugin>
+      			
 			
-			<plugin>
-				<groupId>org.eclipse.tycho</groupId>
-				<artifactId>tycho-versions-plugin</artifactId>
-				<version>${tycho-version}</version>
-			</plugin>
-			<plugin>
-				<groupId>org.eclipse.tycho</groupId>
-				<artifactId>tycho-compiler-plugin</artifactId>
-				<version>${tycho-version}</version>
-				<configuration>
-					<compilerArgs>
-						<arg>-err:-forbidden,-discouraged</arg>
-					</compilerArgs>
-					<useProjectSettings>false</useProjectSettings>
-				</configuration>
-			</plugin>
-		</plugins>
-		<pluginManagement>
-			<plugins>
-				<!-- pmd -->
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-pmd-plugin</artifactId>
-					<version>3.13.0</version>
-					<configuration>
-						<rulesets>
-							<ruleset>${workspace}/pmdrules.xml</ruleset>
-						</rulesets>
-						<printFailingErrors>true</printFailingErrors>
-						<excludeRoots>
-							<excludeRoot>${project.basedir}/src-gen</excludeRoot>
-							<excludeRoot>${project.basedir}/xtend-gen</excludeRoot>
-							<excludeRoot>${project.basedir}/model-gen</excludeRoot>
-						</excludeRoots>
-					</configuration>
-					<dependencies>
-						<dependency>
-							<groupId>net.sourceforge.pmd</groupId>
-							<artifactId>pmd-core</artifactId>
-							<version>${pmdVersion}</version>
-						</dependency>
-						<dependency>
-							<groupId>net.sourceforge.pmd</groupId>
-							<artifactId>pmd-java</artifactId>
-							<version>${pmdVersion}</version>
-						</dependency>
-					</dependencies>
-				</plugin>
-				<!-- checkstyle plugin -->
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-checkstyle-plugin</artifactId>
-					<version>3.1.1</version>
-					<configuration>
-						<linkXRef>true</linkXRef>
-						<configLocation>../cs-conf.xml</configLocation>
-						<propertyExpansion>config_loc=${workspace}</propertyExpansion>
-					</configuration>
-					<dependencies>
-						<dependency>
-							<groupId>com.puppycrawl.tools</groupId>
-							<artifactId>checkstyle</artifactId>
-							<version>${checkstyle-crawler}</version>
-						</dependency>
-					</dependencies>
-				</plugin>
-				<plugin>
-					<groupId>org.codehaus.mojo</groupId>
-					<artifactId>build-helper-maven-plugin</artifactId>
-					<version>1.7</version>
-					<executions>
-						<execution>
-							<id>add-source</id>
-							<phase>generate-sources</phase>
-							<goals>
-								<goal>add-source</goal>
-							</goals>
-							<configuration>
-								<sources>
-									<source>src-gen</source>
-									<source>xtend-gen</source>
-								</sources>
-							</configuration>
-						</execution>
-					</executions>
-				</plugin>
-				<!-- xtend-maven-plugin is in pluginManagement instead of in plugins so 
+      <plugin>
+        				
+        <groupId>org.eclipse.tycho</groupId>
+        				
+        <artifactId>tycho-versions-plugin</artifactId>
+        				
+        <version>${tycho-version}</version>
+        			
+      </plugin>
+      			
+      <plugin>
+        				
+        <groupId>org.eclipse.tycho</groupId>
+        				
+        <artifactId>tycho-compiler-plugin</artifactId>
+        				
+        <version>${tycho-version}</version>
+        				
+        <configuration>
+          					
+          <compilerArgs>
+            						
+            <arg>-err:-forbidden,-discouraged</arg>
+            					
+          </compilerArgs>
+          					
+          <useProjectSettings>false</useProjectSettings>
+          				
+        </configuration>
+        			
+      </plugin>
+      		
+    </plugins>
+    		
+    <pluginManagement>
+      			
+      <plugins>
+        				
+        <!-- pmd -->
+        				
+        <plugin>
+          					
+          <groupId>org.apache.maven.plugins</groupId>
+          					
+          <artifactId>maven-pmd-plugin</artifactId>
+          					
+          <version>3.13.0</version>
+          					
+          <configuration>
+            						
+            <rulesets>
+              							
+              <ruleset>${workspace}/pmdrules.xml</ruleset>
+              						
+            </rulesets>
+            						
+            <printFailingErrors>true</printFailingErrors>
+            						
+            <excludeRoots>
+              							
+              <excludeRoot>${project.basedir}/src-gen</excludeRoot>
+              							
+              <excludeRoot>${project.basedir}/xtend-gen</excludeRoot>
+              							
+              <excludeRoot>${project.basedir}/model-gen</excludeRoot>
+              						
+            </excludeRoots>
+            					
+          </configuration>
+          					
+          <dependencies>
+            						
+            <dependency>
+              							
+              <groupId>net.sourceforge.pmd</groupId>
+              							
+              <artifactId>pmd-core</artifactId>
+              							
+              <version>${pmdVersion}</version>
+              						
+            </dependency>
+            						
+            <dependency>
+              							
+              <groupId>net.sourceforge.pmd</groupId>
+              							
+              <artifactId>pmd-java</artifactId>
+              							
+              <version>${pmdVersion}</version>
+              						
+            </dependency>
+            					
+          </dependencies>
+          				
+        </plugin>
+        				
+        <!-- checkstyle plugin -->
+        				
+        <plugin>
+          					
+          <groupId>org.apache.maven.plugins</groupId>
+          					
+          <artifactId>maven-checkstyle-plugin</artifactId>
+          					
+          <version>3.1.1</version>
+          					
+          <configuration>
+            						
+            <linkXRef>true</linkXRef>
+            						
+            <configLocation>../cs-conf.xml</configLocation>
+            						
+            <propertyExpansion>config_loc=${workspace}</propertyExpansion>
+            					
+          </configuration>
+          					
+          <dependencies>
+            						
+            <dependency>
+              							
+              <groupId>com.puppycrawl.tools</groupId>
+              							
+              <artifactId>checkstyle</artifactId>
+              							
+              <version>${checkstyle-crawler}</version>
+              						
+            </dependency>
+            					
+          </dependencies>
+          				
+        </plugin>
+        				
+        <plugin>
+          					
+          <groupId>org.codehaus.mojo</groupId>
+          					
+          <artifactId>build-helper-maven-plugin</artifactId>
+          					
+          <version>1.7</version>
+          					
+          <executions>
+            						
+            <execution>
+              							
+              <id>add-source</id>
+              							
+              <phase>generate-sources</phase>
+              							
+              <goals>
+                								
+                <goal>add-source</goal>
+                							
+              </goals>
+              							
+              <configuration>
+                								
+                <sources>
+                  									
+                  <source>src-gen</source>
+                  									
+                  <source>xtend-gen</source>
+                  								
+                </sources>
+                							
+              </configuration>
+              						
+            </execution>
+            					
+          </executions>
+          				
+        </plugin>
+        				
+        <!-- xtend-maven-plugin is in pluginManagement instead of in plugins so 
 				that it doesn't run before the exec-maven-plugin's *.mwe2 gen; this way we 
 				can list it after. -->
-				<plugin>
-					<groupId>org.eclipse.xtend</groupId>
-					<artifactId>xtend-maven-plugin</artifactId>
-					<version>${xtendVersion}</version>
-					<executions>
-						<execution>
-							<phase>process-sources</phase>
-							<goals>
-								<goal>compile</goal>
-								<goal>xtend-install-debug-info</goal>
-								<goal>testCompile</goal>
-								<goal>xtend-test-install-debug-info</goal>
-							</goals>
-						</execution>
-					</executions>
-					<configuration>
-						<outputDirectory>${basedir}/xtend-gen</outputDirectory>
-						<testOutputDirectory>${basedir}/xtend-gen</testOutputDirectory>
-					</configuration>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-clean-plugin</artifactId>
-					<version>3.0.0</version>
-					<executions>
-						<execution>
-							<id>gen-clean</id>
-							<phase>clean</phase>
-							<goals>
-								<goal>clean</goal>
-							</goals>
-							<configuration>
-								<filesets>
-									<fileset>
-										<directory>${basedir}/xtend-gen</directory>
-										<directory>${basedir}/src-gen</directory>
-										<directory>${basedir}/model-gen</directory>
-									</fileset>
-								</filesets>
-							</configuration>
-						</execution>
-					</executions>
-				</plugin>
-			</plugins>
-		</pluginManagement>
-	</build>
-
-	<repositories>
-		<!-- add TMF repository for latest Xtend -->
-		<repository>
-			<id>emf</id>
-			<url>https://oss.sonatype.org/content/repositories/orgeclipseemf-1054/</url>
-		</repository>
-		<repository>
-			<id>eclipse</id>
-			<url>${eclipseRepoUrl}</url>
-			<layout>p2</layout>
-		</repository>
-		<repository>
-			<id>elk</id>
-			<url>${elkRepoUrl}</url>
-			<layout>p2</layout>
-		</repository>
-		<repository>
-			<id>codehaus-snapshots</id>
-			<name>disable dead 'Codehaus Snapshots' repository, see https://bugs.eclipse.org/bugs/show_bug.cgi?id=481478</name>
-			<url>https://nexus.codehaus.org/snapshots/</url>
-			<releases>
-				<enabled>false</enabled>
-			</releases>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
-<!--		<repository>
+        				
+        <plugin>
+          					
+          <groupId>org.eclipse.xtend</groupId>
+          					
+          <artifactId>xtend-maven-plugin</artifactId>
+          					
+          <version>${xtendVersion}</version>
+          					
+          <executions>
+            						
+            <execution>
+              							
+              <phase>process-sources</phase>
+              							
+              <goals>
+                								
+                <goal>compile</goal>
+                								
+                <goal>xtend-install-debug-info</goal>
+                								
+                <goal>testCompile</goal>
+                								
+                <goal>xtend-test-install-debug-info</goal>
+                							
+              </goals>
+              						
+            </execution>
+            					
+          </executions>
+          					
+          <configuration>
+            						
+            <outputDirectory>${basedir}/xtend-gen</outputDirectory>
+            						
+            <testOutputDirectory>${basedir}/xtend-gen</testOutputDirectory>
+            					
+          </configuration>
+          				
+        </plugin>
+        				
+        <plugin>
+          					
+          <groupId>org.apache.maven.plugins</groupId>
+          					
+          <artifactId>maven-clean-plugin</artifactId>
+          					
+          <version>3.0.0</version>
+          					
+          <executions>
+            						
+            <execution>
+              							
+              <id>gen-clean</id>
+              							
+              <phase>clean</phase>
+              							
+              <goals>
+                								
+                <goal>clean</goal>
+                							
+              </goals>
+              							
+              <configuration>
+                								
+                <filesets>
+                  									
+                  <fileset>
+                    										
+                    <directory>${basedir}/xtend-gen</directory>
+                    										
+                    <directory>${basedir}/src-gen</directory>
+                    										
+                    <directory>${basedir}/model-gen</directory>
+                    									
+                  </fileset>
+                  								
+                </filesets>
+                							
+              </configuration>
+              						
+            </execution>
+            					
+          </executions>
+          				
+        </plugin>
+        			
+      </plugins>
+      		
+    </pluginManagement>
+    	
+  </build>
+  	
+  <repositories>
+    		
+    <!-- add TMF repository for latest Xtend -->
+    		
+    <repository>
+      			
+      <id>emf</id>
+      			
+      <url>https://oss.sonatype.org/content/repositories/orgeclipseemf-1054/</url>
+      		
+    </repository>
+    		
+    <repository>
+      			
+      <id>eclipse</id>
+      			
+      <url>${eclipseRepoUrl}</url>
+      			
+      <layout>p2</layout>
+      		
+    </repository>
+    		
+    <repository>
+      			
+      <id>elk</id>
+      			
+      <url>${elkRepoUrl}</url>
+      			
+      <layout>p2</layout>
+      		
+    </repository>
+    		
+    <repository>
+      			
+      <id>codehaus-snapshots</id>
+      			
+      <name>disable dead 'Codehaus Snapshots' repository, see https://bugs.eclipse.org/bugs/show_bug.cgi?id=481478</name>
+      			
+      <url>https://nexus.codehaus.org/snapshots/</url>
+      			
+      <releases>
+        				
+        <enabled>false</enabled>
+        			
+      </releases>
+      			
+      <snapshots>
+        				
+        <enabled>false</enabled>
+        			
+      </snapshots>
+      		
+    </repository>
+    
+    <!--		<repository>
 			<id>jcommander</id>
 			<url>https://mvnrepository.com/artifact/com.beust/jcommander</url>
 		</repository>-->
-
-		<repository>
-			<id>central</id>
-			<name>Maven Central</name>
-			<url>https://repo1.maven.org/maven2</url>
-		</repository>
-		<repository>
-			<id>palladio</id>
-			<url>${palladioRepoUrl}</url>
-			<layout>p2</layout>
-		</repository>
-		<repository>
-			<id>palladioFeatureModel</id>
-			<url>${palladio-fm-repo.url}</url>
-			<layout>p2</layout>
-		</repository>
-		<repository>
-			<id>palladioSensorFramework</id>
-			<url>${palladio-sf-repo.url}</url>
-			<layout>p2</layout>
-		</repository>
-		<repository>
-			<id>palladioWorkflowEngine</id>
-			<url>${palladio-wfe-repo.url}</url>
-			<layout>p2</layout>
-		</repository>
-		<repository>
-			<id>kitCommons</id>
-			<url>${kit-common-repo.url}</url>
-			<layout>p2</layout>
-		</repository>
-		<repository>
-			<id>sonatype.oss.snapshot</id>
-			<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-		</repository>
-	</repositories>
-
-	<pluginRepositories>
-                <pluginRepository>
-                        <id>lifecycle</id>
-                        <url>https://mvnrepository.com/artifact/org.eclipse.m2e/lifecycle-mapping</url>
-                </pluginRepository>
-                <pluginRepository>
-                        <id>tycho</id>
-                        <url>${tycho-repo.url}</url>
-                </pluginRepository>
-		<pluginRepository>
-			<id>emfp</id>
-			<url>https://oss.sonatype.org/content/repositories/orgeclipseemf-1054/</url>
-		</pluginRepository>
-		<pluginRepository>
-			<id>codehaus-snapshots</id>
-			<name>disable dead 'Codehaus Snapshots' repository, see https://bugs.eclipse.org/bugs/show_bug.cgi?id=481478</name>
-			<url>https://nexus.codehaus.org/snapshots/</url>
-			<releases>
-				<enabled>false</enabled>
-			</releases>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</pluginRepository>
-	</pluginRepositories>
-	<reporting>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jxr-plugin</artifactId>
-				<version>2.3</version>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-checkstyle-plugin</artifactId>
-				<version>3.1.1</version>
-				<configuration>
-					<configLocation>../cs-conf.xml</configLocation>
-					<propertyExpansion>config_loc=${workspace}</propertyExpansion>
-				</configuration>
-			</plugin>
-		</plugins>
-	</reporting>
+    		
+    <repository>
+      			
+      <id>central</id>
+      			
+      <name>Maven Central</name>
+      			
+      <url>https://repo1.maven.org/maven2</url>
+      		
+    </repository>
+    		
+    <repository>
+      			
+      <id>palladio</id>
+      			
+      <url>${palladioRepoUrl}</url>
+      			
+      <layout>p2</layout>
+      		
+    </repository>
+    		
+    <repository>
+      			
+      <id>palladioFeatureModel</id>
+      			
+      <url>${palladio-fm-repo.url}</url>
+      			
+      <layout>p2</layout>
+      		
+    </repository>
+    		
+    <repository>
+      			
+      <id>palladioSensorFramework</id>
+      			
+      <url>${palladio-sf-repo.url}</url>
+      			
+      <layout>p2</layout>
+      		
+    </repository>
+    		
+    <repository>
+      			
+      <id>palladioWorkflowEngine</id>
+      			
+      <url>${palladio-wfe-repo.url}</url>
+      			
+      <layout>p2</layout>
+      		
+    </repository>
+    		
+    <repository>
+      			
+      <id>kitCommons</id>
+      			
+      <url>${kit-common-repo.url}</url>
+      			
+      <layout>p2</layout>
+      		
+    </repository>
+    		
+    <repository>
+      			
+      <id>sonatype.oss.snapshot</id>
+      			
+      <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+      		
+    </repository>
+    	
+  </repositories>
+  	
+  <pluginRepositories>
+                    
+    <pluginRepository>
+                              
+      <id>lifecycle</id>
+                              
+      <url>https://mvnrepository.com/artifact/org.eclipse.m2e/lifecycle-mapping</url>
+                      
+    </pluginRepository>
+                    
+    <pluginRepository>
+                              
+      <id>tycho</id>
+                              
+      <url>${tycho-repo.url}</url>
+                      
+    </pluginRepository>
+    		
+    <pluginRepository>
+      			
+      <id>emfp</id>
+      			
+      <url>https://oss.sonatype.org/content/repositories/orgeclipseemf-1054/</url>
+      		
+    </pluginRepository>
+    		
+    <pluginRepository>
+      			
+      <id>codehaus-snapshots</id>
+      			
+      <name>disable dead 'Codehaus Snapshots' repository, see https://bugs.eclipse.org/bugs/show_bug.cgi?id=481478</name>
+      			
+      <url>https://nexus.codehaus.org/snapshots/</url>
+      			
+      <releases>
+        				
+        <enabled>false</enabled>
+        			
+      </releases>
+      			
+      <snapshots>
+        				
+        <enabled>false</enabled>
+        			
+      </snapshots>
+      		
+    </pluginRepository>
+    	
+  </pluginRepositories>
+  	
+  <reporting>
+    		
+    <plugins>
+      			
+      <plugin>
+        				
+        <groupId>org.apache.maven.plugins</groupId>
+        				
+        <artifactId>maven-jxr-plugin</artifactId>
+        				
+        <version>2.3</version>
+        			
+      </plugin>
+      			
+      <plugin>
+        				
+        <groupId>org.apache.maven.plugins</groupId>
+        				
+        <artifactId>maven-checkstyle-plugin</artifactId>
+        				
+        <version>3.1.1</version>
+        				
+        <configuration>
+          					
+          <configLocation>../cs-conf.xml</configLocation>
+          					
+          <propertyExpansion>config_loc=${workspace}</propertyExpansion>
+          				
+        </configuration>
+        			
+      </plugin>
+      		
+    </plugins>
+    	
+  </reporting>
+  
 </project>
-

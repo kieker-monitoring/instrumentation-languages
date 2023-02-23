@@ -2,7 +2,7 @@ pipeline {
 	agent any
 
 	environment {
-		UPDATE_SITE_URL = "sftp://repo@repo.se.internal/kdt"
+		UPDATE_SITE_URL = "sftp://repo@repo.se.internal/var/www/html/kdt"
 		DESTINATION = 'snapshot'
 	}
 
@@ -84,8 +84,7 @@ pipeline {
 						KEYSTORE = credentials('kieker-irl-key')
 					}
 					steps {
-					//	sh 'mvn -X -Dmaven.repo.local=${WORKSPACE}/ws-repo -DskipTests -P snapshot --settings settings.xml --batch-mode -Dkeystore=${KEYSTORE} -Dupdate-site-url=${UPDATE_SITE_URL} install'
-						sh '/usr/bin/sftp -i ${KEYSTORE} -o User=repo -o StrictHostKeyChecking=no -b ${WORKSPACE}/upload.sftp ${UPDATE_SITE_URL}/${DESTINATION}'
+						sh 'mvn -Dmaven.repo.local=${WORKSPACE}/ws-repo -DskipTests -P snapshot --settings settings.xml --batch-mode -Dkeystore=${KEYSTORE} -Dupdate-site-url=${UPDATE_SITE_URL} install'
 					}
 				}
 			}
