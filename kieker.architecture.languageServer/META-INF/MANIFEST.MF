@@ -41,8 +41,5 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.sprotty,
  org.eclipse.xtend.lib,
  org.eclipse.xtext.ide,
- org.eclipse.xtext.xbase.lib,
- kieker.develop.al,
- kieker.develop.al.ide,
- kieker.develop.rl
+ org.eclipse.xtext.xbase.lib
 Bundle-ActivationPolicy: lazy
