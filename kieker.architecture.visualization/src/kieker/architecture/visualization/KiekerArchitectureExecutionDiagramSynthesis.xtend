@@ -52,6 +52,7 @@ import kieker.architecture.visualization.utils.DebugUtils
 import kieker.model.analysismodel.statistics.StatisticsModel
 import kieker.model.analysismodel.source.SourceModel
 import java.util.HashSet
+import de.cau.cs.kieler.klighd.util.KlighdProperties
 
 /**
  * @author Reiner Jung
@@ -556,12 +557,14 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 					it.fontItalic = true
 					it.verticalAlignment = V_CENTRAL
 					it.setAreaPlacementData.from(LEFT, 20, 0, TOP, 10, 0).to(RIGHT, 20, 0, BOTTOM, 1, 0.5f)
+					setProperty(KlighdProperties.IS_NODE_TITLE, true)
 				]
 				it.addText(component.label).associateWith(component) => [
 					it.fontSize = 15
 					it.fontBold = true
 					it.cursorSelectable = false
 					it.setAreaPlacementData.from(LEFT, 20, 0, TOP, 1, 0.5f).to(RIGHT, 20, 0, BOTTOM, 10, 0)
+					setProperty(KlighdProperties.IS_NODE_TITLE, true)
 				]
 
 				if ((SHOW_OPERATIONS.booleanValue && (!component.derivedFrom.get(0).operations.isEmpty || !component.derivedFrom.get(0).storages.isEmpty)) ||

@@ -12,3 +12,5 @@ class KlighdSetup implements IKlighdStartupHook {
 	}
 	
 }
+
+//import the folder inside the launch config
