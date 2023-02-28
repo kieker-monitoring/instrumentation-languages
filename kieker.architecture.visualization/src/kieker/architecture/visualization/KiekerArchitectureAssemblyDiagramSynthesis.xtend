@@ -41,6 +41,7 @@ import org.eclipse.elk.core.options.PortLabelPlacement
 import org.eclipse.elk.core.options.PortSide
 import org.eclipse.emf.common.util.EList
 import org.eclipse.emf.ecore.EObject
+import de.cau.cs.kieler.klighd.util.KlighdProperties
 
 /** 
  * @author Reiner Jung
@@ -165,6 +166,7 @@ class KiekerArchitectureAssemblyDiagramSynthesis extends AbstractKiekerArchitect
 					it.fontBold = true
 					it.cursorSelectable = false
 					it.setAreaPlacementData.from(LEFT, 20, 0, TOP, 1, 0.5f).to(RIGHT, 20, 0, BOTTOM, 10, 0)
+					setProperty(KlighdProperties.IS_NODE_TITLE, true)
 				]
 
 				if ((SHOW_STORAGE.booleanValue && component.storages.size > 0) ||
