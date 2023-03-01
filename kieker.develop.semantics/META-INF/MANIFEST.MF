@@ -12,8 +12,7 @@ Require-Bundle: org.eclipse.core.runtime;bundle-version="[3.17.100,3.27.0)",
  com.google.guava,
  org.eclipse.xtext.xbase.lib,
  org.eclipse.xtend.lib,
- org.eclipse.xtend.lib.macro,
- com.google.inject;bundle-version="5.0.1"
+ org.eclipse.xtend.lib.macro
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: kieker.develop.geco,
  kieker.develop.semantics,
