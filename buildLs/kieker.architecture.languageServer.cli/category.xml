@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <description name="Kieker Language Server CLI">
+   <description name="BGC-DSL Language Server CLI">
    </description>
    <bundle id="de.cau.cs.kieler.klighd.ide"/>
    <bundle id="de.cau.cs.kieler.klighd.incremental"/>
