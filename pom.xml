@@ -76,7 +76,7 @@
 		<kit-common-repo.url>https://sdqweb.ipd.kit.edu/eclipse/commons/releases/latest</kit-common-repo.url>
 	</properties>
 	<modules>
-	<!--	<module>kieker.develop.semantics</module>
+		<module>kieker.develop.semantics</module>
 		<module>kieker.develop.semantics.java</module>
 		<module>kieker.develop.al</module>
 		<module>kieker.develop.al.ide</module>
@@ -97,7 +97,7 @@
 		<module>kieker.develop.rl.ide</module>
 		<module>kieker.develop.rl.ui</module>
 		<module>kieker.develop.rl.tests</module>
-		<module>kieker.develop.rl.feature</module> -->
+		<module>kieker.develop.rl.feature</module>
 		<module>kieker.architecture.visualization</module>
 		<module>kieker.architecture.visualization.feature</module>
 		<module>kieker.develop.repository</module>
