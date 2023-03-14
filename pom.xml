@@ -187,6 +187,7 @@
 				<configuration>
 					<pomDependencies>consider</pomDependencies>
 					<executionEnvironment>JavaSE-11</executionEnvironment>
+					<resolveWithExecutionEnvironmentConstraints>false</resolveWithExecutionEnvironmentConstraints>
 					<target>
 						<artifact>
 							<groupId>kieker.develop</groupId>
