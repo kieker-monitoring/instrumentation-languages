@@ -77,6 +77,8 @@ class KiekerArchitectureAssemblyDiagramSynthesis extends AbstractKiekerArchitect
 
 
 	override KNode transform(AssemblyModel model) {
+		loadColorModel(model)
+
 		val components = model.components.values
 		
 		internalProvidedLinks = new ArrayList<PortConnection<AssemblyProvidedInterface>>
@@ -179,8 +181,8 @@ class KiekerArchitectureAssemblyDiagramSynthesis extends AbstractKiekerArchitect
 			
 			it.createSubComponents(component, !odd)
 
-			if(SHOW_STORAGE.booleanValue) it.createComponentStorages(component)
-			if(SHOW_OPERATIONS.booleanValue) it.createComponentOperations(component)
+			if(SHOW_STORAGE.booleanValue) it.createComponentStorages(component, odd)
+			if(SHOW_OPERATIONS.booleanValue) it.createComponentOperations(component, odd)
 
 			component.createPortsForInterfaces
 
@@ -189,16 +191,16 @@ class KiekerArchitectureAssemblyDiagramSynthesis extends AbstractKiekerArchitect
 		]
 	}
 
-	private def void createComponentOperations(KNode node, AssemblyComponent component) {
+	private def void createComponentOperations(KNode node, AssemblyComponent component, boolean odd) {
 		component.operations.forEach [ entry |
-			node.children += entry.value.createOperation(entry.key, lookupOperationColor(entry.value))
+			node.children += entry.value.createOperation(entry.key, lookupOperationColor(entry.value, odd))
 		]
 	}
 
-	private def void createComponentStorages(KNode node, AssemblyComponent component) {
+	private def void createComponentStorages(KNode node, AssemblyComponent component, boolean odd) {
 		component.storages.forEach [ entry |
 			val storage = entry.value
-			node.children += storage.createStorage(entry.key, lookupStorageColor(storage))
+			node.children += storage.createStorage(entry.key, lookupStorageColor(storage, odd))
 		]
 	}
 
