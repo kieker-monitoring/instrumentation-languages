@@ -446,8 +446,6 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 			checkJointParent(component, it.storage.assemblyStorage.component)
 		]
 		
-		// System.err.printf("Storage write flows: %s %d of %d\n", assemblyComponent.signature, writeFlows.size(), dataflows.size())
-		
 		component.providedPorts.values().forEach[providedPort | 
 			val dataflow = writeFlows.findFirst[providedPort.origin.contains(it.storage.assemblyStorage)]
 			if (dataflow !== null) {
