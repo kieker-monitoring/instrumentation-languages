@@ -48,9 +48,11 @@ import java.util.ArrayList
 import kieker.architecture.visualization.display.DisplayModelBuilder
 
 import static extension kieker.architecture.visualization.utils.ModelUtils.*
+import kieker.architecture.visualization.utils.DebugUtils
 import kieker.model.analysismodel.statistics.StatisticsModel
 import kieker.model.analysismodel.source.SourceModel
 import java.util.HashSet
+import de.cau.cs.kieler.klighd.util.KlighdProperties
 
 /**
  * @author Reiner Jung
@@ -87,9 +89,9 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 			
 			this.statisticsModel = loadModel("statistics-model.xmi", executionModel) as StatisticsModel
 			this.sourceModel = loadModel("source-model.xmi", executionModel) as SourceModel
-				
+			
 			loadColorModel(executionModel)
-				
+					
 			object2NodePortMap = new HashMap
 			
 			components = new DisplayModelBuilder().create(assemblyModel.components.values, executionModel)
@@ -99,7 +101,7 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 			return null
 		}
 	}
-			
+		
 	private def isWrite(EDirection direction) {
 		#[EDirection.WRITE, EDirection.BOTH].contains(direction)
 	}
@@ -443,7 +445,7 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 			it.storage.assemblyStorage.component === assemblyComponent &&
 			checkJointParent(component, it.storage.assemblyStorage.component)
 		]
-				
+		
 		component.providedPorts.values().forEach[providedPort | 
 			val dataflow = writeFlows.findFirst[providedPort.origin.contains(it.storage.assemblyStorage)]
 			if (dataflow !== null) {
@@ -536,12 +538,14 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 					it.fontItalic = true
 					it.verticalAlignment = V_CENTRAL
 					it.setAreaPlacementData.from(LEFT, 20, 0, TOP, 10, 0).to(RIGHT, 20, 0, BOTTOM, 1, 0.5f)
+					setProperty(KlighdProperties.IS_NODE_TITLE, true)
 				]
 				it.addText(component.label).associateWith(component) => [
 					it.fontSize = 15
 					it.fontBold = true
 					it.cursorSelectable = false
 					it.setAreaPlacementData.from(LEFT, 20, 0, TOP, 1, 0.5f).to(RIGHT, 20, 0, BOTTOM, 10, 0)
+					setProperty(KlighdProperties.IS_NODE_TITLE, true)
 				]
 
 				if (!component.derivedFrom.get(0).operations.isEmpty || !component.derivedFrom.get(0).storages.isEmpty ||

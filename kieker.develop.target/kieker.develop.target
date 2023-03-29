@@ -23,14 +23,25 @@
 			<unit id="org.eclipse.elk.ui.feature.feature.group" version="0.8.1"/>
 		</location>
 		<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit">
-			<repository location="https://kieler.github.io/KLighD/v2.1.0/"/>
-			<unit id="de.cau.cs.kieler.klighd.batik.feature.feature.group" version="2.1.0.v20210615"/>
-			<unit id="de.cau.cs.kieler.klighd.draw2d.feature.feature.group" version="2.1.0.v20210615"/>
-			<unit id="de.cau.cs.kieler.klighd.feature.feature.group" version="2.1.0.v20210615"/>
-			<unit id="de.cau.cs.kieler.klighd.freehep.feature.feature.group" version="2.1.0.v20210615"/>
-			<unit id="de.cau.cs.kieler.klighd.ide.feature.feature.group" version="2.1.0.v20210615"/>
-			<unit id="de.cau.cs.kieler.klighd.view.feature.feature.group" version="2.1.0.v20210615"/>
+			<repository location="https://kieler.github.io/KLighD/v2.2.0/"/>
+			<unit id="de.cau.cs.kieler.klighd.batik.feature.feature.group" version="0.0.0"/>
+			<unit id="de.cau.cs.kieler.klighd.draw2d.feature.feature.group" version="0.0.0"/>
+			<unit id="de.cau.cs.kieler.klighd.feature.feature.group" version="0.0.0"/>
+			<unit id="de.cau.cs.kieler.klighd.freehep.feature.feature.group" version="0.0.0"/>
+			<unit id="de.cau.cs.kieler.klighd.ide.feature.feature.group" version="0.0.0"/>
+			<unit id="de.cau.cs.kieler.klighd.view.feature.feature.group" version="0.0.0"/>
+			<unit id="de.cau.cs.kieler.klighd.lsp" version="0.0.0"/>
+      			<unit id="de.cau.cs.kieler.kgraph.text.ide" version="0.0.0"/>
+      			<unit id="de.cau.cs.kieler.kgraph.text" version="0.0.0"/>
 		</location>
+		<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit">
+      			<repository location="https://rtsys.informatik.uni-kiel.de/~kieler/updatesite/sprotty/0.7.0/"/>
+      			<unit id="org.eclipse.sprotty" version="0.0.0"/>
+    		</location>
+    		<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit">
+      			<repository location="https://download.eclipse.org/lsp4j/updates/releases/0.14.0/"/>
+      			<unit id="org.eclipse.lsp4j.sdk.feature.group" version="0.0.0"/>
+    </location>
 	</locations>
 	<environment>
 		<os>linux</os>

@@ -98,7 +98,7 @@ abstract class AbstractKiekerArchitectureDiagramSynthesis<T> extends AbstractDia
 	protected var StatisticsModel statisticsModel
 		
 	protected var SourceModel sourceModel
-		
+	
 	protected var Map<String, List<MappingRule>> colorModel
 	
 	protected static val SynthesisOption ALGORITHM = SynthesisOption::createChoiceOption("Used Layout Algorithm", ImmutableList::of(
@@ -128,7 +128,7 @@ abstract class AbstractKiekerArchitectureDiagramSynthesis<T> extends AbstractDia
 	override getDisplayedSynthesisOptions() {
 		return ImmutableList::of(ALGORITHM, SHOW_EDGE_LABELS, SHOW_PORT_LABELS, SHOW_OPERATIONS, SHOW_STORAGE)
 	}
-	
+
 	protected def loadColorModel(EObject object) {
 		this.colorModel = new HashMap
 		
@@ -228,7 +228,7 @@ abstract class AbstractKiekerArchitectureDiagramSynthesis<T> extends AbstractDia
 			]
 		]
 	}
-		
+	
 	protected def KPort createInterfaceProvidedPort(PortSide portSide, EObject object, int index, EPortType portType) {
 		val foregroundColor = if (#[EPortType.INTERFACE_CALL, EPortType.OPERATION_CALL].contains(portType)) CALL_FG_COLOR else DATAFLOW_FG_COLOR
 		val backgroundColor = if (#[EPortType.INTERFACE_CALL, EPortType.OPERATION_CALL].contains(portType)) CALL_BG_PROVIDE_COLOR else DATAFLOW_BG_PROVIDE_COLOR
@@ -424,7 +424,7 @@ abstract class AbstractKiekerArchitectureDiagramSynthesis<T> extends AbstractDia
 	protected def String lookupStorageColor(AssemblyStorage storage, boolean odd) {
 		lookupColor("storage", storage, odd, "white", "lightgray")		
 	}
-	
+
 	private def String lookupColor(String kind, EObject object, boolean odd, String oddDefaultColor, String evenDefaultColor) {
 		if (this.sourceModel === null)
 			if (odd) oddDefaultColor else evenDefaultColor
