@@ -62,7 +62,7 @@ public final class TargetsPreferences {
 	 * @return Returns the default author name
 	 */
 	public static String getAuthorName(final IEclipsePreferences preferenceStore) {
-		return preferenceStore.get(AUTHOR_NAME, DEFAULT_AUTHOR);
+		return preferenceStore.get(AUTHOR_NAME, DEFAULT_AUTHOR).trim();
 	}
 
 	/**
@@ -86,7 +86,7 @@ public final class TargetsPreferences {
 	 * @return Returns the target version
 	 */
 	public static String getTargetVersion(final IEclipsePreferences preferenceStore) {
-		return preferenceStore.get(TARGET_VERSION, DEFAULT_VERSION);
+		return preferenceStore.get(TARGET_VERSION, DEFAULT_VERSION).trim();
 	}
 	
 	/**
@@ -109,7 +109,7 @@ public final class TargetsPreferences {
 	 * @return Returns the default version ID
 	 */
 	public static String getVersionID(final IEclipsePreferences preferenceStore) {
-		return preferenceStore.get(VERSION_ID, DEFAULT_VERSION);
+		return preferenceStore.get(VERSION_ID, DEFAULT_VERSION).trim();
 	}
 
 	/**

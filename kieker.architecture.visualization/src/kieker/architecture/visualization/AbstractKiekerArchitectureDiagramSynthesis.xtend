@@ -169,10 +169,7 @@ abstract class AbstractKiekerArchitectureDiagramSynthesis<T> extends AbstractDia
 			reader.close
 		}
 	}
-		
 	
-		
-		
 	protected def loadModel(String modelName, EObject object) {
 		val uri = object.eResource.URI.trimSegments(1).appendSegment(modelName)
 		try {
@@ -322,9 +319,12 @@ abstract class AbstractKiekerArchitectureDiagramSynthesis<T> extends AbstractDia
 			return ""
 			
 		val statisticRecord = statisticsModel.statistics.get(dataflow)
-		statisticRecord.properties.entrySet.map[entry |
-			'''«entry.key» : «entry.value»'''	
-		].join("\n")
+		if (statisticRecord === null)
+			return ""
+		else
+			return statisticRecord.properties.entrySet.map[entry |
+				'''«entry.key» : «entry.value»'''	
+			].join("\n")
 	}
 
 	protected def createStorageDataFlowLabel(StatisticsModel statisticsModel, StorageDataflow dataflow) {
@@ -332,9 +332,12 @@ abstract class AbstractKiekerArchitectureDiagramSynthesis<T> extends AbstractDia
 			return ""
 			
 		val statisticRecord = statisticsModel.statistics.get(dataflow)
-		statisticRecord.properties.entrySet.map[entry |
-			'''«entry.key» : «entry.value»'''	
-		].join("\n")
+		if (statisticRecord === null)
+			return ""
+		else
+			return statisticRecord.properties.entrySet.map[entry |
+				'''«entry.key» : «entry.value»'''	
+			].join("\n")
 	}
 		
 	protected def createConnection(Object source, Object target, String color, String label) {

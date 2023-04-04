@@ -334,8 +334,9 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 			if (providedPort !== null) {
 				val caller = object2NodePortMap.get(providedPort)
 				val callee = object2NodePortMap.get(dataflow.code.assemblyOperation)
-				if (!rememberRead.existLink(caller, callee))
+				if (!rememberRead.existLink(caller, callee)) {
 					createConnectionEdge(caller, callee, DATAFLOW_FG_COLOR).addLabel(createStorageDataFlowLabel(statisticsModel, dataflow))
+				}
 				rememberRead.put(caller, callee)
 			}
 		]
