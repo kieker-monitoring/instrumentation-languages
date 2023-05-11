@@ -251,7 +251,6 @@ class DisplayModelComponentCreator {
 			it.callee.assemblyOperation.component !== assemblyComponent && // only check calls that end in another component
 			!processedRequiredCallers.contains(it.caller.assemblyOperation)
 		].forEach[call |
-			System.err.printf("  #> %s\n", call.caller.assemblyOperation.operationType.signature)
 			component.createOrModifyRequiredPort4Operations(call, call.caller.assemblyOperation.operationType.signature, EPortType.OPERATION_CALL)
 		]
 	}

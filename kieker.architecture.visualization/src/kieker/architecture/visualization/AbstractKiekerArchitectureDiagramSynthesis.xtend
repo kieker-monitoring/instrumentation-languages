@@ -57,6 +57,7 @@ import java.io.BufferedReader
 import java.util.ArrayList
 import java.util.Set
 import org.eclipse.emf.common.util.EList
+import java.util.regex.Pattern
 
 /**
  * @author Reiner Jung
@@ -149,7 +150,7 @@ abstract class AbstractKiekerArchitectureDiagramSynthesis<T> extends AbstractDia
 						val colors = mapping.get(1).split(",")
 						if (colors.length == 2) {
 							val mappingRule = new MappingRule(part)
-							labels.forEach[mappingRule.labels.add(it.trim)]
+							labels.forEach[mappingRule.labels.add(Pattern.compile("^" + it.trim + "$"))]
 							mappingRule.oddColor = colors.get(0).trim
 							mappingRule.evenColor = colors.get(1).trim
 							
@@ -168,10 +169,7 @@ abstract class AbstractKiekerArchitectureDiagramSynthesis<T> extends AbstractDia
 			reader.close
 		}
 	}
-		
-	
-		
-		
+
 	protected def loadModel(String modelName, EObject object) {
 		val uri = object.eResource.URI.trimSegments(1).appendSegment(modelName)
 		try {
@@ -448,9 +446,9 @@ abstract class AbstractKiekerArchitectureDiagramSynthesis<T> extends AbstractDia
 		}
 	}
 		
-	private def Boolean match(Set<String> left, EList<String> right) {
-		if (left.size == right.size) {
-			left.forall[ll | right.exists[it.equals(ll)]]
+	private def Boolean match(Set<Pattern> patterns, EList<String> sources) {
+		if (patterns.size == sources.size) {
+			patterns.forall[pattern | sources.exists[pattern.matcher(it).find()]]
 		} else
 			false
 	}

@@ -20,6 +20,8 @@ import kieker.model.analysismodel.assembly.AssemblyModel
 import kieker.model.analysismodel.assembly.AssemblyProvidedInterface
 import kieker.model.analysismodel.assembly.AssemblyRequiredInterface
 import kieker.model.analysismodel.assembly.impl.EStringToAssemblyProvidedInterfaceMapEntryImpl
+import kieker.model.analysismodel.source.SourceModel
+
 import de.cau.cs.kieler.klighd.kgraph.KNode
 import de.cau.cs.kieler.klighd.kgraph.KPort
 import de.cau.cs.kieler.klighd.kgraph.util.KGraphUtil
@@ -41,6 +43,7 @@ import org.eclipse.elk.core.options.PortLabelPlacement
 import org.eclipse.elk.core.options.PortSide
 import org.eclipse.emf.common.util.EList
 import org.eclipse.emf.ecore.EObject
+
 import de.cau.cs.kieler.klighd.util.KlighdProperties
 
 /** 
@@ -78,7 +81,14 @@ class KiekerArchitectureAssemblyDiagramSynthesis extends AbstractKiekerArchitect
 
 	override KNode transform(AssemblyModel model) {
 		loadColorModel(model)
+<<<<<<< HEAD
 
+=======
+		
+		this.sourceModel = loadModel("source-model.xmi", model) as SourceModel
+		
+		
+>>>>>>> 861725dc (Improved coloring features.)
 		val components = model.components.values
 		
 		internalProvidedLinks = new ArrayList<PortConnection<AssemblyProvidedInterface>>
@@ -153,7 +163,7 @@ class KiekerArchitectureAssemblyDiagramSynthesis extends AbstractKiekerArchitect
 
 			it.addRectangle => [
 				it.lineWidth = 2
-				it.setBackgroundGradient("white".color, lookupComponentColor(component, odd).color, 0)
+				it.background = lookupComponentColor(component, odd).color
 				it.shadow = "black".color
 				it.setGridPlacement(1).from(LEFT, 15, 0, TOP, 15, 0).to(RIGHT, 15, 0, BOTTOM, 15, 0)
 
