@@ -14,13 +14,13 @@ Require-Bundle: org.eclipse.xtext,
  org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  kieker.develop.al;visibility:=reexport,
- org.eclipse.xtext.xbase.lib;bundle-version="[2.14.0,2.30.0)",
+ org.eclipse.xtext.xbase.lib;bundle-version="[2.14.0,2.31.0)",
  org.eclipse.xtext.util,
  org.eclipse.emf.common,
  kieker.develop.rl;visibility:=reexport,
  kieker.develop.semantics;visibility:=reexport,
  org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: kieker.develop.al,
  kieker.develop.al.aspectLang.impl,
  kieker.develop.al.aspectLang,
