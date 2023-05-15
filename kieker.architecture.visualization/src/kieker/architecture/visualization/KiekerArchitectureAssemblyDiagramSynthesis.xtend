@@ -81,14 +81,9 @@ class KiekerArchitectureAssemblyDiagramSynthesis extends AbstractKiekerArchitect
 
 	override KNode transform(AssemblyModel model) {
 		loadColorModel(model)
-<<<<<<< HEAD
-
-=======
 		
 		this.sourceModel = loadModel("source-model.xmi", model) as SourceModel
 		
-		
->>>>>>> 861725dc (Improved coloring features.)
 		val components = model.components.values
 		
 		internalProvidedLinks = new ArrayList<PortConnection<AssemblyProvidedInterface>>
