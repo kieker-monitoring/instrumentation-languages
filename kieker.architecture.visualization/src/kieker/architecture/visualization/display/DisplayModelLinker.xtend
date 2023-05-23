@@ -25,6 +25,8 @@ import kieker.architecture.visualization.display.model.RequiredPort
 
 import static extension kieker.architecture.visualization.utils.ModelUtils.*
 import static extension kieker.architecture.visualization.utils.DebugUtils.*
+import org.eclipse.core.resources.IMarker
+import org.eclipse.core.resources.IResource
 
 /**
  * Port linker for the display model based on derived information including
@@ -33,16 +35,18 @@ import static extension kieker.architecture.visualization.utils.DebugUtils.*
  * @author Reiner Jung
  * @since 1.3.0
  */
-class DisplayModelLinker {
+class DisplayModelLinker extends AbstractDisplayProcessor {
 	
 	val Set<Component> components
 	
 	val DisplayModelComponentCreator creator
-	
-	new(DisplayModelComponentCreator creator, Set<Component> components) {
+			
+	new(IResource resource, DisplayModelComponentCreator creator, Set<Component> components) {
+		super(resource)
 		this.creator = creator
 		this.components = components
 	}
+		
 	
 	def link() {
 //		System.err.println("linking begin")
@@ -57,7 +61,7 @@ class DisplayModelLinker {
 //			System.err.printf("   required port %s used by %s: \n", requiredPort.label, requiredPort.requiredSourceLabel)
 			val derivedFrom = requiredPort.getDerivedFrom()
 			if (derivedFrom.isEmpty) {
-				System.err.println("ERROR: DisplayModelLinker.linkPort, required port is not derived " + requiredPort.label)
+				reportError(IMarker.SEVERITY_ERROR, "DisplayModelLinker.linkPort, required port is not derived " + requiredPort.label)
 			}
 			derivedFrom.forEach[derived |
 //				System.err.printf("    derived %s\n", derived.class.simpleName)
@@ -66,7 +70,7 @@ class DisplayModelLinker {
 					Invocation: requiredPort.linkInvocation(derived)
 					OperationDataflow: requiredPort.linkOperationDataflow(derived)
 					StorageDataflow: requiredPort.linkStorageDataflow(derived)
-				    default: System.err.println("ERROR: DisplayModelLinker.linkPort, class not supported " + derived.class)
+				    default: reportError(IMarker.SEVERITY_ERROR,"DisplayModelLinker.linkPort, class not supported " + derived.class)
 				}
 			]
 		]
@@ -87,7 +91,7 @@ class DisplayModelLinker {
 			providedPort.requiringPorts += requiredPort
 			requiredPort.providedPort = providedPort
 		} else {
-			System.err.println("ERROR: DisplayModelLinker.linkInvocation No provided port for " + call.callee.assemblyOperation.fqn + "  required port: " + requiredPort.label)
+			reportError(IMarker.SEVERITY_ERROR,"DisplayModelLinker.linkInvocation No provided port for " + call.callee.assemblyOperation.fqn + "  required port: " + requiredPort.label)
 		}
 	}
 	
@@ -104,7 +108,7 @@ class DisplayModelLinker {
 				this.creator.operationProvidedPort.keySet.forEach[
 					System.err.println(">> " + it.fqn)
 				]
-				System.err.println("ERROR: DisplayModelLinker.linkOperationDataflow (read) no provided port for " + operationDataflow.callee.assemblyOperation.fqn + "  required port: " + requiredPort.label)					
+				reportError(IMarker.SEVERITY_ERROR,"DisplayModelLinker.linkOperationDataflow (read) no provided port for " + operationDataflow.callee.assemblyOperation.fqn + "  required port: " + requiredPort.label)					
 			}
 		}
 		if (operationDataflow.direction.isWrite &&
@@ -116,7 +120,7 @@ class DisplayModelLinker {
 				providedPort.requiringPorts += requiredPort
 				requiredPort.providedPort = providedPort
 			} else {
-				System.err.println("ERROR: DisplayModelLinker.linkOperationDataflow (write) no provided port for " + operationDataflow.callee.assemblyOperation.fqn + "  required port: " + requiredPort.label)					
+				reportError(IMarker.SEVERITY_ERROR,"DisplayModelLinker.linkOperationDataflow (write) no provided port for " + operationDataflow.callee.assemblyOperation.fqn + "  required port: " + requiredPort.label)					
 			}
 		}
 	}
@@ -125,7 +129,7 @@ class DisplayModelLinker {
 		if (storageDataflow.direction.isWrite) {
 			// this means data flows from the operation to the storage and the required port belongs to the operation.
 			// however, we must check whether this requirePort refers to the storage by name or it refers to the operation.
-			if (requiredPort.label.equals(storageDataflow.storage.assemblyStorage.storageType.name)) {
+			if (comparePortLabel(requiredPort.label, storageDataflow.storage.assemblyStorage.storageType.name)) {
 				// refers to the storage, i.e., has the same name.
 //				System.err.printf("DisplayModelLinker.linkStorageDataflow (write) form %s -> %s\n", storageDataflow.code.assemblyOperation.operationType.signature, storageDataflow.storage.assemblyStorage.storageType.name)
 				// write: operation is caller, storage is callee
@@ -134,12 +138,12 @@ class DisplayModelLinker {
 					providedPort.requiringPorts += requiredPort
 					requiredPort.providedPort = providedPort
 				} else {
-					System.err.println("ERROR: DisplayModelLinker.linkStorageDataflow (write) no provided port for " + storageDataflow.storage.assemblyStorage.fqn + "  required port: " + requiredPort.label)								
+					reportError(IMarker.SEVERITY_ERROR,"DisplayModelLinker.linkStorageDataflow (write) no provided port for " + storageDataflow.storage.assemblyStorage.fqn + "  required port: " + requiredPort.label)								
 				}
 			}
 		}
 		if (storageDataflow.direction.isRead) {
-			if (requiredPort.label.equals(storageDataflow.code.assemblyOperation.operationType.signature)) {			
+			if (comparePortLabel(requiredPort.label, storageDataflow.code.assemblyOperation.operationType.signature)) {			
 //				System.err.printf("DisplayModelLinker.linkStorageDataflow (read) form %s -> %s\n", storageDataflow.storage.assemblyStorage.storageType.name, storageDataflow.code.assemblyOperation.operationType.signature)
 				// write: operation is caller, storage is callee
 				val providedPort = this.creator.operationProvidedPort.get(storageDataflow.code.assemblyOperation)
@@ -147,12 +151,20 @@ class DisplayModelLinker {
 					providedPort.requiringPorts += requiredPort
 					requiredPort.providedPort = providedPort
 				} else {
-					System.err.println("ERROR: DisplayModelLinker.linkStorageDataflow (read) no provided port for " + storageDataflow.storage.assemblyStorage.fqn + "  required port: " + requiredPort.label)								
+					reportError(IMarker.SEVERITY_ERROR,"DisplayModelLinker.linkStorageDataflow (read) no provided port for " + storageDataflow.storage.assemblyStorage.fqn + "  required port: " + requiredPort.label)								
 				}
 			}
 		}
 		if (requiredPort.providedPort === null)
-			System.err.println("ERROR: DisplayModelLinker.linkStorageDataflow requiredPort " + requiredPort.label + " has no providedPort")
+			reportError(IMarker.SEVERITY_ERROR,"DisplayModelLinker.linkStorageDataflow requiredPort " + requiredPort.label + " has no providedPort")
 	}
-	
+		
+	private	def comparePortLabel(String left, String right) {
+		if (left === null && right === null) {
+			true
+		} else if (left !== null) {
+			left.equals(right)
+		} else
+			false
+	}	
 }

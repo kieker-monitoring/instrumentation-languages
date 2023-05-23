@@ -20,6 +20,8 @@ import kieker.architecture.visualization.display.model.Component
 import kieker.architecture.visualization.display.model.ProvidedPort
 import java.util.HashSet
 import kieker.architecture.visualization.display.model.RequiredPort
+import org.eclipse.core.resources.IResource
+import org.eclipse.core.resources.IMarker
 
 /**
  * While the DisplayModelLinker links ports directly, the route to the port might
@@ -29,11 +31,12 @@ import kieker.architecture.visualization.display.model.RequiredPort
  * @author Reiner Jung
  * @since 1.3.0
  */
-class DisplayModelLinkMover {
+class DisplayModelLinkMover extends AbstractDisplayProcessor {
 	
 	val Set<Component> components
 	
-	new(Set<Component> components) {
+	new(IResource resource, Set<Component> components) {
+		super(resource)
 		this.components = components
 	}
 	
@@ -78,7 +81,7 @@ class DisplayModelLinkMover {
 			
 			return derivedProvidedPort
 		} else {
-			throw new InternalError("There cannot be two ports with the same label")
+			reportError(IMarker.SEVERITY_ERROR, "Component %s: There cannot be two ports with the same label %s", parentComponent.label, providedPort.label)
 		}
 	}
 	

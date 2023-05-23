@@ -36,6 +36,8 @@ public class RequiredPort extends Port {
 	}
 	
 	public void setProvidedPort(Port providedPort) {
+		if (providedPort == null)
+			throw new NullPointerException("setProvidedPort");
 		this.providedPort = providedPort;
 	}
 		

@@ -18,6 +18,8 @@ package kieker.architecture.visualization.display
 import java.util.Collection
 import kieker.model.analysismodel.assembly.AssemblyComponent
 import kieker.model.analysismodel.execution.ExecutionModel
+import org.eclipse.core.runtime.Path
+import org.eclipse.core.resources.ResourcesPlugin
 
 /**
  * Generating a display model from the architecture model.
@@ -28,17 +30,22 @@ import kieker.model.analysismodel.execution.ExecutionModel
 class DisplayModelBuilder {
 		
 	def create(Collection<AssemblyComponent> assemblyComponents, ExecutionModel executionModel) {
+		val workspaceRoot = ResourcesPlugin.getWorkspace().getRoot();
+		
+		val uri = executionModel.eResource.URI
+		val resource = workspaceRoot.getFile(new Path(uri.toPlatformString(true)))
+		
 		val operationCalls = executionModel.invocations.values
 		val storageDataflows = executionModel.storageDataflows.values
 		val operationDataflows = executionModel.operationDataflows.values
 		
-		val componentCreator = new DisplayModelComponentCreator(assemblyComponents, operationCalls, storageDataflows, operationDataflows)		
+		val componentCreator = new DisplayModelComponentCreator(resource, assemblyComponents, operationCalls, storageDataflows, operationDataflows)		
 		val components = componentCreator.create()
 				
-		val componentLinker = new DisplayModelLinker(componentCreator, components)
+		val componentLinker = new DisplayModelLinker(resource, componentCreator, components)
 		componentLinker.link
 		
-		val componentLinkMover = new DisplayModelLinkMover(components)
+		val componentLinkMover = new DisplayModelLinkMover(resource, components)
 		componentLinkMover.moveUp()
 					
 		return components

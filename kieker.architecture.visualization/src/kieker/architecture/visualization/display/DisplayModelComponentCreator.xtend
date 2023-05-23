@@ -35,6 +35,8 @@ import kieker.model.analysismodel.type.OperationType
 import kieker.model.analysismodel.assembly.AssemblyRequiredInterface
 
 import static extension kieker.architecture.visualization.utils.ModelUtils.*
+import org.eclipse.core.resources.IMarker
+import org.eclipse.core.resources.IResource
 
 /**
  * Create operations, storages and components for the display model including ports.
@@ -42,7 +44,7 @@ import static extension kieker.architecture.visualization.utils.ModelUtils.*
  * @author Reiner Jung
  * @since 1.3.0
  */
-class DisplayModelComponentCreator {
+class DisplayModelComponentCreator extends AbstractDisplayProcessor {
 	
 	public val Map<AssemblyOperation, ProvidedPort> operationProvidedPort = new HashMap
 	public val Map<AssemblyStorage, ProvidedPort> storageProvidedPort = new HashMap
@@ -58,9 +60,10 @@ class DisplayModelComponentCreator {
 	val Collection<OperationDataflow> operationDataflows
 
 	
-	new(Collection<AssemblyComponent> assemblyComponents,
+	new(IResource resource, Collection<AssemblyComponent> assemblyComponents,
 		Collection<Invocation> operationCalls, 
-		Collection<StorageDataflow> storageDataflows, Collection<OperationDataflow> operationDataflows) { 
+		Collection<StorageDataflow> storageDataflows, Collection<OperationDataflow> operationDataflows) {
+		super(resource)
 		this.assemblyComponents = assemblyComponents;
 		this.operationCalls = operationCalls;
 		this.storageDataflows = storageDataflows;
@@ -72,7 +75,10 @@ class DisplayModelComponentCreator {
 
 		val containedComponents = computeContainedComponents(assemblyComponents)
 		
-		assemblyComponents.filter[!containedComponents.contains(it)].forEach[component |
+		val numOfComponents = assemblyComponents.filter[!containedComponents.contains(it)].size
+		
+		assemblyComponents.filter[!containedComponents.contains(it)].forEach[component,i |
+			System.err.printf("%d of %d component %s\n", i, numOfComponents, component.signature)
 			components += createComponent(component, null)
 		]
 		
@@ -117,16 +123,19 @@ class DisplayModelComponentCreator {
 		Collection<Invocation> operationCalls, Set<AssemblyOperation> processedProvidedOperations
 	) {
 		/** Operation Call. */
-		assemblyComponent.operations.values.
+		val operations = assemblyComponent.operations.values.
 			filter[operation | !processedProvidedOperations.exists[it === operation]].
 			filter[operation | operationCalls.exists[it.callee.assemblyOperation === operation && 
 				it.caller.assemblyOperation.component !== assemblyComponent
-			]].
-			forEach[
-				val port = new ProvidedPort(it.operationType.signature, it, component, EPortType.OPERATION_CALL)
-				component.providedPorts.put(it.operationType.signature, port)
-				processedProvidedOperations.add(it)
-				operationProvidedPort.put(it, port)
+			]]
+		
+		val numOfOperations = operations.size
+		operations.forEach[operation,i |
+				val port = new ProvidedPort(operation.operationType.signature, operation, component, EPortType.OPERATION_CALL)
+				component.providedPorts.put(operation.operationType.signature, port)
+				processedProvidedOperations.add(operation)
+				operationProvidedPort.put(operation, port)
+				System.err.printf("  operation %d of %d\n", i, numOfOperations)
 		]
 	}
 	
@@ -137,7 +146,7 @@ class DisplayModelComponentCreator {
 		Collection<OperationDataflow> operationDataflows, Set<AssemblyOperation> processedProvidedOperations
 	) {
 		/** Operation Dataflow. */
-		assemblyComponent.operations.values.
+		val operations = assemblyComponent.operations.values.
 			filter[operation | !processedProvidedOperations.exists[it === operation]].
 			filter[operation | operationDataflows.exists[
 				(it.direction.isWrite &&
@@ -146,49 +155,55 @@ class DisplayModelComponentCreator {
 				(it.direction.isRead &&
 				it.caller.assemblyOperation === operation && 
 				it.callee.assemblyOperation.component !== assemblyComponent)
-			]].
-			forEach[
-				val signature = it.operationType.signature
+			]]
+		
+		val numOfOperations = operations.size
+		operations.forEach[operation, i |
+				val signature = operation.operationType.signature
 				val port = component.providedPorts.get(signature)
 				if (port !== null) {
 					if (port.portType === EPortType.OPERATION_CALL)
 						port.portType = EPortType.OPERATION_CALL_DATAFLOW
 				} else {
 //					System.err.printf("create provided port for %s op<-op dataflow to %s\n", component.label, signature)
-					val newPort = new ProvidedPort(signature, it, component, EPortType.OPERATION_DATAFLOW)
+					val newPort = new ProvidedPort(signature, operation, component, EPortType.OPERATION_DATAFLOW)
 					component.providedPorts.put(signature, newPort)
-					processedProvidedOperations.add(it)
-					operationProvidedPort.put(it, newPort)
+					processedProvidedOperations.add(operation)
+					operationProvidedPort.put(operation, newPort)
+					System.err.printf("  operation %d of %d\n", i, numOfOperations)
 				}
 		]
 	}
 	
-		/**
+	/**
 	 * Create provided ports based write dataflow.
 	 */
 	private def void createProvidedPorts4Operation2StorageDataflows(Component component, AssemblyComponent assemblyComponent, 
 		Collection<StorageDataflow> storageDataflows, Set<AssemblyOperation> processedProvidedOperations
 	) {
 		/** Storage Dataflow. */
-		assemblyComponent.operations.values.
+		val operations = assemblyComponent.operations.values.
 			filter[operation | !processedProvidedOperations.exists[it === operation]]. // only the operation is not already present.
 			filter[operation | storageDataflows.exists[
 				it.code.assemblyOperation === operation && // only if there is storage dataflow related to the operation
 				it.direction.isRead() && // that has read access
 				it.storage.assemblyStorage.component !== assemblyComponent // and is in a different component
-			]].
-			forEach[
-				val signature = it.operationType.signature
+			]]
+			
+		val numOfOperations = operations.size
+		operations.forEach[operation,i |
+				val signature = operation.operationType.signature
 				val port = component.providedPorts.get(signature)
 				if (port !== null) {
 					if (port.portType === EPortType.OPERATION_CALL)
 						port.portType = EPortType.OPERATION_CALL_DATAFLOW
 				} else {
 //					System.err.printf("create provided port for %s storage->op dataflow to %s\n", component.label, signature)		
-					val newPort = new ProvidedPort(signature, it, component, EPortType.OPERATION_DATAFLOW)
-					component.providedPorts.put(it.operationType.signature, newPort)
-					processedProvidedOperations.add(it)
-					operationProvidedPort.put(it, newPort)
+					val newPort = new ProvidedPort(signature, operation, component, EPortType.OPERATION_DATAFLOW)
+					component.providedPorts.put(operation.operationType.signature, newPort)
+					processedProvidedOperations.add(operation)
+					operationProvidedPort.put(operation, newPort)
+					System.err.printf("  operation %d of %d\n", i, numOfOperations)
 				}
 		]
 	}
@@ -199,17 +214,20 @@ class DisplayModelComponentCreator {
 	private def void createProvidedPorts4Storage2OperationDataflows(Component component, AssemblyComponent assemblyComponent, 
 		Collection<StorageDataflow> dataflows
 	) {
-		assemblyComponent.storages.values.filter[
+		val storages = assemblyComponent.storages.values.filter[
 			storage | dataflows.exists[
 				it.direction.isWrite() && // only add provided port for write direction
 				it.storage.assemblyStorage === storage && // check if this is the right storage
 				it.code.assemblyOperation.component !== assemblyComponent // check is the access is outside of the component
 			]
-		].
-		forEach[
-			val newPort = new ProvidedPort(it.storageType.name, it, component, EPortType.OPERATION_DATAFLOW)
-			component.providedPorts.put(it.storageType.name, newPort)
-			storageProvidedPort.put(it, newPort)
+		]
+		
+		val numOfStorages = storages.size
+		storages.forEach[storage,i |
+			val newPort = new ProvidedPort(storage.storageType.name, storage, component, EPortType.OPERATION_DATAFLOW)
+			component.providedPorts.put(storage.storageType.name, newPort)
+			storageProvidedPort.put(storage, newPort)
+			System.err.printf("  storages %d of %d\n", i, numOfStorages)
 		]
 	}
 		
@@ -229,7 +247,7 @@ class DisplayModelComponentCreator {
 				if (operation !== null) {
 					operationProvidedPort.put(operation, port)
 				} else {
-					System.err.println("ERROR: create provided port 4 interface: " + it.signature + " not found")
+					reportError(IMarker.SEVERITY_ERROR, "Create provided port 4 interface: " + it.signature + " not found")
 				}
 			]
 		]
@@ -251,7 +269,8 @@ class DisplayModelComponentCreator {
 			it.callee.assemblyOperation.component !== assemblyComponent && // only check calls that end in another component
 			!processedRequiredCallers.contains(it.caller.assemblyOperation)
 		].forEach[call |
-			component.createOrModifyRequiredPort4Operations(call, call.caller.assemblyOperation.operationType.signature, EPortType.OPERATION_CALL)
+			component.createOrModifyRequiredPort(call, call.caller.assemblyOperation.operationType.signature, EPortType.OPERATION_CALL)
+			System.err.println("call")
 		]
 	}
 
@@ -277,7 +296,8 @@ class DisplayModelComponentCreator {
 //			System.err.printf("create required port for %s op->op dataflow from %s to %s\n", component.label, 
 //				dataflow.caller.assemblyOperation.operationType.signature, dataflow.callee.assemblyOperation.operationType.signature
 //			)
-			component.createOrModifyRequiredPort4Operations(dataflow, dataflow.callee.assemblyOperation.operationType.signature, EPortType.OPERATION_DATAFLOW)
+			component.createOrModifyRequiredPort(dataflow, dataflow.callee.assemblyOperation.operationType.signature, EPortType.OPERATION_DATAFLOW)
+			System.err.println("dataflow required port")
 		]
 		
 		/** Operation to operation dataflow (read). */
@@ -289,7 +309,8 @@ class DisplayModelComponentCreator {
 //			System.err.printf("create required port for %s op->op dataflow from %s to %s\n", component.label, 
 //				dataflow.callee.assemblyOperation.operationType.signature, dataflow.caller.assemblyOperation.operationType.signature
 //			)
-			component.createOrModifyRequiredPort4Operations(dataflow, dataflow.caller.assemblyOperation.operationType.signature, EPortType.OPERATION_DATAFLOW)
+			component.createOrModifyRequiredPort(dataflow, dataflow.caller.assemblyOperation.operationType.signature, EPortType.OPERATION_DATAFLOW)
+			System.err.println("dataflow required port")
 		]
 	}
 		
@@ -311,7 +332,8 @@ class DisplayModelComponentCreator {
 		].
 		forEach[
 //			System.err.printf("create required port for %s op->storage dataflow from %s to %s\n", component.label, it.code.assemblyOperation.operationType.signature, label)
-			createOrModifyRequiredPort4Operations(component, it, it.storage.assemblyStorage.storageType.name, EPortType.OPERATION_DATAFLOW)
+			createOrModifyRequiredPort(component, it, it.storage.assemblyStorage.storageType.name, EPortType.OPERATION_DATAFLOW)
+			System.err.println("dataflow storage<-operations required port")
 		]
 	}
 		
@@ -332,7 +354,8 @@ class DisplayModelComponentCreator {
 			]. // storage read direction (from storage to operation)
 		forEach[
 //			System.err.printf("create required port for %s storage->op dataflow from %s to %s\n", component.label, it.storage.assemblyStorage.storageType.name, label)
-			createOrModifyRequiredPort4Operations(component, it, it.code.assemblyOperation.operationType.signature, EPortType.OPERATION_DATAFLOW)
+			createOrModifyRequiredPort(component, it, it.code.assemblyOperation.operationType.signature, EPortType.OPERATION_DATAFLOW)
+			System.err.println("dataflow storage->operation required port")
 		]
 	}
 	
@@ -348,6 +371,8 @@ class DisplayModelComponentCreator {
 		val Set<AssemblyOperation> processedRequiredCallers = new HashSet
 		assemblyComponent.requiredInterfaces.forEach[
 			val port = it.createRequiredPort4Interface(component)
+			if (port === null)
+				throw new NullPointerException("createRequiredPort4Interface failed to create port")
 			component.requiredPorts.put(port.label, port)
 			val providedAssemblyComponent = it.requires.eContainer.eContainer as AssemblyComponent
 			it.requires.providedInterfaceType.providedOperationTypes.values.forEach[operationType |
@@ -369,7 +394,10 @@ class DisplayModelComponentCreator {
 	 * @param label the providing operation
 	 * @param portType set port type
 	 */
-	private def createOrModifyRequiredPort4Operations(Component component, Object derivedFrom, String label, EPortType portType) {
+	private def void createOrModifyRequiredPort(Component component, Object derivedFrom, String label, EPortType portType) {
+		if (label === null) {
+			reportError(IMarker.SEVERITY_ERROR,"%s %s label is null\n", component.label, derivedFrom)
+		}
 		val port = component.requiredPorts.get(label)
 		if (port !== null) {
 			port.addPortType(portType)
@@ -386,7 +414,6 @@ class DisplayModelComponentCreator {
 	
 	private def ProvidedPort createProvidedPort4Interface(AssemblyProvidedInterface providedInterface, Component component) {
 		val providedPort = new ProvidedPort(providedInterface.providedInterfaceType.signature, providedInterface, component, EPortType.INTERFACE_CALL)
-		
 		return providedPort
 	}
 	
@@ -394,5 +421,5 @@ class DisplayModelComponentCreator {
 		val requiredPort = new RequiredPort(requiredInterface.requiredInterfaceType.requires.signature, requiredInterface, component, EPortType.INTERFACE_CALL)
 		return requiredPort
 	}
-	
+
 }

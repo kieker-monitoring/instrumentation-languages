@@ -319,9 +319,12 @@ abstract class AbstractKiekerArchitectureDiagramSynthesis<T> extends AbstractDia
 			return ""
 			
 		val statisticRecord = statisticsModel.statistics.get(dataflow)
-		statisticRecord.properties.entrySet.map[entry |
-			'''«entry.key» : «entry.value»'''	
-		].join("\n")
+		if (statisticRecord !== null) {
+			statisticRecord.properties.entrySet.map[entry |
+				'''«entry.key» : «entry.value»'''	
+			].join("\n")
+		} else
+			return ""
 	}
 
 	protected def createStorageDataFlowLabel(StatisticsModel statisticsModel, StorageDataflow dataflow) {
@@ -329,9 +332,12 @@ abstract class AbstractKiekerArchitectureDiagramSynthesis<T> extends AbstractDia
 			return ""
 			
 		val statisticRecord = statisticsModel.statistics.get(dataflow)
-		statisticRecord.properties.entrySet.map[entry |
-			'''«entry.key» : «entry.value»'''	
-		].join("\n")
+		if (statisticRecord !== null) {
+			statisticRecord.properties.entrySet.map[entry |
+				'''«entry.key» : «entry.value»'''	
+			].join("\n")
+		} else
+			return ""
 	}
 		
 	protected def createConnection(Object source, Object target, String color, String label) {
