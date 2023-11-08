@@ -32,7 +32,7 @@
 		<maven-antrun-plugin.version>1.7</maven-antrun-plugin.version>
 
 		<memoryArgs>-Xms256M -Xmx1024M -XX:PermSize=256M -XX:MaxPermSize=256M -XX:+HeapDumpOnOutOfMemoryError</memoryArgs>
-		<platformVersion>[3.9,4.27)</platformVersion>
+		<platformVersion>[3.9,4.29)</platformVersion>
 
 		<checkstyle.config.location>cs-conf.xml</checkstyle.config.location>
 		<checkstyle-crawler>[8.29,)</checkstyle-crawler>
