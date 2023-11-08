@@ -12,7 +12,7 @@ Require-Bundle: kieker.develop.rl,
  org.eclipse.ui.workbench;resolution:=optional,
  org.objectweb.asm;bundle-version="[6.0.0,9.4.0)";resolution:=optional,
  org.eclipse.xtext.xbase.junit,
- org.eclipse.xtext.xbase.lib;bundle-version="[2.13.0,2.31.0]",
+ org.eclipse.xtext.xbase.lib;bundle-version="[2.13.0,2.33.0]",
  org.eclipse.xtext.testing,
  org.eclipse.xtext.xbase.testing,
  kieker.develop.semantics
