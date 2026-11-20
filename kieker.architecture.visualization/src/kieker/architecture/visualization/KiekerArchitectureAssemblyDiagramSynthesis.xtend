@@ -36,7 +36,7 @@ import java.util.HashSet
 import java.util.List
 import java.util.Map
 import java.util.Set
-import javax.inject.Inject
+import jakarta.inject.Inject
 import org.eclipse.elk.core.options.CoreOptions
 import org.eclipse.elk.core.options.Direction
 import org.eclipse.elk.core.options.PortLabelPlacement
@@ -53,16 +53,15 @@ import de.cau.cs.kieler.klighd.util.KlighdProperties
 class KiekerArchitectureAssemblyDiagramSynthesis extends AbstractKiekerArchitectureDiagramSynthesis<AssemblyModel> {
 
 	@Inject
-	extension KNodeExtensions
+	extension KNodeExtensions = new KNodeExtensions()
+
+	extension KRenderingExtensions = new KRenderingExtensions()
 
 	@Inject
-	extension KRenderingExtensions
+	extension KContainerRenderingExtensions = new KContainerRenderingExtensions()
 
 	@Inject
-	extension KContainerRenderingExtensions
-
-	@Inject
-	extension KColorExtensions
+	extension KColorExtensions = new KColorExtensions()
 
 	Map<AssemblyComponent, KNode> componentNodeMap
 

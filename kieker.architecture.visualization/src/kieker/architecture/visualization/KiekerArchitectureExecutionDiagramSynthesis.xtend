@@ -24,7 +24,7 @@ import java.util.Collection
 import java.util.HashMap
 import java.util.Map
 import java.util.Set
-import javax.inject.Inject
+import jakarta.inject.Inject
 import kieker.architecture.visualization.display.model.Component
 import kieker.architecture.visualization.display.model.ProvidedPort
 import kieker.architecture.visualization.display.model.RequiredPort
@@ -64,7 +64,7 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 	extension KNodeExtensions
 
 	@Inject
-	extension KRenderingExtensions
+	extension KRenderingExtensions = new KRenderingExtensions()
 
 	@Inject
 	extension KContainerRenderingExtensions

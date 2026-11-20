@@ -20,7 +20,7 @@ import com.google.common.collect.ImmutableList
 import de.cau.cs.kieler.klighd.SynthesisOption
 import de.cau.cs.kieler.klighd.syntheses.DiagramLayoutOptions
 import org.eclipse.emf.ecore.EObject
-import javax.inject.Inject
+import jakarta.inject.Inject
 import de.cau.cs.kieler.klighd.krendering.extensions.KNodeExtensions
 import de.cau.cs.kieler.klighd.krendering.extensions.KEdgeExtensions
 import de.cau.cs.kieler.klighd.krendering.extensions.KRenderingExtensions
@@ -66,22 +66,22 @@ import java.util.regex.Pattern
 abstract class AbstractKiekerArchitectureDiagramSynthesis<T> extends AbstractDiagramSynthesis<T> {
 	
 	@Inject
-	extension KNodeExtensions
+	extension KNodeExtensions = new KNodeExtensions()
 
 	@Inject
-	extension KEdgeExtensions
+	extension KEdgeExtensions = new KEdgeExtensions()
 
 	@Inject
-	extension KRenderingExtensions
+	extension KRenderingExtensions = new KRenderingExtensions()
 
 	@Inject
-	extension KContainerRenderingExtensions
+	extension KContainerRenderingExtensions = new KContainerRenderingExtensions()
 
 	@Inject
-	extension KPolylineExtensions
+	extension KPolylineExtensions = new KPolylineExtensions()
 
 	@Inject
-	extension KColorExtensions
+	extension KColorExtensions = new KColorExtensions()
 	
 	protected static val DATAFLOW_BG_PROVIDE_COLOR = "#ffffff"
 	protected static val DATAFLOW_BG_REQUIRE_COLOR = "#9090ff"
