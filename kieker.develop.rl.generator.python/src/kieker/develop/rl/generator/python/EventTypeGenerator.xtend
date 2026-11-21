@@ -90,7 +90,10 @@ class EventTypeGenerator extends AbstractPythonTypeGenerator<EventType, CharSequ
 	}
 	
 	def createSuper(List<Property> properties) {
-		'''super().__init__(«properties.map[property | property.createPropertyParameter].join(", ")»)'''
+		'''super().__init__(«properties.filter[!it.isTransient 
+													|| (it.isTransient 
+													&& !it.isIncrement
+													)].map[property | property.createPropertyParameter].join(", ")»)'''
 	}
 	
 	def createSuperSerialize(List<Property> properties) {

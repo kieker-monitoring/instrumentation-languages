@@ -93,7 +93,7 @@ abstract class AbstractPythonTypeGenerator<S extends ComplexType, T> extends Abs
 	}
 
 	def createIncrementAssignment(Property property) {
-		'''«createPropertyParameter(property)» = «property.value.getLiteral»'''
+		'''self.«createPropertyParameter(property)» = «property.value.getLiteral»'''
 	}
 	
 	def createParameterSerialization(Property property) {
