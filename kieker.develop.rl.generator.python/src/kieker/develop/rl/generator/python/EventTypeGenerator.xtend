@@ -15,40 +15,24 @@
  ***************************************************************************/
 package kieker.develop.rl.generator.python
 
-import java.util.Collection
-import kieker.develop.rl.generator.AbstractTypeGenerator
-import kieker.develop.rl.recordLang.Classifier
 import kieker.develop.rl.recordLang.ComplexType
 import kieker.develop.rl.recordLang.EventType
 import kieker.develop.rl.recordLang.Model
 import kieker.develop.rl.recordLang.Property
 import static extension kieker.develop.rl.typing.PropertyResolution.*
 import kieker.develop.rl.generator.Version
-import kieker.develop.rl.generator.InternalErrorException
-import kieker.develop.rl.typing.base.BaseTypes
-import kieker. develop.rl.generator.python.PropertyHelper
-import kieker.develop.rl.recordLang.Constant
-import kieker.develop.rl.recordLang.Literal
-import kieker.develop.rl.recordLang.IntLiteral
-import kieker.develop.rl.recordLang.FloatLiteral
-import kieker.develop.rl.recordLang.ConstantLiteral
-import kieker.develop.rl.recordLang.BooleanLiteral
-import kieker.develop.rl.recordLang.BuiltInValueLiteral
-import kieker.develop.rl.recordLang.StringLiteral
-import kieker.develop.rl.recordLang.ArrayLiteral
-import kieker.develop.rl.recordLang.BaseType
-import org.eclipse.emf.common.util.EList
-import kieker.develop.rl.recordLang.TemplateType
+import java.util.ArrayList
+import java.util.List
 
-class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> {
+class EventTypeGenerator extends AbstractPythonTypeGenerator<EventType, CharSequence> {
 	
 	override accepts(ComplexType type) {
 		if (type instanceof EventType)
-			!type.abstract
+			true // !type.abstract
 		else
 			false
 	}
-			
+
 	/**
 	 * Central code generation template.
 	 * 
@@ -63,124 +47,87 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 	protected override createOutputModel(EventType type, Version targetVersion, String header, String author, String version) {
 		val allDataProperties = type.collectAllDataProperties
 		val allDeclarationProperties = type.collectAllDeclarationProperties
-		'''	
-		class «type.name»«type.createExtensions»
+		val allInheritedProperties = collectAllInheritedProperties(allDataProperties, allDeclarationProperties)
+		val allInheritedClasses = type.collectAllInheritedClasses
+		val typeVersion = if (type.since !== null) type.since else version
+		val typeAuthor = if (type.author !== null) type.author else author
+		'''
+		«header»
+		# version «typeVersion»
+		# author «typeAuthor»
+		
+		«allInheritedClasses.createImports»
+		
+		class «type.name»«allInheritedClasses.createExtensions»
 			«type.constants.map[c|c.createConstantDeclaration].join('\n')»
-			def init(self, «allDataProperties.filter[!it.isTransient 
+			def __init__(self«if (allDataProperties.size > 0) ", "»«allDataProperties.filter[!it.isTransient 
 													|| (it.isTransient 
 													&& !it.isIncrement
-													)].map[property | createPropertyParameter(property)].join(', ')»):	
+													)].map[property | createPropertyParameter(property)].join(', ')»):
+				«IF type.parent !== null»«createSuper(allInheritedProperties)»«ENDIF»
 				«allDeclarationProperties.filter[!it.isIncrement].map[property | createAssignment(property)].join('\n')»
 				«allDeclarationProperties.filter[it.isIncrement].map[property | createIncrementAssignment(property)].join('\n')»
+				«if (allDataProperties.size == 0) "pass"»
 		
 			def serialize(self, serializer):
+				«IF type.parent !== null»«createSuperSerialize(allInheritedProperties)»«ENDIF»
 				«allDeclarationProperties.filter[!it.isIncrement].map[property | createParameterSerialization(property)].join ('\n')» 
+				«if (allDataProperties.size == 0) "pass"»
 			
 			«allDeclarationProperties.filter[it.isIncrement].map[property | createGetter(property)].join('\n')»
 			
 		'''
 	}
 	
-	def createExtensions(EventType type){
-	'''
-	«IF type.parent != null» («type.parent.name», «type.inherits.getTemplates») :«ELSE» :«ENDIF»
-	'''	
+	def collectAllInheritedProperties(List<Property> allDataProperties, List<Property> allDeclarationProperties) {
+		var List<Property> properties = new ArrayList<Property>()
+		for (Property property : allDataProperties) {
+			if (!allDeclarationProperties.contains(property)) {
+				properties.add(property)
+			}
+		}
+		return properties
 	}
 	
-	def getTemplates(EList<TemplateType> parents){
-		'''
-		«if (parents !== null && parents.size > 0) parents.map[p|p.name].join(",")»
-		'''
-	}
-	def getGetParents(EList<TemplateType> parents){
-		'''
-		« if (parents !== null && parents.size > 0) parents.map[p|p.name].join(",")»
-		'''
+	def createSuper(List<Property> properties) {
+		'''super().__init__(«properties.map[property | property.createPropertyParameter].join(", ")»)'''
 	}
 	
-	def createPropertyParameter(Property property){
-		'''«property.name.replaceAll("([a-z])([A-Z])", "$1_$2").toLowerCase»'''
+	def createSuperSerialize(List<Property> properties) {
+		'''super().serialize(serializer)'''
 	}
 	
-	def createAssignment(Property property){
-		val classifier = property.type
-		val type = classifier.type
-		switch(type){
-	    BaseType case BaseTypes.STRING == BaseTypes.getTypeEnum(type) && classifier.sizes.size == 0:
-		'''«createPropertyParameter(property)» = «if(property.value!==null) '(self.'+ property.value.createConstantReference(property) else '(""'»
-		      if «property.createPropertyParameter» is None 
-		      else «property.createPropertyParameter»)'''
-		default:
-		'''«property.createPropertyParameter» = «property.createPropertyParameter»'''
-	}
-	
-	}
-	def createIncrementAssignment(Property property){
-		'''«createPropertyParameter(property)» = «property.value.getLiteral»'''
-	}
-	
-	def createParameterSerialization(Property property){
-		'''serializer.put_«createTypeName(property.type)»(self.«property.createPropertyParameter»)'''
+	def createExtensions(List<ComplexType> types) {
+		if (types.size > 0) {
+			''' («types.map[type | type.name].join(", ")»):'''			
+		} else {
+			''':'''
+		}
 	}
 
-	def createGetter(Property property){
-		'''def get_«property.createPropertyParameter»(self):
-	self.«property.createPropertyParameter» +=1
-	return self.«property.createPropertyParameter»
-		'''
+	def createImport(ComplexType type) {
+		val packageName = (type.eContainer as Model).name
+		'''from «packageName».«type.name» import «type.name»'''
 	}
-	/**
-	 * Create python type names.
-	 */
-	def createTypeName(Classifier classifier) {
-		switch (classifier.type.name) {
-			case 'string' : 'string'
-			default : classifier.type.name
+	
+	def createImports(List<ComplexType> types) {
+		if (types.size > 0) {
+			'''«types.map[type | type.createImport].join("\n")»
+			'''	
 		}
 	}
 	
-private static def createConstantReference(Literal literal, Property property) {
-		switch (literal) {
-			StringLiteral : property.name.replaceAll("([a-z])([A-Z])", "$1_$2").toUpperCase
-			ConstantLiteral : literal.value.name
-			BuiltInValueLiteral : property.name.replaceAll("([a-z])([A-Z])", "$1_$2").toUpperCase
-			default : throw new InternalErrorException("constant reference requested for " + literal.class + " which is not defined.")
-		}
+	def collectAllInheritedClasses(EventType type) {
+		val types = new ArrayList<ComplexType>()
+		if (type.parent !== null)
+			types.add(type.parent)
+		if (type.inherits !== null)
+			types.addAll(type.inherits)
+		return types
 	}
-	def createConstantDeclaration(Constant constant){
-		'''«constant.name» = «constant.value.getLiteral»'''
-	}
-	
-	def static getLiteral(Literal literal){
-	
-		switch(literal){
-		    IntLiteral: '''«literal.value»'''
-			FloatLiteral: '''«literal.value»'''
-			BooleanLiteral: '''«if (literal.value) 'True' else 'False'»'''
-			ConstantLiteral: '''«literal.value.name»'''
-			BuiltInValueLiteral case "KIEKER_VERSION".equals(literal.value): '''kieker.common.util.Version.getVERSION()'''
-			StringLiteral :'''"«literal.value»"'''
-			ArrayLiteral: '''[ «literal.literals.map[element | element.getLiteral].join(if (literal.literals.get(0) instanceof ArrayLiteral) ",\n" else ", ")» ]'''
-			default: throw new InternalErrorException('Unknown literal type ' + literal.class.name)
-			
-		}	
-	}
-	/**
-	 * Create one property for the type declaration.
-	 */
-	def createProperty(Property property) '''«property.name» => $«property.name»'''
-	
+
 	/**
 	 * Compute the absolute Python package name, which is a FQN name of the record.
 	 */
 	def recordName(EventType type) '''«(type.eContainer as Model).name.replace('.','::')»::«type.name»'''
-		
-	/**
-	 * 
-	 */
-	def createParameterCall(Collection<Property> list) {
-		list.map['''$«name»'''].join(', ')
-	}
-	
-	
 }
