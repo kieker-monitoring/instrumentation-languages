@@ -59,23 +59,22 @@ class EventTypeGenerator extends AbstractPythonTypeGenerator<EventType, CharSequ
 		«allInheritedClasses.createImports»
 		
 		class «type.name»«allInheritedClasses.createExtensions»
-			«type.constants.map[c|c.createConstantDeclaration].join('\n')»
-			def __init__(self«if (allDataProperties.size > 0) ", "»«allDataProperties.filter[!it.isTransient 
+		    «type.constants.map[c|c.createConstantDeclaration].join('\n')»
+		    def __init__(self«if (allDataProperties.size > 0) ", "»«allDataProperties.filter[!it.isTransient 
 													|| (it.isTransient 
 													&& !it.isIncrement
 													)].map[property | createPropertyParameter(property)].join(', ')»):
-				«IF type.parent !== null»«createSuper(allInheritedProperties)»«ENDIF»
-				«allDeclarationProperties.filter[!it.isIncrement].map[property | createAssignment(property)].join('\n')»
-				«allDeclarationProperties.filter[it.isIncrement].map[property | createIncrementAssignment(property)].join('\n')»
-				«if (allDataProperties.size == 0) "pass"»
+		        «IF type.parent !== null»«createSuper(allInheritedProperties)»«ENDIF»
+		        «allDeclarationProperties.filter[!it.isIncrement].map[property | createAssignment(property)].join('\n')»
+		        «allDeclarationProperties.filter[it.isIncrement].map[property | createIncrementAssignment(property)].join('\n')»
+		        «if (allDataProperties.size == 0) "pass"»
 		
-			def serialize(self, serializer):
-				«IF type.parent !== null»«createSuperSerialize(allInheritedProperties)»«ENDIF»
-				«allDeclarationProperties.filter[!it.isIncrement].map[property | createParameterSerialization(property)].join ('\n')» 
-				«if (allDataProperties.size == 0) "pass"»
-			
-			«allDeclarationProperties.filter[it.isIncrement].map[property | createGetter(property)].join('\n')»
-			
+		    def serialize(self, serializer):
+		        «IF type.parent !== null»«createSuperSerialize(allInheritedProperties)»«ENDIF»
+		        «allDeclarationProperties.filter[!it.isIncrement].map[property | createParameterSerialization(property)].join ('\n')» 
+		        «if (allDataProperties.size == 0) "pass"»
+		
+		    «allDeclarationProperties.filter[it.isIncrement].map[property | createGetter(property)].join('\n')»
 		'''
 	}
 	

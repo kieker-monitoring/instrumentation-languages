@@ -31,7 +31,8 @@ public class Activator implements BundleActivator {
 	/**
 	 * Default constructor.
 	 */
-	public Activator() {}
+	public Activator() {
+	}
 
 	static BundleContext getContext() {
 		return context;

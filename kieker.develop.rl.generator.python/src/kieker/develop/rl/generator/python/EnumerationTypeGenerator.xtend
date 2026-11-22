@@ -23,7 +23,6 @@ import kieker.develop.rl.recordLang.EnumerationType
 import kieker.develop.rl.recordLang.Model
 
 import static extension kieker.develop.rl.typing.TypeResolution.*
-import java.util.List
 
 class EnumerationTypeGenerator extends AbstractTypeGenerator<EnumerationType, CharSequence> {
 	
@@ -44,10 +43,11 @@ class EnumerationTypeGenerator extends AbstractTypeGenerator<EnumerationType, Ch
 	 */
 	protected override createOutputModel(EnumerationType type, Version targetVersion, String header, String author, String version) {
 	val literals = type.collectAllLiterals
-		'''import enum
+		'''
+		import enum
+
 		class «type.name»(enum):
-			«literals.map[it.createLiteral()].join(",\n")»
-		
+		    «literals.map[it.createLiteral()].join(",\n")»
 		'''
 	}
 

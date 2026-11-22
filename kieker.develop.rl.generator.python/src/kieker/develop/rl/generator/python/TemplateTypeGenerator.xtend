@@ -54,14 +54,14 @@ class TemplateTypeGenerator extends AbstractPythonTypeGenerator<TemplateType, Ch
 		«allInheritedClasses.createImports»
 		
 		class «type.name»«allInheritedClasses.createExtensions»
-			«type.constants.map[c|c.createConstantDeclaration].join('\n')»
-			def __init__(self«if (allDataProperties.size > 0) ", "»«allDataProperties.filter[!it.isTransient 
+		    «type.constants.map[c|c.createConstantDeclaration].join('\n')»
+		    def __init__(self«if (allDataProperties.size > 0) ", "»«allDataProperties.filter[!it.isTransient 
 													|| (it.isTransient 
 													&& !it.isIncrement
 													)].map[property | createPropertyParameter(property)].join(', ')»):	
-				«allDeclarationProperties.filter[!it.isIncrement].map[property | createAssignment(property)].join('\n')»
-				«allDeclarationProperties.filter[it.isIncrement].map[property | createIncrementAssignment(property)].join('\n')»
-				«if (allDataProperties.size == 0) "pass"»
+		        «allDeclarationProperties.filter[!it.isIncrement].map[property | createAssignment(property)].join('\n')»
+		        «allDeclarationProperties.filter[it.isIncrement].map[property | createIncrementAssignment(property)].join('\n')»
+		        «if (allDataProperties.size == 0) "pass"»
 		'''
 	}
 	
