@@ -53,10 +53,11 @@ class EventTypeGenerator extends AbstractPythonTypeGenerator<EventType, CharSequ
 		val typeAuthor = if (type.author !== null) type.author else author
 		'''
 		«header»
-		# version «typeVersion»
+		# since «typeVersion»
 		# author «typeAuthor»
 		
 		«allInheritedClasses.createImports»
+		
 		
 		class «type.name»«allInheritedClasses.createExtensions»
 		    «type.constants.map[c|c.createConstantDeclaration].join('\n')»
@@ -106,15 +107,10 @@ class EventTypeGenerator extends AbstractPythonTypeGenerator<EventType, CharSequ
 			''':'''
 		}
 	}
-
-	def createImport(ComplexType type) {
-		val packageName = (type.eContainer as Model).name
-		'''from «packageName».«type.name» import «type.name»'''
-	}
 	
 	def createImports(List<ComplexType> types) {
 		if (types.size > 0) {
-			'''«types.map[type | type.createImport].join("\n")»
+            '''«types.sortWith[a,b | a.fqnName.compareTo(b.fqnName) ].map[type | type.createImport].join("\n")»
 			'''	
 		}
 	}

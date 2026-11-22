@@ -19,6 +19,7 @@ import kieker.develop.rl.recordLang.Constant
 import kieker.develop.rl.recordLang.TemplateType
 import org.eclipse.emf.common.util.EList
 import kieker.develop.rl.recordLang.Classifier
+import kieker.develop.rl.recordLang.Model
 
 abstract class AbstractPythonTypeGenerator<S extends ComplexType, T> extends AbstractTypeGenerator<S, T> {
 
@@ -141,6 +142,20 @@ abstract class AbstractPythonTypeGenerator<S extends ComplexType, T> extends Abs
      */
     def createParameterCall(Collection<Property> list) {
         list.map['''$«name»'''].join(', ')
+    }
+    
+    def String fqnName(ComplexType type) '''«(type.eContainer as Model).name».«type.name»'''
+    
+    def createImport(ComplexType type) {
+        val packageName = (type.eContainer as Model).name
+        val String result = '''from «packageName».«type.name» import «type.name»'''
+        if (result.length() > 79) {
+            return '''
+            from «packageName».«type.name» import (
+                «type.name»,
+            )'''
+        } else
+            return result
     }
 
 }
